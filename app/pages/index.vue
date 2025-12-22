@@ -3,7 +3,9 @@
 </script>
 
 <template>
-  <div>home page</div>
+  <div>
+    <h1>home page</h1>
+  </div>
 </template>
 
 <style lang="scss">

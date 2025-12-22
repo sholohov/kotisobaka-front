@@ -19,8 +19,7 @@ export function useTechnicalWorks() {
 
     if (paramValue === '1') {
       disableTechWorksCookie.value = true
-    }
-    else if (paramValue === '0') {
+    } else if (paramValue === '0') {
       disableTechWorksCookie.value = false
     }
   }

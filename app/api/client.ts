@@ -13,6 +13,7 @@ export const strapi = {
     params?: Strapi5RequestParams<T>,
   ): Promise<Strapi5ResponseSingle<T>> => {
     const { findOne } = useStrapi<T>()
+
     return findOne(contentType, params)
   },
 
@@ -22,6 +23,7 @@ export const strapi = {
     data: Partial<T>,
   ): Promise<Strapi5ResponseSingle<T>> => {
     const { update } = useStrapi<T>()
+
     return update(contentType, data)
   },
 
@@ -31,6 +33,7 @@ export const strapi = {
     params?: Strapi5RequestParams<T>,
   ): Promise<Strapi5ResponseMany<T>> => {
     const { find } = useStrapi<T>()
+
     return find(contentType, params)
   },
 
@@ -42,6 +45,7 @@ export const strapi = {
   ): Promise<Strapi5ResponseSingle<T>> => {
     const { findOne } = useStrapi<T>()
     const documentId = typeof id === 'number' ? id.toString() : id
+
     return findOne(contentType, documentId, params)
   },
 
@@ -50,6 +54,7 @@ export const strapi = {
     data: Partial<T>,
   ): Promise<Strapi5ResponseSingle<T>> => {
     const { create } = useStrapi<T>()
+
     return create(contentType, data)
   },
 
@@ -58,6 +63,7 @@ export const strapi = {
     id: string,
   ): Promise<Strapi5ResponseSingle<T>> => {
     const { delete: _delete } = useStrapi<T>()
+
     return _delete(contentType, id)
   },
 }

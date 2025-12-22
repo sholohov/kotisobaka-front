@@ -75,7 +75,6 @@
 <script setup>
 const designImage = '/coming-soon-design.jpg'
 const imageAlt = 'Сайт в разработке'
-
 // Состояния
 const showLoading = ref(true)
 const imageLoaded = ref(false)
@@ -91,6 +90,7 @@ const checkMobile = () => {
 
 const preloadImage = () => {
   const img = new Image()
+
   img.src = designImage
   img.onload = onImageLoad
   img.onerror = onImageError
@@ -129,6 +129,7 @@ const retryLoading = () => {
 
   if (backgroundImage.value) {
     const timestamp = new Date().getTime()
+
     backgroundImage.value.src = `${designImage}?t=${timestamp}`
   }
 
@@ -155,7 +156,6 @@ setTimeout(() => {
   }
 }, 8000)
 
-// Инициализация
 onMounted(() => {
   console.log('🚀 Компонент технических работ монтирован')
   checkMobile()

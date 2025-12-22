@@ -1,0 +1,19 @@
+import { settings } from './settings'
+import { animals } from './animals'
+import { articles } from './articles'
+import { heroAnimal } from './hero-animal'
+import { members } from './members'
+import { partners } from './partners'
+import { reviews } from './reviews'
+import { statistic } from './statistic'
+
+export const api = {
+  settings,
+  animals,
+  articles,
+  heroAnimal,
+  members,
+  partners,
+  reviews,
+  statistic
+}

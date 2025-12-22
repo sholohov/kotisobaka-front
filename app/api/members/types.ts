@@ -3,8 +3,9 @@ import type {
   Strapi5ResponseSingle,
   Strapi5ResponseMany,
 } from '@nuxtjs/strapi'
-import type {AnimalData} from "../animals/types";
-import type {ArticleData} from "../articles/types";
+
+import type { AnimalData } from '../animals/types'
+import type { ArticleData } from '../articles/types'
 import type { SingleMedia } from '../types'
 
 export interface MemberData {

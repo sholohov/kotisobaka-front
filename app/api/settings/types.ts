@@ -1,6 +1,6 @@
 import type {
   Strapi5ResponseData,
-  Strapi5ResponseSingle
+  Strapi5ResponseSingle,
 } from '@nuxtjs/strapi'
 
 /** Поля настроек */

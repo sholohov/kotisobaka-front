@@ -1,5 +1,5 @@
-import {get} from "./get";
+import { get } from './get'
 
 export const settings = {
-  get
+  get,
 }

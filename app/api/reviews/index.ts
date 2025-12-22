@@ -3,5 +3,5 @@ import { getOne } from './getOne'
 
 export const reviews = {
   get,
-  getOne
+  getOne,
 }

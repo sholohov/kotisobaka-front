@@ -3,5 +3,5 @@ import { getOne } from './getOne'
 
 export const partners = {
   get,
-  getOne
+  getOne,
 }

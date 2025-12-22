@@ -1,8 +1,9 @@
 import type {
   Strapi5ResponseData,
   Strapi5ResponseSingle,
-  Strapi5ResponseMany
+  Strapi5ResponseMany,
 } from '@nuxtjs/strapi'
+
 import type { SingleMedia } from '../types'
 
 export interface ReviewData {

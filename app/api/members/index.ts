@@ -3,5 +3,5 @@ import { getOne } from './getOne'
 
 export const members = {
   get,
-  getOne
+  getOne,
 }

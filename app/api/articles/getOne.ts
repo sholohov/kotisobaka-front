@@ -1,6 +1,7 @@
+import type { Strapi5RequestParams } from '@nuxtjs/strapi'
+
 import type { ArticleResponse, ArticleData } from './types'
 import { strapi } from '../client'
-import type {Strapi5RequestParams} from "@nuxtjs/strapi";
 
 export interface GetArticleParams {
   id: string | number
@@ -9,7 +10,7 @@ export interface GetArticleParams {
 
 /** Получить одну статью */
 export const getOne = async (
-    { id, params }: GetArticleParams
+  { id, params }: GetArticleParams,
 ): Promise<ArticleResponse> => {
   return strapi.findById<ArticleData>('articles', id, params)
 }

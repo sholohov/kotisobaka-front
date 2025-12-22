@@ -2,9 +2,9 @@ import type {
   Strapi5ResponseData,
   Strapi5ResponseSingle,
   Strapi5ResponseMany,
-  Strapi5RequestParams
 } from '@nuxtjs/strapi'
-import type {MemberData} from "../members/types";
+
+import type { MemberData } from '../members/types'
 import type { SingleMedia, MultipleMedia } from '../types'
 
 /** Поля статьи */

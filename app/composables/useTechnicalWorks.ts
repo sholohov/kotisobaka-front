@@ -1,4 +1,5 @@
 import { api } from '~/api'
+import type { SettingsData } from '~/api/settings/types'
 
 export const TECH_WORKS_COOKIE = 'tech_works_disabled'
 export const TECH_WORKS_QUERY_PARAM = 'tech_works_disabled'
@@ -11,15 +12,15 @@ export function useTechnicalWorks() {
   })
 
   const route = useRoute()
-  const settings = ref<any>(null)
+  const settings = ref<SettingsData | null>()
 
-  // Проверяем query-параметр
   const checkQueryParam = () => {
     const paramValue = route.query[TECH_WORKS_QUERY_PARAM]
 
     if (paramValue === '1') {
       disableTechWorksCookie.value = true
-    } else if (paramValue === '0') {
+    }
+    else if (paramValue === '0') {
       disableTechWorksCookie.value = false
     }
   }
@@ -29,16 +30,16 @@ export function useTechnicalWorks() {
 
     const { data } = await useAsyncData('settings', () => api.settings.get())
 
-    settings.value = data.value
+    settings.value = data.value?.data ?? null
   }
 
   const showTechnicalWorks = computed(() => {
-    return settings.value?.data?.isTechnicalWorks === true &&
-        !disableTechWorksCookie.value
+    return settings.value?.isTechnicalWorks === true
+      && !disableTechWorksCookie.value
   })
 
   return {
     showTechnicalWorks,
-    checkTechnicalWorksStatus
+    checkTechnicalWorksStatus,
   }
 }

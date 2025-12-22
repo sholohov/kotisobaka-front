@@ -6,7 +6,7 @@
 <script setup lang="ts">
 const {
   showTechnicalWorks,
-  checkTechnicalWorksStatus
+  checkTechnicalWorksStatus,
 } = useTechnicalWorks()
 
 await checkTechnicalWorksStatus()

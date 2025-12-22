@@ -1,10 +1,10 @@
-import { settings } from './settings'
 import { animals } from './animals'
 import { articles } from './articles'
 import { heroAnimal } from './hero-animal'
 import { members } from './members'
 import { partners } from './partners'
 import { reviews } from './reviews'
+import { settings } from './settings'
 import { statistic } from './statistic'
 
 export const api = {
@@ -15,5 +15,5 @@ export const api = {
   members,
   partners,
   reviews,
-  statistic
+  statistic,
 }

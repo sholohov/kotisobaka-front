@@ -8,11 +8,11 @@
       class="technical-works__background"
       :class="{
         'technical-works__background--loaded': imageLoaded,
-        'technical-works__background--mobile': isMobile
+        'technical-works__background--mobile': isMobile,
       }"
       @load="onImageLoad"
       @error="onImageError"
-    />
+    >
 
     <!-- Загрузка -->
     <div
@@ -20,35 +20,51 @@
       :class="{ 'technical-works__loading--hidden': !showLoading }"
     >
       <div class="technical-works__loading-content">
-        <div class="technical-works__loading-spinner"></div>
-        <p class="technical-works__loading-text">Загрузка...</p>
+        <div class="technical-works__loading-spinner" />
+        <p class="technical-works__loading-text">
+          Загрузка...
+        </p>
       </div>
     </div>
 
     <!-- Верхний текст -->
-    <div class="technical-works__text" :class="{ 'technical-works__text--visible': imageLoaded }">
+    <div
+      class="technical-works__text"
+      :class="{ 'technical-works__text--visible': imageLoaded }"
+    >
       <h1 class="technical-works__heading">
         Скоро здесь появится сайт, где каждый хвостик найдет свою семью
       </h1>
     </div>
 
     <!-- Логотип -->
-    <div class="technical-works__logo" :class="{ 'technical-works__logo--visible': imageLoaded }">
+    <div
+      class="technical-works__logo"
+      :class="{ 'technical-works__logo--visible': imageLoaded }"
+    >
       <img
         src="/Logo.svg"
         alt="Logo"
         class="technical-works__logo-image"
         @load="onLogoLoad"
         @error="onLogoError"
-      />
+      >
     </div>
 
     <!-- Ошибка -->
-    <div v-if="showError" class="technical-works__error">
+    <div
+      v-if="showError"
+      class="technical-works__error"
+    >
       <div class="technical-works__error-content">
         <p>Не удалось загрузить изображение</p>
-        <p class="technical-works__error-hint">Проверьте путь к файлу: {{ designImage }}</p>
-        <button @click="retryLoading" class="technical-works__error-button">
+        <p class="technical-works__error-hint">
+          Проверьте путь к файлу: {{ designImage }}
+        </p>
+        <button
+          class="technical-works__error-button"
+          @click="retryLoading"
+        >
           Попробовать снова
         </button>
       </div>

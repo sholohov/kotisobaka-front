@@ -3,7 +3,8 @@ import type {
   Strapi5ResponseSingle,
   Strapi5ResponseMany,
 } from '@nuxtjs/strapi'
-import type {LinkComponent, SingleMedia} from '../types'
+
+import type { LinkComponent, SingleMedia } from '../types'
 
 export interface PartnerData {
   name: string

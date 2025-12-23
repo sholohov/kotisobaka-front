@@ -1,11 +1,10 @@
 <script setup lang="ts">
 
+import PageWrapper from "~/components/page-wrapper.vue";
 </script>
 
 <template>
-  <nuxt-page />
+  <page-wrapper>
+    <nuxt-page />
+  </page-wrapper>
 </template>
-
-<style lang="scss">
-
-</style>

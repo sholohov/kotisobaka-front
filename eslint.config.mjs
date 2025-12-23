@@ -41,6 +41,8 @@ export default withNuxt(
       ],
 
       'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
+
+      'vue/no-multiple-template-root': 'off',
     },
   },
 

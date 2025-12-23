@@ -3,9 +3,17 @@
 </script>
 
 <template>
-  <div>
-    <h1>home page</h1>
+  <div style="height: 100vh; background-color: var(--color-red-darken);">
+    <content-box>
+      Hero Block
+    </content-box>
   </div>
+
+  <page-section>
+    <content-box style="height: 100vh">
+      Advantages
+    </content-box>
+  </page-section>
 </template>
 
 <style lang="scss">

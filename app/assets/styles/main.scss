@@ -1,0 +1,71 @@
+@use "tokens";
+@use "fonts";
+
+/* Глобальные настройки */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Базовые стили для html и body */
+html {
+  font-size: 100%; // 16px по умолчанию
+  -webkit-text-size-adjust: 100%; // предотвращает авто-скейл на iOS
+  scroll-behavior: smooth; // плавная прокрутка
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+
+  /* Улучшение рендеринга текста */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Убираем лишние отступы у типографики */
+h1, h2, h3, h4, h5, h6,
+p {
+  margin: 0;
+}
+
+/* Изображения и медиа */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Наследование шрифтов для форм */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Убираем стандартные стили кнопок */
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* Ссылки по умолчанию */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+#__nuxt {
+  display: contents;
+}

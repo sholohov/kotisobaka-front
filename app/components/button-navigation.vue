@@ -84,7 +84,6 @@ defineProps({
     }
   }
 
-
   &:hover {
     #{$this}__btn {
       background-color: var(--color-pink-lighten);

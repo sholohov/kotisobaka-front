@@ -99,6 +99,7 @@ const preloadImage = () => {
 const onImageLoad = () => {
   console.log('✅ Фоновое изображение загружено')
   imageLoaded.value = true
+
   setTimeout(() => {
     showLoading.value = false
   }, 500)

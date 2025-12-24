@@ -67,6 +67,8 @@ const navigations: ButtonNavigationProps[] = [{
   items: [],
 }]
 
+const { isMobile, isTabletSmall, isTablet } = useBreakpoint()
+const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || isTablet.value))
 </script>
 
 <template>
@@ -85,7 +87,10 @@ const navigations: ButtonNavigationProps[] = [{
           </nuxt-link>
         </tooltip-box>
 
-        <nav class="page-header__nav">
+        <nav
+          v-if="!isMobileView"
+          class="page-header__nav"
+        >
           <button-navigation
             v-for="navigation in navigations"
             :key="navigation.key"
@@ -102,11 +107,15 @@ const navigations: ButtonNavigationProps[] = [{
             position="bottom"
           >
             <button-default circle>
-              <search-icon style="color: var(--color-green-darken)" />
+              <search-icon
+                width="24"
+                style="color: var(--color-green-darken)"
+              />
             </button-default>
           </tooltip-box>
 
           <tooltip-box
+            v-if="!isMobileView"
             text="Избранное"
             position="bottom"
           >
@@ -114,11 +123,15 @@ const navigations: ButtonNavigationProps[] = [{
               circle
               to="/favorites"
             >
-              <heart-icon style="color: var(--color-orange)" />
+              <heart-icon
+                width="24"
+                style="color: var(--color-orange)"
+              />
             </button-default>
           </tooltip-box>
 
           <tooltip-box
+            v-if="!isMobileView"
             text="Помочь сейчас"
             position="bottom-right"
           >
@@ -142,7 +155,11 @@ const navigations: ButtonNavigationProps[] = [{
 .page-header {
   $this: ".page-header";
 
-  padding: 20px 0;
+  padding: 10px 0;
+
+  @media (min-width: $breakpoint-md) {
+    padding: 20px 0;
+  }
 
   &__inner {
     position: relative;
@@ -178,7 +195,6 @@ const navigations: ButtonNavigationProps[] = [{
       background-color: var(--color-white-darken);
     }
   }
-
 
   &__logo-img {
     height: 36px;

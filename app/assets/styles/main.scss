@@ -11,13 +11,13 @@
 /* Базовые стили для html и body */
 html {
   font-size: 100%; // 16px по умолчанию
-  -webkit-text-size-adjust: 100%; // предотвращает авто-скейл на iOS
+  text-size-adjust: 100%; // предотвращает авто-скейл на iOS
   scroll-behavior: smooth; // плавная прокрутка
 }
 
 body {
   margin: 0;
-  font-family: 'Nunito', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-family: Nunito, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   line-height: 1.5;
   color: var(--color-text);
   background-color: var(--text-bg);
@@ -28,7 +28,12 @@ body {
 }
 
 /* Убираем лишние отступы у типографики */
-h1, h2, h3, h4, h5, h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
 p {
   margin: 0;
 }

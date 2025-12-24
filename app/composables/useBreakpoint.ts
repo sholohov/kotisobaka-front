@@ -7,16 +7,17 @@ import {
 
 export function useBreakpoint() {
   const device = useDevice()
+
   const screenWidthCookie = useCookie<number>('x-screen-width', {
-    default: function () { return 0 },
+    default: () => 0,
     sameSite: 'lax',
     maxAge: 60 * 60 * 24 * 30,
     watch: true,
   })
 
-  // Функция определения брейкпоинта по ширине
   function getBreakpointByWidth(width: number): Breakpoint {
     const entries = Object.entries(BREAKPOINT_CONFIG) as [Breakpoint, typeof BREAKPOINT_CONFIG[Breakpoint]][]
+
     const sorted = entries.sort(function (a, b) {
       return b[1].index - a[1].index // desktop-first
     })
@@ -33,8 +34,7 @@ export function useBreakpoint() {
     return BREAKPOINT_NAMES.DESKTOP
   }
 
-  // Вычисляемый брейкпоинт на основе куки
-  const breakpoint = computed<Breakpoint>(function () {
+  const breakpoint = computed<Breakpoint>(() => {
     const width = screenWidthCookie.value
 
     return width > 0
@@ -42,12 +42,10 @@ export function useBreakpoint() {
       : getInitialBreakpoint()
   })
 
-  // Текущая ширина экрана
-  const screenWidth = computed(function () {
+  const screenWidth = computed(() => {
     return screenWidthCookie.value
   })
 
-  // Определение начального брейкпоинта по устройству (для первого посещения)
   function getInitialBreakpoint(): Breakpoint {
     if (device.isMobile) return BREAKPOINT_NAMES.MOBILE
     if (device.isTablet) return BREAKPOINT_NAMES.TABLET
@@ -55,7 +53,6 @@ export function useBreakpoint() {
     return BREAKPOINT_NAMES.DESKTOP
   }
 
-  // Клиентская инициализация с отпиской
   if (import.meta.client) {
     initClientLogic()
   }
@@ -69,16 +66,13 @@ export function useBreakpoint() {
       }
     }
 
-    // Первое обновление при загрузке
     updateScreenWidth()
 
-    // Хранилище для MediaQuery listeners
     const mediaQueryListeners: {
       mq: MediaQueryList
       handler: (event: MediaQueryListEvent) => void
     }[] = []
 
-    // MediaQuery слушатели для всех брейкпоинтов
     const allBreakpoints = Object.keys(BREAKPOINT_CONFIG) as Breakpoint[]
 
     allBreakpoints.forEach(function (bp) {
@@ -94,43 +88,44 @@ export function useBreakpoint() {
       mq.addEventListener('change', handler)
       mediaQueryListeners.push({ mq, handler })
     })
-    // Очистка при анмаунте
-    onUnmounted(function () {
+
+    onUnmounted(() => {
       mediaQueryListeners.forEach(function (listener) {
         listener.mq.removeEventListener('change', listener.handler)
       })
     })
   }
 
-  // Boolean проверки для удобного использования
-  const isMobile = computed(function () {
+  const isMobile = computed(() => {
     return breakpoint.value === BREAKPOINT_NAMES.MOBILE
   })
 
-  const isTabletSmall = computed(function () {
+  const isTabletSmall = computed(() => {
     return breakpoint.value === BREAKPOINT_NAMES.TABLET_SMALL
   })
 
-  const isTablet = computed(function () {
+  const isTablet = computed(() => {
     return breakpoint.value === BREAKPOINT_NAMES.TABLET
   })
 
-  const isDesktop = computed(function () {
+  const isLaptop = computed(() => {
+    return breakpoint.value === BREAKPOINT_NAMES.LAPTOP
+  })
+
+  const isDesktop = computed(() => {
     return breakpoint.value === BREAKPOINT_NAMES.DESKTOP
   })
 
   return {
-    // Состояние
     breakpoint,
     screenWidth,
 
-    // Boolean проверки
     isMobile,
     isTabletSmall,
     isTablet,
+    isLaptop,
     isDesktop,
 
-    // Информация об устройстве
     device,
   }
 }

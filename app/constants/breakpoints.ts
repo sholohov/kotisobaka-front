@@ -1,14 +1,13 @@
-// Строковые константы брейкпоинтов
 export const BREAKPOINT_NAMES = {
   MOBILE: 'mobile',
   TABLET_SMALL: 'tablet-small',
   TABLET: 'tablet',
+  LAPTOP: 'laptop',
   DESKTOP: 'desktop',
 } as const
 
 export type Breakpoint = typeof BREAKPOINT_NAMES[keyof typeof BREAKPOINT_NAMES]
 
-// Основная карта конфигурации
 export const BREAKPOINT_CONFIG: Record<Breakpoint, {
   min: number | undefined
   max: number | undefined
@@ -32,16 +31,23 @@ export const BREAKPOINT_CONFIG: Record<Breakpoint, {
   },
   [BREAKPOINT_NAMES.TABLET]: {
     min: 768,
-    max: 1439,
+    max: 1199,
     defaultWidth: 1024,
-    query: '(min-width: 768px) and (max-width: 1439px)',
+    query: '(min-width: 768px) and (max-width: 1199px)',
     index: 2,
+  },
+  [BREAKPOINT_NAMES.LAPTOP]: {
+    min: 1200,
+    max: 1439,
+    defaultWidth: 1366,
+    query: '(min-width: 1200px) and (max-width: 1439px)',
+    index: 3,
   },
   [BREAKPOINT_NAMES.DESKTOP]: {
     min: 1440,
     max: undefined,
     defaultWidth: 1920,
     query: '(min-width: 1440px)',
-    index: 3,
+    index: 4,
   },
 }

@@ -50,6 +50,11 @@ const props = defineProps({
       padding-right: $container-padding-md;
     }
 
+    @media (min-width: $breakpoint-lg) {
+      padding-left: $container-padding-lg;
+      padding-right: $container-padding-lg;
+    }
+
     @media (min-width: $breakpoint-xl) {
       padding-left: $container-padding-xl;
       padding-right: $container-padding-xl;

@@ -20,6 +20,9 @@ export default withNuxt(
         // Перед функциями/блоками/return
         { blankLine: 'always', prev: '*', next: ['function', 'block-like', 'return'] },
         { blankLine: 'never',  prev: 'return', next: 'return' },
+
+        { blankLine: 'always', prev: '*', next: ['multiline-const', 'multiline-let', 'multiline-var'] },
+        { blankLine: 'always', prev: '*', next: 'multiline-expression' },
       ],
 
       // Стиль
@@ -34,6 +37,7 @@ export default withNuxt(
       'stylistic/space-infix-ops': 'error',
       'stylistic/quote-props': ['error', 'as-needed'],
       'stylistic/space-before-blocks': ['error', 'always'],
+      'stylistic/no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0, maxBOF: 0 }],
 
       // Пробел перед скобками у функций (включая async-стрелочные)
       'stylistic/space-before-function-paren': [

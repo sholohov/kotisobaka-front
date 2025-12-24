@@ -10,7 +10,7 @@
 
     <transition name="tooltip-box-">
       <div
-        v-if="show"
+        v-if="show && !isMobileOrTablet"
         class="tooltip-box__message"
         :class="`tooltip-box__message--${position}`"
       >
@@ -32,15 +32,17 @@ const props = defineProps({
   },
   delay: {
     type: Number,
-    default: 600,
+    default: 500,
   },
 })
 
+const { isMobileOrTablet } = useDevice()
 const show = ref(false)
 let timer: ReturnType<typeof setTimeout> | null = null
 
 function startShow() {
   if (!props.text) return
+
   timer = setTimeout(() => {
     show.value = true
   }, props.delay)

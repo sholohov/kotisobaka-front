@@ -58,7 +58,6 @@ const props = defineProps({
 const sizePx = computed(() => props.size + 'px')
 </script>
 
-
 <style lang="scss">
 .button-default {
   position: relative;

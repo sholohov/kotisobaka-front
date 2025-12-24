@@ -27,9 +27,16 @@ export function useTechnicalWorks() {
   async function checkTechnicalWorksStatus() {
     checkQueryParam()
 
-    const { data } = await useAsyncData('settings', () => api.settings.get())
+    try {
+      const { data } = await useAsyncData('settings', () => {
+        return api.settings.get()
+      })
 
-    settings.value = data.value?.data ?? null
+      settings.value = data.value?.data ?? null
+    } catch (error: unknown) {
+      settings.value = null
+      console.log(error)
+    }
   }
 
   const showTechnicalWorks = computed(() => {

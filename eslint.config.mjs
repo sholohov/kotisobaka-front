@@ -33,6 +33,7 @@ export default withNuxt(
       'stylistic/array-bracket-spacing': ['error', 'never'],
       'stylistic/space-infix-ops': 'error',
       'stylistic/quote-props': ['error', 'as-needed'],
+      'stylistic/space-before-blocks': ['error', 'always'],
 
       // Пробел перед скобками у функций (включая async-стрелочные)
       'stylistic/space-before-function-paren': [

@@ -3,11 +3,7 @@
 </script>
 
 <template>
-  <div style="height: 100vh; background-color: var(--color-red-darken);">
-    <content-box>
-      Hero Block
-    </content-box>
-  </div>
+  <div style="height: 100vh; background-color: var(--color-red-darken);" />
 
   <page-section>
     <content-box style="height: 100vh">

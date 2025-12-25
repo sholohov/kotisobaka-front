@@ -5,6 +5,7 @@ import BlogIcon from '~/assets/svg/blog-icon.svg'
 import PiggyBankIcon from '~/assets/svg/piggy-bank-icon.svg'
 import HeartIcon from '~/assets/svg/heart-icon.svg'
 import { NuxtLink } from "#components";
+import { useMenuMobileStore } from "~/stores/menuMobile";
 
 interface ItemProps {
   label: string
@@ -40,9 +41,11 @@ const items: ItemProps[] = [{
   icon: HeartIcon,
 }]
 
+const menuMobileStore = useMenuMobileStore()
+
 function handleTabClick(item: ItemProps) {
   if (item.key === 'menu') {
-    console.log(111, 'menu')
+    menuMobileStore.toggle()
   }
 
   if (item.key === 'donate') {

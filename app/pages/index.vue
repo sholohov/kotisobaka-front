@@ -3,7 +3,12 @@
 </script>
 
 <template>
-  <div style="height: 100vh; background-color: var(--color-red-darken);" />
+  <div
+    :style="{
+      height: '100vh',
+      backgroundColor: 'var(--color-red-darken)'
+    }"
+  />
 
   <page-section>
     <content-box style="height: 100vh">

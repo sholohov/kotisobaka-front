@@ -3,70 +3,10 @@ import LogoSvg from '~/assets/svg/logo.svg'
 import HeartIcon from '~/assets/svg/heart-icon.svg'
 import SearchIcon from '~/assets/svg/search-icon.svg'
 import PiggyBankIcon from '~/assets/svg/piggy-bank-icon.svg'
-import type { ButtonNavigationProps } from "~/types/buttonNavigation";
+import CoinIcon from '~/assets/svg/coin-icon.svg'
+import ButtonDonate from "~/components/button-donate.vue";
 
-const navigations: ButtonNavigationProps[] = [{
-  label: 'О нас',
-  to: '/about',
-  key: 'about',
-  items: [{
-    label: 'Документы и отчётность',
-    to: '/about/docs',
-    key: 'about-docs',
-  }, {
-    label: 'Истории успеха',
-    to: '/about/stories',
-    key: 'about-stories',
-  }],
-}, {
-  label: 'Как помочь?',
-  to: '/help',
-  key: 'help',
-  items: [{
-    label: 'Материальная помощь',
-    to: '/help/donate',
-    key: 'help-donate',
-  }, {
-    label: 'Волонтёрство',
-    to: '/help/volunteer',
-    key: 'help-volunteer',
-  }, {
-    label: 'Другая помощь',
-    to: '/help/other',
-    key: 'help-other',
-  }],
-}, {
-  label: 'Наши хвостики',
-  to: '/animals',
-  key: 'animals',
-}, {
-  label: 'Информация',
-  to: '/info',
-  key: 'info',
-  items: [{
-    label: 'Как забрать питомца?',
-    to: '/info/adopt',
-    key: 'info-adopt',
-  }, {
-    label: 'Процесс усыновления',
-    to: '/info/process',
-    key: 'info-process',
-  }, {
-    label: 'Помощь своими руками',
-    to: '/info/diy',
-    key: 'info-diy',
-  }, {
-    label: 'Часто задаваемые вопросы',
-    to: '/info/faq',
-    key: 'info-faq',
-  }],
-}, {
-  label: 'Блог',
-  to: '/blog',
-  key: 'blog',
-  items: [],
-}]
-
+const { navigation } = useAppConfig()
 const { isMobile, isTabletSmall, isTablet } = useBreakpoint()
 const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || isTablet.value))
 </script>
@@ -92,12 +32,12 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
           class="page-header__nav"
         >
           <button-navigation
-            v-for="navigation in navigations"
-            :key="navigation.key"
-            :to="navigation.to"
-            :items="navigation.items"
+            v-for="navItem in navigation"
+            :key="navItem.key"
+            :to="navItem.to"
+            :items="navItem.items"
           >
-            {{ navigation.label }}
+            {{ navItem.label }}
           </button-navigation>
         </nav>
 
@@ -135,15 +75,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
             text="Помочь сейчас"
             position="bottom-right"
           >
-            <button-default
-              circle
-              color="yellow"
-            >
-              <piggy-bank-icon
-                width="24"
-                style="color: var(--color-brown-darkest)"
-              />
-            </button-default>
+            <button-donate />
           </tooltip-box>
         </div>
       </div>

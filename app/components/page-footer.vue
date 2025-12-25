@@ -141,10 +141,14 @@ const socials: SocItem[] = [{
 
   &__inner {
     display: flex;
-    gap: 20px;
+    gap: 10px;
     padding: 20px 0;
     color: var(--color-white);
     flex-wrap: wrap;
+
+    @media (min-width: $breakpoint-md) {
+      gap: 20px;
+    }
   }
 
   &__nav, &__pic, &__info {
@@ -186,7 +190,7 @@ const socials: SocItem[] = [{
   &__nav-link {
     position: relative;
     display: inline-flex;
-    padding: 2px 0;
+    padding: 6px 0;
     font-weight: 400;
     transition: color 0.3s;
 
@@ -211,6 +215,10 @@ const socials: SocItem[] = [{
       &:before {
         transform: scale(1, 1);
       }
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      padding: 2px 0;
     }
   }
 

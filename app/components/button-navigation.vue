@@ -96,6 +96,7 @@ defineProps({
     #{$this}__dropdown {
       opacity: 1;
       transform: translateY(0) scale(1);
+      pointer-events: auto;
     }
   }
 
@@ -104,6 +105,7 @@ defineProps({
       opacity: 0;
       transform: translateY(-10px) scale(1, 0.9);
       transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
     }
   }
 

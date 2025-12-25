@@ -125,10 +125,10 @@ function handleTabClick(item: ItemProps) {
 
     &--donate {
       position: relative;
-      top: -16px;
+      top: -26px;
       border-radius: 50%;
-      height: 42px;
-      width: 42px;
+      height: 54px;
+      width: 54px;
       background-color: var(--color-yellow);
     }
 
@@ -155,7 +155,7 @@ function handleTabClick(item: ItemProps) {
     font-size: 10px;
 
     #{$this}__item-link--donate & {
-      top: 20px;
+      top: 24px;
       color: var(--color-brown-darken);
     }
   }

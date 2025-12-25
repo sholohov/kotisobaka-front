@@ -1,19 +1,346 @@
 <script setup lang="ts">
+import LogoBigIcon from '~/assets/svg/logo-big.svg'
+import FacebookIcon from '~/assets/svg/facebook-icon.svg'
+import InstagramIcon from '~/assets/svg/instagram-icon.svg'
 
+interface NavItem {
+  label: string
+  to: string
+  key: string
+}
+
+interface SocItem {
+  to: string
+  key: string
+  icon: unknown
+}
+
+const navigation: NavItem[] = [{
+  label: 'О нас',
+  to: '/about',
+  key: 'about',
+}, {
+  label: 'Наши хвостики',
+  to: '/animals',
+  key: 'animals',
+}, {
+  label: 'Как помочь?',
+  to: '/help',
+  key: 'help',
+}, {
+  label: 'Информация',
+  to: '/info',
+  key: 'info',
+}, {
+  label: 'Блог',
+  to: '/blog',
+  key: 'blog',
+}]
+
+const socials: SocItem[] = [{
+  to: 'https://www.facebook.com/groups/348219105203299',
+  key: 'facebook',
+  icon: FacebookIcon,
+}, {
+  to: 'https://www.instagram.com/kisorgcom',
+  key: 'instagram',
+  icon: InstagramIcon,
+}]
 </script>
 
 <template>
   <div class="page-footer">
     <content-box>
-      Footer
+      <div class="page-footer__inner">
+        <div class="page-footer__nav">
+          <nav class="page-footer__nav-inner">
+            <div class="page-footer__nav-title">
+              Навигация:
+            </div>
+
+            <ul class="page-footer__nav-list">
+              <li
+                v-for="item in navigation"
+                :key="item.key"
+                class="page-footer__nav-item"
+              >
+                <nuxt-link
+                  :to="item.to"
+                  class="page-footer__nav-link"
+                >
+                  {{ item.label }}
+                </nuxt-link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="page-footer__pic">
+          <img
+            src="/img/kotisobaka.webp"
+            alt="hand-center"
+            class="page-footer__pic-center"
+          >
+          <img
+            src="/img/hand.svg"
+            alt="pic-left"
+            class="page-footer__pic-left"
+          >
+          <img
+            src="/img/hand.svg"
+            alt="hand-right"
+            class="page-footer__pic-right"
+          >
+        </div>
+
+        <div class="page-footer__info">
+          <logo-big-icon
+            width="150"
+            class="page-footer__logo"
+          />
+
+          <ul class="page-footer__social">
+            <li
+              v-for="item in socials"
+              :key="item.key"
+              class="page-footer__social-item"
+            >
+              <nuxt-link
+                :to="item.to"
+                class="page-footer__social-link"
+              >
+                <component
+                  :is="item.icon"
+                  width="24"
+                  class="page-footer__social-icon"
+                />
+              </nuxt-link>
+            </li>
+          </ul>
+
+          <nuxt-link class="page-footer__email">
+            <span class="page-footer__email-title">
+              email:
+            </span>
+            <nuxt-link
+              to="mailto:info@kotisobaka.by"
+              class="page-footer__email-link"
+            >
+              info@kotisobaka.by
+            </nuxt-link>
+          </nuxt-link>
+        </div>
+      </div>
     </content-box>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 .page-footer {
   $this: ".page-footer";
 
-  height: 300px;
+  &__inner {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    color: var(--color-white);
+    flex-wrap: wrap;
+  }
+
+  &__nav, &__pic, &__info {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-red-darken);
+    border-radius: 24px;
+    flex: 1;
+    overflow: hidden;
+    padding: 86px 0;
+  }
+
+  &__nav {
+    display: flex;
+    flex: 1 1 100%;
+
+    @media (min-width: $breakpoint-md) {
+      flex: 1;
+    }
+  }
+
+  &__nav-title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+
+  &__nav-list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__nav-link {
+    position: relative;
+    display: inline-flex;
+    padding: 2px 0;
+    font-weight: 400;
+    transition: color 0.3s;
+
+    &:before {
+      content: '';
+      display: flex;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 3px;
+      height: 1px;
+      transform-origin: left;
+      background-color: var(--color-white);
+      opacity: 0.5;
+      transform: scale(0, 1);
+      transition: transform 0.3s;
+    }
+
+    &:hover {
+      color: var(--color-beige-lightest);
+
+      &:before {
+        transform: scale(1, 1);
+      }
+    }
+  }
+
+  &__pic {
+    position: relative;
+    height: 410px;
+    flex: 1 1 100%;
+    order: +1;
+    width: 100%;
+
+    &:hover {
+      #{$this}__pic-left {
+        transform: translateX(20%);
+      }
+
+      #{$this}__pic-right {
+        transform: scale(-1, 1) translateX(20%);
+      }
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      flex: 2;
+      order: 0;
+    }
+  }
+
+  &__pic-center {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
+  }
+
+  &__pic-left, &__pic-right {
+    position: absolute;
+    bottom: 0;
+    width: 35%;
+    transition: transform 1s;
+  }
+
+  &__pic-left {
+    left: 10%;
+  }
+
+  &__pic-right {
+    transform: scale(-1, 1);
+    right: 10%;
+  }
+
+  &__info {
+    flex: 1 1 100%;
+
+    @media (min-width: $breakpoint-md) {
+      flex: 1;
+    }
+  }
+
+  &__logo {
+    margin: 0 0 50px;
+  }
+
+  &__social {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 50px;
+    display: flex;
+    gap: 10px;
+  }
+
+  &__social-item {
+  }
+
+  &__social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: currentColor;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__social-icon {
+    color: var(--color-red-darken);
+  }
+
+  &__email {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &__email-title {
+  }
+
+  &__email-link {
+    position: relative;
+    transition: color 0.3s;
+
+    &:before {
+      content: '';
+      display: flex;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 2px;
+      transform-origin: left;
+      background-color: var(--color-white);
+      opacity: 0.5;
+      transform: scale(0, 1);
+      transition: transform 0.3s;
+    }
+
+    &:hover {
+      color: var(--color-beige-lightest);
+
+      &:before {
+        transform: scale(1, 1);
+      }
+    }
+  }
 }
 </style>

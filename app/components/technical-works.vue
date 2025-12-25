@@ -179,9 +179,6 @@ onUnmounted(() => {
   overflow: hidden;
   font-family: 'Nunito', sans-serif;
 
-  // Импорт Google Fonts
-  @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
-
   &__background {
     position: absolute;
     top: 0;

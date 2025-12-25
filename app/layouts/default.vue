@@ -37,6 +37,15 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  padding: 0 0 calc(44px + $container-padding-xs);
+
+  @media (min-width: $breakpoint-md) {
+    padding: 0 0 calc(44px + $container-padding-md);
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 0;
+  }
 
   &__header {
     flex: 0;

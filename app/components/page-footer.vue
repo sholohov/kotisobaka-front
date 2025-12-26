@@ -46,13 +46,19 @@ const socials: SocItem[] = [{
   key: 'instagram',
   icon: InstagramIcon,
 }]
+
+const { isMobile, isTabletSmall, isTablet } = useBreakpoint()
+const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || isTablet.value))
 </script>
 
 <template>
   <div class="page-footer">
     <content-box>
       <div class="page-footer__inner">
-        <div class="page-footer__nav">
+        <div
+          v-if="!isMobileView"
+          class="page-footer__nav"
+        >
           <nav class="page-footer__nav-inner">
             <div class="page-footer__nav-title">
               Навигация:
@@ -239,6 +245,10 @@ const socials: SocItem[] = [{
       }
     }
 
+    @media (min-width: $breakpoint-md) {
+      flex: 1;
+    }
+
     @media (min-width: $breakpoint-lg) {
       flex: 2;
       order: 0;
@@ -260,17 +270,17 @@ const socials: SocItem[] = [{
   &__pic-left, &__pic-right {
     position: absolute;
     bottom: 0;
-    width: 35%;
+    width: 300px;
     transition: transform 1s;
   }
 
   &__pic-left {
-    left: 10%;
+    left: calc(50% - 330px);
   }
 
   &__pic-right {
     transform: scale(-1, 1);
-    right: 10%;
+    right: calc(50% - 330px);
   }
 
   &__info {

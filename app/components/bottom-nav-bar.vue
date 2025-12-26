@@ -42,6 +42,7 @@ const items: ItemProps[] = [{
 }]
 
 const menuMobileStore = useMenuMobileStore()
+const modalStore = useModalStore()
 
 function handleTabClick(item: ItemProps) {
   if (item.key === 'menu') {
@@ -49,7 +50,7 @@ function handleTabClick(item: ItemProps) {
   }
 
   if (item.key === 'donate') {
-    console.log(111, 'donate')
+    modalStore.open('donate-with-guide')
   }
 }
 </script>

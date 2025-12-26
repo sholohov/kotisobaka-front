@@ -2,13 +2,16 @@
 import LogoSvg from '~/assets/svg/logo.svg'
 import HeartIcon from '~/assets/svg/heart-icon.svg'
 import SearchIcon from '~/assets/svg/search-icon.svg'
-import PiggyBankIcon from '~/assets/svg/piggy-bank-icon.svg'
-import CoinIcon from '~/assets/svg/coin-icon.svg'
 import ButtonDonate from "~/components/button-donate.vue";
 
 const { navigation } = useAppConfig()
+const modalStore = useModalStore()
 const { isMobile, isTabletSmall, isTablet } = useBreakpoint()
 const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || isTablet.value))
+
+function handleDonateBtn() {
+  modalStore.open('donate-with-qr')
+}
 </script>
 
 <template>
@@ -75,7 +78,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
             text="Помочь сейчас"
             position="bottom-right"
           >
-            <button-donate />
+            <button-donate @click="handleDonateBtn" />
           </tooltip-box>
         </div>
       </div>
@@ -87,10 +90,10 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
 .page-header {
   $this: ".page-header";
 
-  padding: 10px 0;
+  padding: 10px var(--scrollbar-width, 0) 10px 0;
 
   @media (min-width: $breakpoint-md) {
-    padding: 20px 0;
+    padding: 20px var(--scrollbar-width, 0) 20px 0;
   }
 
   &__inner {

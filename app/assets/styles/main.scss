@@ -10,6 +10,12 @@ html {
   font-size: 100%; // 16px по умолчанию
   text-size-adjust: 100%; // предотвращает авто-скейл на iOS
   scroll-behavior: smooth; // плавная прокрутка
+
+  /* Скролл Для Firefox */
+  scrollbar-width: thin;              /* тонкий скролл */
+  scrollbar-color: #bbb #f0f0f0;      /* бегунок и трек */
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 body {
@@ -18,10 +24,6 @@ body {
   line-height: 1.5;
   color: var(--color-text);
   background-color: var(--text-bg);
-
-  /* Улучшение рендеринга текста */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 /* Убираем лишние отступы у типографики */

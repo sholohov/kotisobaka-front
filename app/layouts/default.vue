@@ -1,20 +1,70 @@
 <script setup lang="ts">
+import { disableScroll } from "~/utils/disableScroll";
+
 const { isMobile, isTabletSmall, isTablet } = useBreakpoint()
 const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || isTablet.value))
 const menuMobileStore = useMenuMobileStore()
+const modalStore = useModalStore()
 const route = useRoute()
+const device = useDevice()
 
-watchEffect(() => {
+watch(isMobileView, () => {
   if (!isMobileView.value) {
     menuMobileStore.close()
   }
+
+  modalStore.close()
 })
 
 watch(() => route.path, (cur: string, prev?: string) => {
   if (prev && cur !== prev) {
     menuMobileStore.close()
+    modalStore.close()
   }
 })
+
+watch(() => menuMobileStore.isOpen, () => {
+  if (menuMobileStore.isOpen) {
+    modalStore.close()
+  }
+})
+
+watch(() => modalStore.isOpen, () => {
+  if (modalStore.isOpen) {
+    menuMobileStore.close()
+  }
+})
+
+const showOverlay = computed(() => modalStore.isOpen || menuMobileStore.isOpen)
+
+watch(showOverlay, () => {
+  if (import.meta.client) {
+    if (showOverlay.value) {
+      disableScroll(true)
+    } else {
+      setTimeout(() => {
+        disableScroll(false)
+      }, 300)
+    }
+  }
+})
+
+onMounted(() => {
+  if (device.isMobileOrTablet) {
+    useSwipe(document.body, {
+      onSwipe: dir => {
+        if (dir === 'down') {
+          modalStore.close()
+        }
+      },
+    })
+  }
+})
+
+function handleClickOverlay() {
+  menuMobileStore.close()
+  modalStore.close()
+}
 </script>
 
 <template>
@@ -35,10 +85,17 @@ watch(() => route.path, (cur: string, prev?: string) => {
       <div
         class="layout-default__overlay"
         :class="[{
-          'layout-default__overlay--visible': menuMobileStore.isOpen
+          'layout-default__overlay--visible': showOverlay
         }]"
-        @click="menuMobileStore.close()"
+        @click.self="handleClickOverlay"
       />
+
+      <div
+        class="layout-default__modals"
+        :class="{ 'layout-default__modals--is-opened': modalStore.name }"
+      >
+        <modal-root />
+      </div>
 
       <div
         v-if="isMobileView"
@@ -119,6 +176,34 @@ watch(() => route.path, (cur: string, prev?: string) => {
     }
   }
 
+  &__modals {
+    z-index: 3;
+    position: fixed;
+    top: 0;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    transform: translateY(100%);
+    transition: transform 0.3s;
+    pointer-events: none;
+
+    &--is-opened {
+      transform: translateY(0);
+    }
+
+    @media (min-width: $breakpoint-lg) {
+      transition: opacity 0.3s, transform 0.3s;
+      bottom: 0;
+      opacity: 0;
+      transform: scale(0.8);
+
+      &--is-opened {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+  }
+
   &__menu {
     z-index: 3;
     position: fixed;
@@ -127,6 +212,7 @@ watch(() => route.path, (cur: string, prev?: string) => {
     right: 0;
     transition: transform 0.3s;
     transform: translateY(100%);
+    pointer-events: none;
 
     &--is-opened {
       transform: translateY(0);

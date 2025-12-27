@@ -6,28 +6,28 @@ const emit = defineEmits(['click'])
 </script>
 
 <template>
-  <div class="button-donate">
-    <button-default
+  <div class="btn-donate">
+    <btn-default
       circle
       color="yellow"
       @click="emit('click')"
     >
       <coin-icon
         width="9"
-        class="button-donate__coin"
+        class="btn-donate__coin"
       />
 
       <piggy-bank-icon
         width="24"
         style="color: var(--color-brown-darkest)"
       />
-    </button-default>
+    </btn-default>
   </div>
 </template>
 
 <style lang="scss">
-.button-donate {
-  $this: '.button-donate';
+.btn-donate {
+  $this: '.btn-donate';
 
   &:hover {
     #{$this}__coin {

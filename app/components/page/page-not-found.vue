@@ -13,12 +13,12 @@ const emit = defineEmits(['back'])
         alt="404-page"
         class="page-not-found__img"
       >
-      <button-default
+      <btn-default
         class="page-not-found__btn"
         @click="emit('back')"
       >
         Вернуться на главную
-      </button-default>
+      </btn-default>
     </div>
   </div>
 </template>

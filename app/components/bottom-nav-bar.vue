@@ -25,8 +25,8 @@ const items: ItemProps[] = [{
   to: '/animals',
   icon: PawIcon,
 }, {
-  label: 'Донат',
-  key: 'donate',
+  label: 'Помочь',
+  key: 'help',
   to: '',
   icon: PiggyBankIcon,
 }, {
@@ -49,8 +49,12 @@ function handleTabClick(item: ItemProps) {
     menuMobileStore.toggle()
   }
 
-  if (item.key === 'donate') {
-    modalStore.open('donate-with-guide')
+  if (item.key === 'help') {
+    if (modalStore.name === 'donate-with-guide') {
+      modalStore.close()
+    } else {
+      modalStore.open('donate-with-guide')
+    }
   }
 }
 </script>
@@ -128,7 +132,7 @@ function handleTabClick(item: ItemProps) {
       color: var(--color-red-darken);
     }
 
-    &--donate {
+    &--help {
       position: relative;
       top: -26px;
       border-radius: 50%;
@@ -147,7 +151,7 @@ function handleTabClick(item: ItemProps) {
     width: 24px;
     height: 24px;
 
-    #{$this}__item-link--donate & {
+    #{$this}__item-link--help & {
       position: relative;
       top: 7px;
       color: var(--color-brown-darkest);
@@ -159,7 +163,7 @@ function handleTabClick(item: ItemProps) {
     font-weight: 700;
     font-size: 10px;
 
-    #{$this}__item-link--donate & {
+    #{$this}__item-link--help & {
       top: 24px;
       color: var(--color-brown-darken);
     }

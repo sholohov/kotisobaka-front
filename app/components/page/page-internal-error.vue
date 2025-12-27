@@ -13,12 +13,12 @@ const emit = defineEmits(['back'])
         alt="500-error"
         class="page-internal-error__img"
       >
-      <button-default
+      <btn-default
         class="page-internal-error__btn"
         @click="emit('back')"
       >
         Вернуться на главную
-      </button-default>
+      </btn-default>
     </div>
   </div>
 </template>

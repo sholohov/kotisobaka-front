@@ -2,7 +2,7 @@
 import LogoSvg from '~/assets/svg/logo.svg'
 import HeartIcon from '~/assets/svg/heart-icon.svg'
 import SearchIcon from '~/assets/svg/search-icon.svg'
-import ButtonDonate from "~/components/button-donate.vue";
+import BtnDonate from "~/components/btn/btn-donate.vue";
 
 const { navigation } = useAppConfig()
 const modalStore = useModalStore()
@@ -37,14 +37,14 @@ function handleDonateBtn() {
           v-if="!isMobileView"
           class="page-header__nav"
         >
-          <button-navigation
+          <btn-navigation
             v-for="navItem in navigation"
             :key="navItem.key"
             :to="navItem.to"
             :items="navItem.items"
           >
             {{ navItem.label }}
-          </button-navigation>
+          </btn-navigation>
         </nav>
 
         <div class="page-header__right">
@@ -52,12 +52,12 @@ function handleDonateBtn() {
             text="Поиск"
             position="bottom"
           >
-            <button-default circle>
+            <btn-default circle>
               <search-icon
                 width="24"
                 style="color: var(--color-green-darken)"
               />
-            </button-default>
+            </btn-default>
           </tooltip-box>
 
           <tooltip-box
@@ -65,7 +65,7 @@ function handleDonateBtn() {
             text="Избранное"
             position="bottom"
           >
-            <button-default
+            <btn-default
               circle
               to="/favorites"
             >
@@ -73,7 +73,7 @@ function handleDonateBtn() {
                 width="24"
                 style="color: var(--color-orange)"
               />
-            </button-default>
+            </btn-default>
           </tooltip-box>
 
           <tooltip-box
@@ -81,7 +81,7 @@ function handleDonateBtn() {
             text="Помочь сейчас"
             position="bottom-right"
           >
-            <button-donate @click="handleDonateBtn" />
+            <btn-donate @click="handleDonateBtn" />
           </tooltip-box>
         </div>
       </div>

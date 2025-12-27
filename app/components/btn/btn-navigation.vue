@@ -1,36 +1,38 @@
 <template>
-  <div class="button-navigation">
-    <div class="button-navigation__btn">
+  <div class="btn-navigation">
+    <div class="btn-navigation__btn">
       <nuxt-link :to="to">
         <slot />
       </nuxt-link>
 
       <arrow-down-icon
         v-if="items.length"
-        class="button-navigation__btn-arrow"
+        width="24"
+        class="btn-navigation__btn-arrow"
       />
     </div>
 
     <div
       v-if="items.length"
-      class="button-navigation__dropdown"
+      class="btn-navigation__dropdown"
     >
-      <ul class="button-navigation__list">
+      <ul class="btn-navigation__list">
         <li
           v-for="item in items"
           :key="item.key"
-          class="button-navigation__item"
+          class="btn-navigation__item"
         >
           <nuxt-link
-            class="button-navigation__item-link"
+            class="btn-navigation__item-link"
             :to="item.to"
           >
-            <span class="button-navigation__item-text">
+            <span class="btn-navigation__item-text">
               {{ item.label }}
             </span>
 
             <arrow-right-icon
-              class="button-navigation__item-icon"
+              width="24"
+              class="btn-navigation__item-icon"
             />
           </nuxt-link>
         </li>
@@ -57,8 +59,8 @@ defineProps({
 </script>
 
 <style lang="scss">
-.button-navigation {
-  $this: ".button-navigation";
+.btn-navigation {
+  $this: ".btn-navigation";
   $size: 36px;
 
   position: relative;

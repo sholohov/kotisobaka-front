@@ -3,26 +3,26 @@
     :is="to ? NuxtLink : 'button'"
     :to="to || undefined"
     :class="[
-      'button-default',
-      `button-default--${color}`,
-      { 'button-default--circle': circle }
+      'btn-default',
+      `btn-default--${color}`,
+      { 'btn-default--circle': circle }
     ]"
     :type="to ? undefined : 'button'"
   >
     <span
       v-if="$slots['icon-left']"
-      class="button-default__icon button-default__icon--left"
+      class="btn-default__icon btn-default__icon--left"
     >
       <slot name="icon-left" />
     </span>
 
-    <span class="button-default__text">
+    <span class="btn-default__text">
       <slot />
     </span>
 
     <span
       v-if="$slots['icon-right']"
-      class="button-default__icon button-default__icon--right"
+      class="btn-default__icon btn-default__icon--right"
     >
       <slot name="icon-right" />
     </span>
@@ -59,7 +59,7 @@ const sizePx = computed(() => props.size + 'px')
 </script>
 
 <style lang="scss">
-.button-default {
+.btn-default {
   position: relative;
   overflow: hidden;
   display: inline-flex;

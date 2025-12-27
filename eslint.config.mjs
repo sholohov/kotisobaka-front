@@ -48,12 +48,7 @@ export default withNuxt(
       'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
 
       'vue/no-multiple-template-root': 'off',
+      'vue/multi-word-component-names': 'off',
     },
-  },
-
-  // Разрешаем однословные имена для Nuxt-страниц/лейаутов
-  {
-    files: ['app/layouts/*.vue', 'app/pages/**/*.vue'],
-    rules: { 'vue/multi-word-component-names': 'off' },
   },
 )

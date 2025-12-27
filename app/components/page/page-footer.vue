@@ -112,6 +112,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
               class="page-footer__social-item"
             >
               <nuxt-link
+                target="_blank"
                 :to="item.to"
                 class="page-footer__social-link"
               >

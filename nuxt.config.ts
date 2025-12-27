@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxtjs/device',
     '@pinia/nuxt',
+    'nuxt-swiper',
   ],
 
   devtools: { enabled: true },
@@ -21,6 +22,12 @@ export default defineNuxtConfig({
     '~/assets/styles/fonts.scss',
     '~/assets/styles/main.scss',
   ],
+
+  vue: {
+    compilerOptions: {
+      isCustomElement: tag => ['swiper-container', 'swiper-slide'].includes(tag),
+    },
+  },
 
   vite: {
     plugins: [svgLoader()],
@@ -37,9 +44,13 @@ export default defineNuxtConfig({
   },
 
   strapi: {
-    url: process.env.STRAPI_URL || 'http://localhost:1337',
+    url: 'http://localhost:1337',
     version: 'v5',
     prefix: '/api',
+  },
+
+  routeRules: {
+    '/uploads/**': { proxy: 'http://localhost:1337/uploads/**' },
   },
 
   compatibilityDate: '2025-07-15',

@@ -116,6 +116,8 @@ export function useBreakpoint() {
     return breakpoint.value === BREAKPOINT_NAMES.DESKTOP
   })
 
+  const isMobileView = computed(() => isMobile.value || isTabletSmall.value || isTablet.value);
+
   return {
     breakpoint,
     screenWidth,
@@ -125,6 +127,7 @@ export function useBreakpoint() {
     isTablet,
     isLaptop,
     isDesktop,
+    isMobileView,
 
     device,
   }

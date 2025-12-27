@@ -31,10 +31,29 @@
             </span>
 
             <arrow-right-icon
+              v-if="item.items?.length"
               width="24"
               class="btn-navigation__item-icon"
             />
           </nuxt-link>
+
+          <ul
+            v-if="item.items?.length"
+            class="btn-navigation__sublist"
+          >
+            <li
+              v-for="subItem in item.items"
+              :key="subItem.key"
+              class="btn-navigation__subitem"
+            >
+              <nuxt-link
+                class="btn-navigation__subitem-link"
+                :to="subItem.to"
+              >
+                {{ subItem.label }}
+              </nuxt-link>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
@@ -44,7 +63,7 @@
 <script setup lang="ts">
 import ArrowDownIcon from "~/assets/svg/arrow-down.svg";
 import ArrowRightIcon from "~/assets/svg/arrow-right.svg";
-import type { ButtonNavigationItemProps, ButtonNavigationProps } from "~/types/buttonNavigation";
+import type { ButtonNavigationProps } from "~/types/buttonNavigation";
 
 defineProps({
   to: {
@@ -52,7 +71,7 @@ defineProps({
     default: '',
   },
   items: {
-    type: Array as PropType<Array<ButtonNavigationItemProps>>,
+    type: Array as PropType<Array<ButtonNavigationProps>>,
     default: () => [],
   },
 })
@@ -66,24 +85,12 @@ defineProps({
   position: relative;
 
   @keyframes arrow-right-move {
-    0% {
-      transform: translateX(0);
-    }
-    10% {
-      transform: translateX(4px);
-    }
-    20% {
-      transform: translateX(-2px);
-    }
-    30% {
-      transform: translateX(4px);
-    }
-    40% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(0);
-    }
+    0% { transform: translateX(0); }
+    10% { transform: translateX(4px); }
+    20% { transform: translateX(-2px); }
+    30% { transform: translateX(4px); }
+    40% { transform: translateX(0); }
+    100% { transform: translateX(0); }
   }
 
   &:hover {
@@ -109,11 +116,6 @@ defineProps({
       transition: opacity 0.3s, transform 0.3s;
       pointer-events: none;
     }
-  }
-
-  &:active {
-    border-color: var(--color-brown-darkest);
-    color: var(--color-brown-darkest);
   }
 
   &__btn {
@@ -153,11 +155,22 @@ defineProps({
   &__list {
     list-style: none;
     margin: 0;
-    overflow: hidden;
     padding: 10px 0;
     background-color: var(--color-white-darken);
     border-radius: calc(36px / 2);
     border: 1px solid var(--color-orange-lighten);
+  }
+
+  &__item {
+    position: relative;
+
+    &:hover {
+      #{$this}__sublist {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
+      }
+    }
   }
 
   &__item-link {
@@ -193,6 +206,45 @@ defineProps({
     height: 24px;
     margin-right: -6px;
     color: var(--color-red-darken);
+  }
+
+  &__sublist {
+    list-style: none;
+    margin: 0 0 0 10px;
+    position: absolute;
+    top: -10px;
+    left: 100%;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.3s, transform 0.3s;
+    background-color: var(--color-white-darken);
+    border: 1px solid var(--color-orange-lighten);
+    border-radius: calc($size / 2);
+    padding: 10px 0;
+    pointer-events: none;
+    white-space: nowrap;
+
+    &:before {
+      content: '';
+      position: absolute;
+      display: flex;
+      inset: 0 100% 0 0;
+      width: 10px;
+      margin: 0 0 0 -10px;
+    }
+  }
+
+  &__subitem-link {
+    display: block;
+    padding: 0 14px;
+    height: $size;
+    line-height: $size;
+    color: var(--color-text);
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: var(--color-pink-lighten);
+    }
   }
 }
 </style>

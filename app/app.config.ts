@@ -22,19 +22,59 @@ export default defineAppConfig({
       label: 'Материальная помощь',
       to: '/help/donate',
       key: 'help-donate',
+      items: [{
+        label: 'Финансовая',
+        to: '/help/donate/finance',
+        key: 'help-donate-finance',
+      }, {
+        label: 'Корзина желаний (график приёма)',
+        to: '/help/donate/wishlist',
+        key: 'help-donate-wishlist',
+      }],
     }, {
       label: 'Волонтёрство',
       to: '/help/volunteer',
       key: 'help-volunteer',
+      items: [{
+        label: 'Стать волонтёром',
+        to: '/help/volunteer/become',
+        key: 'help-volunteer-become',
+      }, {
+        label: 'Взять на передержку',
+        to: '/help/volunteer/foster',
+        key: 'help-volunteer-foster',
+      }, {
+        label: 'Стать партнёром',
+        to: '/help/volunteer/partner',
+        key: 'help-volunteer-partner',
+      }],
     }, {
       label: 'Другая помощь',
       to: '/help/other',
       key: 'help-other',
+      items: [{
+        label: 'Информационная помощь',
+        to: '/help/other/info',
+        key: 'help-other-info',
+      }, {
+        label: 'Целевые сборы',
+        to: '/help/other/targeted',
+        key: 'help-other-targeted',
+      }, {
+        label: 'Корпоративное волонтёрство',
+        to: '/help/other/corporate',
+        key: 'help-other-corporate',
+      }],
     }],
   }, {
     label: 'Наши хвостики',
     to: '/animals',
     key: 'animals',
+    items: [{
+      label: 'Карточка питомца',
+      to: '/animals/card',
+      key: 'animals-card',
+    }],
   }, {
     label: 'Информация',
     to: '/info',
@@ -60,6 +100,5 @@ export default defineAppConfig({
     label: 'Блог',
     to: '/blog',
     key: 'blog',
-    items: [],
   }] satisfies ButtonNavigationProps[],
 })

@@ -75,6 +75,7 @@ function handleTabClick(item: ItemProps) {
         >
           <component
             :is="item.icon"
+            width="24"
             class="bottom-nav-bar__item-icon"
           />
 

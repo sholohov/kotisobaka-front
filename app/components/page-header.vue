@@ -26,7 +26,10 @@ function handleDonateBtn() {
             :to="$route.path === '/' ? '' : '/'"
             class="page-header__logo-link"
           >
-            <logo-svg class="page-header__logo-img" />
+            <logo-svg
+              height="36"
+              class="page-header__logo-img"
+            />
           </nuxt-link>
         </tooltip-box>
 

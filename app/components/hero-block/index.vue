@@ -3,7 +3,7 @@ import PawIcon from '~/assets/svg/paw-icon.svg'
 import type { Animal } from "~/api/animals/types";
 
 defineProps({
-  cards: {
+  items: {
     type: Array as PropType<Animal[]>,
     required: true,
   },
@@ -14,7 +14,7 @@ const { isMobileView } = useBreakpoint()
 
 <template>
   <div
-    v-if="cards"
+    v-if="items"
     class="hero-block"
   >
     <content-box>
@@ -28,12 +28,12 @@ const { isMobileView } = useBreakpoint()
         <hero-block-slider-mobile
           v-if="isMobileView"
           class="hero-block__slider hero-block__slider--mobile"
-          :cards="cards"
+          :cards="items"
         />
         <hero-block-slider-desktop
           v-else
           class="hero-block__slider"
-          :cards="cards"
+          :cards="items"
         />
 
         <div class="hero-block__words">
@@ -64,7 +64,12 @@ const { isMobileView } = useBreakpoint()
 <style lang="scss">
 .hero-block {
   $this: '.hero-block';
+
   background-color: var(--color-red-darken);
+
+  swiper-container::part(container) {
+    overflow: visible !important;
+  }
 
   &__inner {
     position: relative;
@@ -96,10 +101,10 @@ const { isMobileView } = useBreakpoint()
 
   &__slider {
     position: absolute;
-    inset: 64px -10px auto;
+    inset: 64px 0 auto;
 
     @media (min-width: $breakpoint-md) {
-      inset: 80px -20px auto;
+      inset: 80px 0 auto;
     }
 
     @media (min-width: $breakpoint-lg) {

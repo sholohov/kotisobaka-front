@@ -69,11 +69,6 @@ export const navigation = [{
   label: 'Наши хвостики',
   to: '/animals',
   key: 'animals',
-  items: [{
-    label: 'Карточка питомца',
-    to: '/animals/card',
-    key: 'animals-card',
-  }],
 }, {
   label: 'Информация',
   to: '/info',

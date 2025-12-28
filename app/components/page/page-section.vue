@@ -1,28 +1,27 @@
 <template>
   <section
     class="page-section"
-    :style="elementsStyle"
+    :style="{ minHeight: minHeight }"
   >
     <a
+      v-if="anchor"
       :href="`#${anchor}`"
-      class="page-section__title"
+      class="page-section__anchor"
     />
 
-    <h2 class="page-section__title">
+    <h2
+      v-if="title"
+      class="page-section__title"
+    >
       {{ title }}
     </h2>
 
-    <content-box class="page-section__content">
-      <slot />
-    </content-box>
+    <slot />
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
-import type { PropType, CSSProperties } from 'vue'
-
-const props = defineProps({
+defineProps({
   title: {
     type: String as PropType<string>,
     default: '',
@@ -31,34 +30,10 @@ const props = defineProps({
     type: String as PropType<string>,
     default: '',
   },
-  backgroundImage: {
-    type: String as PropType<string>,
-    default: '',
-  },
-  backgroundColor: {
-    type: String as PropType<string>,
-    default: '',
-  },
   minHeight: {
     type: String as PropType<string>,
     default: 'auto',
   },
-})
-
-const elementsStyle = computed<CSSProperties>(() => {
-  const style: CSSProperties = {
-    minHeight: props.minHeight,
-  }
-
-  if (props.backgroundImage) {
-    style.backgroundImage = `url('${props.backgroundImage}')`
-  }
-
-  if (props.backgroundColor) {
-    style.backgroundColor = props.backgroundColor
-  }
-
-  return style
 })
 </script>
 
@@ -69,18 +44,18 @@ const elementsStyle = computed<CSSProperties>(() => {
   position: relative;
   width: 100%;
   box-sizing: border-box;
+  padding: 0 0 80px;
+
+  &__anchor {
+    position: absolute;
+    top: -64px;
+  }
 
   &__title {
     font-weight: 800;
     font-style: normal;
     font-size: 50px;
     line-height: 100%;
-  }
-
-  &__content {
-    position: relative;
-    z-index: 2;
-    width: 100%;
   }
 }
 </style>

@@ -7,5 +7,5 @@ import { strapi } from '../client'
 export const get = async (
   params?: Strapi5RequestParams<SettingsData>,
 ): Promise<SettingsResponse> => {
-  return strapi.findOne<SettingsData>('setting', params)
+  return strapi.findOne<SettingsData>('setting', undefined, params)
 }

@@ -6,6 +6,5 @@ import { strapi } from '../client'
 export const get = async (
   params?: Strapi5RequestParams<StatisticData>,
 ): Promise<StatisticResponse> => {
-  // singular API ID: 'statistic'
   return strapi.findOne<StatisticData>('statistic', params)
 }

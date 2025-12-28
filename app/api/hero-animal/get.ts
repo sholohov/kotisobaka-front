@@ -6,5 +6,5 @@ import { strapi } from '../client'
 export const get = async (
   params?: Strapi5RequestParams<HeroAnimalData>,
 ): Promise<HeroAnimalResponse> => {
-  return strapi.findOne<HeroAnimalData>('hero-animal', params)
+  return strapi.findOne<HeroAnimalData>('hero-animal', undefined, params)
 }

@@ -7,27 +7,16 @@ import type {
 export type { Strapi5RequestParams }
 
 export const strapi = {
-  // Для сингл-типов
-  findOne: async <T>(
-    contentType: string,
-    params?: Strapi5RequestParams<T>,
-  ): Promise<Strapi5ResponseSingle<T>> => {
-    const { findOne } = useStrapi<T>()
-
-    return findOne(contentType, params)
-  },
-
-  // Для сингл-типов (обновление)
   update: async <T>(
     contentType: string,
+    documentId: string,
     data: Partial<T>,
   ): Promise<Strapi5ResponseSingle<T>> => {
     const { update } = useStrapi<T>()
 
-    return update(contentType, data)
+    return update(contentType, documentId, data)
   },
 
-  // Для коллекций
   find: async <T>(
     contentType: string,
     params?: Strapi5RequestParams<T>,
@@ -37,14 +26,12 @@ export const strapi = {
     return find(contentType, params)
   },
 
-  // Для коллекций (по ID)
-  findById: async <T>(
+  findOne: async <T>(
     contentType: string,
-    id: string | number,
+    documentId?: string,
     params?: Strapi5RequestParams<T>,
   ): Promise<Strapi5ResponseSingle<T>> => {
     const { findOne } = useStrapi<T>()
-    const documentId = typeof id === 'number' ? id.toString() : id
 
     return findOne(contentType, documentId, params)
   },
@@ -60,10 +47,10 @@ export const strapi = {
 
   delete: async <T>(
     contentType: string,
-    id: string,
+    documentId: string,
   ): Promise<Strapi5ResponseSingle<T>> => {
     const { delete: _delete } = useStrapi<T>()
 
-    return _delete(contentType, id)
+    return _delete(contentType, documentId)
   },
 }

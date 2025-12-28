@@ -25,7 +25,14 @@ function handleBackEvent() {
     class="error"
     :class="['error--' + error?.statusCode]"
   >
-    {{ error }}
+    <page-not-found
+      v-if="error?.statusCode === 404"
+      @back="handleBackEvent"
+    />
+    <page-internal-error
+      v-else
+      @back="handleBackEvent"
+    />
   </div>
 </template>
 

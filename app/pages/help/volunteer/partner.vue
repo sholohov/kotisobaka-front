@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <h1>Материальная помощь</h1>
+  <h1>Стать партнёром</h1>
 </template>
 
 <style scoped lang="scss">

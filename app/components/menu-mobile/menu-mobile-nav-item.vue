@@ -228,6 +228,7 @@ onUnmounted(() => {
     overflow: hidden;
     transition: border-color $duration, max-height $duration;
     padding: 0 0 0 16px;
+    border-left: 2px solid rgba(255, 255, 255, 0);
 
     &--active {
       max-height: 1000px;
@@ -265,6 +266,7 @@ onUnmounted(() => {
     transition:  border-color $duration, max-height $duration;
     padding: 0 0 0 16px;
     list-style: none;
+    border-left: 2px solid rgba(255, 255, 255, 0);
 
     &--active {
       max-height: 500px;

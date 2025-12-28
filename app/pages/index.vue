@@ -1,8 +1,21 @@
 <script setup lang="ts">
 import { api } from "~/api";
+import AnimalSlider from "~/components/animal-slider.vue";
 
-const { data } = await useAsyncData('home-page', async () => {
-  const [animalsRes, statsRes] = await Promise.all([
+const { data: pageData } = await useAsyncData('home-page', async () => {
+  const [
+    heroAnimals,
+    statsRes,
+    availableAnimals,
+  ] = await Promise.all([
+    api.heroAnimal.get({
+      populate: {
+        animals: {
+          populate: "*",
+        },
+      },
+    }),
+    api.statistic.get(),
     api.animals.get({
       populate: 'photo',
       filters: {
@@ -16,35 +29,36 @@ const { data } = await useAsyncData('home-page', async () => {
         pageSize: 10,
       },
     }),
-    api.statistic.get(),
   ]);
 
   return {
-    heroBlockAnimalsData: animalsRes.data,
+    heroAnimalsData: heroAnimals.data,
     rescueStatsData: statsRes.data,
-  };
+    availableAnimalsData: availableAnimals.data,
+  }
 });
 
+console.log(pageData.value?.heroAnimalsData)
 </script>
 
 <template>
   <div
-    v-if="data"
+    v-if="pageData"
     class="home-page"
   >
     <page-section>
-      <hero-block :items="data.heroBlockAnimalsData" />
+      <hero-block :items="pageData.heroAnimalsData.animals" />
     </page-section>
 
     <page-section>
-      <rescue-stats :stats="data.rescueStatsData" />
+      <rescue-stats :stats="pageData.rescueStatsData" />
     </page-section>
 
     <page-section
       anchor="animals"
       title="Наши хвостики"
     >
-      //
+      <animal-slider :items="pageData.availableAnimalsData" />
     </page-section>
   </div>
 </template>

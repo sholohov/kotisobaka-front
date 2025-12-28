@@ -16,7 +16,7 @@ defineProps({
     :centered-slides="true"
     :loop="cards.length > 3"
     :initial-slide="1"
-    :autoplay="cards.length > 3 ? { delay: 5000 } : undefined"
+    :autoplay="cards.length > 3 ? { delay: 10000 } : undefined"
     class="hero-block-slider-mobile"
   >
     <swiper-slide

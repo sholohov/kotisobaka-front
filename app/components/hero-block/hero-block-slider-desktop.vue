@@ -17,21 +17,21 @@ const visibleCards = computed(() => {
   if (!props.cards.length) return []
 
   return [
-    props.cards[(activeIndex.value - 1 + props.cards.length) % props.cards.length],
     props.cards[activeIndex.value % props.cards.length],
     props.cards[(activeIndex.value + 1) % props.cards.length],
+    props.cards[(activeIndex.value - 1 + props.cards.length) % props.cards.length],
   ].filter(card => !!card)
 })
 
 function resetInterval() {
   if (intervalId) clearInterval(intervalId)
-  intervalId = setInterval(moveRight, 5000)
+  intervalId = setInterval(moveRight, 10000)
 }
 
 function moveLeft() {
   if (isAnimating.value) return
   isAnimating.value = true
-  activeIndex.value = (activeIndex.value + 1) % props.cards.length
+  activeIndex.value = (activeIndex.value - 1 + props.cards.length) % props.cards.length
   setTimeout(() => { isAnimating.value = false }, 500)
   resetInterval()
 }
@@ -39,7 +39,7 @@ function moveLeft() {
 function moveRight() {
   if (isAnimating.value) return
   isAnimating.value = true
-  activeIndex.value = (activeIndex.value - 1 + props.cards.length) % props.cards.length
+  activeIndex.value = (activeIndex.value + 1) % props.cards.length
   setTimeout(() => { isAnimating.value = false }, 500)
   resetInterval()
 }

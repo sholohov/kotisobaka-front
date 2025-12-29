@@ -107,7 +107,7 @@ function truncate(text: string, maxLength = 100) {
     <div class="animal-card__actions">
       <btn-default
         class="animal-card__actions-btn"
-        style="color: var(--color-light-pink)"
+        style="color: var(--color-pink-light)"
         circle
       >
         <heart-icon width="24" />
@@ -116,7 +116,7 @@ function truncate(text: string, maxLength = 100) {
       <btn-default
         v-if="animal.animalStatus === 'available'"
         class="animal-card__actions-btn"
-        style="color: var(--color-dark-green)"
+        style="color: var(--color-green-dark)"
         circle
       >
         <home-icon width="24" />
@@ -208,7 +208,7 @@ function truncate(text: string, maxLength = 100) {
   }
 
   &__info-item__value {
-    color: var(--text-brown);
+    color: var(--color-text-brown);
     font-weight: 700;
     font-size: 24px;
     line-height: 1.2;

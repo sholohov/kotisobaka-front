@@ -51,18 +51,25 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
       <hero-block :items="pageData.heroAnimals.animals" />
     </page-section>
 
-    <page-section>
+    <page-section anchor="rescue_stats">
       <rescue-stats :stats="pageData.rescueStats" />
     </page-section>
 
     <page-section
-      anchor="animals"
+      anchor="available_animals"
       title="Наши хвостики"
     >
       <animal-slider
         :animals="pageData.availableAnimals"
         :quotes="pageData.quotes"
       />
+    </page-section>
+
+    <page-section
+      anchor="available_animals"
+      title="Как можно помочь?"
+    >
+      <animal-help-guide />
     </page-section>
   </div>
 </template>

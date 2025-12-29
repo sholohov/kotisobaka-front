@@ -65,9 +65,9 @@ function hide() {
 
   &__message {
     position: absolute;
-    background-color: var(--color-white-darken);
+    background-color: var(--color-white-dark);
     border: 1px solid var(--color-orange-lighten);
-    color: var(--text-brown);
+    color: var(--color-text-brown);
     padding: 2px 8px;
     border-radius: 4px;
     font-size: 14px;
@@ -79,7 +79,7 @@ function hide() {
       position: absolute;
       width: 10px;
       height: 10px;
-      background-color: var(--color-white-darken);
+      background-color: var(--color-white-dark);
       border: 1px solid var(--color-orange-lighten);
       transform: rotate(45deg);
     }

@@ -97,7 +97,7 @@ function handleTabClick(item: ItemProps) {
   $this: '.bottom-nav-bar';
 
   height: 50px;
-  background-color: var(--color-white-darken);
+  background-color: var(--color-white-dark);
   filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.15));
 
   &__list {
@@ -129,7 +129,7 @@ function handleTabClick(item: ItemProps) {
     transition: color 0.3s;
 
     &--active {
-      color: var(--color-dark-pink);
+      color: var(--color-pink-dark);
     }
 
     &--help {
@@ -142,7 +142,7 @@ function handleTabClick(item: ItemProps) {
     }
 
     &--menu {
-      color: var(--text-brown);
+      color: var(--color-text-brown);
     }
   }
 
@@ -154,7 +154,7 @@ function handleTabClick(item: ItemProps) {
     #{$this}__item-link--help & {
       position: relative;
       top: 7px;
-      color: var(--text-brown);
+      color: var(--color-text-brown);
     }
   }
 

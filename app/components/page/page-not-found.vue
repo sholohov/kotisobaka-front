@@ -34,7 +34,7 @@ const emit = defineEmits(['back'])
   align-items: center;
   justify-content: center;
 
-  background-color: var(--color-purple-lighten);
+  background-color: var(--color-purple-light);
 
   &__inner {
     display: flex;

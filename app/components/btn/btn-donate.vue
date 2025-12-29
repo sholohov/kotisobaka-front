@@ -19,7 +19,7 @@ const emit = defineEmits(['click'])
 
       <piggy-bank-icon
         width="24"
-        style="color: var(--text-brown)"
+        style="color: var(--color-text-brown)"
       />
     </btn-default>
   </div>

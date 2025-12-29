@@ -55,7 +55,7 @@ function handleDonateBtn() {
             <btn-default circle>
               <search-icon
                 width="24"
-                style="color: var(--color-dark-green)"
+                style="color: var(--color-green-dark)"
               />
             </btn-default>
           </tooltip-box>
@@ -107,7 +107,7 @@ function handleDonateBtn() {
   }
 
   &__logo-link {
-    background-color: var(--color-white-darken);
+    background-color: var(--color-white-dark);
     border: 1px solid var(--color-orange-lighten);
     width: 44px;
     height: 44px;
@@ -125,19 +125,19 @@ function handleDonateBtn() {
     &:not([href]) {
       pointer-events: none;
       cursor: default;
-      background-color: var(--color-white-darken);
+      background-color: var(--color-white-dark);
       transition: none;
     }
 
     &:not([href]):hover {
-      background-color: var(--color-white-darken);
+      background-color: var(--color-white-dark);
     }
   }
 
   &__logo-img {
     height: 36px;
     width: auto;
-    color: var(--color-dark-pink);
+    color: var(--color-pink-dark);
   }
 
   &__nav {

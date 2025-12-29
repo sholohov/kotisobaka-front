@@ -108,7 +108,7 @@ function handleCloseBtn() {
     font-weight: 800;
     font-size: 20px;
     line-height: 1;
-    color: var(--color-dark-pink);
+    color: var(--color-pink-dark);
     border-bottom: 1px solid var(--color-white);
     white-space: nowrap;
 
@@ -133,7 +133,7 @@ function handleCloseBtn() {
       width: 36px;
       height: 4px;
       border-radius: 2px;
-      background-color: var(--color-dark-pink);
+      background-color: var(--color-pink-dark);
     }
 
     @media (min-width: $breakpoint-lg) {

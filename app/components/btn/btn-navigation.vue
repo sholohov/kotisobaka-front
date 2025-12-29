@@ -1,3 +1,20 @@
+<script setup lang="ts">
+import ArrowDownIcon from "~/assets/svg/arrow-down-icon.svg";
+import ArrowRightIcon from "~/assets/svg/arrow-right-icon.svg";
+import type { ButtonNavigationProps } from "~/types/buttonNavigation";
+
+defineProps({
+  to: {
+    type: String as PropType<ButtonNavigationProps['to']>,
+    default: '',
+  },
+  items: {
+    type: Array as PropType<Array<ButtonNavigationProps>>,
+    default: () => [],
+  },
+})
+</script>
+
 <template>
   <div class="btn-navigation">
     <div class="btn-navigation__btn">
@@ -60,23 +77,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import ArrowDownIcon from "~/assets/svg/arrow-down.svg";
-import ArrowRightIcon from "~/assets/svg/arrow-right.svg";
-import type { ButtonNavigationProps } from "~/types/buttonNavigation";
-
-defineProps({
-  to: {
-    type: String as PropType<ButtonNavigationProps['to']>,
-    default: '',
-  },
-  items: {
-    type: Array as PropType<Array<ButtonNavigationProps>>,
-    default: () => [],
-  },
-})
-</script>
-
 <style lang="scss">
 .btn-navigation {
   $this: ".btn-navigation";
@@ -124,9 +124,9 @@ defineProps({
     gap: 4px;
     height: $size;
     padding: 0 14px;
-    color: var(--color-text);
+    color: var(--color-text-brown);
     border-radius: calc($size / 2);
-    background-color: var(--color-white-darken);
+    background-color: var(--color-white-dark);
     border: 1px solid var(--color-orange-lighten);
     cursor: pointer;
     transition: background-color 0.3s;
@@ -139,7 +139,7 @@ defineProps({
     height: 24px;
     transform: scale(1, 1);
     transition: transform 0.3s 0.3s;
-    color: var(--color-dark-pink);
+    color: var(--color-pink-dark);
   }
 
   &__dropdown {
@@ -156,7 +156,7 @@ defineProps({
     list-style: none;
     margin: 0;
     padding: 10px 0;
-    background-color: var(--color-white-darken);
+    background-color: var(--color-white-dark);
     border-radius: calc(36px / 2);
     border: 1px solid var(--color-orange-lighten);
   }
@@ -180,8 +180,8 @@ defineProps({
     gap: 24px;
     height: $size;
     padding: 0 14px;
-    color: var(--color-text);
-    background-color: var(--color-white-darken);
+    color: var(--color-text-brown);
+    background-color: var(--color-white-dark);
     cursor: pointer;
     transition: background-color 0.3s;
 
@@ -205,7 +205,7 @@ defineProps({
     width: 24px;
     height: 24px;
     margin-right: -6px;
-    color: var(--color-dark-pink);
+    color: var(--color-pink-dark);
   }
 
   &__sublist {
@@ -217,7 +217,7 @@ defineProps({
     opacity: 0;
     transform: translateX(-10px);
     transition: opacity 0.3s, transform 0.3s;
-    background-color: var(--color-white-darken);
+    background-color: var(--color-white-dark);
     border: 1px solid var(--color-orange-lighten);
     border-radius: calc($size / 2);
     padding: 10px 0;
@@ -239,7 +239,7 @@ defineProps({
     padding: 0 14px;
     height: $size;
     line-height: $size;
-    color: var(--color-text);
+    color: var(--color-text-brown);
     transition: background-color 0.3s;
 
     &:hover {

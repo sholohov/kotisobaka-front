@@ -81,7 +81,7 @@ import HeartIcon from '~/assets/svg/heart-icon.svg'
   }
 
   &__details {
-    color: var(--color-text);
+    color: var(--color-text-brown);
     font-weight: 400;
   }
 
@@ -109,7 +109,7 @@ import HeartIcon from '~/assets/svg/heart-icon.svg'
   }
 
   &__thanks-text {
-    color: var(--color-dark-pink);
+    color: var(--color-pink-dark);
     font-weight: 700;
     font-size: 20px;
     line-height: 1;

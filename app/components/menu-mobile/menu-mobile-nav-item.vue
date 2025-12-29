@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { NuxtLink } from '#components'
-import ArrowDownIcon from "~/assets/svg/arrow-down.svg";
+import ArrowDownIcon from "~/assets/svg/arrow-down-icon.svg";
 import type { ButtonNavigationProps } from "~/types/buttonNavigation";
 import { onMounted, onUnmounted } from 'vue'
 
@@ -197,7 +197,7 @@ onUnmounted(() => {
   $size: 44px;
   $duration: 1s;
 
-  background-color: var(--color-dark-pink);
+  background-color: var(--color-pink-dark);
   color: var(--color-white);
 
   &__btn {

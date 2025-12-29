@@ -78,19 +78,19 @@ defineProps({
     font-weight: 900;
     letter-spacing: 0;
     text-transform: uppercase;
-    color: var(--color-text-light);
+    color: var(--color-text-brown-light);
     margin: 0 0 10px;
   }
 
   &__icon {
     display: flex;
-    color: var(--text-brown);
+    color: var(--color-text-brown);
     margin: 0 0 10px;
     height: 120px;
   }
 
   &__text {
-    color: var(--color-text);
+    color: var(--color-text-brown);
     font-size: 30px;
     font-weight: 700;
     line-height: 1.2;

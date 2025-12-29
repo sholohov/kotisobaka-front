@@ -72,6 +72,7 @@ const emit = defineEmits(['click'])
   position: relative;
   overflow: hidden;
   display: inline-flex;
+  flex: none;
   align-items: center;
   justify-content: center;
   gap: 10px;
@@ -84,8 +85,8 @@ const emit = defineEmits(['click'])
   cursor: pointer;
   border-radius: calc(v-bind(sizePx) / 2);
   transition: opacity 0.3s, color 0.3s, background-color 0.3s, filter 0.3s, border-color 0.3s;
-  background-color: var(--color-white-darken);
-  color: var(--text-brown);
+  background-color: var(--color-white-dark);
+  color: var(--color-text-brown);
 
   &::after {
     content: '';
@@ -132,12 +133,12 @@ const emit = defineEmits(['click'])
   }
 
   &--white {
-    background-color: var(--color-white-darken);
+    background-color: var(--color-white-dark);
     border-color: var(--color-orange-lighten);
-    color: var(--text-brown);
+    color: var(--color-text-brown);
 
     &#{$this}--no-border {
-      border-color: var(--color-white-darken);
+      border-color: var(--color-white-dark);
     }
   }
 
@@ -154,7 +155,7 @@ const emit = defineEmits(['click'])
   &--green {
     background-color: var(--color-green);
     border-color: var(--color-white);
-    color: var(--text-brown);
+    color: var(--color-text-brown);
 
     &#{$this}--no-border {
       border-color: var(--color-green);

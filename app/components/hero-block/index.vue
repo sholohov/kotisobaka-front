@@ -65,7 +65,7 @@ const { isMobileView } = useBreakpoint()
 .hero-block {
   $this: '.hero-block';
 
-  background-color: var(--color-dark-pink);
+  background-color: var(--color-pink-dark);
 
   &__inner {
     position: relative;
@@ -147,7 +147,7 @@ const { isMobileView } = useBreakpoint()
     font-size: 32px;
     font-weight: 900;
     text-shadow: 0 0 6px var(--color-chocolate);
-    color: var(--color-white-darken);
+    color: var(--color-white-dark);
     z-index: 2;
     text-transform: uppercase;
 

@@ -94,7 +94,7 @@ const { isMobile, isTabletSmall } = useBreakpoint()
 
   &__text {
     display: flex;
-    color: var(--color-dark-pink);
+    color: var(--color-pink-dark);
     font-size: 30px;
     font-weight: 800;
     line-height: 1.2;

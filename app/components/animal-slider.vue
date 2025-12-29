@@ -2,7 +2,7 @@
 import { computed, ref } from "vue"
 import type { Animal } from "~/api/animals/types"
 import type { Quote } from "~/api/quotes/types"
-import ArrowRightIcon from "~/assets/svg/arrow-right.svg"
+import ArrowRightIcon from "~/assets/svg/arrow-right-icon.svg"
 import PawIcon from "~/assets/svg/paw-icon.svg"
 
 const props = defineProps({

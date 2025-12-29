@@ -1,26 +1,35 @@
 :root {
   --color-blue: #69a1ae;
-  --color-blue-lighten: #bfd8dc;
+  --color-blue-light: #bfd8dc;
+  --color-blue-dark: #56838f;
+
   --color-green: #99b6a0;
-  --color-green-lighten: #bdd8c7;
-  --color-dark-green: #768e78;
+  --color-green-light: #bdd8c7;
+  --color-green-dark: #768e78;
+
   --color-orange: #d57a5d;
   --color-orange-lighten: #d8bbab;
+  --color-orange-dark: #af654d;
+
   --color-yellow: #fbc36e;
-  --color-yellow-lighten: #fdd7a0;
+  --color-yellow-light: #fdd7a0;
+  --color-yellow-dark: #b1833f;
+
   --color-purple: #b69dba;
-  --color-purple-lighten: #d1c4d5;
+  --color-purple-light: #d1c4d5;
+  --color-purple-dark: #917595;
+
   --color-white: #fff;
-  --color-white-darken: #fdfbfa;
-  --color-dark-pink: #b47a78;
+  --color-white-dark: #fdfbfa;
+
+  --color-pink-dark: #b47a78;
   --color-chocolate: #744141;
-  --text-brown: #291717;
   --color-background-pink: #ecdddd;
   --color-beige-lightest: #f0e5df;
-  --color-light-pink: #F3CCCD;
+  --color-pink-light: #F3CCCD;
 
   /* UI Colors */
-  --color-text: var(--text-brown);
-  --color-text-light: var(--color-white-darken);
+  --color-text-brown: #291717;
+  --color-text-brown-light: var(--color-white-dark);
   --color-bg: var(--color-beige-lightest);
 }

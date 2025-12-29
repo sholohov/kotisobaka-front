@@ -71,6 +71,16 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     >
       <animal-help-guide />
     </page-section>
+
+    <page-section
+      anchor="need_help"
+      title="Срочно нужна помощь!"
+    >
+      <animal-slider
+        :animals="pageData.availableAnimals"
+        :quotes="pageData.quotes"
+      />
+    </page-section>
   </div>
 </template>
 

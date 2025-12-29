@@ -266,11 +266,13 @@ const items: ItemProps[] = [
       display: flex;
       flex-direction: column;
       flex: 1;
-      font-size: 14px;
+      font-size: 16px;
       line-height: 1.2;
       font-weight: 400;
       padding: 0 30px 0 0;
       margin: 0 30px 0 0;
+      color: var(--color-text-brown);
+      opacity: 0.7;
 
       &::after {
         content: '';

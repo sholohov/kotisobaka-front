@@ -57,11 +57,12 @@ defineProps({
     font-weight: 800;
     font-style: normal;
     font-size: 26px;
-    line-height: 100%;
+    line-height: 1;
     height: 44px;
     display: flex;
-    align-items: center;
-    margin: 0 0 10px;
+    align-items: flex-end;
+    margin: 0 0 20px;
+    padding: 0 110px 0 0;
 
     @media (min-width: $breakpoint-lg) {
       font-size: 50px;

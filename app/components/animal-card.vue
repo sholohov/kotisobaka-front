@@ -4,7 +4,6 @@ import HomeIcon from '~/assets/svg/home-icon.svg'
 import HealthIcon from '~/assets/svg/health-icon.svg'
 
 import type { Animal } from "~/api/animals/types";
-import { textEllipsis } from "~/utils/textEllipsis";
 
 interface AnimalInfo {
   key: string,

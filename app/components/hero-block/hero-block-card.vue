@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import HeartIcon from "~/assets/svg/heart-icon.svg";
+import StarIcon from "~/assets/svg/star-icon.svg";
 import type { Animal } from "~/api/animals/types";
 
 defineProps({
@@ -28,7 +28,7 @@ defineProps({
         circle
         class="hero-block-card__btn"
       >
-        <heart-icon
+        <star-icon
           width="24"
           class="hero-block-card__icon"
         />
@@ -50,7 +50,7 @@ defineProps({
   background-color: var(--color-white-darken);
   overflow: hidden;
   border-radius: 24px;
-  box-shadow: 0 0 6px var(--color-brown-darken);
+  box-shadow: 0 0 6px var(--color-chocolate);
 
   @media (min-width: $breakpoint-xxl) {
     width: 350px;
@@ -73,7 +73,7 @@ defineProps({
   &__description {
     display: flex;
     position: relative;
-    color: var(--color-brown-darken);
+    color: var(--color-chocolate);
     line-height: 1;
     gap: 6px;
     flex-direction: column;
@@ -94,9 +94,6 @@ defineProps({
     position: absolute;
     inset: 50% 0 0 0;
     transform: translateY(-50%);
-  }
-
-  &__icon {
     color: var(--color-orange);
   }
 }

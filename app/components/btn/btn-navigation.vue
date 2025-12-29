@@ -95,7 +95,7 @@ defineProps({
 
   &:hover {
     #{$this}__btn {
-      background-color: var(--color-pink-lighten);
+      background-color: var(--color-background-pink);
     }
 
     #{$this}__btn-arrow {
@@ -139,7 +139,7 @@ defineProps({
     height: 24px;
     transform: scale(1, 1);
     transition: transform 0.3s 0.3s;
-    color: var(--color-red-darken);
+    color: var(--color-dark-pink);
   }
 
   &__dropdown {
@@ -186,7 +186,7 @@ defineProps({
     transition: background-color 0.3s;
 
     &:hover {
-      background-color: var(--color-pink-lighten);
+      background-color: var(--color-background-pink);
 
       #{$this}__item-icon {
         animation: arrow-right-move 4s ease-in-out infinite;
@@ -205,7 +205,7 @@ defineProps({
     width: 24px;
     height: 24px;
     margin-right: -6px;
-    color: var(--color-red-darken);
+    color: var(--color-dark-pink);
   }
 
   &__sublist {
@@ -243,7 +243,7 @@ defineProps({
     transition: background-color 0.3s;
 
     &:hover {
-      background-color: var(--color-pink-lighten);
+      background-color: var(--color-background-pink);
     }
   }
 }

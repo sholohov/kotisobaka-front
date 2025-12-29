@@ -6,6 +6,7 @@ import { partners } from './partners'
 import { reviews } from './reviews'
 import { settings } from './settings'
 import { statistic } from './statistic'
+import { quotes } from './quotes'
 
 export const api = {
   settings,
@@ -16,4 +17,5 @@ export const api = {
   partners,
   reviews,
   statistic,
+  quotes,
 }

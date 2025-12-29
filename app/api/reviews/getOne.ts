@@ -4,12 +4,12 @@ import type { ReviewResponse, ReviewData } from './types'
 import { strapi } from '../client'
 
 export interface GetReviewParams {
-  id: string | number
+  id: string
   params?: Strapi5RequestParams<ReviewData>
 }
 
 export const getOne = async (
   { id, params }: GetReviewParams,
 ): Promise<ReviewResponse> => {
-  return strapi.findById<ReviewData>('reviews', id, params)
+  return strapi.findOne<ReviewData>('reviews', id, params)
 }

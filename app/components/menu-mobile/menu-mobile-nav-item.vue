@@ -197,7 +197,7 @@ onUnmounted(() => {
   $size: 44px;
   $duration: 1s;
 
-  background-color: var(--color-red-darken);
+  background-color: var(--color-dark-pink);
   color: var(--color-white);
 
   &__btn {

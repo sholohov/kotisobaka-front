@@ -1,3 +1,37 @@
+<script setup lang="ts">
+import { NuxtLink } from "#components";
+
+const props = defineProps({
+  color: {
+    type: String as PropType<'white' | 'blue' | 'green' | 'yellow'>,
+    default: '',
+  },
+  iconPosition: {
+    type: String as PropType<'left' | 'right'>,
+    default: '',
+  },
+  size: {
+    type: [Number, String],
+    default: 44,
+  },
+  circle: {
+    type: Boolean,
+    default: false,
+  },
+  noBorder: {
+    type: Boolean,
+    default: false,
+  },
+  to: {
+    type: String,
+    default: '',
+  },
+})
+
+const sizePx = computed(() => props.size + 'px')
+const emit = defineEmits(['click'])
+</script>
+
 <template>
   <component
     :is="to ? NuxtLink : 'button'"
@@ -5,9 +39,11 @@
     :class="[
       'btn-default',
       `btn-default--${color}`,
-      { 'btn-default--circle': circle }
+      { 'btn-default--circle': circle },
+      { 'btn-default--no-border': noBorder }
     ]"
     :type="to ? undefined : 'button'"
+    @click="emit('click')"
   >
     <span
       v-if="$slots['icon-left']"
@@ -29,37 +65,10 @@
   </component>
 </template>
 
-<script setup lang="ts">
-import { NuxtLink } from "#components";
-
-const props = defineProps({
-  color: {
-    type: String as PropType<'white' | 'blue' | 'green' | 'yellow'>,
-    default: 'white',
-  },
-  iconPosition: {
-    type: String as PropType<'left' | 'right'>,
-    default: '',
-  },
-  size: {
-    type: [Number, String],
-    default: 44,
-  },
-  circle: {
-    type: Boolean,
-    default: false,
-  },
-  to: {
-    type: String,
-    default: '',
-  },
-})
-
-const sizePx = computed(() => props.size + 'px')
-</script>
-
 <style lang="scss">
 .btn-default {
+  $this: ".btn-default";
+
   position: relative;
   overflow: hidden;
   display: inline-flex;
@@ -71,10 +80,35 @@ const sizePx = computed(() => props.size + 'px')
   line-height: 1;
   font-size: 20px;
   font-weight: 700;
-  border: 1px solid;
+  border: 1px solid currentColor;
   cursor: pointer;
   border-radius: calc(v-bind(sizePx) / 2);
-  transition: color 0.3s, background-color 0.3s, filter 0.3s, border-color 0.3s;
+  transition: opacity 0.3s, color 0.3s, background-color 0.3s, filter 0.3s, border-color 0.3s;
+  background-color: var(--color-white-darken);
+  color: var(--text-brown);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-color: black;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.3s;
+  }
+
+  &:hover {
+    &::after {
+      opacity: 0.1;
+    }
+  }
+
+  &:active {
+    &::after {
+      opacity: 0;
+    }
+  }
 
   &__text {
     position: relative;
@@ -100,15 +134,10 @@ const sizePx = computed(() => props.size + 'px')
   &--white {
     background-color: var(--color-white-darken);
     border-color: var(--color-orange-lighten);
-    color: var(--color-brown-darkest);
+    color: var(--text-brown);
 
-    &:hover {
-      background-color: var(--color-pink-lighten);
-    }
-
-    &:active {
-      border-color: var(--color-brown-darkest);
-      color: var(--color-brown-darkest);
+    &#{$this}--no-border {
+      border-color: var(--color-white-darken);
     }
   }
 
@@ -116,12 +145,20 @@ const sizePx = computed(() => props.size + 'px')
     background-color: var(--color-blue);
     border-color: var(--color-white);
     color: var(--color-white);
+
+    &#{$this}--no-border {
+      border-color: var(--color-blue);
+    }
   }
 
   &--green {
     background-color: var(--color-green);
     border-color: var(--color-white);
-    color: var(--color-brown-darkest);
+    color: var(--text-brown);
+
+    &#{$this}--no-border {
+      border-color: var(--color-green);
+    }
   }
 
   &--yellow {
@@ -135,6 +172,8 @@ const sizePx = computed(() => props.size + 'px')
     height: v-bind(sizePx);
     border-radius: 50%;
     padding: 0;
+    align-items: center;
+    justify-content: center;
   }
 }
 </style>

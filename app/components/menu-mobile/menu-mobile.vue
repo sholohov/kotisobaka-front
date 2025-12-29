@@ -34,7 +34,7 @@ const { navigation } = useAppConfig()
     overflow: hidden;
     border-radius: 16px 16px 0 0;
 
-    background-color: var(--color-red-darken);
+    background-color: var(--color-dark-pink);
     color: var(--color-white);
     padding: 0 20px 20px;
   }

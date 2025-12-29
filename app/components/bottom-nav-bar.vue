@@ -129,7 +129,7 @@ function handleTabClick(item: ItemProps) {
     transition: color 0.3s;
 
     &--active {
-      color: var(--color-red-darken);
+      color: var(--color-dark-pink);
     }
 
     &--help {
@@ -142,7 +142,7 @@ function handleTabClick(item: ItemProps) {
     }
 
     &--menu {
-      color: var(--color-brown-darkest);
+      color: var(--text-brown);
     }
   }
 
@@ -154,7 +154,7 @@ function handleTabClick(item: ItemProps) {
     #{$this}__item-link--help & {
       position: relative;
       top: 7px;
-      color: var(--color-brown-darkest);
+      color: var(--text-brown);
     }
   }
 
@@ -165,7 +165,7 @@ function handleTabClick(item: ItemProps) {
 
     #{$this}__item-link--help & {
       top: 24px;
-      color: var(--color-brown-darken);
+      color: var(--color-chocolate);
     }
   }
 }

@@ -7,6 +7,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     heroAnimals,
     statsRes,
     availableAnimals,
+    quotes,
   ] = await Promise.all([
     api.heroAnimal.get({
       populate: {
@@ -29,16 +30,16 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
         pageSize: 10,
       },
     }),
+    api.quotes.get(),
   ]);
 
   return {
-    heroAnimalsData: heroAnimals.data,
-    rescueStatsData: statsRes.data,
-    availableAnimalsData: availableAnimals.data,
+    heroAnimals: heroAnimals.data,
+    rescueStats: statsRes.data,
+    availableAnimals: availableAnimals.data,
+    quotes: quotes.data,
   }
 });
-
-console.log(pageData.value?.heroAnimalsData)
 </script>
 
 <template>
@@ -47,18 +48,21 @@ console.log(pageData.value?.heroAnimalsData)
     class="home-page"
   >
     <page-section>
-      <hero-block :items="pageData.heroAnimalsData.animals" />
+      <hero-block :items="pageData.heroAnimals.animals" />
     </page-section>
 
     <page-section>
-      <rescue-stats :stats="pageData.rescueStatsData" />
+      <rescue-stats :stats="pageData.rescueStats" />
     </page-section>
 
     <page-section
       anchor="animals"
       title="Наши хвостики"
     >
-      <animal-slider :items="pageData.availableAnimalsData" />
+      <animal-slider
+        :animals="pageData.availableAnimals"
+        :quotes="pageData.quotes"
+      />
     </page-section>
   </div>
 </template>

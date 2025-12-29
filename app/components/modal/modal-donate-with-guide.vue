@@ -64,7 +64,7 @@ import HeartIcon from "~/assets/svg/heart-icon.svg";
   $this: 'modal-donate-with-guide';
 
   &__title {
-    color: var(--color-brown-darken);
+    color: var(--color-chocolate);
     text-align: center;
     margin: 0 0 20px;
   }
@@ -88,7 +88,7 @@ import HeartIcon from "~/assets/svg/heart-icon.svg";
 
   &__path-item {
     font-weight: 700;
-    color: var(--color-red-darken);
+    color: var(--color-dark-pink);
   }
 
   &__thanks {
@@ -105,7 +105,7 @@ import HeartIcon from "~/assets/svg/heart-icon.svg";
   }
 
   &__thanks-text {
-    color: var(--color-red-darken);
+    color: var(--color-dark-pink);
     font-weight: 700;
     font-size: 16px;
     line-height: 1.2;

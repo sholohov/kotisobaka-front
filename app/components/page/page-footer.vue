@@ -164,7 +164,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--color-red-darken);
+    background-color: var(--color-dark-pink);
     border-radius: 24px;
     flex: 1;
     overflow: hidden;
@@ -323,7 +323,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
   }
 
   &__social-icon {
-    color: var(--color-red-darken);
+    color: var(--color-dark-pink);
   }
 
   &__email {

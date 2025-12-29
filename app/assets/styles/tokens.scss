@@ -1,44 +1,26 @@
 :root {
-  /* Blue */
   --color-blue: #69a1ae;
   --color-blue-lighten: #bfd8dc;
-
-  /* Green */
   --color-green: #99b6a0;
   --color-green-lighten: #bdd8c7;
-  --color-green-darken: #768e78;
-
-  /* Orange */
+  --color-dark-green: #768e78;
   --color-orange: #d57a5d;
   --color-orange-lighten: #d8bbab;
-
-  /* Yellow */
   --color-yellow: #fbc36e;
   --color-yellow-lighten: #fdd7a0;
-
-  /* Purple */
   --color-purple: #b69dba;
   --color-purple-lighten: #d1c4d5;
-
-  /* White */
   --color-white: #fff;
   --color-white-darken: #fdfbfa;
-
-  /* Red */
-  --color-red-darken: #b47a78;
-
-  /* Brown */
-  --color-brown-darken: #744141;
-  --color-brown-darkest: #291717;
-
-  /* Pink */
-  --color-pink-lighten: #ecdddd;
-
-  /* Beige */
+  --color-dark-pink: #b47a78;
+  --color-chocolate: #744141;
+  --text-brown: #291717;
+  --color-background-pink: #ecdddd;
   --color-beige-lightest: #f0e5df;
+  --color-light-pink: #F3CCCD;
 
   /* UI Colors */
-  --color-text: var(--color-brown-darkest);
+  --color-text: var(--text-brown);
   --color-text-light: var(--color-white-darken);
-  --color-bg: var(--color-white-darken);
+  --color-bg: var(--color-beige-lightest);
 }

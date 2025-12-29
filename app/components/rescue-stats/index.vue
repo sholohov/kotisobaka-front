@@ -69,10 +69,6 @@ const { isMobile, isTabletSmall } = useBreakpoint()
 .rescue-stats {
   $his: '.rescue-stats';
 
-  swiper-container::part(container) {
-    overflow: visible !important;
-  }
-
   &__slide {
     width: 270px;
   }
@@ -88,6 +84,7 @@ const { isMobile, isTabletSmall } = useBreakpoint()
     @media (min-width: $breakpoint-lg) {
       max-width: none;
       flex-wrap: nowrap;
+      gap: 20px;
     }
   }
 
@@ -97,7 +94,7 @@ const { isMobile, isTabletSmall } = useBreakpoint()
 
   &__text {
     display: flex;
-    color: var(--color-red-darken);
+    color: var(--color-dark-pink);
     font-size: 30px;
     font-weight: 800;
     line-height: 1.2;

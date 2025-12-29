@@ -65,11 +65,7 @@ const { isMobileView } = useBreakpoint()
 .hero-block {
   $this: '.hero-block';
 
-  background-color: var(--color-red-darken);
-
-  swiper-container::part(container) {
-    overflow: visible !important;
-  }
+  background-color: var(--color-dark-pink);
 
   &__inner {
     position: relative;
@@ -150,7 +146,7 @@ const { isMobileView } = useBreakpoint()
     line-height: 1;
     font-size: 32px;
     font-weight: 900;
-    text-shadow: 0 0 6px var(--color-brown-darken);
+    text-shadow: 0 0 6px var(--color-chocolate);
     color: var(--color-white-darken);
     z-index: 2;
     text-transform: uppercase;

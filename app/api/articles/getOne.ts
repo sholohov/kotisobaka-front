@@ -4,7 +4,7 @@ import type { ArticleResponse, ArticleData } from './types'
 import { strapi } from '../client'
 
 export interface GetArticleParams {
-  id: string | number
+  id: string
   params?: Strapi5RequestParams<ArticleData>
 }
 
@@ -12,5 +12,5 @@ export interface GetArticleParams {
 export const getOne = async (
   { id, params }: GetArticleParams,
 ): Promise<ArticleResponse> => {
-  return strapi.findById<ArticleData>('articles', id, params)
+  return strapi.findOne<ArticleData>('articles', id, params)
 }

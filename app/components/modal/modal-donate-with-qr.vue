@@ -62,7 +62,7 @@ import HeartIcon from '~/assets/svg/heart-icon.svg'
     font-size: 18px;
     font-weight: 700;
     line-height: 1;
-    color: var(--color-brown-darken);
+    color: var(--color-chocolate);
     text-align: center;
   }
 
@@ -109,7 +109,7 @@ import HeartIcon from '~/assets/svg/heart-icon.svg'
   }
 
   &__thanks-text {
-    color: var(--color-red-darken);
+    color: var(--color-dark-pink);
     font-weight: 700;
     font-size: 20px;
     line-height: 1;

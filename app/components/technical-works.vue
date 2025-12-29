@@ -97,7 +97,6 @@ const preloadImage = () => {
 }
 
 const onImageLoad = () => {
-  console.log('✅ Фоновое изображение загружено')
   imageLoaded.value = true
 
   setTimeout(() => {
@@ -106,7 +105,6 @@ const onImageLoad = () => {
 }
 
 const onLogoLoad = () => {
-  console.log('✅ Логотип загружен')
   logoLoaded.value = true
 }
 
@@ -122,7 +120,6 @@ const onLogoError = () => {
 }
 
 const retryLoading = () => {
-  console.log('🔄 Повторная попытка загрузки...')
   showError.value = false
   showLoading.value = true
   imageLoaded.value = false
@@ -136,7 +133,6 @@ const retryLoading = () => {
 
   setTimeout(() => {
     if (showLoading.value && !imageLoaded.value) {
-      console.log('⏰ Таймаут повторной загрузки')
       showLoading.value = false
       showError.value = true
     }
@@ -151,14 +147,12 @@ const handleResize = () => {
 // Таймаут загрузки
 setTimeout(() => {
   if (showLoading.value && !imageLoaded.value) {
-    console.log('⏰ Таймаут первоначальной загрузки')
     showLoading.value = false
     showError.value = true
   }
 }, 8000)
 
 onMounted(() => {
-  console.log('🚀 Компонент технических работ монтирован')
   checkMobile()
   preloadImage()
   window.addEventListener('resize', handleResize)

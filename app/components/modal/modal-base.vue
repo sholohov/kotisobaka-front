@@ -79,7 +79,7 @@ function handleCloseBtn() {
     display: flex;
     flex-direction: column;
     pointer-events: auto;
-    background-color: var(--color-pink-lighten);
+    background-color: var(--color-background-pink);
 
     @media (min-width: $breakpoint-lg) {
       border-radius: 36px;
@@ -108,7 +108,7 @@ function handleCloseBtn() {
     font-weight: 800;
     font-size: 20px;
     line-height: 1;
-    color: var(--color-red-darken);
+    color: var(--color-dark-pink);
     border-bottom: 1px solid var(--color-white);
     white-space: nowrap;
 
@@ -133,16 +133,16 @@ function handleCloseBtn() {
       width: 36px;
       height: 4px;
       border-radius: 2px;
-      background-color: var(--color-red-darken);
+      background-color: var(--color-dark-pink);
     }
 
     @media (min-width: $breakpoint-lg) {
       order: 0;
-      color: var(--color-brown-darken);
+      color: var(--color-chocolate);
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      border: 1px solid var(--color-brown-darken);
+      border: 1px solid var(--color-chocolate);
       margin: 0 0 0 10px;
       background: none;
 

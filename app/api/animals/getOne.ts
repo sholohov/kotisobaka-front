@@ -4,7 +4,7 @@ import type { AnimalResponse, AnimalData } from './types'
 import { strapi } from '../client'
 
 export interface GetAnimalParams {
-  id: string | number
+  id: string
   params?: Strapi5RequestParams<AnimalData>
 }
 
@@ -12,5 +12,5 @@ export interface GetAnimalParams {
 export const getOne = async (
   { id, params }: GetAnimalParams,
 ): Promise<AnimalResponse> => {
-  return strapi.findById<AnimalData>('animals', id, params)
+  return strapi.findOne<AnimalData>('animals', id, params)
 }

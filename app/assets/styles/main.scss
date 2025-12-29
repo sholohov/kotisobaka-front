@@ -74,3 +74,7 @@ a {
 #__nuxt {
   display: contents;
 }
+
+swiper-container::part(container) {
+  overflow: visible;
+}

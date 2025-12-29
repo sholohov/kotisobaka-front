@@ -4,12 +4,12 @@ import type { MemberResponse, MemberData } from './types'
 import { strapi } from '../client'
 
 export interface GetMemberParams {
-  id: string | number
+  id: string
   params?: Strapi5RequestParams<MemberData>
 }
 
 export const getOne = async (
   { id, params }: GetMemberParams,
 ): Promise<MemberResponse> => {
-  return strapi.findById<MemberData>('members', id, params)
+  return strapi.findOne<MemberData>('members', id, params)
 }

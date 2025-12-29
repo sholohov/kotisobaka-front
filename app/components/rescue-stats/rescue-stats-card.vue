@@ -84,7 +84,7 @@ defineProps({
 
   &__icon {
     display: flex;
-    color: var(--color-brown-darkest);
+    color: var(--text-brown);
     margin: 0 0 10px;
     height: 120px;
   }

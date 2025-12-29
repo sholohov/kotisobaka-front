@@ -9,12 +9,14 @@
       class="page-section__anchor"
     />
 
-    <h2
-      v-if="title"
-      class="page-section__title"
-    >
-      {{ title }}
-    </h2>
+    <content-box>
+      <h2
+        v-if="title"
+        class="page-section__title"
+      >
+        {{ title }}
+      </h2>
+    </content-box>
 
     <slot />
   </section>
@@ -54,8 +56,17 @@ defineProps({
   &__title {
     font-weight: 800;
     font-style: normal;
-    font-size: 50px;
+    font-size: 26px;
     line-height: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px;
+
+    @media (min-width: $breakpoint-lg) {
+      font-size: 50px;
+      margin: 0 0 30px;
+    }
   }
 }
 </style>

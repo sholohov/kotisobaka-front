@@ -67,7 +67,7 @@ function hide() {
     position: absolute;
     background-color: var(--color-white-darken);
     border: 1px solid var(--color-orange-lighten);
-    color: var(--color-brown-darkest);
+    color: var(--text-brown);
     padding: 2px 8px;
     border-radius: 4px;
     font-size: 14px;

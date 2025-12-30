@@ -134,7 +134,7 @@ const emit = defineEmits(['click'])
 
   &--white {
     background-color: var(--color-white-dark);
-    border-color: var(--color-orange-lighten);
+    border-color: var(--color-orange-light);
     color: var(--color-text-brown);
 
     &#{$this}--no-border {

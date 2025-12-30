@@ -171,12 +171,12 @@ const items: ItemProps[] = [
       background-color: var(--color-blue-light);
     }
 
-    @media (min-width: $breakpoint-md) {
+    @media (min-width: $mq-xs) {
       flex-direction: row;
       align-items: stretch;
     }
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       padding: 30px;
     }
   }
@@ -200,7 +200,7 @@ const items: ItemProps[] = [
       opacity: 0.5;
     }
 
-    @media (min-width: $breakpoint-md) {
+    @media (min-width: $mq-xs) {
       flex-direction: row;
       margin: 0 16px 0 0;
       padding: 0 16px 0 0;
@@ -212,7 +212,7 @@ const items: ItemProps[] = [
       }
     }
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       margin: 0 30px 0 0;
       padding: 0 30px 0 0;
     }
@@ -234,7 +234,7 @@ const items: ItemProps[] = [
 
     filter: brightness(60%);
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       height: 120px;
       width: 120px;
       margin: 0 30px 0 0 ;
@@ -248,11 +248,11 @@ const items: ItemProps[] = [
     line-height: 1.2;
     text-transform: uppercase;
 
-    @media (min-width: $breakpoint-md) {
+    @media (min-width: $mq-xs) {
       max-width: 220px;
     }
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       font-size: 50px;
       max-width: none;
     }
@@ -261,7 +261,7 @@ const items: ItemProps[] = [
   &__description {
     display: none;
 
-    @media (min-width: $breakpoint-xxl) {
+    @media (min-width: $mq-xxl) {
       position: relative;
       display: flex;
       flex-direction: column;
@@ -297,7 +297,7 @@ const items: ItemProps[] = [
     justify-content: space-between;
     flex: 1;
 
-    @media (min-width: $breakpoint-md) {
+    @media (min-width: $mq-xs) {
       align-items: center;
     }
   }
@@ -308,7 +308,7 @@ const items: ItemProps[] = [
     line-height: 1.2;
     text-transform: uppercase;
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       font-size: 30px;
     }
   }

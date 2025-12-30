@@ -66,7 +66,7 @@ function handleCloseBtn() {
   justify-content: center;
   pointer-events: none;
 
-  @media (min-width: $breakpoint-lg) {
+  @media (min-width: $mq-lg) {
     padding: 10px;
     align-items: center;
   }
@@ -81,7 +81,7 @@ function handleCloseBtn() {
     pointer-events: auto;
     background-color: var(--color-background-pink);
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       border-radius: 36px;
       padding: 16px;
     }
@@ -94,7 +94,7 @@ function handleCloseBtn() {
     display: flex;
     flex-direction: column;
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       flex-direction: row;
     }
   }
@@ -112,7 +112,7 @@ function handleCloseBtn() {
     border-bottom: 1px solid var(--color-white);
     white-space: nowrap;
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       font-size: 30px;
     }
   }
@@ -136,7 +136,7 @@ function handleCloseBtn() {
       background-color: var(--color-pink-dark);
     }
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       order: 0;
       color: var(--color-text-chocolate);
       width: 44px;

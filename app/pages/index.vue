@@ -97,6 +97,14 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
         :quotes="pageData.quotes"
       />
     </page-section>
+
+    <page-section
+      anchor="adoption_process"
+      title="Процесс опекунства"
+    >
+      <adoption-process />
+    </page-section>
+    <div />
   </div>
 </template>
 

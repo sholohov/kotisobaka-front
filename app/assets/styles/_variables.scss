@@ -1,13 +1,15 @@
 /* Брейкпоинты */
-$breakpoint-xs: 375px;
-$breakpoint-md: 768px;
-$breakpoint-lg: 1200px;
-$breakpoint-xl: 1440px;
-$breakpoint-xxl: 1920px;
+$mq-xxs: 375px;
+$mq-xs: 768px;
+$mq-md: 1024px;
+$mq-lg: 1200px;
+$mq-xl: 1440px;
+$mq-xxl: 1920px;
 
 /* Отступы контейнера */
-$container-padding-xs: 10px;
-$container-padding-md: 20px;
+$container-padding-xxs: 10px;
+$container-padding-xs: 20px;
+$container-padding-md: 30px;
 $container-padding-lg: 40px;
 $container-padding-xl: 50px;
 

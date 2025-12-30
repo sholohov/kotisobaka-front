@@ -95,7 +95,7 @@ function handleDonateBtn() {
 
   padding: 10px var(--scrollbar-width, 0) 10px 0;
 
-  @media (min-width: $breakpoint-md) {
+  @media (min-width: $mq-xs) {
     padding: 20px var(--scrollbar-width, 0) 20px 0;
   }
 
@@ -108,7 +108,7 @@ function handleDonateBtn() {
 
   &__logo-link {
     background-color: var(--color-white-dark);
-    border: 1px solid var(--color-orange-lighten);
+    border: 1px solid var(--color-orange-light);
     width: 44px;
     height: 44px;
     border-radius: 50%;

@@ -177,7 +177,7 @@ const fundsSegments = computed(() => {
   &__slider {
     margin: 0 0 20px;
 
-    @media (min-width: $breakpoint-md) {
+    @media (min-width: $mq-xs) {
       margin: 0 0 30px;
     }
   }
@@ -187,11 +187,11 @@ const fundsSegments = computed(() => {
     display: flex;
     height: auto;
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       width: 374px;
     }
 
-    @media (min-width: $breakpoint-xl) {
+    @media (min-width: $mq-xl) {
       width: 440px;
     }
   }
@@ -204,7 +204,7 @@ const fundsSegments = computed(() => {
     margin: 0 0 20px;
     gap: 10px;
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       margin: 0 0 30px;
     }
   }

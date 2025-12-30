@@ -64,7 +64,7 @@ defineProps({
     margin: 0 0 20px;
     padding: 0 110px 0 0;
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       font-size: 50px;
       margin: 0 0 30px;
     }

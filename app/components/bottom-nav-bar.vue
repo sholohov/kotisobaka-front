@@ -125,7 +125,7 @@ function handleTabClick(item: ItemProps) {
     width: 100%;
     cursor: pointer;
     user-select: none;
-    color: var(--color-orange-lighten);
+    color: var(--color-orange-light);
     transition: color 0.3s;
 
     &--active {

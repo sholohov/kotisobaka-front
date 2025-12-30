@@ -19,7 +19,7 @@ export function useBreakpoint() {
     const entries = Object.entries(BREAKPOINT_CONFIG) as [Breakpoint, typeof BREAKPOINT_CONFIG[Breakpoint]][]
 
     const sorted = entries.sort(function (a, b) {
-      return b[1].index - a[1].index // desktop-first
+      return a[1].index - b[1].index // mobile-first
     })
 
     for (const [key, config] of sorted) {
@@ -31,7 +31,7 @@ export function useBreakpoint() {
       }
     }
 
-    return BREAKPOINT_NAMES.DESKTOP
+    return BREAKPOINT_NAMES.MOBILE
   }
 
   const breakpoint = computed<Breakpoint>(() => {
@@ -108,6 +108,10 @@ export function useBreakpoint() {
     return breakpoint.value === BREAKPOINT_NAMES.TABLET
   })
 
+  const isLaptopSmall = computed(() => {
+    return breakpoint.value === BREAKPOINT_NAMES.LAPTOP_SMALL
+  })
+
   const isLaptop = computed(() => {
     return breakpoint.value === BREAKPOINT_NAMES.LAPTOP
   })
@@ -125,6 +129,7 @@ export function useBreakpoint() {
     isMobile,
     isTabletSmall,
     isTablet,
+    isLaptopSmall,
     isLaptop,
     isDesktop,
     isMobileView,

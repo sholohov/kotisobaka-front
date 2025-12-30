@@ -37,25 +37,25 @@ const props = defineProps({
   }
 
   &:not(#{$this}--no-padding) {
-    padding-left: $container-padding-xs;
-    padding-right: $container-padding-xs;
+    padding-left: $container-padding-xxs;
+    padding-right: $container-padding-xxs;
 
-    @media (min-width: $breakpoint-xs) {
+    @media (min-width: $mq-xxs) {
+      padding-left: $container-padding-xxs;
+      padding-right: $container-padding-xxs;
+    }
+
+    @media (min-width: $mq-xs) {
       padding-left: $container-padding-xs;
       padding-right: $container-padding-xs;
     }
 
-    @media (min-width: $breakpoint-md) {
-      padding-left: $container-padding-md;
-      padding-right: $container-padding-md;
-    }
-
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       padding-left: $container-padding-lg;
       padding-right: $container-padding-lg;
     }
 
-    @media (min-width: $breakpoint-xl) {
+    @media (min-width: $mq-xl) {
       padding-left: $container-padding-xl;
       padding-right: $container-padding-xl;
     }

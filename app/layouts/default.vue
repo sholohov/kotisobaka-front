@@ -122,13 +122,13 @@ function handleClickOverlay() {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  padding: 0 0 calc(30px + $container-padding-xs);
+  padding: 0 0 calc(30px + $container-padding-xxs);
 
-  @media (min-width: $breakpoint-md) {
-    padding: 0 0 calc(30px + $container-padding-md);
+  @media (min-width: $mq-xs) {
+    padding: 0 0 calc(30px + $container-padding-xs);
   }
 
-  @media (min-width: $breakpoint-lg) {
+  @media (min-width: $mq-lg) {
     padding: 0;
   }
 
@@ -191,7 +191,7 @@ function handleClickOverlay() {
       transform: translateY(0);
     }
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       transition: opacity 0.3s, transform 0.3s;
       bottom: 0;
       opacity: 0;

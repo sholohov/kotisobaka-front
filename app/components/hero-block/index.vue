@@ -74,21 +74,21 @@ const { isMobileView } = useBreakpoint()
     align-items: center;
     height: 620px;
 
-    @media (min-width: $breakpoint-xs) {
+    @media (min-width: $mq-xxs) {
       height: 580px;
     }
 
-    @media (min-width: $breakpoint-md) {
+    @media (min-width: $mq-xs) {
       height: 580px;
     }
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       height: 100vh;
       max-height: 730px;
       min-height: auto;
     }
 
-    @media (min-width: $breakpoint-xl) {
+    @media (min-width: $mq-xl) {
       height: 100vh;
       max-height: 940px;
       min-height: auto;
@@ -99,11 +99,11 @@ const { isMobileView } = useBreakpoint()
     position: absolute;
     inset: 64px 0 auto;
 
-    @media (min-width: $breakpoint-md) {
+    @media (min-width: $mq-xs) {
       inset: 80px 0 auto;
     }
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       inset: 20% 0 auto 0;
     }
   }
@@ -115,11 +115,11 @@ const { isMobileView } = useBreakpoint()
     width: 100%;
     height: auto;
 
-    @media (min-width: $breakpoint-xs) {
+    @media (min-width: $mq-xxs) {
       inset: 420px 0 auto 0;
     }
 
-    @media (min-width: $breakpoint-md) {
+    @media (min-width: $mq-xs) {
       inset: auto 0 0 0;
     }
   }
@@ -131,11 +131,11 @@ const { isMobileView } = useBreakpoint()
     position: absolute;
     inset: 460px 0 auto 0;
 
-    @media (min-width: $breakpoint-xs) {
+    @media (min-width: $mq-xxs) {
       margin: 5vw 0 0;
     }
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       inset: auto 0 20px 0;
       margin: 0 0 8vw;
     }
@@ -151,11 +151,11 @@ const { isMobileView } = useBreakpoint()
     z-index: 2;
     text-transform: uppercase;
 
-    @media (min-width: $breakpoint-md) {
+    @media (min-width: $mq-xs) {
       font-size: 45px;
     }
 
-    @media (min-width: $breakpoint-xl) {
+    @media (min-width: $mq-xl) {
       font-size: 100px;
     }
   }
@@ -177,11 +177,11 @@ const { isMobileView } = useBreakpoint()
     position: absolute;
     inset: 550px 0 auto 0;
 
-    @media (min-width: $breakpoint-xs) {
+    @media (min-width: $mq-xxs) {
       top: 520px;
     }
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       inset: auto 0 0 0;
       margin: 0 0 8vw;
     }

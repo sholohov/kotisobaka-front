@@ -52,7 +52,7 @@ defineProps({
   border-radius: 24px;
   box-shadow: 0 0 6px var(--color-text-chocolate);
 
-  @media (min-width: $breakpoint-xxl) {
+  @media (min-width: $mq-xxl) {
     width: 350px;
     height: 450px;
     padding: 20px;
@@ -61,7 +61,7 @@ defineProps({
   &__img {
     display: flex;
     flex: 1;
-    background-color: var(--color-orange-lighten);
+    background-color: var(--color-orange-light);
     overflow: hidden;
     border-radius: 12px;
     margin: 0 0 20px;

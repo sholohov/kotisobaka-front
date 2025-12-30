@@ -127,7 +127,7 @@ defineProps({
     color: var(--color-text-brown);
     border-radius: calc($size / 2);
     background-color: var(--color-white-dark);
-    border: 1px solid var(--color-orange-lighten);
+    border: 1px solid var(--color-orange-light);
     cursor: pointer;
     transition: background-color 0.3s;
     white-space: nowrap;
@@ -158,7 +158,7 @@ defineProps({
     padding: 10px 0;
     background-color: var(--color-white-dark);
     border-radius: calc(36px / 2);
-    border: 1px solid var(--color-orange-lighten);
+    border: 1px solid var(--color-orange-light);
   }
 
   &__item {
@@ -218,7 +218,7 @@ defineProps({
     transform: translateX(-10px);
     transition: opacity 0.3s, transform 0.3s;
     background-color: var(--color-white-dark);
-    border: 1px solid var(--color-orange-lighten);
+    border: 1px solid var(--color-orange-light);
     border-radius: calc($size / 2);
     padding: 10px 0;
     pointer-events: none;

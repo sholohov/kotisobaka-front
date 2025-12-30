@@ -150,11 +150,11 @@ function truncate(text: string, maxLength = 100) {
     width: 100%;
     object-fit: cover;
 
-    @media (min-width: $breakpoint-md) {
+    @media (min-width: $mq-xs) {
       height: 210px;
     }
 
-    @media (min-width: $breakpoint-xl) {
+    @media (min-width: $mq-xl) {
       height: 310px;
     }
   }
@@ -162,7 +162,7 @@ function truncate(text: string, maxLength = 100) {
   &__details {
     padding: 14px 10px;
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       padding: 20px 14px;
     }
   }
@@ -171,7 +171,7 @@ function truncate(text: string, maxLength = 100) {
     font-size: 22px;
     font-weight: 800;
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       margin: 0 0 6px;
     }
   }
@@ -240,7 +240,7 @@ function truncate(text: string, maxLength = 100) {
     inset: 10px auto auto 10px;
     gap: 6px;
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       inset: 20px auto auto 20px;
     }
   }

@@ -81,7 +81,7 @@ const { isMobile, isTabletSmall } = useBreakpoint()
     max-width: 640px;
     margin: 0 auto;
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       max-width: none;
       flex-wrap: nowrap;
       gap: 20px;
@@ -104,7 +104,7 @@ const { isMobile, isTabletSmall } = useBreakpoint()
     text-align: center;
     max-width: 728px;
 
-    @media (min-width: $breakpoint-lg) {
+    @media (min-width: $mq-lg) {
       font-size: 50px;
       margin: 50px auto 0;
       max-width: 1022px;

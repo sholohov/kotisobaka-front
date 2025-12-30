@@ -137,6 +137,10 @@ const items: ItemProps[] = [
     display: flex;
     flex-direction: column;
     gap: 10px;
+
+    @media (min-width: $mq-lg) {
+      gap: 20px;
+    }
   }
 
   &__item {

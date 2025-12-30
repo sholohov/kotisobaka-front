@@ -96,7 +96,6 @@ const fundsSegments = computed(() => {
           space-between="10"
           :breakpoints="{
             1200: {
-              slidesPerView: 'auto',
               spaceBetween: 20
             }
           }"

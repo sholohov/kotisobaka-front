@@ -50,7 +50,7 @@ defineProps({
   background-color: var(--color-white-dark);
   overflow: hidden;
   border-radius: 24px;
-  box-shadow: 0 0 6px var(--color-chocolate);
+  box-shadow: 0 0 6px var(--color-text-chocolate);
 
   @media (min-width: $breakpoint-xxl) {
     width: 350px;
@@ -73,7 +73,7 @@ defineProps({
   &__description {
     display: flex;
     position: relative;
-    color: var(--color-chocolate);
+    color: var(--color-text-chocolate);
     line-height: 1;
     gap: 6px;
     flex-direction: column;

@@ -8,6 +8,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     statsRes,
     availableAnimals,
     quotes,
+    fundsIsNeededAnimals,
   ] = await Promise.all([
     api.heroAnimal.get({
       populate: {
@@ -31,6 +32,19 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
       },
     }),
     api.quotes.get(),
+    api.animals.get({
+      populate: 'photo',
+      filters: {
+        fundsIsNeeded: {
+          $eq: true,
+        },
+      },
+      sort: ['fundsPriority:desc'],
+      pagination: {
+        page: 1,
+        pageSize: 10,
+      },
+    }),
   ]);
 
   return {
@@ -38,6 +52,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     rescueStats: statsRes.data,
     availableAnimals: availableAnimals.data,
     quotes: quotes.data,
+    fundsIsNeededAnimals: fundsIsNeededAnimals.data,
   }
 });
 </script>
@@ -77,7 +92,8 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
       title="Срочно нужна помощь!"
     >
       <animal-slider
-        :animals="pageData.availableAnimals"
+        is-need-help
+        :animals="pageData.fundsIsNeededAnimals"
         :quotes="pageData.quotes"
       />
     </page-section>

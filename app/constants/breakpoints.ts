@@ -8,15 +8,9 @@ export const BREAKPOINT_NAMES = {
 
 export type Breakpoint = typeof BREAKPOINT_NAMES[keyof typeof BREAKPOINT_NAMES]
 
-export const BREAKPOINT_CONFIG: Record<Breakpoint, {
-  min: number | undefined
-  max: number | undefined
-  defaultWidth: number
-  query: string
-  index: number
-}> = {
+export const BREAKPOINT_CONFIG = {
   [BREAKPOINT_NAMES.MOBILE]: {
-    min: undefined,
+    min: 0,
     max: 374,
     defaultWidth: 360,
     query: '(max-width: 374px)',
@@ -45,9 +39,15 @@ export const BREAKPOINT_CONFIG: Record<Breakpoint, {
   },
   [BREAKPOINT_NAMES.DESKTOP]: {
     min: 1440,
-    max: undefined,
+    max: Infinity,
     defaultWidth: 1920,
     query: '(min-width: 1440px)',
     index: 4,
   },
-}
+} satisfies Record<Breakpoint, {
+  min: number
+  max: number
+  defaultWidth: number
+  query: string
+  index: number
+}>

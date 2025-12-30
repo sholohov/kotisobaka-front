@@ -64,7 +64,7 @@ import HeartIcon from "~/assets/svg/heart-icon.svg";
   $this: 'modal-donate-with-guide';
 
   &__title {
-    color: var(--color-chocolate);
+    color: var(--color-text-chocolate);
     text-align: center;
     margin: 0 0 20px;
   }

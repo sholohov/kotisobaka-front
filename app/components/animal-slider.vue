@@ -4,6 +4,7 @@ import type { Animal } from "~/api/animals/types"
 import type { Quote } from "~/api/quotes/types"
 import ArrowRightIcon from "~/assets/svg/arrow-right-icon.svg"
 import PawIcon from "~/assets/svg/paw-icon.svg"
+import { BREAKPOINT_CONFIG } from "~/constants/breakpoints";
 
 const props = defineProps({
   animals: {
@@ -16,11 +17,17 @@ const props = defineProps({
   },
 })
 
-console.log(props.animals, props.quotes)
-
 const sliderRef = ref(null)
 const slider = useSwiper(sliderRef)
-const colors = ["purple", "yellow", "green", "blue"] as const
+const colors = ["green", "purple", "yellow", "blue"] as const
+
+const isNeedHelp = computed(() => props.animals.some(animal => {
+  return animal.fundsIsNeeded
+}))
+
+const quoteSlidePosition = computed(() => {
+  return isNeedHelp.value ? 3 : 2
+})
 
 const items = computed(() => {
   const result: (Animal | (Quote & { color: string }))[] = []
@@ -29,7 +36,7 @@ const items = computed(() => {
   props.animals.forEach((animal, index) => {
     result.push(animal)
 
-    if ((index + 1) % 3 === 0 && props.quotes.length > 0) {
+    if ((index + 1) % quoteSlidePosition.value === 0 && props.quotes.length > 0) {
       const randomIndex = Math.floor(Math.random() * props.quotes.length)
       const randomQuote = props.quotes[randomIndex]
       const color = colors[colorIndex % colors.length]
@@ -44,7 +51,37 @@ const items = computed(() => {
     }
   })
 
+  // если животных меньше quoteSlidePosition, добавляем цитату в конец
+  if (props.animals.length < quoteSlidePosition.value && props.quotes.length > 0) {
+    const randomIndex = Math.floor(Math.random() * props.quotes.length)
+    const randomQuote = props.quotes[randomIndex]
+    const color = colors[colorIndex % colors.length]
+
+    if (randomQuote && color) {
+      result.push({
+        ...randomQuote,
+        color,
+      })
+    }
+  }
+
   return result
+})
+
+const { screenWidth } = useBreakpoint()
+
+const fundsSegments = computed(() => {
+  console.log(111, screenWidth.value)
+
+  if (screenWidth.value < BREAKPOINT_CONFIG.laptop.min) {
+    return 28
+  }
+
+  if (screenWidth.value < BREAKPOINT_CONFIG.desktop.min) {
+    return 36
+  }
+
+  return 40
 })
 
 </script>
@@ -73,13 +110,14 @@ const items = computed(() => {
             <animal-card
               v-if="'name' in item"
               :animal="item"
+              :funds-segments="fundsSegments"
               class="animal-slider__card"
             />
             <quote-card
               v-else
               :color="item.color"
               :quote="item"
-              icon="paw"
+              :is-health="isNeedHelp"
               class="animal-slider__card"
             />
           </swiper-slide>

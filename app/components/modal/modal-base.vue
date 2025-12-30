@@ -138,11 +138,11 @@ function handleCloseBtn() {
 
     @media (min-width: $breakpoint-lg) {
       order: 0;
-      color: var(--color-chocolate);
+      color: var(--color-text-chocolate);
       width: 44px;
       height: 44px;
       border-radius: 50%;
-      border: 1px solid var(--color-chocolate);
+      border: 1px solid var(--color-text-chocolate);
       margin: 0 0 0 10px;
       background: none;
 

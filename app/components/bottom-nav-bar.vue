@@ -165,7 +165,7 @@ function handleTabClick(item: ItemProps) {
 
     #{$this}__item-link--help & {
       top: 24px;
-      color: var(--color-chocolate);
+      color: var(--color-text-chocolate);
     }
   }
 }

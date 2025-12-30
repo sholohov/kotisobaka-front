@@ -17,6 +17,10 @@ const props = defineProps({
     type: Object as PropType<Animal>,
     required: true,
   },
+  fundsSegments: {
+    type: Number,
+    required: true,
+  },
 })
 
 const { isMobileView } = useBreakpoint()
@@ -94,15 +98,13 @@ function truncate(text: string, maxLength = 100) {
       </div>
     </div>
 
-    <div
+    <fundraising-bar
+      v-if="animal.fundsIsNeeded"
+      :segments="fundsSegments"
+      :goal="animal.fundsAmountTarget!"
+      :raised="animal.fundsAmountCollected!"
       class="animal-card__fundraising"
-    >
-      <div class="animal-card__fundraising-progress" />
-      <div class="animal-card__fundraising-finance">
-        <div class="animal-card__fundraising-need" />
-        <div class="animal-card__fundraising-collected" />
-      </div>
-    </div>
+    />
 
     <div class="animal-card__actions">
       <btn-default
@@ -124,6 +126,7 @@ function truncate(text: string, maxLength = 100) {
 
       <btn-default
         v-else-if="animal.animalStatus === 'under_treatment'"
+        style="color: var(--color-orange)"
         class="animal-card__actions-btn"
         circle
       >
@@ -177,7 +180,7 @@ function truncate(text: string, maxLength = 100) {
     position: relative;
     font-weight: 400;
     line-height: 1.2;
-    color: var(--color-chocolate);
+    color: var(--color-text-chocolate);
     height: 38px;
     overflow: hidden;
 
@@ -218,26 +221,15 @@ function truncate(text: string, maxLength = 100) {
     font-size: 14px;
     font-weight: 600;
     line-height: 1.2;
-    color: var(--color-chocolate);
+    color: var(--color-text-chocolate);
   }
 
   &__fundraising {
-
+    padding: 16px;
+    border-top: 1px solid var(--color-background-pink);
   }
 
   &__fundraising-progress {
-
-  }
-
-  &__fundraising-finance {
-
-  }
-
-  &__fundraising-need {
-
-  }
-
-  &__fundraising-collected {
 
   }
 

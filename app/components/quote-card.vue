@@ -15,9 +15,9 @@ defineProps({
     type: Object as PropType<Quote>,
     required: true,
   },
-  icon: {
-    type: String as PropType<'paw' | 'health'>,
-    required: true,
+  isHealth: {
+    type: Boolean,
+    default: false,
   },
 })
 </script>
@@ -25,19 +25,22 @@ defineProps({
 <template>
   <div
     class="quote-card"
-    :class="['quote-card--' + color]"
+    :class="[
+      'quote-card--' + color,
+      { 'quote-card--is-health': isHealth }
+    ]"
   >
     <div class="quote-card__header">
       <btn-default
-        class="quote-card__icon"
+        class="quote-card__btn"
         circle
         color="white"
         no-border
       >
         <component
-          :is="icons[icon]"
+          :is="isHealth ? icons.health : icons.paw"
           width="24"
-          :color="`var(--color-${color})`"
+          :color="isHealth ? 'var(--color-orange)' : `var(--color-${color})`"
         />
       </btn-default>
       <div class="quote-card__tag">
@@ -83,7 +86,7 @@ defineProps({
     background-color: var(--color-blue);
   }
 
-  &--orange {
+  &--is-health {
     background-color: var(--color-orange);
   }
 
@@ -103,6 +106,10 @@ defineProps({
     text-transform: uppercase;
     font-weight: 700;
     padding: 10px 0;
+  }
+
+  &__btn {
+    pointer-events: none;
   }
 }
 </style>

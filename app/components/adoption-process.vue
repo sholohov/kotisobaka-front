@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { defineAsyncComponent, onBeforeUnmount, onMounted, reactive, ref, computed } from 'vue';
+import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, reactive, ref } from 'vue';
+import PawIcon from "~/assets/svg/paw-icon.svg";
 
 // Асинхронные SVG-компоненты
 const images = {
@@ -135,81 +136,99 @@ const getColorVar = (color: Color): string => {
 <template>
   <content-box>
     <div class="adoption-process">
-      <!-- Общий SVG для всех стрелок -->
-      <svg
-        class="adoption-process__arrows"
-        :width="svgSize.width"
-        :height="svgSize.height"
-      >
-        <defs>
-          <marker
-            v-for="color in ['green','blue','pink','yellow'] as Color[]"
-            :id="`arrowhead-${color}`"
-            :key="`marker-${color}`"
-            markerWidth="8"
-            markerHeight="8"
-            refX="8"
-            refY="4"
-            orient="auto"
-          >
-            <polyline
-              points="0,0 8,4 0,8"
-              :stroke="getColorVar(color)"
-              stroke-width="1.5"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </marker>
-        </defs>
+      <div class="adoption-process__steps">
+        <svg
+          class="adoption-process__arrows"
+          :width="svgSize.width"
+          :height="svgSize.height"
+        >
+          <defs>
+            <marker
+              v-for="color in ['green','blue','pink','yellow'] as Color[]"
+              :id="`arrowhead-${color}`"
+              :key="`marker-${color}`"
+              markerWidth="8"
+              markerHeight="8"
+              refX="8"
+              refY="4"
+              orient="auto"
+            >
+              <polyline
+                points="0,0 8,4 0,8"
+                :stroke="getColorVar(color)"
+                stroke-width="1.5"
+                fill="none"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </marker>
+          </defs>
 
-        <!-- Все стрелки -->
-        <path
-          v-for="(arrow, idx) in arrows"
-          :key="idx"
-          :d="isLargeScreen
-            ? `M ${arrow.x1} ${arrow.y1}
+          <path
+            v-for="(arrow, idx) in arrows"
+            :key="idx"
+            :d="isLargeScreen
+              ? `M ${arrow.x1} ${arrow.y1}
                C ${arrow.x1 + 120} ${arrow.y1},
                  ${arrow.x2 - 120} ${arrow.y2},
                  ${arrow.x2} ${arrow.y2}`
-            : `M ${arrow.x1} ${arrow.y1}
+              : `M ${arrow.x1} ${arrow.y1}
                C ${arrow.x1 + (arrow.side === 'right' ? -120 : 120)} ${arrow.y1},
                  ${arrow.x2} ${arrow.y2 - 120},
                  ${arrow.x2} ${arrow.y2}`"
-          :stroke="getColorVar(arrow.color)"
-          stroke-width="2"
-          stroke-dasharray="10"
-          fill="none"
-          :marker-end="`url(#arrowhead-${arrow.color})`"
-        />
-      </svg>
+            :stroke="getColorVar(arrow.color)"
+            stroke-width="2"
+            stroke-dasharray="10"
+            fill="none"
+            :marker-end="`url(#arrowhead-${arrow.color})`"
+          />
+        </svg>
 
-      <!-- Шаги -->
-      <div
-        v-for="(step, idx) in steps"
-        :key="step.id"
-        class="adoption-process__step"
-        :class="[
-          `adoption-process__step--${step.side}`,
-          `adoption-process__step--${step.color}`
-        ]"
-      >
         <div
-          :ref="(el) => setCardRef(el as HTMLElement, idx)"
-          class="adoption-process__card"
+          v-for="(step, idx) in steps"
+          :key="step.id"
+          class="adoption-process__step"
+          :class="[
+            `adoption-process__step--${step.side}`,
+            `adoption-process__step--${step.color}`
+          ]"
         >
-          <div class="adoption-process__title">
-            {{ step.title }}
+          <div
+            :ref="(el) => setCardRef(el as HTMLElement, idx)"
+            class="adoption-process__step-card"
+          >
+            <div class="adoption-process__step-title">
+              {{ step.title }}
+            </div>
+            <div class="adoption-process__step-desc">
+              {{ step.desc }}
+            </div>
           </div>
-          <div class="adoption-process__desc">
-            {{ step.desc }}
-          </div>
-        </div>
 
-        <component
-          :is="images[step.image]"
-          class="adoption-process__image"
-        />
+          <component
+            :is="images[step.image]"
+            class="adoption-process__step-image"
+          />
+        </div>
+      </div>
+      <div class="adoption-process__description">
+        Став опекуном, вы не останетесь одни — наши волонтёры всегда на связи и помогут советами по кормлению, здоровью и уходу.
+        Мы поддержим вас в любых вопросах, чтобы адаптация прошла очень комфортно и легко.
+      </div>
+      <div class="adoption-process__link">
+        <btn-default
+          to="/animals"
+          color="blue"
+        >
+          Найти друга
+        </btn-default>
+        <btn-default
+          color="blue"
+          circle
+          to="/animals"
+        >
+          <paw-icon width="24" />
+        </btn-default>
       </div>
     </div>
   </content-box>
@@ -219,20 +238,23 @@ const getColorVar = (color: Color): string => {
 .adoption-process {
   $this: '.adoption-process';
 
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  position: relative;
-  padding: 50px 20px;
+  &__steps {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 20px;
 
-  @media (min-width: $mq-xs) {
-    padding: 115px 50px;
-  }
+    @media (min-width: $mq-xs) {
+      padding: 80px 50px;
+    }
 
-  @media (min-width: $mq-md) {
-    flex-direction: row;
-    justify-content: center;
-    gap: 100px;
+    @media (min-width: $mq-md) {
+      flex-direction: row;
+      justify-content: center;
+      gap: 100px;
+      padding: 40px 20px;
+    }
   }
 
   &__arrows {
@@ -284,7 +306,7 @@ const getColorVar = (color: Color): string => {
     &--green {
       color: var(--color-green-dark);
 
-      #{$this}__card {
+      #{$this}__step-card {
         background-color: var(--color-green-light);
       }
     }
@@ -292,7 +314,7 @@ const getColorVar = (color: Color): string => {
     &--blue {
       color: var(--color-blue-dark);
 
-      #{$this}__card {
+      #{$this}__step-card {
         background-color: var(--color-blue-light);
       }
     }
@@ -300,7 +322,7 @@ const getColorVar = (color: Color): string => {
     &--pink {
       color: var(--color-pink-dark);
 
-      #{$this}__card {
+      #{$this}__step-card {
         background-color: var(--color-pink-light);
       }
     }
@@ -308,13 +330,13 @@ const getColorVar = (color: Color): string => {
     &--yellow {
       color: var(--color-yellow-dark);
 
-      #{$this}__card {
+      #{$this}__step-card {
         background-color: var(--color-yellow-light);
       }
     }
   }
 
-  &__card {
+  &__step-card {
     max-width: 195px;
     border-radius: 24px;
     padding: 14px;
@@ -324,7 +346,7 @@ const getColorVar = (color: Color): string => {
     margin: 0 0 20px;
   }
 
-  &__title {
+  &__step-title {
     font-weight: 700;
     font-size: 20px;
     line-height: 1.2;
@@ -336,14 +358,14 @@ const getColorVar = (color: Color): string => {
     }
   }
 
-  &__desc {
+  &__step-desc {
     font-weight: 400;
     font-size: 14px;
     line-height: 1.2;
     color: var(--color-text-brown);
   }
 
-  &__image {
+  &__step-image {
     z-index: 1;
     display: flex;
     width: 185px;
@@ -365,6 +387,24 @@ const getColorVar = (color: Color): string => {
       width: 412px;
       height: 412px;
     }
+  }
+
+  &__description {
+    display: flex;
+    font-weight: 400;
+    line-height: 1.2;
+    margin: 0 auto 20px;
+    max-width: 460px;
+
+    @media (min-width: $mq-lg) {
+      margin: 0 auto 30px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 </style>

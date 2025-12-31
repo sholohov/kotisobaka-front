@@ -71,8 +71,6 @@ const items = computed(() => {
 const { screenWidth } = useBreakpoint()
 
 const fundsSegments = computed(() => {
-  console.log(111, screenWidth.value)
-
   if (screenWidth.value < BREAKPOINT_CONFIG.laptop.min) {
     return 28
   }

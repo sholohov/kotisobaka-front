@@ -45,6 +45,7 @@ const { isMobileView } = useBreakpoint()
           <btn-default
             color="blue"
             to="/animals"
+            style="width: 240px"
           >
             Найти друга
           </btn-default>

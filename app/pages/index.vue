@@ -10,6 +10,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     quotes,
     fundsIsNeededAnimals,
     articles,
+    partners,
   ] = await Promise.all([
     api.heroAnimal.get({
       populate: {
@@ -50,6 +51,9 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
       sort: ["publishedDate:asc"],
       populate: ['coverImage'],
     }),
+    api.partners.get({
+      populate: ['logo', 'link'],
+    }),
   ]);
 
   return {
@@ -59,6 +63,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     quotes: quotes.data,
     fundsIsNeededAnimals: fundsIsNeededAnimals.data,
     articles: articles.data,
+    partners: partners.data,
   }
 });
 </script>
@@ -110,14 +115,22 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     >
       <adoption-process />
     </page-section>
+
     <page-section
       anchor="articles"
-      title="Наш блог и новости"
+      title="Блог и новости"
     >
       <articles-slider
         :articles="pageData.articles"
         :quotes="pageData.quotes"
       />
+    </page-section>
+
+    <page-section
+      anchor="partners"
+      title="Наши партнёры"
+    >
+      <partners-slider :partners="pageData.partners" />
     </page-section>
     <div />
   </div>

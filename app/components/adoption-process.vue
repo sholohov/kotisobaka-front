@@ -212,13 +212,15 @@ const getColorVar = (color: Color): string => {
         </div>
       </div>
       <div class="adoption-process__description">
-        Став опекуном, вы не останетесь одни — наши волонтёры всегда на связи и помогут советами по кормлению, здоровью и уходу.
+        Став опекуном, вы не останетесь одни — наши волонтёры всегда на связи и помогут советами по кормлению, здоровью
+        и уходу.
         Мы поддержим вас в любых вопросах, чтобы адаптация прошла очень комфортно и легко.
       </div>
       <div class="adoption-process__link">
         <btn-default
           to="/animals"
           color="blue"
+          style="width: 240px"
         >
           Найти друга
         </btn-default>
@@ -245,7 +247,7 @@ const getColorVar = (color: Color): string => {
     gap: 40px;
     padding: 20px;
 
-    @media (min-width: $mq-xs) {
+    @media (min-width: 640px) {
       padding: 80px 50px;
     }
 
@@ -274,7 +276,7 @@ const getColorVar = (color: Color): string => {
     align-items: center;
     gap: 10px;
 
-    @media (min-width: $mq-xs) {
+    @media (min-width: 640px) {
       margin: -65px 0;
     }
 
@@ -342,7 +344,11 @@ const getColorVar = (color: Color): string => {
     padding: 14px;
     display: flex;
     flex-direction: column;
-    margin: 0 0 20px;
+    margin: 0 0 16px;
+
+    @media (min-width: $mq-lg) {
+      margin: 0;
+    }
   }
 
   &__step-title {

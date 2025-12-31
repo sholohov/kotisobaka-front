@@ -76,6 +76,7 @@ const fundsSegments = computed(() => {
         <btn-default
           to="/animals"
           color="blue"
+          style="width: 240px"
         >
           Посмотреть всех
         </btn-default>

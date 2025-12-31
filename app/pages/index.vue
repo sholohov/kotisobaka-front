@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { api } from "~/api";
-import AnimalSlider from "~/components/animal-slider.vue";
+import AnimalSlider from "~/components/animal/animal-slider.vue";
 
 const { data: pageData } = await useAsyncData('home-page', async () => {
   const [
@@ -9,6 +9,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     availableAnimals,
     quotes,
     fundsIsNeededAnimals,
+    articles,
   ] = await Promise.all([
     api.heroAnimal.get({
       populate: {
@@ -45,6 +46,10 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
         pageSize: 10,
       },
     }),
+    api.articles.get({
+      sort: ["publishedDate:asc"],
+      populate: ['coverImage'],
+    }),
   ]);
 
   return {
@@ -53,6 +58,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     availableAnimals: availableAnimals.data,
     quotes: quotes.data,
     fundsIsNeededAnimals: fundsIsNeededAnimals.data,
+    articles: articles.data,
   }
 });
 </script>
@@ -84,7 +90,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
       anchor="available_animals"
       title="Как можно помочь?"
     >
-      <animal-help-guide />
+      <help-guide />
     </page-section>
 
     <page-section
@@ -103,6 +109,15 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
       title="Процесс опекунства"
     >
       <adoption-process />
+    </page-section>
+    <page-section
+      anchor="articles"
+      title="Наш блог и новости"
+    >
+      <articles-slider
+        :articles="pageData.articles"
+        :quotes="pageData.quotes"
+      />
     </page-section>
     <div />
   </div>

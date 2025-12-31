@@ -30,9 +30,9 @@ const items: ItemProps[] = [{
   to: '',
   icon: PiggyBankIcon,
 }, {
-  label: 'Блог',
-  key: 'blog',
-  to: '/blog',
+  label: 'Статьи',
+  key: 'articles',
+  to: '/articles',
   icon: BlogIcon,
 }, {
   label: 'Избранное',
@@ -125,7 +125,7 @@ function handleTabClick(item: ItemProps) {
     width: 100%;
     cursor: pointer;
     user-select: none;
-    color: var(--color-orange-light);
+    color: var(--color-beige-light);
     transition: color 0.3s;
 
     &--active {

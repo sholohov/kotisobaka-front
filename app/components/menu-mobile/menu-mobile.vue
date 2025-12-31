@@ -52,7 +52,7 @@ const { navigation } = useAppConfig()
       height: 4px;
       margin: 8px 0 0;
       border-radius: 4px;
-      background-color: var(--color-beige-lightest);
+      background-color: var(--color-background-beige);
     }
   }
 }

@@ -61,7 +61,7 @@ defineProps({
   &__img {
     display: flex;
     flex: 1;
-    background-color: var(--color-orange-light);
+    background-color: var(--color-beige-light);
     overflow: hidden;
     border-radius: 12px;
     margin: 0 0 20px;
@@ -91,6 +91,7 @@ defineProps({
   }
 
   &__btn {
+    pointer-events: none;
     position: absolute;
     inset: 50% 0 0 0;
     transform: translateY(-50%);

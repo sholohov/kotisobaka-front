@@ -32,9 +32,9 @@ const navigation: NavItem[] = [{
   to: '/info',
   key: 'info',
 }, {
-  label: 'Блог',
-  to: '/blog',
-  key: 'blog',
+  label: 'Статьи',
+  to: '/articles',
+  key: 'articles',
 }]
 
 const socials: SocItem[] = [{
@@ -216,11 +216,13 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
       transition: transform 0.3s;
     }
 
-    &:hover {
-      color: var(--color-beige-lightest);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: var(--color-background-beige);
 
-      &:before {
-        transform: scale(1, 1);
+        &:before {
+          transform: scale(1, 1);
+        }
       }
     }
 
@@ -236,13 +238,15 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
     order: +1;
     width: 100%;
 
-    &:hover {
-      #{$this}__pic-left {
-        transform: translateX(20%);
-      }
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        #{$this}__pic-left {
+          transform: translateX(20%);
+        }
 
-      #{$this}__pic-right {
-        transform: scale(-1, 1) translateX(20%);
+        #{$this}__pic-right {
+          transform: scale(-1, 1) translateX(20%);
+        }
       }
     }
 
@@ -317,8 +321,10 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
     background-color: currentColor;
     transition: opacity 0.3s;
 
-    &:hover {
-      opacity: 0.7;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        opacity: 0.7;
+      }
     }
   }
 
@@ -353,11 +359,13 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
       transition: transform 0.3s;
     }
 
-    &:hover {
-      color: var(--color-beige-lightest);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        color: var(--color-background-beige);
 
-      &:before {
-        transform: scale(1, 1);
+        &:before {
+          transform: scale(1, 1);
+        }
       }
     }
   }

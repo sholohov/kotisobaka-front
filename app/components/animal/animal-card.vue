@@ -63,11 +63,13 @@ function truncate(text: string, maxLength = 100) {
 
 <template>
   <div class="animal-card">
-    <img
-      :src="animal.photo.url"
-      :alt="animal.photo.alternativeText || animal.name"
-      class="animal-card__img"
-    >
+    <div class="animal-card__img-wrapper">
+      <img
+        :src="animal.photo.url"
+        :alt="animal.photo.alternativeText || animal.name"
+        class="animal-card__img"
+      >
+    </div>
 
     <div class="animal-card__details">
       <div class="animal-card__name">
@@ -106,18 +108,29 @@ function truncate(text: string, maxLength = 100) {
       class="animal-card__fundraising"
     />
 
+    <nuxt-link
+      :to="`/animals/${animal.slug}`"
+      class="animal-card__link"
+      :aria-label="`Подробнее о ${animal.name}`"
+    />
+
     <div class="animal-card__actions">
-      <btn-default
-        class="animal-card__actions-btn"
-        style="color: var(--color-pink-light)"
-        circle
+      <tooltip-box
+        text="В избранное"
+        position="bottom-left"
       >
-        <heart-icon width="24" />
-      </btn-default>
+        <btn-default
+          class="animal-card__actions-btn"
+          style="color: var(--color-pink-light)"
+          circle
+        >
+          <heart-icon width="24" />
+        </btn-default>
+      </tooltip-box>
 
       <btn-default
         v-if="animal.animalStatus === 'available'"
-        class="animal-card__actions-btn"
+        class="animal-card__actions-btn animal-card__actions-btn--no-click"
         style="color: var(--color-green-dark)"
         circle
       >
@@ -127,7 +140,7 @@ function truncate(text: string, maxLength = 100) {
       <btn-default
         v-else-if="animal.animalStatus === 'under_treatment'"
         style="color: var(--color-orange)"
-        class="animal-card__actions-btn"
+        class="animal-card__actions-btn animal-card__actions-btn--no-click"
         circle
       >
         <health-icon width="24" />
@@ -138,25 +151,41 @@ function truncate(text: string, maxLength = 100) {
 
 <style lang="scss">
 .animal-card {
-  $his: ".animal-card";
+  $this: ".animal-card";
 
   background-color: var(--color-white);
   border-radius: 24px;
   overflow: hidden;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.07),
+      0 4px 8px rgba(0, 0, 0, 0.035);
+
+      #{$this}__img {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__img-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: calc(100% * 0.70) 0 0;
+  }
 
   &__img {
-    display: block;
-    height: 210px;
+    position: absolute;
+    display: flex;
+    inset: 0;
     width: 100%;
+    height: 100%;
     object-fit: cover;
-
-    @media (min-width: $mq-xs) {
-      height: 210px;
-    }
-
-    @media (min-width: $mq-xl) {
-      height: 310px;
-    }
+    transition: transform 0.3s;
   }
 
   &__details {
@@ -170,9 +199,16 @@ function truncate(text: string, maxLength = 100) {
   &__name {
     font-size: 22px;
     font-weight: 800;
+    margin: 0 0 2px;
 
     @media (min-width: $mq-lg) {
+      margin: 0 0 4px;
+      font-size: 22px;
+    }
+
+    @media (min-width: $mq-xl) {
       margin: 0 0 6px;
+      font-size: 24px;
     }
   }
 
@@ -229,8 +265,9 @@ function truncate(text: string, maxLength = 100) {
     border-top: 1px solid var(--color-background-pink);
   }
 
-  &__fundraising-progress {
-
+  &__link {
+    position: absolute;
+    inset: 0;
   }
 
   &__actions {
@@ -246,7 +283,9 @@ function truncate(text: string, maxLength = 100) {
   }
 
   &__actions-btn {
-
+    &--no-click {
+      pointer-events: none;
+    }
   }
 }
 </style>

@@ -73,7 +73,7 @@ import HeartIcon from "~/assets/svg/heart-icon.svg";
     padding: 20px;
     border: 1px solid var(--color-white);
     border-radius: 24px;
-    background-color: var(--color-beige-lightest);
+    background-color: var(--color-background-beige);
   }
 
   &__description-title {

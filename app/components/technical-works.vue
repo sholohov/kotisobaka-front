@@ -342,9 +342,11 @@ onUnmounted(() => {
       backdrop-filter: blur(10px);
       font-family: 'Nunito', sans-serif;
 
-      &:hover {
-        background: rgba(255, 255, 255, 0.3);
-        transform: translateY(-2px);
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background: rgba(255, 255, 255, 0.3);
+          transform: translateY(-2px);
+        }
       }
     }
   }

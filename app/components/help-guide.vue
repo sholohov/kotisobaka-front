@@ -12,7 +12,7 @@ type ItemProps = {
 
 const items: ItemProps[] = [
   {
-    icon: defineAsyncComponent(() => import('~/assets/svg/animal-help-guide/cat-in-box.svg')),
+    icon: defineAsyncComponent(() => import('~/assets/svg/help-guide/cat-in-box.svg')),
     color: 'green',
     title: 'Взять питомца',
     description: [
@@ -26,7 +26,7 @@ const items: ItemProps[] = [
     link: '/animals',
   },
   {
-    icon: defineAsyncComponent(() => import('~/assets/svg/animal-help-guide/dog-in-cap.svg')),
+    icon: defineAsyncComponent(() => import('~/assets/svg/help-guide/dog-in-cap.svg')),
     color: 'pink',
     title: 'Стать волонтёром',
     description: [
@@ -39,7 +39,7 @@ const items: ItemProps[] = [
     link: '/help/volunteer/become',
   },
   {
-    icon: defineAsyncComponent(() => import('~/assets/svg/animal-help-guide/cat-read-book.svg')),
+    icon: defineAsyncComponent(() => import('~/assets/svg/help-guide/cat-read-book.svg')),
     color: 'yellow',
     title: 'Финансовая помощь',
     description: [
@@ -52,7 +52,7 @@ const items: ItemProps[] = [
     link: '/help/donate/finance',
   },
   {
-    icon: defineAsyncComponent(() => import('~/assets/svg/animal-help-guide/cat-in-a-plate.svg')),
+    icon: defineAsyncComponent(() => import('~/assets/svg/help-guide/cat-in-a-plate.svg')),
     color: 'purple',
     title: 'Временный дом',
     description: [
@@ -64,7 +64,7 @@ const items: ItemProps[] = [
     link: '/help/volunteer/foster',
   },
   {
-    icon: defineAsyncComponent(() => import('~/assets/svg/animal-help-guide/dog-and-butterfly.svg')),
+    icon: defineAsyncComponent(() => import('~/assets/svg/help-guide/dog-and-butterfly.svg')),
     color: 'blue',
     title: 'Помощь словом',
     description: [
@@ -81,41 +81,41 @@ const items: ItemProps[] = [
 </script>
 
 <template>
-  <div class="animal-help-guide">
+  <div class="help-guide">
     <content-box>
-      <ul class="animal-help-guide__list">
+      <ul class="help-guide__list">
         <li
           v-for="item in items"
           :key="item.color"
-          class="animal-help-guide__item"
-          :class="`animal-help-guide__item--${item.color}`"
+          class="help-guide__item"
+          :class="`help-guide__item--${item.color}`"
         >
-          <div class="animal-help-guide__header">
+          <div class="help-guide__header">
             <component
               :is="item.icon"
-              class="animal-help-guide__icon"
+              class="help-guide__icon"
             />
-            <h3 class="animal-help-guide__title">
+            <h3 class="help-guide__title">
               {{ item.title }}
             </h3>
           </div>
-          <div class="animal-help-guide__description">
+          <div class="help-guide__description">
             <p
               v-for="(paragraph, index) in item.description"
               :key="index"
-              class="animal-help-guide__paragraph"
+              class="help-guide__paragraph"
             >
               {{ paragraph }}
             </p>
           </div>
-          <div class="animal-help-guide__footer">
-            <p class="animal-help-guide__motivation">
+          <div class="help-guide__footer">
+            <p class="help-guide__motivation">
               {{ item.motivation }}
             </p>
             <btn-default
               :to="item.link"
               circle
-              class="animal-help-guide__link"
+              class="help-guide__link"
             >
               <arrow-right-icon width="24" />
             </btn-default>
@@ -127,8 +127,8 @@ const items: ItemProps[] = [
 </template>
 
 <style lang="scss">
-.animal-help-guide {
-  $this: ".animal-help-guide";
+.help-guide {
+  $this: ".help-guide";
 
   &__list {
     list-style: none;
@@ -285,7 +285,7 @@ const items: ItemProps[] = [
         width: 2px;
         inset: 0 0 0 auto;
         background-color: currentColor;
-        opacity: 0.5;
+        opacity: 0.3;
       }
     }
   }

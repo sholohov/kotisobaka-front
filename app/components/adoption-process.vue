@@ -342,7 +342,6 @@ const getColorVar = (color: Color): string => {
     padding: 14px;
     display: flex;
     flex-direction: column;
-    border: 1px solid currentColor;
     margin: 0 0 20px;
   }
 

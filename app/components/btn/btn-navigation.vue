@@ -93,19 +93,21 @@ defineProps({
     100% { transform: translateX(0); }
   }
 
-  &:hover {
-    #{$this}__btn {
-      background-color: var(--color-background-pink);
-    }
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      #{$this}__btn {
+        background-color: var(--color-background-pink);
+      }
 
-    #{$this}__btn-arrow {
-      transform: scale(1, -1);
-    }
+      #{$this}__btn-arrow {
+        transform: scale(1, -1);
+      }
 
-    #{$this}__dropdown {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-      pointer-events: auto;
+      #{$this}__dropdown {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+      }
     }
   }
 
@@ -127,7 +129,7 @@ defineProps({
     color: var(--color-text-brown);
     border-radius: calc($size / 2);
     background-color: var(--color-white-dark);
-    border: 1px solid var(--color-orange-light);
+    border: 1px solid var(--color-beige-light);
     cursor: pointer;
     transition: background-color 0.3s;
     white-space: nowrap;
@@ -158,17 +160,19 @@ defineProps({
     padding: 10px 0;
     background-color: var(--color-white-dark);
     border-radius: calc(36px / 2);
-    border: 1px solid var(--color-orange-light);
+    border: 1px solid var(--color-beige-light);
   }
 
   &__item {
     position: relative;
 
-    &:hover {
-      #{$this}__sublist {
-        opacity: 1;
-        transform: translateX(0);
-        pointer-events: auto;
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        #{$this}__sublist {
+          opacity: 1;
+          transform: translateX(0);
+          pointer-events: auto;
+        }
       }
     }
   }
@@ -185,11 +189,13 @@ defineProps({
     cursor: pointer;
     transition: background-color 0.3s;
 
-    &:hover {
-      background-color: var(--color-background-pink);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: var(--color-background-pink);
 
-      #{$this}__item-icon {
-        animation: arrow-right-move 4s ease-in-out infinite;
+        #{$this}__item-icon {
+          animation: arrow-right-move 4s ease-in-out infinite;
+        }
       }
     }
   }
@@ -218,7 +224,7 @@ defineProps({
     transform: translateX(-10px);
     transition: opacity 0.3s, transform 0.3s;
     background-color: var(--color-white-dark);
-    border: 1px solid var(--color-orange-light);
+    border: 1px solid var(--color-beige-light);
     border-radius: calc($size / 2);
     padding: 10px 0;
     pointer-events: none;
@@ -242,8 +248,10 @@ defineProps({
     color: var(--color-text-brown);
     transition: background-color 0.3s;
 
-    &:hover {
-      background-color: var(--color-background-pink);
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: var(--color-background-pink);
+      }
     }
   }
 }

@@ -91,7 +91,7 @@ export const navigation = [{
     key: 'info-faq',
   }],
 }, {
-  label: 'Блог',
-  to: '/blog',
-  key: 'blog',
+  label: 'Статьи',
+  to: '/articles',
+  key: 'articles',
 }] satisfies ButtonNavigationProps[]

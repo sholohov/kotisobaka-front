@@ -99,9 +99,11 @@ const emit = defineEmits(['click'])
     transition: opacity 0.3s;
   }
 
-  &:hover {
-    &::after {
-      opacity: 0.1;
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      &::after {
+        opacity: 0.1;
+      }
     }
   }
 
@@ -134,7 +136,7 @@ const emit = defineEmits(['click'])
 
   &--white {
     background-color: var(--color-white-dark);
-    border-color: var(--color-orange-light);
+    border-color: var(--color-beige-light);
     color: var(--color-text-brown);
 
     &#{$this}--no-border {
@@ -155,7 +157,7 @@ const emit = defineEmits(['click'])
   &--green {
     background-color: var(--color-green);
     border-color: var(--color-white);
-    color: var(--color-text-brown);
+    color: var(--color-white);
 
     &#{$this}--no-border {
       border-color: var(--color-green);

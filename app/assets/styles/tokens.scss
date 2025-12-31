@@ -1,4 +1,8 @@
 :root {
+  --color-indigo: #5a9fc6;
+  --color-indigo-light: #a8d2e8;
+  --color-indigo-dark: #487fa0;
+
   --color-blue: #69a1ae;
   --color-blue-light: #bfd8dc;
   --color-blue-dark: #56838f;
@@ -22,14 +26,17 @@
   --color-white: #fff;
   --color-white-dark: #fdfbfa;
 
+  --color-pink: #e3a8a8;
   --color-pink-dark: #b47a78;
-  --color-background-pink: #ecdddd;
-  --color-beige-lightest: #f0e5df;
   --color-pink-light: #F3CCCD;
+
+  --color-beige-light: #d8bbab;
 
   /* UI Colors */
   --color-text-chocolate: #744141;
   --color-text-brown: #291717;
   --color-text-brown-light: var(--color-white-dark);
-  --color-bg: var(--color-beige-lightest);
+  --color-background-beige: #f0e5df;
+  --color-background-pink: #ecdddd;
+  --color-bg: var(--color-background-beige);
 }

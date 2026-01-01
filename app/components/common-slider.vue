@@ -28,6 +28,10 @@ const props = defineProps({
     type: Array as PropType<readonly string[]>,
     default: () => ["green", "purple", "yellow", "blue"] as const,
   },
+  twoColumn: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 declare module 'vue' {
@@ -148,6 +152,7 @@ const slides = computed<Slide[]>(() => {
           v-for="slide in slides"
           :key="slide.type === 'item' ? getSlideId(slide.data) : `quote-${getSlideId(slide.data)}`"
           class="common-slider__slide"
+          :class="{ 'common-slider__slide--two-column': twoColumn }"
         >
           <slot
             v-if="slide.type === 'item'"
@@ -215,6 +220,16 @@ const slides = computed<Slide[]>(() => {
 
     @media (min-width: $mq-xl) {
       width: 440px;
+    }
+
+    &--two-column {
+      @media (min-width: $mq-lg) {
+        width: calc(374px * 2);
+      }
+
+      @media (min-width: $mq-xl) {
+        width: calc(440px * 2);
+      }
     }
   }
 

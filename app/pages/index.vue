@@ -11,6 +11,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     fundsIsNeededAnimals,
     articles,
     partners,
+    reviews,
   ] = await Promise.all([
     api.heroAnimal.get({
       populate: {
@@ -21,7 +22,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     }),
     api.statistic.get(),
     api.animals.get({
-      populate: 'photo',
+      populate: ['photo'],
       filters: {
         animalStatus: {
           $eq: 'available',
@@ -35,7 +36,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     }),
     api.quotes.get(),
     api.animals.get({
-      populate: 'photo',
+      populate: ['photo'],
       filters: {
         fundsIsNeeded: {
           $eq: true,
@@ -54,6 +55,9 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     api.partners.get({
       populate: ['logo', 'link'],
     }),
+    api.reviews.get({
+      populate: ['photo'],
+    }),
   ]);
 
   return {
@@ -64,6 +68,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     fundsIsNeededAnimals: fundsIsNeededAnimals.data,
     articles: articles.data,
     partners: partners.data,
+    reviews: reviews.data,
   }
 });
 </script>
@@ -131,6 +136,12 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
       title="Наши партнёры"
     >
       <partners-slider :partners="pageData.partners" />
+    </page-section>
+    <page-section
+      anchor="stories"
+      title="Счастливые истории"
+    >
+      <stories-slider :stories="pageData.reviews" />
     </page-section>
     <div />
   </div>

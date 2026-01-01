@@ -13,8 +13,7 @@ export interface ReviewData {
   photo: SingleMedia
   priority: number
   showOnMain: boolean
-  tags: 'cat' | 'dog'
-  publishedDate?: string | null
+  tag: 'cat' | 'dog'
 }
 
 export type Review = Strapi5ResponseData<ReviewData>

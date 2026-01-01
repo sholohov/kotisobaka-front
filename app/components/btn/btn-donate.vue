@@ -29,6 +29,8 @@ const emit = defineEmits(['click'])
 .btn-donate {
   $this: '.btn-donate';
 
+  overflow: hidden;
+
   @media (hover: hover) and (pointer: fine) {
     &:hover {
       #{$this}__coin {

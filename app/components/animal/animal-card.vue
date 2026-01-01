@@ -128,23 +128,33 @@ function truncate(text: string, maxLength = 100) {
         </btn-default>
       </tooltip-box>
 
-      <btn-default
+      <tooltip-box
         v-if="animal.animalStatus === 'available'"
-        class="animal-card__actions-btn animal-card__actions-btn--no-click"
-        style="color: var(--color-green-dark)"
-        circle
+        text="Ищу дом"
+        position="bottom-left"
       >
-        <home-icon width="24" />
-      </btn-default>
+        <btn-default
+          class="animal-card__actions-btn animal-card__actions-btn--no-click"
+          style="color: var(--color-green-dark)"
+          circle
+        >
+          <home-icon width="24" />
+        </btn-default>
+      </tooltip-box>
 
-      <btn-default
-        v-else-if="animal.animalStatus === 'under_treatment'"
-        style="color: var(--color-orange)"
-        class="animal-card__actions-btn animal-card__actions-btn--no-click"
-        circle
+      <tooltip-box
+        v-if="animal.animalStatus === 'under_treatment'"
+        text="Помоги мне"
+        position="bottom-left"
       >
-        <health-icon width="24" />
-      </btn-default>
+        <btn-default
+          style="color: var(--color-orange)"
+          class="animal-card__actions-btn animal-card__actions-btn--no-click"
+          circle
+        >
+          <health-icon width="24" />
+        </btn-default>
+      </tooltip-box>
     </div>
   </div>
 </template>
@@ -251,6 +261,7 @@ function truncate(text: string, maxLength = 100) {
     font-weight: 700;
     font-size: 24px;
     line-height: 1.2;
+    z-index: 1;
   }
 
   &__info-label {

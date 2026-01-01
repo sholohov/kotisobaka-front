@@ -79,11 +79,9 @@ const formatedDate = computed(() => {
         <btn-default
           circle
           class="stories-card__icon"
+          style="color: var(--color-orange)"
         >
-          <heart-icon
-            width="24"
-            style="color: var(--color-orange)"
-          />
+          <heart-icon width="24" />
         </btn-default>
       </div>
     </div>

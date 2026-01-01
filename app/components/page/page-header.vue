@@ -68,6 +68,7 @@ function handleDonateBtn() {
             <btn-default
               circle
               to="/favorites"
+              :badge="13"
             >
               <heart-icon
                 width="24"

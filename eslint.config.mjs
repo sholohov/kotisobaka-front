@@ -26,10 +26,6 @@ export default withNuxt(
       ],
 
       // Стиль
-      'stylistic/quotes': ['error', 'single', {
-        avoidEscape: true,
-        allowTemplateLiterals: 'never'
-      }],
       'stylistic/brace-style': ['error', '1tbs', { allowSingleLine: true }],
       'stylistic/indent': ['error', 2],
       'stylistic/keyword-spacing': ['error', { before: true, after: true }],
@@ -42,19 +38,14 @@ export default withNuxt(
       'stylistic/quote-props': ['error', 'as-needed'],
       'stylistic/space-before-blocks': ['error', 'always'],
       'stylistic/no-multiple-empty-lines': ['error', { max: 1, maxEOF: 0, maxBOF: 0 }],
-
-      // Пробел перед скобками у функций (включая async-стрелочные)
       'stylistic/space-before-function-paren': [
         'error',
         { anonymous: 'always', named: 'never', asyncArrow: 'always' },
       ],
+      'stylistic/quotes': ['error', 'single', { avoidEscape: true }],
 
       'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
 
-      'vue/html-quotes': ['error', 'single'],
-      'vue/attribute-value-quotes': ['error', 'as-needed', {
-        single: true,
-      }],
       'vue/no-multiple-template-root': 'off',
       'vue/multi-word-component-names': 'off',
     },

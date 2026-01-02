@@ -5,6 +5,7 @@ import HomeIcon from '~/assets/svg/home-icon.svg'
 import HealthIcon from '~/assets/svg/health-icon.svg'
 
 import type { Animal } from '~/api/animals/types';
+import { BREAKPOINT_CONFIG } from '~/constants/breakpoints';
 
 interface AnimalInfo {
   key: string,
@@ -18,10 +19,20 @@ const props = defineProps({
     type: Object as PropType<Animal>,
     required: true,
   },
-  fundsSegments: {
-    type: Number,
-    required: true,
-  },
+})
+
+const { screenWidth } = useBreakpoint()
+
+const fundsSegments = computed(() => {
+  if (screenWidth.value < BREAKPOINT_CONFIG.laptop.min) {
+    return 28
+  }
+
+  if (screenWidth.value < BREAKPOINT_CONFIG.desktop.min) {
+    return 36
+  }
+
+  return 40
 })
 
 const { isMobileView } = useBreakpoint()

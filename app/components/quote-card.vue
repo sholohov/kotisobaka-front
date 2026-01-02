@@ -8,7 +8,7 @@ const icons = {
 
 defineProps({
   color: {
-    type: String as PropType<'purple' | 'yellow' | 'green' | 'blue' | 'orange'>,
+    type: String as PropType<'purple' | 'yellow' | 'green' | 'blue' | 'orange' | string>,
     required: true,
   },
   quote: {

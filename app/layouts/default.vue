@@ -81,6 +81,7 @@ function handleClickOverlay() {
     </header>
 
     <main class="layout-default__main">
+      <page-title />
       <nuxt-page />
     </main>
 

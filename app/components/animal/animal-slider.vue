@@ -13,6 +13,10 @@ const props = defineProps({
     type: Array as PropType<Quote[]>,
     required: true,
   },
+  hideLink: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const colors = ['green', 'purple', 'yellow', 'blue'] as const
@@ -23,20 +27,6 @@ const isNeedHelp = computed(() => props.animals.some(animal => {
 
 const quoteSlidePosition = computed(() => {
   return isNeedHelp.value ? 3 : 2
-})
-
-const { screenWidth } = useBreakpoint()
-
-const fundsSegments = computed(() => {
-  if (screenWidth.value < BREAKPOINT_CONFIG.laptop.min) {
-    return 28
-  }
-
-  if (screenWidth.value < BREAKPOINT_CONFIG.desktop.min) {
-    return 36
-  }
-
-  return 40
 })
 
 </script>
@@ -53,7 +43,6 @@ const fundsSegments = computed(() => {
         <template #default="{ slide: animal }">
           <animal-card
             :animal="animal"
-            :funds-segments="fundsSegments"
             class="animal-slider__card"
           />
         </template>
@@ -68,7 +57,10 @@ const fundsSegments = computed(() => {
         </template>
       </common-slider>
 
-      <div class="animal-slider__link">
+      <div
+        v-if="!hideLink"
+        class="animal-slider__link"
+      >
         <btn-default
           to="/animals"
           color="blue"

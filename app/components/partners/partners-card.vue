@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import type { Partner } from "~/api/partners/types";
+import type { Partner } from '~/api/partners/types';
 
 defineProps({
   partner: {

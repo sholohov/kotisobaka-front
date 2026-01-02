@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import ArrowDownIcon from "~/assets/svg/arrow-down-icon.svg";
-import ArrowRightIcon from "~/assets/svg/arrow-right-icon.svg";
-import type { ButtonNavigationProps } from "~/types/buttonNavigation";
+import ArrowDownIcon from '~/assets/svg/arrow-down-icon.svg';
+import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
+import type { ButtonNavigationProps } from '~/types/buttonNavigation';
 
 defineProps({
   to: {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Quote } from "~/api/quotes/types";
+import type { Quote } from '~/api/quotes/types';
 
 const icons = {
   paw: defineAsyncComponent(() => import('~/assets/svg/paw-icon.svg')),
@@ -8,7 +8,7 @@ const icons = {
 
 defineProps({
   color: {
-    type: String as PropType<"purple" | "yellow" | "green" | "blue" | "orange">,
+    type: String as PropType<'purple' | 'yellow' | 'green' | 'blue' | 'orange'>,
     required: true,
   },
   quote: {

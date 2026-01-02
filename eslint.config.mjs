@@ -26,6 +26,10 @@ export default withNuxt(
       ],
 
       // Стиль
+      'stylistic/quotes': ['error', 'single', {
+        avoidEscape: true,
+        allowTemplateLiterals: 'never'
+      }],
       'stylistic/brace-style': ['error', '1tbs', { allowSingleLine: true }],
       'stylistic/indent': ['error', 2],
       'stylistic/keyword-spacing': ['error', { before: true, after: true }],
@@ -47,6 +51,10 @@ export default withNuxt(
 
       'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
 
+      'vue/html-quotes': ['error', 'single'],
+      'vue/attribute-value-quotes': ['error', 'as-needed', {
+        single: true,
+      }],
       'vue/no-multiple-template-root': 'off',
       'vue/multi-word-component-names': 'off',
     },

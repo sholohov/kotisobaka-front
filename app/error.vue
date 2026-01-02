@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { toRaw } from 'vue'
-
 const error = useError()
 
 if (import.meta.client) {

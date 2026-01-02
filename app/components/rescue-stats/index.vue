@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Statistic, StatisticData } from "~/api/statistic/types";
+import type { Statistic, StatisticData } from '~/api/statistic/types';
 
 const props = defineProps({
   stats: {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Partner } from "~/api/partners/types";
-import PawIcon from "~/assets/svg/paw-icon.svg";
+import type { Partner } from '~/api/partners/types';
+import PawIcon from '~/assets/svg/paw-icon.svg';
 
 defineProps({
   partners: {

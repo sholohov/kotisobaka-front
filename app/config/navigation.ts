@@ -1,4 +1,4 @@
-import type { ButtonNavigationProps } from "~/types/buttonNavigation";
+import type { ButtonNavigationProps } from '~/types/buttonNavigation';
 
 export const navigation = [{
   label: 'О нас',

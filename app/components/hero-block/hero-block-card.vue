@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import StarIcon from "~/assets/svg/star-icon.svg";
-import type { Animal } from "~/api/animals/types";
+import StarIcon from '~/assets/svg/star-icon.svg';
+import type { Animal } from '~/api/animals/types';
 
 defineProps({
   card: {

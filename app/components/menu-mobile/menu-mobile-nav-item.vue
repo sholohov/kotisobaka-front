@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { NuxtLink } from '#components'
-import ArrowDownIcon from "~/assets/svg/arrow-down-icon.svg";
-import type { ButtonNavigationProps } from "~/types/buttonNavigation";
-import { onMounted, onUnmounted } from 'vue'
+import ArrowDownIcon from '~/assets/svg/arrow-down-icon.svg';
+import type { ButtonNavigationProps } from '~/types/buttonNavigation';
 
 const props = defineProps({
   label: {

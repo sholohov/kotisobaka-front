@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Animal } from "~/api/animals/types";
-import HeroBlockCard from "~/components/hero-block/hero-block-card.vue";
+import type { Animal } from '~/api/animals/types';
+import HeroBlockCard from '~/components/hero-block/hero-block-card.vue';
 
 const props = defineProps({
   cards: {

@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { defineAsyncComponent } from 'vue';
-import type { Statistic } from "~/api/statistic/types";
+import type { Statistic } from '~/api/statistic/types';
 
 const icons = {
   adoptedPets: defineAsyncComponent(() => import('~/assets/svg/rescue-stats/man-and-cat.svg')),

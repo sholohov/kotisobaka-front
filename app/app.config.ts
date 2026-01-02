@@ -1,4 +1,4 @@
-import { navigation } from "~/config/navigation";
+import { navigation } from '~/config/navigation';
 
 export default defineAppConfig({
   navigation,

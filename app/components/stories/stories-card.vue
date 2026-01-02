@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Review } from "~/api/reviews/types";
+import type { Review } from '~/api/reviews/types';
 import HeartIcon from '~/assets/svg/heart-icon.svg'
 
 const props = defineProps({

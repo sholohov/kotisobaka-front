@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Animal } from "~/api/animals/types";
+import type { Animal } from '~/api/animals/types';
 
 defineProps({
   cards: {

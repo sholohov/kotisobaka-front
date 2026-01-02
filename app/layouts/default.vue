@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { disableScroll } from "~/utils/disableScroll";
+import { disableScroll } from '~/utils/disableScroll';
 
 const { isMobile, isTabletSmall, isTablet } = useBreakpoint()
 const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || isTablet.value))

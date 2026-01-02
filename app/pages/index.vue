@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { api } from "~/api";
-import AnimalSlider from "~/components/animal/animal-slider.vue";
+import { api } from '~/api';
+import AnimalSlider from '~/components/animal/animal-slider.vue';
 
 const { data: pageData } = await useAsyncData('home-page', async () => {
   const [
@@ -16,7 +16,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     api.heroAnimal.get({
       populate: {
         animals: {
-          populate: "*",
+          populate: '*',
         },
       },
     }),
@@ -49,7 +49,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
       },
     }),
     api.articles.get({
-      sort: ["publishedDate:asc"],
+      sort: ['publishedDate:asc'],
       populate: ['coverImage'],
     }),
     api.partners.get({

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import HeartIcon from "~/assets/svg/heart-icon.svg";
+import HeartIcon from '~/assets/svg/heart-icon.svg';
 </script>
 
 <template>

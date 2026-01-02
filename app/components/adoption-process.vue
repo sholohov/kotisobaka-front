@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed, defineAsyncComponent, onBeforeUnmount, onMounted, reactive, ref } from 'vue';
-import PawIcon from "~/assets/svg/paw-icon.svg";
+import PawIcon from '~/assets/svg/paw-icon.svg';
 
 // Асинхронные SVG-компоненты
 const images = {

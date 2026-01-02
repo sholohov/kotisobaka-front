@@ -2,7 +2,7 @@
 import LogoSvg from '~/assets/svg/logo.svg'
 import HeartIcon from '~/assets/svg/heart-icon.svg'
 import SearchIcon from '~/assets/svg/search-icon.svg'
-import BtnDonate from "~/components/btn/btn-donate.vue";
+import BtnDonate from '~/components/btn/btn-donate.vue';
 
 const { navigation } = useAppConfig()
 const modalStore = useModalStore()

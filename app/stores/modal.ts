@@ -1,6 +1,3 @@
-import { defineStore } from 'pinia'
-import { reactive, toRefs, computed } from 'vue'
-
 export type ModalPropsMap = {
   'donate-with-qr': null
   'donate-with-guide': null

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { LazyModalDonateWithQr, LazyModalDonateWithGuide } from '#components'
-import type { ModalPropsMap } from "~/stores/modal";
+import type { ModalPropsMap } from '~/stores/modal';
 const modalStore = useModalStore()
 
 const components: Record<keyof ModalPropsMap, Component> = {

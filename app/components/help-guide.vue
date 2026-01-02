@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ArrowRightIcon from "~/assets/svg/arrow-right-icon.svg";
+import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
 
 type ItemProps = {
   icon: Component
@@ -56,7 +56,7 @@ const items: ItemProps[] = [
     color: 'purple',
     title: 'Временный дом',
     description: [
-      `Вы не готовы взять питомца навсегда, но хотите помочь? Станьте самым важным промежуточным звеном!`,
+      'Вы не готовы взять питомца навсегда, но хотите помочь? Станьте самым важным промежуточным звеном!',
       `Передержка — это временный дом для животного, где оно может оправиться от стресса, вырасти щенком или котёнком в уюте,
       или просто научиться доверять людям в спокойной домашней атмосфере.`,
     ],

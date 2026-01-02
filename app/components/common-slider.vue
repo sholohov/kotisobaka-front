@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed, ref, type PropType } from "vue"
-import ArrowRightIcon from "~/assets/svg/arrow-right-icon.svg"
-import type { Quote } from "~/api/quotes/types"
+import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg'
+import type { Quote } from '~/api/quotes/types'
 
 interface HasDocumentId {
   documentId: string
@@ -26,7 +25,7 @@ const props = defineProps({
   },
   quoteColors: {
     type: Array as PropType<readonly string[]>,
-    default: () => ["green", "purple", "yellow", "blue"] as const,
+    default: () => ['green', 'purple', 'yellow', 'blue'] as const,
   },
   twoColumn: {
     type: Boolean,

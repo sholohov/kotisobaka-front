@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NuxtLink } from "#components";
+import { NuxtLink } from '#components';
 
 const props = defineProps({
   color: {

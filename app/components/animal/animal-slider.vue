@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import { computed, ref } from "vue"
-import type { Animal } from "~/api/animals/types"
-import type { Quote } from "~/api/quotes/types"
-import ArrowRightIcon from "~/assets/svg/arrow-right-icon.svg"
-import PawIcon from "~/assets/svg/paw-icon.svg"
-import { BREAKPOINT_CONFIG } from "~/constants/breakpoints";
+import type { Animal } from '~/api/animals/types'
+import type { Quote } from '~/api/quotes/types'
+import PawIcon from '~/assets/svg/paw-icon.svg'
+import { BREAKPOINT_CONFIG } from '~/constants/breakpoints';
 
 const props = defineProps({
   animals: {
@@ -17,9 +15,7 @@ const props = defineProps({
   },
 })
 
-const sliderRef = ref(null)
-const slider = useSwiper(sliderRef)
-const colors = ["green", "purple", "yellow", "blue"] as const
+const colors = ['green', 'purple', 'yellow', 'blue'] as const
 
 const isNeedHelp = computed(() => props.animals.some(animal => {
   return animal.fundsIsNeeded

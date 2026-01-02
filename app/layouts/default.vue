@@ -7,6 +7,7 @@ const menuMobileStore = useMenuMobileStore()
 const modalStore = useModalStore()
 const route = useRoute()
 const device = useDevice()
+const favoritesStore = useFavoritesStore()
 
 watch(isMobileView, () => {
   if (!isMobileView.value) {
@@ -50,6 +51,8 @@ watch(showOverlay, () => {
 })
 
 onMounted(() => {
+  favoritesStore.initialize()
+
   if (device.isMobileOrTablet) {
     useSwipe(document.body, {
       onSwipe: dir => {
@@ -59,6 +62,10 @@ onMounted(() => {
       },
     })
   }
+})
+
+onBeforeUnmount(() => {
+  favoritesStore.cleanup()
 })
 
 function handleClickOverlay() {

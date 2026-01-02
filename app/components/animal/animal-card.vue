@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import HeartIcon from '~/assets/svg/heart-icon.svg'
+import HeartRoundIcon from '~/assets/svg/heart-round-icon.svg'
 import HomeIcon from '~/assets/svg/home-icon.svg'
 import HealthIcon from '~/assets/svg/health-icon.svg'
 
@@ -24,6 +25,11 @@ const props = defineProps({
 })
 
 const { isMobileView } = useBreakpoint()
+const favoritesStore = useFavoritesStore()
+
+const tooltipText = computed(() => {
+  return favoritesStore.has(props.animal.documentId) ? 'Удалить из избранного' : 'Добавить в избранное'
+})
 
 const animalGender = computed((): string => {
   return props.animal.gender === 'male' ? 'мальчик' : 'девочка'
@@ -59,6 +65,11 @@ function truncate(text: string, maxLength = 100) {
 
   return text.slice(0, maxLength)
 }
+
+function handleToggleFavoriteBtn() {
+  favoritesStore.toggle(props.animal.documentId)
+}
+
 </script>
 
 <template>
@@ -116,15 +127,23 @@ function truncate(text: string, maxLength = 100) {
 
     <div class="animal-card__actions">
       <tooltip-box
-        text="В избранное"
+        :text="tooltipText"
         position="bottom-left"
       >
         <btn-default
           class="animal-card__actions-btn"
-          style="color: var(--color-pink-light)"
+          style="color: var(--color-orange)"
           circle
+          @click="handleToggleFavoriteBtn"
         >
-          <heart-icon width="24" />
+          <heart-icon
+            v-if="favoritesStore.has(animal.documentId)"
+            width="24"
+          />
+          <heart-round-icon
+            v-else
+            width="24"
+          />
         </btn-default>
       </tooltip-box>
 
@@ -296,6 +315,14 @@ function truncate(text: string, maxLength = 100) {
   &__actions-btn {
     &--no-click {
       pointer-events: none;
+    }
+
+    &--favorites {
+      color: var(--color-pink-light);
+    }
+
+    &--favorites-active {
+      color: var(--color-orange);
     }
   }
 }

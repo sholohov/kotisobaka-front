@@ -8,6 +8,7 @@ const { navigation } = useAppConfig()
 const modalStore = useModalStore()
 const { isMobile, isTabletSmall, isTablet } = useBreakpoint()
 const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || isTablet.value))
+const favoritesStore = useFavoritesStore()
 
 function handleDonateBtn() {
   modalStore.open('donate-with-qr')
@@ -68,7 +69,7 @@ function handleDonateBtn() {
             <btn-default
               circle
               to="/favorites"
-              :badge="13"
+              :badge="favoritesStore.count"
             >
               <heart-icon
                 width="24"

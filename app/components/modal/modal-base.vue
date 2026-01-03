@@ -10,6 +10,10 @@ defineProps({
     type: [Number, String],
     default: 600,
   },
+  titleAlign: {
+    type: String as PropType<'left' | 'center'>,
+    default: 'left',
+  },
 })
 
 const modalStore = useModalStore()
@@ -28,7 +32,12 @@ function handleCloseBtn() {
       :style="{ maxWidth: width + 'px' }"
     >
       <header class="modal-base__header">
-        <h3 class="modal-base__title">
+        <h3
+          class="modal-base__title"
+          :class="[
+            'modal-base__title--' + titleAlign
+          ]"
+        >
           {{ title }}
         </h3>
         <button
@@ -82,7 +91,7 @@ function handleCloseBtn() {
     background-color: var(--color-background-pink);
 
     @media (min-width: $mq-lg) {
-      border-radius: 36px;
+      border-radius: 24px;
       padding: 16px;
     }
   }
@@ -103,7 +112,6 @@ function handleCloseBtn() {
     display: flex;
     margin: 0;
     flex: 1;
-    justify-content: center;
     padding: 0 0 10px;
     font-weight: 800;
     font-size: 20px;
@@ -114,6 +122,14 @@ function handleCloseBtn() {
 
     @media (min-width: $mq-lg) {
       font-size: 30px;
+    }
+
+    &--left {
+      justify-content: start;
+    }
+
+    &--center {
+      justify-content: center;
     }
   }
 

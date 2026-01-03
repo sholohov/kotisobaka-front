@@ -1,6 +1,10 @@
 export type ModalPropsMap = {
   'donate-with-qr': null
   'donate-with-guide': null
+  'animal-filters': {
+    reset(): void,
+    apply(filters: unknown): void
+  }
 }
 
 export const useModalStore = defineStore('modal', () => {

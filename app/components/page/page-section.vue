@@ -10,12 +10,15 @@
     />
 
     <content-box>
-      <h2
-        v-if="title"
-        class="page-section__title"
-      >
-        {{ title }}
-      </h2>
+      <div class="page-section__header">
+        <h2
+          v-if="title"
+          class="page-section__title"
+        >
+          {{ title }}
+        </h2>
+        <slot name="header-end" />
+      </div>
     </content-box>
 
     <slot />
@@ -57,16 +60,32 @@ defineProps({
     font-weight: 800;
     font-style: normal;
     font-size: 26px;
-    line-height: 1;
+    line-height: 0.85;
     height: 44px;
+    width: calc(100vw - 130px);
     display: flex;
     align-items: flex-end;
-    margin: 0 0 20px;
-    padding: 0 110px 0 0;
 
     @media (min-width: $mq-lg) {
       font-size: 50px;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 0 0 20px;
+    gap: 10px;
+
+    @media (min-width: $mq-sm) {
+      gap: 20px;
+      flex-direction: row;
+    }
+
+    @media (min-width: $mq-lg) {
       margin: 0 0 30px;
+      gap: 30px;
     }
   }
 }

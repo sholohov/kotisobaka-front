@@ -4,8 +4,9 @@ import HeartIcon from '~/assets/svg/heart-icon.svg';
 </script>
 
 <template>
-  <ModalBase
+  <modal-base
     title="Помощь нашим хвостикам"
+    title-align="center"
     class="modal-donate-with-guide"
   >
     <div class="modal-donate-with-guide__title">
@@ -56,7 +57,7 @@ import HeartIcon from '~/assets/svg/heart-icon.svg';
         </div>
       </div>
     </div>
-  </ModalBase>
+  </modal-base>
 </template>
 
 <style lang="scss">

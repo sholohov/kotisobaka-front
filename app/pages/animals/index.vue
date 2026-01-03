@@ -2,74 +2,93 @@
 import { api } from '~/api';
 import type { Animal } from '~/api/animals/types';
 import type { Quote } from '~/api/quotes/types';
+import type { RadioOption } from '~/types/formElements';
+import FilterIcon from '~/assets/svg/filter-icon.svg'
 
 definePageMeta({
   pageTitle: 'Наши хвостики',
   pageTitleIcon: 'animals',
 })
 
+const modalStore = useModalStore()
+
 const pagination = reactive({
   page: 0,
   pageCount: 0,
 })
 
+const filters = reactive({
+  species: null as Animal['species'] | null,
+  age: null as string | null,
+})
+
+const filterOptions: RadioOption[] = [
+  { value: null, key: 'all', label: 'Все' },
+  { value: 'cat', key: 'cats', label: 'Кошки' },
+  { value: 'dog', key: 'dogs', label: 'Собаки' },
+]
+
+const { data: availableAnimals } = await useAsyncData('available-animals', async () => {
+  const { species, age } = filters
+  const ageRange = parseAgeRange(age ?? '0-now')
+
+  console.log(111, ageRange)
+
+  return api.animals.get({
+    populate: ['photo'],
+    filters: {
+      animalStatus: { $eq: 'available' },
+      species: species ? { $eq: species } : undefined,
+      birthDate: age ? { $between: ageRange } : undefined,
+    },
+    sort: ['priorityAdoption:desc'],
+    pagination: {
+      page: pagination.page,
+      pageSize: 15,
+    },
+  })
+}, {
+  watch: [pagination, filters],
+  deep: true,
+})
+
 const { data: pageData } = await useAsyncData('animals-page', async () => {
-  const [
-    availableAnimals,
-    quotes,
-    fundsIsNeededAnimals,
-  ] = await Promise.all([
-    api.animals.get({
-      populate: ['photo'],
-      filters: {
-        animalStatus: {
-          $eq: 'available',
-        },
-      },
-      sort: ['priorityAdoption:desc'],
-      pagination: {
-        page: pagination.page,
-        pageSize: 15,
-      },
-    }),
+  const [quotes, fundsIsNeededAnimals] = await Promise.all([
     api.quotes.get(),
     api.animals.get({
       populate: ['photo'],
-      filters: {
-        fundsIsNeeded: {
-          $eq: true,
-        },
-      },
+      filters: { fundsIsNeeded: { $eq: true } },
       sort: ['fundsPriority:desc'],
-      pagination: {
-        page: 1,
-        pageSize: 10,
-      },
+      pagination: { page: 1, pageSize: 10 },
     }),
-  ]);
+  ])
 
-  return {
-    availableAnimals,
-    quotes,
-    fundsIsNeededAnimals,
-  }
-}, { watch: [() => pagination.page] });
+  return { quotes, fundsIsNeededAnimals }
+})
 
-pagination.page = pageData.value?.availableAnimals.meta.pagination.page ?? 1
-pagination.pageCount = pageData.value?.availableAnimals.meta.pagination.pageCount ?? 0
+pagination.page = availableAnimals.value?.meta.pagination.page ?? 1
+pagination.pageCount = availableAnimals.value?.meta.pagination.pageCount ?? 0
 
-const handlePageChange = (page: number) => {
+function handlePageChange(page: number) {
   pagination.page = page
 }
 
+function handleOpenFiltersModalBtn() {
+  modalStore.open('animal-filters', {
+    apply(changedFilters: typeof filters) {
+      Object.assign(filters, changedFilters)
+    },
+    reset() {
+      console.log('animal-filters: reset')
+    },
+  })
+}
 </script>
 
 <template>
-  <div
-    v-if="pageData"
-    class="animals-page"
-  >
+  <div class="animals-page">
     <page-section
+      v-if="pageData"
       anchor="need_help"
       title="Нуждаются в помощи"
     >
@@ -85,9 +104,25 @@ const handlePageChange = (page: number) => {
       anchor="looking_for_family"
       title="Ищут семью"
     >
-      <content-box>
+      <template #header-end>
+        <div class="animals-page__filter">
+          <radio-group
+            v-model="filters.species"
+            :options="filterOptions"
+          />
+          <btn-default
+            style="color: var(--color-pink-dark)"
+            circle
+            @click="handleOpenFiltersModalBtn"
+          >
+            <filter-icon width="24" />
+          </btn-default>
+        </div>
+      </template>
+
+      <content-box v-if="availableAnimals?.data && pageData">
         <common-grid
-          :items="pageData.availableAnimals.data"
+          :items="availableAnimals.data"
           :quotes="pageData.quotes.data"
         >
           <template #default="{ item: animal }: { item: Animal }">
@@ -105,6 +140,7 @@ const handlePageChange = (page: number) => {
             />
           </template>
         </common-grid>
+
         <div
           v-if="pagination.pageCount - 1"
           class="animals-page__pagination"
@@ -127,6 +163,17 @@ const handlePageChange = (page: number) => {
     align-items: center;
     justify-content: center;
     margin: 30px 0 0;
+  }
+
+  &__filter {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @media (min-width: $mq-sm) {
+      flex-wrap: nowrap;
+    }
   }
 }
 </style>

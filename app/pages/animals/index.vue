@@ -3,6 +3,11 @@ import { api } from '~/api';
 import type { Animal } from '~/api/animals/types';
 import type { Quote } from '~/api/quotes/types';
 
+definePageMeta({
+  pageTitle: 'Наши хвостики',
+  pageTitleIcon: 'animals',
+})
+
 const pagination = reactive({
   page: 0,
   pageCount: 0,
@@ -117,8 +122,6 @@ const handlePageChange = (page: number) => {
 
 <style lang="scss">
 .animals-page {
-  padding: 60px 0;
-
   &__pagination {
     display: flex;
     align-items: center;

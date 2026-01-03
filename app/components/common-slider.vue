@@ -203,7 +203,7 @@ const slides = computed<Slide[]>(() => {
   &__slider {
     margin: 0 0 20px;
 
-    @media (min-width: $mq-xs) {
+    @media (min-width: $mq-sm) {
       margin: 0 0 30px;
     }
   }

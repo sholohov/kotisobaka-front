@@ -153,7 +153,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
     color: var(--color-white);
     flex-wrap: wrap;
 
-    @media (min-width: $mq-xs) {
+    @media (min-width: $mq-sm) {
       gap: 20px;
     }
   }
@@ -175,7 +175,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
     display: flex;
     flex: 1 1 100%;
 
-    @media (min-width: $mq-xs) {
+    @media (min-width: $mq-sm) {
       flex: 1;
     }
   }
@@ -250,7 +250,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
       }
     }
 
-    @media (min-width: $mq-xs) {
+    @media (min-width: $mq-sm) {
       flex: 1;
     }
 
@@ -291,7 +291,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
   &__info {
     flex: 1 1 100%;
 
-    @media (min-width: $mq-xs) {
+    @media (min-width: $mq-sm) {
       flex: 1;
     }
   }

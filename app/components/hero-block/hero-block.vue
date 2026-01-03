@@ -75,11 +75,11 @@ const { isMobileView } = useBreakpoint()
     align-items: center;
     height: 620px;
 
-    @media (min-width: $mq-xxs) {
+    @media (min-width: $mq-xs) {
       height: 580px;
     }
 
-    @media (min-width: $mq-xs) {
+    @media (min-width: $mq-sm) {
       height: 580px;
     }
 
@@ -100,7 +100,7 @@ const { isMobileView } = useBreakpoint()
     position: absolute;
     inset: 64px 0 auto;
 
-    @media (min-width: $mq-xs) {
+    @media (min-width: $mq-sm) {
       inset: 80px 0 auto;
     }
 
@@ -116,11 +116,11 @@ const { isMobileView } = useBreakpoint()
     width: 100%;
     height: auto;
 
-    @media (min-width: $mq-xxs) {
+    @media (min-width: $mq-xs) {
       inset: 420px 0 auto 0;
     }
 
-    @media (min-width: $mq-xs) {
+    @media (min-width: $mq-sm) {
       inset: auto 0 0 0;
     }
   }
@@ -132,7 +132,7 @@ const { isMobileView } = useBreakpoint()
     position: absolute;
     inset: 460px 0 auto 0;
 
-    @media (min-width: $mq-xxs) {
+    @media (min-width: $mq-xs) {
       margin: 5vw 0 0;
     }
 
@@ -152,7 +152,7 @@ const { isMobileView } = useBreakpoint()
     z-index: 2;
     text-transform: uppercase;
 
-    @media (min-width: $mq-xs) {
+    @media (min-width: $mq-sm) {
       font-size: 45px;
     }
 
@@ -178,7 +178,7 @@ const { isMobileView } = useBreakpoint()
     position: absolute;
     inset: 550px 0 auto 0;
 
-    @media (min-width: $mq-xxs) {
+    @media (min-width: $mq-xs) {
       top: 520px;
     }
 

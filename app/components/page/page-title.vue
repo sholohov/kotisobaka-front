@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const route = useRoute()
-const { navigation } = useAppConfig()
 
 const icons: Record<string, { color: string, component: Component }> = {
   animals: {
@@ -9,13 +8,8 @@ const icons: Record<string, { color: string, component: Component }> = {
   },
 }
 
-const title = computed(() => {
-  const found = navigation.find(i => i.key === route.name)
-
-  return found?.label ?? ''
-})
-
-const icon = computed(() => icons[String(route.name)])
+const title = computed(() => route.meta.pageTitle ?? '')
+const icon = computed(() => icons[route.meta.pageTitleIcon ?? ''])
 </script>
 
 <template>
@@ -41,21 +35,45 @@ const icon = computed(() => icons[String(route.name)])
 .page-title {
   $this: '.page-title';
 
-  margin: 60px 0 0;
+  margin: 60px 0;
+
+  @media (min-width: $mq-sm) {
+    margin: 80px 0;
+  }
+
+  @media (min-width: $mq-md) {
+    margin: 110px 0;
+  }
+
+  @media (min-width: $mq-lg) {
+    margin: 130px 0;
+  }
 
   &__inner {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 10px;
+
+    @media (min-width: $mq-sm) {
+      flex-direction: row;
+    }
+
+    @media (min-width: $mq-md) {
+      gap: 20px;
+    }
+
+    @media (min-width: $mq-lg) {
+      gap: 40px;
+    }
   }
 
   &__icon-wrapper {
     position: relative;
     padding: 8px;
-    width: 88px;
-    height: 88px;
-    margin: 0 0 10px;
+    width: 100px;
+    height: 100px;
     border-radius: 24px;
     overflow: hidden;
     color: v-bind('icon?.color');
@@ -66,6 +84,18 @@ const icon = computed(() => icons[String(route.name)])
       inset: 0;
       background-color: v-bind('icon?.color');
       opacity: 0.6;
+    }
+
+    @media (min-width: $mq-md) {
+      padding: 12px;
+      width: 160px;
+      height: 160px;
+    }
+
+    @media (min-width: $mq-lg) {
+      padding: 14px;
+      width: 200px;
+      height: 200px;
     }
   }
 
@@ -87,6 +117,22 @@ const icon = computed(() => icons[String(route.name)])
     color: var(--color-pink-dark);
     text-transform: uppercase;
     line-height: 1;
+    max-width: 320px;
+
+    @media (min-width: $mq-sm) {
+      text-align: left;
+    }
+
+    @media (min-width: $mq-md) {
+      text-align: left;
+      font-size: 70px;
+      max-width: 450px;
+    }
+
+    @media (min-width: $mq-lg) {
+      font-size: 100px;
+      max-width: 700px;
+    }
   }
 }
 </style>

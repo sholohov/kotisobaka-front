@@ -37,17 +37,17 @@ const props = defineProps({
   }
 
   &:not(#{$this}--no-padding) {
-    padding-left: $container-padding-xxs;
-    padding-right: $container-padding-xxs;
-
-    @media (min-width: $mq-xxs) {
-      padding-left: $container-padding-xxs;
-      padding-right: $container-padding-xxs;
-    }
+    padding-left: $container-padding-xs;
+    padding-right: $container-padding-xs;
 
     @media (min-width: $mq-xs) {
       padding-left: $container-padding-xs;
       padding-right: $container-padding-xs;
+    }
+
+    @media (min-width: $mq-sm) {
+      padding-left: $container-padding-sm;
+      padding-right: $container-padding-sm;
     }
 
     @media (min-width: $mq-lg) {

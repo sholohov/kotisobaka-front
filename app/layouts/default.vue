@@ -135,10 +135,10 @@ function handleClickOverlay() {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  padding: 0 0 calc(30px + $container-padding-xxs);
+  padding: 0 0 calc(30px + $container-padding-xs);
 
-  @media (min-width: $mq-xs) {
-    padding: 0 0 calc(30px + $container-padding-xs);
+  @media (min-width: $mq-sm) {
+    padding: 0 0 calc(30px + $container-padding-sm);
   }
 
   @media (min-width: $mq-lg) {

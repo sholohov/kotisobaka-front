@@ -175,7 +175,7 @@ const items: ItemProps[] = [
       background-color: var(--color-blue-light);
     }
 
-    @media (min-width: $mq-xs) {
+    @media (min-width: $mq-sm) {
       flex-direction: row;
       align-items: stretch;
     }
@@ -204,7 +204,7 @@ const items: ItemProps[] = [
       opacity: 0.5;
     }
 
-    @media (min-width: $mq-xs) {
+    @media (min-width: $mq-sm) {
       flex-direction: row;
       margin: 0 16px 0 0;
       padding: 0 16px 0 0;
@@ -252,7 +252,7 @@ const items: ItemProps[] = [
     line-height: 1.2;
     text-transform: uppercase;
 
-    @media (min-width: $mq-xs) {
+    @media (min-width: $mq-sm) {
       max-width: 220px;
     }
 
@@ -301,7 +301,7 @@ const items: ItemProps[] = [
     justify-content: space-between;
     flex: 1;
 
-    @media (min-width: $mq-xs) {
+    @media (min-width: $mq-sm) {
       align-items: center;
     }
   }

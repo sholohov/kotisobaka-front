@@ -97,7 +97,7 @@ function handleDonateBtn() {
 
   padding: 10px var(--scrollbar-width, 0) 10px 0;
 
-  @media (min-width: $mq-xs) {
+  @media (min-width: $mq-sm) {
     padding: 20px var(--scrollbar-width, 0) 20px 0;
   }
 

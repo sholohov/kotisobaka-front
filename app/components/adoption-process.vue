@@ -382,7 +382,7 @@ const getColorVar = (color: Color): string => {
 
     filter: brightness(70%);
 
-    @media (min-width: $mq-xs) {
+    @media (min-width: $mq-sm) {
       width: 256px;
       height: 256px;
     }

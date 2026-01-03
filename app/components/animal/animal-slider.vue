@@ -90,7 +90,7 @@ const quoteSlidePosition = computed(() => {
     justify-content: center;
     margin-top: 20px;
 
-    @media (min-width: $mq-xs) {
+    @media (min-width: $mq-sm) {
       margin-top: 30px;
     }
   }

@@ -73,10 +73,6 @@ function select(option: RadioOption) {
     margin: 0 4px 0 0;
     background-color: var(--color-white);
     transition: background-color 0.3s, border-color 0.3s;
-
-    &--checked {
-      border-color: var(--color-green-dark);
-    }
   }
 
   &__dot {

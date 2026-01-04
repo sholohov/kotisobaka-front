@@ -6,6 +6,10 @@ const icons: Record<string, { color: string, component: Component }> = {
     color: 'var(--color-pink)',
     component: defineAsyncComponent(() => import('~/assets/svg/page-title/cat-an-dog.svg')),
   },
+  stories: {
+    color: 'var(--color-pink)',
+    component: defineAsyncComponent(() => import('~/assets/svg/page-title/dog-and-man.svg')),
+  },
 }
 
 const title = computed(() => route.meta.pageTitle ?? '')
@@ -102,7 +106,7 @@ const icon = computed(() => icons[route.meta.pageTitleIcon ?? ''])
   &__icon {
     position: relative;
     width: 100%;
-    height: auto;
+    height: 100%;
     filter: brightness(0.4) saturate(150%);
     mask-image: linear-gradient(
         145deg,

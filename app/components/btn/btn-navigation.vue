@@ -2,8 +2,9 @@
 import ArrowDownIcon from '~/assets/svg/arrow-down-icon.svg';
 import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
 import type { ButtonNavigationProps } from '~/types/buttonNavigation';
+import { useRoute } from '#imports';
 
-defineProps({
+const props = defineProps({
   to: {
     type: String as PropType<ButtonNavigationProps['to']>,
     default: '',
@@ -12,12 +13,43 @@ defineProps({
     type: Array as PropType<Array<ButtonNavigationProps>>,
     default: () => [],
   },
-})
+});
+
+const route = useRoute();
+
+const isCurrentSectionActive = computed(() => {
+  if (isActive(props.to)) {
+    return true;
+  }
+
+  for (const item of props.items) {
+    if (isActive(item.to)) {
+      return true;
+    }
+
+    if (item.items) {
+      for (const subItem of item.items) {
+        if (isActive(subItem.to)) {
+          return true;
+        }
+      }
+    }
+  }
+
+  return false;
+});
+
+function isActive(path: string): boolean {
+  return route.path === path || route.path.startsWith(path + '/');
+}
 </script>
 
 <template>
   <div class="btn-navigation">
-    <div class="btn-navigation__btn">
+    <div
+      class="btn-navigation__btn"
+      :class="{ 'btn-navigation__btn--active': isCurrentSectionActive }"
+    >
       <nuxt-link :to="to">
         <slot />
       </nuxt-link>
@@ -62,6 +94,7 @@ defineProps({
               v-for="subItem in item.items"
               :key="subItem.key"
               class="btn-navigation__subitem"
+              :class="{ 'btn-navigation__subitem--active': isActive(subItem.to) }"
             >
               <nuxt-link
                 class="btn-navigation__subitem-link"
@@ -97,6 +130,10 @@ defineProps({
     &:hover {
       #{$this}__btn {
         background-color: var(--color-background-pink);
+
+        &--active {
+          background-color: var(--color-pink);
+        }
       }
 
       #{$this}__btn-arrow {
@@ -133,6 +170,15 @@ defineProps({
     cursor: pointer;
     transition: background-color 0.3s;
     white-space: nowrap;
+
+    &--active {
+      color: var(--color-white);
+      background-color: var(--color-pink-dark);
+
+      #{$this}__btn-arrow {
+        color: var(--color-white);
+      }
+    }
   }
 
   &__btn-arrow {
@@ -237,6 +283,15 @@ defineProps({
       inset: 0 100% 0 0;
       width: 10px;
       margin: 0 0 0 -10px;
+    }
+  }
+
+  &__subitem {
+    &--active {
+      #{$this}__subitem-link {
+        background-color: var(--color-background-pink);
+        color: var(--color-text-brown);
+      }
     }
   }
 

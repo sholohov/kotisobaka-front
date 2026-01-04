@@ -1,55 +1,30 @@
-<script setup lang="ts">
-import type { Quote } from '~/api/quotes/types'
-
-interface HasDocumentId {
-  documentId: string
-}
-
-interface HasId {
-  id: string | number
-}
-
-const props = defineProps({
-  items: {
-    type: Array as PropType<Array<HasDocumentId | HasId | unknown>>,
-    required: true,
-  },
-  quotes: {
-    type: Array as PropType<Quote[]>,
-    default: () => [],
-  },
-  quoteSlidePosition: {
-    type: Number,
-    default: 3,
-  },
-  quoteColors: {
-    type: Array as PropType<readonly string[]>,
-    default: () => ['green', 'purple', 'yellow', 'blue'] as const,
-  },
-  twoColumn: {
-    type: Boolean,
-    default: false,
-  },
-})
+<script setup lang="ts" generic="TItem, TInterspersed = TItem">
+const props = defineProps<{
+  items: TItem[]
+  interspersed?: TInterspersed[]
+  interspersedPosition?: number
+  interspersedColors?: readonly string[]
+  twoColumn?: boolean
+}>()
 
 interface GridItem {
   type: 'item'
-  data: HasDocumentId | HasId | unknown
+  data: TItem
 }
 
-interface GridQuote {
-  type: 'quote'
-  data: Quote & { color: string }
+interface GridInterspersed {
+  type: 'interspersed'
+  data: TInterspersed & { color: string }
 }
 
-type Cell = GridItem | GridQuote
+type Cell = GridItem | GridInterspersed
 
 defineSlots<{
-  default(props: { item: HasDocumentId | HasId | unknown }): unknown
-  quote?(props: { item: Quote & { color: string } }): unknown
+  default(props: { item: TItem }): unknown
+  interspersed?(props: { item: TInterspersed & { color: string } }): unknown
 }>()
 
-const getItemId = (item: HasDocumentId | HasId | unknown): string => {
+const getItemId = (item: unknown): string => {
   if (item && typeof item === 'object') {
     if ('documentId' in item && typeof item.documentId === 'string') {
       return `doc-${item.documentId}`
@@ -66,29 +41,32 @@ const getItemId = (item: HasDocumentId | HasId | unknown): string => {
 const cells = computed<Cell[]>(() => {
   const result: Cell[] = []
   let colorIndex = 0
+  const interspersed = props.interspersed ?? []
+  const interspersedPosition = props.interspersedPosition ?? 3
+  const interspersedColors = props.interspersedColors ?? ['green', 'purple', 'yellow', 'blue'] as const
 
-  if (props.quotes && props.quotes.length > 0) {
+  if (interspersed.length > 0) {
     props.items.forEach((item, index) => {
       result.push({ type: 'item', data: item })
 
-      if ((index + 1) % props.quoteSlidePosition === 0) {
-        const randomQuote = props.quotes[Math.floor(Math.random() * props.quotes.length)]
+      if ((index + 1) % interspersedPosition === 0) {
+        const randomItem = interspersed[Math.floor(Math.random() * interspersed.length)]
         // гарантируем строку, даже если массив цветов пуст
-        const color = props.quoteColors[colorIndex % props.quoteColors.length] ?? 'green'
+        const color = interspersedColors[colorIndex % interspersedColors.length] ?? 'green'
 
-        if (randomQuote) {
-          result.push({ type: 'quote', data: { ...randomQuote, color } })
-          colorIndex = (colorIndex + 1) % Math.max(props.quoteColors.length, 1)
+        if (randomItem) {
+          result.push({ type: 'interspersed', data: { ...randomItem, color } })
+          colorIndex = (colorIndex + 1) % Math.max(interspersedColors.length, 1)
         }
       }
     })
 
-    if (props.items.length < props.quoteSlidePosition) {
-      const randomQuote = props.quotes[Math.floor(Math.random() * props.quotes.length)]
-      const color = props.quoteColors[colorIndex % props.quoteColors.length] ?? 'green'
+    if (props.items.length < interspersedPosition) {
+      const randomItem = interspersed[Math.floor(Math.random() * interspersed.length)]
+      const color = interspersedColors[colorIndex % interspersedColors.length] ?? 'green'
 
-      if (randomQuote) {
-        result.push({ type: 'quote', data: { ...randomQuote, color } })
+      if (randomItem) {
+        result.push({ type: 'interspersed', data: { ...randomItem, color } })
       }
     }
   } else {
@@ -104,7 +82,7 @@ const cells = computed<Cell[]>(() => {
     <div class="common-grid__inner">
       <div
         v-for="cell in cells"
-        :key="cell.type === 'item' ? getItemId(cell.data) : `quote-${getItemId(cell.data)}`"
+        :key="cell.type === 'item' ? getItemId(cell.data) : `interspersed-${getItemId(cell.data)}`"
         class="common-grid__col"
         :class="{ 'common-grid__col--two-column': twoColumn }"
       >
@@ -114,8 +92,8 @@ const cells = computed<Cell[]>(() => {
           :item="cell.data"
         />
         <slot
-          v-else-if="cell.type === 'quote' && $slots.quote"
-          name="quote"
+          v-else-if="cell.type === 'interspersed' && $slots.interspersed"
+          name="interspersed"
           :item="cell.data"
         />
       </div>

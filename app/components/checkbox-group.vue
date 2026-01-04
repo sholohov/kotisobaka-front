@@ -74,12 +74,12 @@ function toggle(option: CheckboxOption) {
   &__marker {
     width: 24px;
     height: 24px;
-    border-radius: 50%;
+    border-radius: 6px;
     border: 1px solid var(--color-pink-dark);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 4px 0 0;
+    margin: 0 4px;
     color: var(--color-white);
     background-color: var(--color-white);
     transition: background-color 0.3s;

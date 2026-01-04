@@ -126,16 +126,16 @@ function handleOpenFiltersModalBtn() {
       <content-box v-if="availableAnimals?.data && pageData">
         <common-grid
           :items="availableAnimals.data"
-          :quotes="pageData.quotes.data"
+          :interspersed="pageData.quotes.data"
         >
-          <template #default="{ item: animal }: { item: Animal }">
+          <template #default="{ item: animal }">
             <animal-card
               :animal="animal"
               class="animal-slider__card"
             />
           </template>
 
-          <template #quote="{ item: quote }: { item: Quote & { color: string } }">
+          <template #interspersed="{ item: quote }">
             <quote-card
               :color="quote.color"
               :quote="quote"

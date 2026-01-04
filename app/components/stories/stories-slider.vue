@@ -26,14 +26,14 @@ defineProps({
 
       <div class="stories-slider__link">
         <btn-default
-          to="/stories"
+          to="/about/stories"
           color="green"
           style="width: 240px"
         >
           Все истории
         </btn-default>
         <btn-default
-          to="/stories"
+          to="/about/stories"
           color="green"
           circle
         >

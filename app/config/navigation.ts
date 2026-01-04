@@ -9,7 +9,7 @@ export const navigation = [{
     to: '/about/docs',
     key: 'about-docs',
   }, {
-    label: 'Истории успеха',
+    label: 'Счастливые истории',
     to: '/about/stories',
     key: 'about-stories',
   }],

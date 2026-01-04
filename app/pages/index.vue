@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { api } from '~/api';
-import AnimalSlider from '~/components/animal/animal-slider.vue';
+import AnimalListSlider from '~/components/animal/animal-list-slider.vue';
 
 const { data: pageData } = await useAsyncData('home-page', async () => {
   const [
@@ -90,7 +90,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
       anchor="available_animals"
       title="Наши хвостики"
     >
-      <animal-slider
+      <animal-list-slider
         :animals="pageData.availableAnimals"
         :quotes="pageData.quotes"
       />
@@ -107,7 +107,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
       anchor="need_help"
       title="Срочно нужна помощь!"
     >
-      <animal-slider
+      <animal-list-slider
         is-need-help
         :animals="pageData.fundsIsNeededAnimals"
         :quotes="pageData.quotes"

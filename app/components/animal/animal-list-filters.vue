@@ -86,10 +86,10 @@ function getAgeOptions(species: Animal['species'] | null): RadioOption[] {
 </script>
 
 <template>
-  <div class="animal-filters">
-    <ul class="animal-filters__list">
-      <li class="animal-filters__item">
-        <div class="animal-filters__item-label">
+  <div class="animal-list-filters">
+    <ul class="animal-list-filters__list">
+      <li class="animal-list-filters__item">
+        <div class="animal-list-filters__item-label">
           Возраст
         </div>
         <radio-group
@@ -98,8 +98,8 @@ function getAgeOptions(species: Animal['species'] | null): RadioOption[] {
         />
       </li>
 
-      <li class="animal-filters__item">
-        <div class="animal-filters__item-label">
+      <li class="animal-list-filters__item">
+        <div class="animal-list-filters__item-label">
           Пол
         </div>
         <radio-group
@@ -108,8 +108,8 @@ function getAgeOptions(species: Animal['species'] | null): RadioOption[] {
         />
       </li>
 
-      <li class="animal-filters__item">
-        <div class="animal-filters__item-label">
+      <li class="animal-list-filters__item">
+        <div class="animal-list-filters__item-label">
           Совместимость
         </div>
         <checkbox-group
@@ -118,8 +118,8 @@ function getAgeOptions(species: Animal['species'] | null): RadioOption[] {
         />
       </li>
 
-      <li class="animal-filters__item">
-        <div class="animal-filters__item-label">
+      <li class="animal-list-filters__item">
+        <div class="animal-list-filters__item-label">
           Особые потребности
         </div>
         <radio-group
@@ -128,8 +128,8 @@ function getAgeOptions(species: Animal['species'] | null): RadioOption[] {
         />
       </li>
 
-      <li class="animal-filters__item">
-        <div class="animal-filters__item-label">
+      <li class="animal-list-filters__item">
+        <div class="animal-list-filters__item-label">
           Подходит новичкам
         </div>
         <radio-group
@@ -139,8 +139,8 @@ function getAgeOptions(species: Animal['species'] | null): RadioOption[] {
       </li>
     </ul>
 
-    <div class="animal-filters__actions">
-      <div class="animal-filters__actions-item">
+    <div class="animal-list-filters__actions">
+      <div class="animal-list-filters__actions-item">
         <btn-default
           style="color: var(--color-pink-dark)"
           @click="handleResetBtn"
@@ -148,7 +148,7 @@ function getAgeOptions(species: Animal['species'] | null): RadioOption[] {
           Сбросить
         </btn-default>
       </div>
-      <div class="animal-filters__actions-item">
+      <div class="animal-list-filters__actions-item">
         <btn-default
           color="blue"
           @click="handleApplyBtn"
@@ -168,8 +168,8 @@ function getAgeOptions(species: Animal['species'] | null): RadioOption[] {
 </template>
 
 <style lang="scss">
-.animal-filters {
-  $this: '.animal-filters';
+.animal-list-filters {
+  $this: '.animal-list-filters';
 
   &__list {
     list-style: none;

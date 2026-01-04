@@ -2,7 +2,6 @@
 import type { Animal } from '~/api/animals/types'
 import type { Quote } from '~/api/quotes/types'
 import PawIcon from '~/assets/svg/paw-icon.svg'
-import { BREAKPOINT_CONFIG } from '~/constants/breakpoints';
 
 const props = defineProps({
   animals: {
@@ -32,7 +31,7 @@ const quoteSlidePosition = computed(() => {
 </script>
 
 <template>
-  <div class="animal-slider">
+  <div class="animal-list-slider">
     <content-box>
       <common-slider
         :items="animals"
@@ -43,7 +42,7 @@ const quoteSlidePosition = computed(() => {
         <template #default="{ slide: animal }">
           <animal-card
             :animal="animal"
-            class="animal-slider__card"
+            class="animal-list-slider__card"
           />
         </template>
 
@@ -52,14 +51,14 @@ const quoteSlidePosition = computed(() => {
             :color="quote.color"
             :quote="quote"
             :is-health="isNeedHelp"
-            class="animal-slider__card"
+            class="animal-list-slider__card"
           />
         </template>
       </common-slider>
 
       <div
         v-if="!hideLink"
-        class="animal-slider__link"
+        class="animal-list-slider__link"
       >
         <btn-default
           to="/animals"
@@ -81,8 +80,8 @@ const quoteSlidePosition = computed(() => {
 </template>
 
 <style lang="scss">
-.animal-slider {
-  $this: ".animal-slider";
+.animal-list-slider {
+  $this: ".animal-list-slider";
 
   &__link {
     display: flex;

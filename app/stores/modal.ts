@@ -3,7 +3,7 @@ import type { AnimalsFilters } from '~/helpers/filters/animals';
 export type ModalPropsMap = {
   'donate-with-qr': null
   'donate-with-guide': null
-  'animal-filters': {
+  'animal-list-filters': {
     filters: AnimalsFilters
     reset(): void
     apply(filters: AnimalsFilters): void

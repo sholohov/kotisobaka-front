@@ -72,7 +72,7 @@ function handlePageChange(page: number) {
 }
 
 function handleOpenFiltersModalBtn() {
-  modalStore.open('animal-filters', {
+  modalStore.open('animal-list-filters', {
     filters,
     apply(changedFilters: typeof filters) {
       Object.assign(filters, changedFilters)
@@ -93,7 +93,7 @@ function handleOpenFiltersModalBtn() {
       anchor="need_help"
       title="Нуждаются в помощи"
     >
-      <animal-slider
+      <animal-list-slider
         is-need-help
         hide-link
         :animals="pageData.fundsIsNeededAnimals.data"

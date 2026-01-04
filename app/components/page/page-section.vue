@@ -9,12 +9,9 @@
       class="page-section__anchor"
     />
 
-    <content-box>
+    <content-box v-if="title || $slots['header-end']">
       <div class="page-section__header">
-        <h2
-          v-if="title"
-          class="page-section__title"
-        >
+        <h2 class="page-section__title">
           {{ title }}
         </h2>
         <slot name="header-end" />

@@ -4,6 +4,7 @@ import type { Animal } from '~/api/animals/types';
 import type { Quote } from '~/api/quotes/types';
 import type { RadioOption } from '~/types/formElements';
 import FilterIcon from '~/assets/svg/filter-icon.svg'
+import { makeAnimalsFilters } from '~/helpers/filters/animals';
 
 definePageMeta({
   pageTitle: 'Наши хвостики',
@@ -17,10 +18,7 @@ const pagination = reactive({
   pageCount: 0,
 })
 
-const filters = reactive({
-  species: null as Animal['species'] | null,
-  age: null as string | null,
-})
+const filters = reactive(makeAnimalsFilters())
 
 const filterOptions: RadioOption[] = [
   { value: null, key: 'all', label: 'Все' },
@@ -29,17 +27,19 @@ const filterOptions: RadioOption[] = [
 ]
 
 const { data: availableAnimals } = await useAsyncData('available-animals', async () => {
-  const { species, age } = filters
-  const ageRange = parseAgeRange(age ?? '0-now')
-
-  console.log(111, ageRange)
+  const { species, age, gender, compatibility, beginners } = filters
 
   return api.animals.get({
     populate: ['photo'],
     filters: {
       animalStatus: { $eq: 'available' },
       species: species ? { $eq: species } : undefined,
-      birthDate: age ? { $between: ageRange } : undefined,
+      birthDate: age ? { $between: parseAgeRange(age ?? '0-now') } : undefined,
+      gender: gender ? { $eq: gender } : undefined,
+      goodWithChildren: compatibility.includes('children') ? { $eq: true } : undefined,
+      goodWithCats: compatibility.includes('cat') ? { $eq: true } : undefined,
+      goodWithDogs: compatibility.includes('dog') ? { $eq: true } : undefined,
+      forBeginners: beginners ? { $eq: true } : undefined,
     },
     sort: ['priorityAdoption:desc'],
     pagination: {
@@ -75,11 +75,14 @@ function handlePageChange(page: number) {
 
 function handleOpenFiltersModalBtn() {
   modalStore.open('animal-filters', {
+    filters,
     apply(changedFilters: typeof filters) {
       Object.assign(filters, changedFilters)
+      modalStore.close()
     },
     reset() {
-      console.log('animal-filters: reset')
+      Object.assign(filters, makeAnimalsFilters())
+      modalStore.close()
     },
   })
 }
@@ -172,6 +175,7 @@ function handleOpenFiltersModalBtn() {
     flex-wrap: wrap;
 
     @media (min-width: $mq-sm) {
+      flex: none;
       flex-wrap: nowrap;
     }
   }

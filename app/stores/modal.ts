@@ -1,16 +1,24 @@
+import type { AnimalsFilters } from '~/helpers/filters/animals';
+
 export type ModalPropsMap = {
   'donate-with-qr': null
   'donate-with-guide': null
   'animal-filters': {
-    reset(): void,
-    apply(filters: unknown): void
+    filters: AnimalsFilters
+    reset(): void
+    apply(filters: AnimalsFilters): void
   }
 }
 
+interface State {
+  name: keyof ModalPropsMap | null
+  props: ModalPropsMap[keyof ModalPropsMap] | null
+}
+
 export const useModalStore = defineStore('modal', () => {
-  const state = reactive({
-    name: null as keyof ModalPropsMap | null,
-    props: null as ModalPropsMap[keyof ModalPropsMap] | null,
+  const state = reactive<State>({
+    name: null,
+    props: null,
   })
 
   const isOpen = computed(() => state.name !== null)

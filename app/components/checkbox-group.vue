@@ -48,8 +48,9 @@ function toggle(option: CheckboxOption) {
 
 <style lang="scss">
 .checkbox-group {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 8px;
 
   &__item {
@@ -99,6 +100,7 @@ function toggle(option: CheckboxOption) {
     font-size: 16px;
     font-weight: 400;
     color: var(--color-text-brown);
+    white-space: nowrap;
   }
 }
 </style>

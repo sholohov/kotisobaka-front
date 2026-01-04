@@ -39,8 +39,9 @@ function select(option: RadioOption) {
 
 <style lang="scss">
 .radio-group {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
+  flex-wrap: wrap;
   gap: 8px;
 
   &__item {
@@ -90,6 +91,7 @@ function select(option: RadioOption) {
     font-size: 16px;
     font-weight: 400;
     color: var(--color-text-brown);
+    white-space: nowrap;
   }
 }
 </style>

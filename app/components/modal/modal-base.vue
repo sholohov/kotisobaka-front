@@ -69,13 +69,13 @@ function handleCloseBtn() {
   $this: '.modal-base';
 
   position: absolute;
-  inset: 0;
+  inset: 60px 0 0;
   display: flex;
   align-items: end;
   justify-content: center;
   pointer-events: none;
 
-  @media (min-width: $mq-lg) {
+  @media (min-width: $mq-md) {
     padding: 10px;
     align-items: center;
   }
@@ -90,9 +90,9 @@ function handleCloseBtn() {
     pointer-events: auto;
     background-color: var(--color-background-pink);
 
-    @media (min-width: $mq-lg) {
+    @media (min-width: $mq-md) {
       border-radius: 24px;
-      padding: 16px;
+      padding: 30px;
     }
   }
 
@@ -102,9 +102,11 @@ function handleCloseBtn() {
     position: relative;
     display: flex;
     flex-direction: column;
+    border-bottom: 1px solid var(--color-white);
 
-    @media (min-width: $mq-lg) {
+    @media (min-width: $mq-md) {
       flex-direction: row;
+      align-items: center;
     }
   }
 
@@ -117,10 +119,10 @@ function handleCloseBtn() {
     font-size: 20px;
     line-height: 1;
     color: var(--color-pink-dark);
-    border-bottom: 1px solid var(--color-white);
     white-space: nowrap;
 
-    @media (min-width: $mq-lg) {
+    @media (min-width: $mq-md) {
+      padding: 0;
       font-size: 30px;
     }
 
@@ -152,7 +154,7 @@ function handleCloseBtn() {
       background-color: var(--color-pink-dark);
     }
 
-    @media (min-width: $mq-lg) {
+    @media (min-width: $mq-md) {
       order: 0;
       color: var(--color-text-chocolate);
       width: 44px;

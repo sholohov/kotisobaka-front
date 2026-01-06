@@ -99,12 +99,14 @@ function handleCloseBtn() {
   &__header {
     flex: 0 0 auto;
     padding: 0 0 10px;
+    margin: 0 0 10px;
     position: relative;
     display: flex;
     flex-direction: column;
     border-bottom: 1px solid var(--color-white);
 
     @media (min-width: $mq-md) {
+      margin: 0 0 20px;
       flex-direction: row;
       align-items: center;
     }

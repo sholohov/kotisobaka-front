@@ -50,7 +50,6 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    '/uploads/**': { proxy: 'http://localhost:1337/uploads/**' },
     '/cms/**': { proxy: 'http://127.0.0.1:1337/**' },
   },
 

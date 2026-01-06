@@ -1,20 +1,8 @@
 <script setup lang="ts">
-import HeartIcon from '~/assets/svg/heart-icon.svg'
-import HeartRoundIcon from '~/assets/svg/heart-round-icon.svg'
-import HomeIcon from '~/assets/svg/home-icon.svg'
-import HealthIcon from '~/assets/svg/health-icon.svg'
-
 import type { Animal } from '~/api/animals/types';
 import { BREAKPOINT_CONFIG } from '~/constants/breakpoints';
 
-interface AnimalInfo {
-  key: string,
-  label: string,
-  value: string | number,
-  tooltip?: string,
-}
-
-const props = defineProps({
+defineProps({
   animal: {
     type: Object as PropType<Animal>,
     required: true,
@@ -22,6 +10,7 @@ const props = defineProps({
 })
 
 const { screenWidth } = useBreakpoint()
+const { isMobileView } = useBreakpoint()
 
 const fundsSegments = computed(() => {
   if (screenWidth.value < BREAKPOINT_CONFIG.laptop.min) {
@@ -35,50 +24,10 @@ const fundsSegments = computed(() => {
   return 40
 })
 
-const { isMobileView } = useBreakpoint()
-const favoritesStore = useFavoritesStore()
-
-const tooltipText = computed(() => {
-  return favoritesStore.has(props.animal.documentId) ? 'Удалить из избранного' : 'Добавить в избранное'
-})
-
-const animalGender = computed((): string => {
-  return props.animal.gender === 'male' ? 'мальчик' : 'девочка'
-})
-
-const animalInfo = computed(() => {
-  const { birthDate, sterilized, gender } = props.animal
-
-  const list: AnimalInfo[] = [{
-    key: 'age',
-    label: 'возраст',
-    tooltip: formatDate(birthDate),
-    value: getAge(birthDate, true),
-  }, {
-    key: 'gender',
-    label: 'пол',
-    value: animalGender.value,
-  }]
-
-  if (!isMobileView.value) {
-    list.push({
-      key: 'sterilized',
-      label: gender === 'male' ? 'кастр.' : 'стерил.',
-      value: sterilized ? 'да' : 'нет',
-    })
-  }
-
-  return list
-})
-
 function truncate(text: string, maxLength = 100) {
   if (!text || text.length <= maxLength) return text
 
   return text.slice(0, maxLength)
-}
-
-function handleToggleFavoriteBtn() {
-  favoritesStore.toggle(props.animal.documentId)
 }
 
 </script>
@@ -102,25 +51,11 @@ function handleToggleFavoriteBtn() {
       </div>
     </div>
 
-    <div class="animal-card__info">
-      <div
-        v-for="animalInfoItem in animalInfo"
-        :key="animalInfoItem.key"
-        class="animal-card__info-item"
-      >
-        <tooltip-box
-          position="top-left"
-          :text="animalInfoItem?.tooltip || ''"
-        >
-          <div class="animal-card__info-item__value">
-            {{ animalInfoItem.value }}
-          </div>
-        </tooltip-box>
-        <div class="animal-card__info-label">
-          {{ animalInfoItem.label }}
-        </div>
-      </div>
-    </div>
+    <animal-info
+      class="animal-card__info"
+      :animal="animal"
+      :short="isMobileView"
+    />
 
     <fundraising-bar
       v-if="animal.fundsIsNeeded"
@@ -137,54 +72,7 @@ function handleToggleFavoriteBtn() {
     />
 
     <div class="animal-card__actions">
-      <tooltip-box
-        :text="tooltipText"
-        position="bottom-left"
-      >
-        <btn-default
-          class="animal-card__actions-btn"
-          style="color: var(--color-orange)"
-          circle
-          @click="handleToggleFavoriteBtn"
-        >
-          <heart-icon
-            v-if="favoritesStore.has(animal.documentId)"
-            width="24"
-          />
-          <heart-round-icon
-            v-else
-            width="24"
-          />
-        </btn-default>
-      </tooltip-box>
-
-      <tooltip-box
-        v-if="animal.animalStatus === 'available'"
-        text="Ищу дом"
-        position="bottom-left"
-      >
-        <btn-default
-          class="animal-card__actions-btn animal-card__actions-btn--no-click"
-          style="color: var(--color-green-dark)"
-          circle
-        >
-          <home-icon width="24" />
-        </btn-default>
-      </tooltip-box>
-
-      <tooltip-box
-        v-if="animal.animalStatus === 'under_treatment'"
-        text="Помоги мне"
-        position="bottom-left"
-      >
-        <btn-default
-          style="color: var(--color-orange)"
-          class="animal-card__actions-btn animal-card__actions-btn--no-click"
-          circle
-        >
-          <health-icon width="24" />
-        </btn-default>
-      </tooltip-box>
+      <animal-actions :animal="animal" />
     </div>
   </div>
 </template>
@@ -269,7 +157,7 @@ function handleToggleFavoriteBtn() {
   }
 
   &__info {
-    display: flex;
+    padding: 10px;
     border-top: 1px solid var(--color-background-pink);
   }
 

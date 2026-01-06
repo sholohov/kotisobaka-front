@@ -4,7 +4,7 @@ import type { AnimalResponse, AnimalData } from './types'
 import { strapi } from '../client'
 
 export interface GetAnimalParams {
-  id: string
+  id?: string
   params?: Strapi5RequestParams<AnimalData>
 }
 

@@ -109,7 +109,7 @@ function handleDonateBtn() {
   }
 
   &__logo-link {
-    background-color: var(--color-white-dark);
+    background-color: var(--color-text-beige);
     border: 1px solid var(--color-beige-light);
     width: 44px;
     height: 44px;
@@ -129,12 +129,12 @@ function handleDonateBtn() {
     &:not([href]) {
       pointer-events: none;
       cursor: default;
-      background-color: var(--color-white-dark);
+      background-color: var(--color-text-beige);
       transition: none;
     }
 
     &:not([href]):hover {
-      background-color: var(--color-white-dark);
+      background-color: var(--color-text-beige);
     }
   }
 

@@ -77,7 +77,7 @@ defineProps({
     font-weight: 900;
     letter-spacing: 0;
     text-transform: uppercase;
-    color: var(--color-text-brown-light);
+    color: var(--color-text-beige);
     margin: 0 0 10px;
   }
 

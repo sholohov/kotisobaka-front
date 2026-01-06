@@ -33,12 +33,6 @@ const props = defineProps({
   },
 })
 
-declare module 'vue' {
-  interface GlobalComponents {
-    CommonSlider: typeof props
-  }
-}
-
 interface SlideItem {
   type: 'item'
   data: HasDocumentId | HasId | unknown
@@ -195,6 +189,10 @@ const slides = computed<Slide[]>(() => {
 <style lang="scss">
 .common-slider {
   $this: ".common-slider";
+
+  ::part(container) {
+    overflow: visible;
+  }
 
   &__inner {
     position: relative;

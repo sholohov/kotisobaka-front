@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PiggyBankIcon from '~/assets/svg/piggy-bank-Icon.svg';
+import PiggyBankIcon from '~/assets/svg/piggy-bank-icon.svg';
 import CoinIcon from '~/assets/svg/coin-icon.svg';
 
 const emit = defineEmits(['click'])

@@ -2,7 +2,7 @@ export const BREAKPOINT_NAMES = {
   MOBILE: 'mobile',
   TABLET_SMALL: 'tablet-small',
   TABLET: 'tablet',
-  LAPTOP_SMALL: 'laptop-small', // новый
+  LAPTOP_SMALL: 'laptop-small',
   LAPTOP: 'laptop',
   DESKTOP: 'desktop',
 } as const

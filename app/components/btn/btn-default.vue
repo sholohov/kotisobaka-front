@@ -3,7 +3,7 @@ import { NuxtLink } from '#components';
 
 const props = defineProps({
   color: {
-    type: String as PropType<'white' | 'blue' | 'green' | 'yellow'>,
+    type: String as PropType<'white' | 'blue' | 'green' | 'yellow' | 'orange'>,
     default: '',
   },
   size: {
@@ -95,7 +95,7 @@ const formattedBadge = computed(() => {
   cursor: pointer;
   border-radius: calc(v-bind(sizePx) / 2);
   transition: all 0.3s ease;
-  background-color: var(--color-white-dark);
+  background-color: var(--color-text-beige);
   color: var(--color-text-brown);
 
   &__text {
@@ -145,12 +145,12 @@ const formattedBadge = computed(() => {
   }
 
   &--white {
-    background-color: var(--color-white-dark);
+    background-color: var(--color-text-beige);
     border-color: var(--color-beige-light);
     color: var(--color-text-brown);
 
     &#{$this}--no-border {
-      border-color: var(--color-white-dark);
+      border-color: var(--color-text-beige);
     }
   }
 
@@ -190,6 +190,20 @@ const formattedBadge = computed(() => {
     background-color: var(--color-yellow);
     border-color: var(--color-brown-darken);
     color: var(--color-brown-darkest);
+
+    &#{$this}--no-border {
+      border-color: var(--color-yellow);
+    }
+  }
+
+  &--orange {
+    background-color: var(--color-orange);
+    border-color: var(--color-white);
+    color: var(--color-white);
+
+    &#{$this}--no-border {
+      border-color: var(--color-orange);
+    }
   }
 
   &--circle {

@@ -22,7 +22,7 @@ body {
   font-family: Nunito, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   line-height: 1.5;
   color: var(--color-text-brown);
-  background-color: var(--color-bg);
+  background-color: var(--color-background-beige);
   overflow-x: hidden;
 }
 
@@ -72,8 +72,4 @@ a {
 
 #__nuxt {
   display: contents;
-}
-
-swiper-container::part(container) {
-  overflow: visible;
 }

@@ -69,6 +69,10 @@ const { isMobile, isTabletSmall } = useBreakpoint()
 .rescue-stats {
   $his: '.rescue-stats';
 
+  ::part(container) {
+    overflow: visible;
+  }
+
   &__slide {
     width: 270px;
   }

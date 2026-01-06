@@ -79,7 +79,7 @@ const raisedTitle = computed(() => {
   &__info {
     position: relative;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: stretch;
     font-size: 16px;
     color: var(--color-text-chocolate);

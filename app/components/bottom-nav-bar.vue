@@ -97,7 +97,7 @@ function handleTabClick(item: ItemProps) {
   $this: '.bottom-nav-bar';
 
   height: 50px;
-  background-color: var(--color-white-dark);
+  background-color: var(--color-text-beige);
   filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.15));
 
   &__list {

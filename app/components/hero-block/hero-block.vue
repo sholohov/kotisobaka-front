@@ -148,7 +148,7 @@ const { isMobileView } = useBreakpoint()
     font-size: 32px;
     font-weight: 900;
     text-shadow: 0 0 6px var(--color-text-chocolate);
-    color: var(--color-white-dark);
+    color: var(--color-text-beige);
     z-index: 2;
     text-transform: uppercase;
 

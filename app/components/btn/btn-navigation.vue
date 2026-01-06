@@ -165,7 +165,7 @@ function isActive(path: string): boolean {
     padding: 0 14px;
     color: var(--color-text-brown);
     border-radius: calc($size / 2);
-    background-color: var(--color-white-dark);
+    background-color: var(--color-text-beige);
     border: 1px solid var(--color-beige-light);
     cursor: pointer;
     transition: background-color 0.3s;
@@ -204,7 +204,7 @@ function isActive(path: string): boolean {
     list-style: none;
     margin: 0;
     padding: 10px 0;
-    background-color: var(--color-white-dark);
+    background-color: var(--color-text-beige);
     border-radius: calc(36px / 2);
     border: 1px solid var(--color-beige-light);
   }
@@ -231,7 +231,7 @@ function isActive(path: string): boolean {
     height: $size;
     padding: 0 14px;
     color: var(--color-text-brown);
-    background-color: var(--color-white-dark);
+    background-color: var(--color-text-beige);
     cursor: pointer;
     transition: background-color 0.3s;
 
@@ -269,7 +269,7 @@ function isActive(path: string): boolean {
     opacity: 0;
     transform: translateX(-10px);
     transition: opacity 0.3s, transform 0.3s;
-    background-color: var(--color-white-dark);
+    background-color: var(--color-text-beige);
     border: 1px solid var(--color-beige-light);
     border-radius: calc($size / 2);
     padding: 10px 0;

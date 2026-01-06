@@ -32,7 +32,10 @@ defineProps({
 <style lang="scss">
 .hero-block-slider-mobile {
   $this: '.hero-block-slider-mobile';
-  overflow: visible;
+
+  &::part(container) {
+    overflow: visible;
+  }
 
   &__slide {
     margin: auto;

@@ -125,7 +125,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
             </li>
           </ul>
 
-          <nuxt-link class="page-footer__email">
+          <div class="page-footer__email">
             <span class="page-footer__email-title">
               email:
             </span>
@@ -135,7 +135,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
             >
               info@kotisobaka.by
             </nuxt-link>
-          </nuxt-link>
+          </div>
         </div>
       </div>
     </content-box>
@@ -254,9 +254,13 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
       flex: 1;
     }
 
+    @media (min-width: $mq-md) {
+      flex: 1;
+      order: 0;
+    }
+
     @media (min-width: $mq-lg) {
       flex: 2;
-      order: 0;
     }
   }
 

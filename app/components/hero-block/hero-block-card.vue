@@ -47,7 +47,7 @@ defineProps({
   height: 366px;
   padding: 14px;
   flex-direction: column;
-  background-color: var(--color-white-dark);
+  background-color: var(--color-text-beige);
   overflow: hidden;
   border-radius: 24px;
   box-shadow: 0 0 6px var(--color-text-chocolate);

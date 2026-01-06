@@ -29,7 +29,7 @@ export interface AnimalData {
   sterilized: boolean
   vaccinated: boolean
   photo: SingleMedia
-  gallery?: MultipleMedia | null
+  gallery: MultipleMedia
   description: string
   featuresNotes?: string
   healthNotes?: string
@@ -39,9 +39,10 @@ export interface AnimalData {
   fundsAmountTarget?: number
   fundsAmountCollected?: number
   fundsOpenedAt?: string
+  fundsReason?: string
   metaTitle?: string
   metaDescription?: string
-  curator?: Strapi5ResponseData<MemberData> | null
+  curator: Strapi5ResponseData<MemberData>
 }
 
 export type Animal = Strapi5ResponseData<AnimalData>

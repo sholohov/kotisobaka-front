@@ -17,15 +17,15 @@ export interface AnimalData {
   weightKg?: number
   birthDate: string
   arrivalDate: string
-  color?: string
-  breed?: string
+  color: string
+  breed: string
   animalStatus: 'available' | 'under_treatment' | 'trial_period' | 'adopted'
-  priorityAdoption: number
-  goodWithChildren: boolean
-  goodWithCats: boolean
-  goodWithDogs: boolean
-  forBeginners: boolean
-  specialNeeds: boolean
+  priorityAdoption?: number
+  goodWithChildren?: boolean
+  goodWithCats?: boolean
+  goodWithDogs?: boolean
+  forBeginners?: boolean
+  specialNeeds?: boolean
   sterilized: boolean
   vaccinated: boolean
   photo: SingleMedia

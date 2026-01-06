@@ -44,14 +44,14 @@ export default defineNuxtConfig({
   },
 
   strapi: {
-    url: 'http://localhost:1337',
-    version: 'v5',
+    url: '/cms',
     prefix: '/api',
+    version: 'v5',
   },
 
   routeRules: {
     '/uploads/**': { proxy: 'http://localhost:1337/uploads/**' },
-    '/api/cms/**': { proxy: 'http://localhost:1337/api/**' },
+    '/cms/**': { proxy: 'http://127.0.0.1:1337/**' },
   },
 
   compatibilityDate: '2025-07-15',

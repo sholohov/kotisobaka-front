@@ -52,6 +52,7 @@ export default defineNuxtConfig({
   routeRules: {
     '/cms/api/**': { proxy: 'http://127.0.0.1:1337/api/**' },
     '/upload/**': { proxy: 'http://127.0.0.1:1337/upload/**' },
+    '/cms/**': { proxy: 'http://127.0.0.1:1337/admin/**' },
   },
 
   compatibilityDate: '2025-07-15',

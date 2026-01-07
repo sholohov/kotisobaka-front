@@ -41,6 +41,7 @@ const getItemId = (item: unknown): string => {
 const cells = computed<Cell[]>(() => {
   const result: Cell[] = []
   let colorIndex = 0
+  let interspersedIndex = 0
   const interspersed = props.interspersed ?? []
   const interspersedPosition = props.interspersedPosition ?? 3
   const interspersedColors = props.interspersedColors ?? ['green', 'purple', 'yellow', 'blue'] as const
@@ -50,23 +51,29 @@ const cells = computed<Cell[]>(() => {
       result.push({ type: 'item', data: item })
 
       if ((index + 1) % interspersedPosition === 0) {
-        const randomItem = interspersed[Math.floor(Math.random() * interspersed.length)]
-        // гарантируем строку, даже если массив цветов пуст
+        const interspersedItem = interspersed[interspersedIndex % interspersed.length]
         const color = interspersedColors[colorIndex % interspersedColors.length] ?? 'green'
 
-        if (randomItem) {
-          result.push({ type: 'interspersed', data: { ...randomItem, color } })
+        if (interspersedItem) {
+          result.push({
+            type: 'interspersed',
+            data: { ...interspersedItem, color },
+          })
           colorIndex = (colorIndex + 1) % Math.max(interspersedColors.length, 1)
+          interspersedIndex = (interspersedIndex + 1) % interspersed.length
         }
       }
     })
 
-    if (props.items.length < interspersedPosition) {
-      const randomItem = interspersed[Math.floor(Math.random() * interspersed.length)]
+    if (props.items.length < interspersedPosition && interspersed.length > 0) {
+      const interspersedItem = interspersed[interspersedIndex % interspersed.length]
       const color = interspersedColors[colorIndex % interspersedColors.length] ?? 'green'
 
-      if (randomItem) {
-        result.push({ type: 'interspersed', data: { ...randomItem, color } })
+      if (interspersedItem) {
+        result.push({
+          type: 'interspersed',
+          data: { ...interspersedItem, color },
+        })
       }
     }
   } else {

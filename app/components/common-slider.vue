@@ -70,8 +70,8 @@ const getSlideId = (slide: HasDocumentId | HasId | unknown): string => {
 const slides = computed<Slide[]>(() => {
   const result: Slide[] = []
   let colorIndex = 0
+  let quoteIndex = 0
 
-  // Если есть цитаты, чередуем их с элементами
   if (props.quotes && props.quotes.length > 0) {
     props.items.forEach((item, index) => {
       result.push({
@@ -79,43 +79,39 @@ const slides = computed<Slide[]>(() => {
         data: item,
       })
 
-      // Вставляем цитату через каждые quoteSlidePosition элементов
       if ((index + 1) % props.quoteSlidePosition === 0) {
-        const randomIndex = Math.floor(Math.random() * props.quotes.length)
-        const randomQuote = props.quotes[randomIndex]
+        const quote = props.quotes[quoteIndex % props.quotes.length]
         const color = props.quoteColors[colorIndex % props.quoteColors.length]
 
-        if (randomQuote && color) {
+        if (quote && color) {
           result.push({
             type: 'quote',
             data: {
-              ...randomQuote,
+              ...quote,
               color,
             },
           })
           colorIndex = (colorIndex + 1) % props.quoteColors.length
+          quoteIndex = (quoteIndex + 1) % props.quotes.length
         }
       }
     })
 
-    // Если элементов меньше quoteSlidePosition, добавляем цитату в конец
-    if (props.items.length < props.quoteSlidePosition) {
-      const randomIndex = Math.floor(Math.random() * props.quotes.length)
-      const randomQuote = props.quotes[randomIndex]
+    if (props.items.length < props.quoteSlidePosition && props.quotes.length > 0) {
+      const quote = props.quotes[quoteIndex % props.quotes.length]
       const color = props.quoteColors[colorIndex % props.quoteColors.length]
 
-      if (randomQuote && color) {
+      if (quote && color) {
         result.push({
           type: 'quote',
           data: {
-            ...randomQuote,
+            ...quote,
             color,
           },
         })
       }
     }
   } else {
-    // Если цитат нет, просто возвращаем все элементы
     return props.items.map(item => ({
       type: 'item' as const,
       data: item,
@@ -124,7 +120,6 @@ const slides = computed<Slide[]>(() => {
 
   return result
 })
-
 </script>
 
 <template>

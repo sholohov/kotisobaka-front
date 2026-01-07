@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import PawIcon from '~/assets/svg/paw-icon.svg'
-import type { Animal } from '~/api/animals/types';
+import type { AnimalData } from '~/api/animals/types';
 
 defineProps({
   items: {
-    type: Array as PropType<Animal[]>,
+    type: Array as PropType<AnimalData[]>,
     required: true,
   },
 })

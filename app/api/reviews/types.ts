@@ -6,16 +6,16 @@ import type {
 
 import type { SingleMedia } from '../types'
 
-export interface ReviewData {
+export interface Review {
   name: string
   date: string
   text: string
-  photo: SingleMedia
+  photo?: SingleMedia | null
   priority: number
   showOnMain: boolean
   tag: 'cat' | 'dog'
 }
 
-export type Review = Strapi5ResponseData<ReviewData>
-export type ReviewResponse = Strapi5ResponseSingle<ReviewData>
-export type ReviewsResponse = Strapi5ResponseMany<ReviewData>
+export type ReviewData = Strapi5ResponseData<Review>
+export type ReviewResponse = Strapi5ResponseSingle<Review>
+export type ReviewsResponse = Strapi5ResponseMany<Review>

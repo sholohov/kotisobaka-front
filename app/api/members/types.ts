@@ -4,20 +4,20 @@ import type {
   Strapi5ResponseMany,
 } from '@nuxtjs/strapi'
 
-import type { AnimalData } from '../animals/types'
-import type { ArticleData } from '../articles/types'
+import type { Article } from '../articles/types'
 import type { SingleMedia } from '../types'
+import type { Animal } from '~/api/animals/types';
 
-export interface MemberData {
-  photo: SingleMedia
+export interface Member {
+  photo?: SingleMedia | null
   firstName: string
   lastName?: string
   phone: string
   bio?: string
-  animals?: Strapi5ResponseData<AnimalData>[]
-  articles?: Strapi5ResponseData<ArticleData>[]
+  animals?: Strapi5ResponseData<Animal>[] | null
+  articles?: Strapi5ResponseData<Article>[] | null
 }
 
-export type Member = Strapi5ResponseData<MemberData>
-export type MemberResponse = Strapi5ResponseSingle<MemberData>
-export type MembersResponse = Strapi5ResponseMany<MemberData>
+export type MemberData = Strapi5ResponseData<Member>
+export type MemberResponse = Strapi5ResponseSingle<Member>
+export type MembersResponse = Strapi5ResponseMany<Member>

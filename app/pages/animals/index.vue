@@ -50,6 +50,8 @@ const { data: availableAnimals } = await useAsyncData('available-animals', async
   deep: true,
 })
 
+const colors = ['green', 'purple', 'yellow', 'blue']
+
 const { data: pageData } = await useAsyncData('animals-page', async () => {
   const [quotes, fundsIsNeededAnimals] = await Promise.all([
     api.quotes.get(),
@@ -133,9 +135,9 @@ function handleOpenFiltersModalBtn() {
             />
           </template>
 
-          <template #interspersed="{ item: quote }">
+          <template #interspersed="{ item: quote, index }">
             <quote-card
-              :color="quote.color"
+              :color="colors[index] || 'green'"
               :quote="quote"
               class="animal-slider__card"
             />

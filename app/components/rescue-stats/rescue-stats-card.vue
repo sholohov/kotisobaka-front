@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Statistic } from '~/api/statistic/types';
+import type { StatisticData } from '~/api/statistic/types';
 
 const icons = {
   adoptedPets: defineAsyncComponent(() => import('~/assets/svg/rescue-stats/man-and-cat.svg')),
@@ -19,7 +19,7 @@ type ResultObj<T> = { key: keyof T; value: T[keyof T]; };
 
 defineProps({
   card: {
-    type: Object as PropType<ResultObj<Statistic>>,
+    type: Object as PropType<ResultObj<StatisticData>>,
     required: true,
   },
 });

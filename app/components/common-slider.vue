@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg'
-import type { Quote } from '~/api/quotes/types'
+import type { QuoteData } from '~/api/quotes/types'
 
 interface HasDocumentId {
   documentId: string
@@ -16,7 +16,7 @@ const props = defineProps({
     required: true,
   },
   quotes: {
-    type: Array as PropType<Quote[]>,
+    type: Array as PropType<QuoteData[]>,
     default: () => [],
   },
   quoteSlidePosition: {
@@ -40,14 +40,14 @@ interface SlideItem {
 
 interface SlideQuote {
   type: 'quote'
-  data: Quote & { color: string }
+  data: QuoteData & { color: string }
 }
 
 type Slide = SlideItem | SlideQuote
 
 defineSlots<{
   default(props: { slide: HasDocumentId | HasId | unknown }): unknown
-  quote?(props: { slide: Quote & { color: string } }): unknown
+  quote?(props: { slide: QuoteData & { color: string } }): unknown
 }>()
 
 const sliderRef = ref(null)

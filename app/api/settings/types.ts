@@ -4,9 +4,9 @@ import type {
 } from '@nuxtjs/strapi'
 
 /** Поля настроек */
-export interface SettingsData {
+export interface Settings {
   isTechnicalWorks: boolean
 }
 
-export type Settings = Strapi5ResponseData<SettingsData>
-export type SettingsResponse = Strapi5ResponseSingle<SettingsData>
+export type SettingsData = Strapi5ResponseData<Settings>
+export type SettingsResponse = Strapi5ResponseSingle<Settings>

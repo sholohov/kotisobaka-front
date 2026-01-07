@@ -3,12 +3,12 @@ import type {
   Strapi5ResponseSingle,
 } from '@nuxtjs/strapi'
 
-export interface StatisticData {
+export interface Statistic {
   adoptedPets: number
   savedLives: number
   yearsOfCare: number
   patientsInTreatment: number
 }
 
-export type Statistic = Strapi5ResponseData<StatisticData>
-export type StatisticResponse = Strapi5ResponseSingle<StatisticData>
+export type StatisticData = Strapi5ResponseData<Statistic>
+export type StatisticResponse = Strapi5ResponseSingle<Statistic>

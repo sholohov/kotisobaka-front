@@ -1,10 +1,10 @@
 import type { Strapi5RequestParams } from '@nuxtjs/strapi'
 
-import type { QuotesResponse, QuoteData } from './types'
+import type { QuotesResponse, Quote } from './types'
 import { strapi } from '../client'
 
 export const get = async (
-  params?: Strapi5RequestParams<QuoteData>,
+  params?: Strapi5RequestParams<Quote>,
 ): Promise<QuotesResponse> => {
-  return strapi.find<QuoteData>('quotes', params)
+  return strapi.find<Quote>('quotes', params)
 }

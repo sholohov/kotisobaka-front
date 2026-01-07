@@ -16,7 +16,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     api.heroAnimal.get({
       populate: {
         animals: {
-          populate: '*',
+          populate: ['photo'],
         },
       },
     }),
@@ -50,7 +50,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     }),
     api.articles.get({
       sort: ['publishedDate:asc'],
-      populate: ['coverImage'],
+      populate: ['coverImage', 'tag'],
     }),
     api.partners.get({
       populate: ['logo', 'link'],

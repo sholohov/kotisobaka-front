@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type { Animal } from '~/api/animals/types'
-import type { Quote } from '~/api/quotes/types'
+import type { AnimalData } from '~/api/animals/types'
+import type { QuoteData } from '~/api/quotes/types'
 import PawIcon from '~/assets/svg/paw-icon.svg'
 
 const props = defineProps({
   animals: {
-    type: Array as PropType<Animal[]>,
+    type: Array as PropType<AnimalData[]>,
     required: true,
   },
   quotes: {
-    type: Array as PropType<Quote[]>,
+    type: Array as PropType<QuoteData[]>,
     required: true,
   },
   hideLink: {

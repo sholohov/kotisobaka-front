@@ -1,15 +1,15 @@
-import type { AnimalData } from '~/api/animals/types';
+import type { ArticleData } from '~/api/articles/types';
 
-export interface AnimalsFilters {
-  species: AnimalData['species'] | null
+export interface ArticlesFilters {
+  species: ArticleData['species'] | null
   age: string | null
-  gender: AnimalData['gender'] | null
+  gender: ArticleData['gender'] | null
   compatibility: ('cat' | 'dog' | 'children')[]
   specialNeeds: boolean | null
   beginners: boolean | null
 }
 
-export function makeAnimalsFilters(): AnimalsFilters {
+export function makeArticlesFilters(): ArticlesFilters {
   return {
     species: null,
     age: null,

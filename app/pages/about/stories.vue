@@ -22,7 +22,7 @@ const iconCards: {
 
 const { data: storiesResponse } = await useAsyncData('stories-page', () => {
   return api.reviews.get({
-    populate: 'photo',
+    populate: ['photo'],
   })
 })
 </script>

@@ -1,10 +1,10 @@
 import type { Strapi5RequestParams } from '@nuxtjs/strapi'
 
-import type { PartnersResponse, PartnerData } from './types'
+import type { PartnersResponse, Partner } from './types'
 import { strapi } from '../client'
 
 export const get = async (
-  params?: Strapi5RequestParams<PartnerData>,
+  params?: Strapi5RequestParams<Partner>,
 ): Promise<PartnersResponse> => {
-  return strapi.find<PartnerData>('partners', params)
+  return strapi.find<Partner>('partners', params)
 }

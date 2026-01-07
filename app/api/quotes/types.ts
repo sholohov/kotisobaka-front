@@ -7,7 +7,7 @@ import type {
 /**
  * Интерфейс для сущности "Цитата" (quotes).
  */
-export interface QuoteData {
+export interface Quote {
   /**
    * Хэштег (строка).
    * Обязательное поле.
@@ -23,6 +23,6 @@ export interface QuoteData {
   text: string;
 }
 
-export type Quote = Strapi5ResponseData<QuoteData>
-export type QuoteResponse = Strapi5ResponseSingle<QuoteData>
-export type QuotesResponse = Strapi5ResponseMany<QuoteData>
+export type QuoteData = Strapi5ResponseData<Quote>
+export type QuoteResponse = Strapi5ResponseSingle<Quote>
+export type QuotesResponse = Strapi5ResponseMany<Quote>

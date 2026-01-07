@@ -1,58 +1,12 @@
 <script setup lang="ts">
-import type { Article } from '~/api/articles/types';
+import type { ArticleData } from '~/api/articles/types';
 
 const props = defineProps({
   article: {
-    type: Object as PropType<Article>,
+    type: Object as PropType<ArticleData>,
     required: true,
   },
 })
-
-export type ArticleTag = NonNullable<Article['tag']>
-
-export interface TagConfig {
-  id: ArticleTag
-  label: string
-  color: string
-}
-
-const TAGS_CONFIG: Record<ArticleTag, TagConfig> = {
-  cat: {
-    id: 'cat',
-    label: 'Кошки',
-    color: 'orange',
-  },
-  dog: {
-    id: 'dog',
-    label: 'Собаки',
-    color: 'blue',
-  },
-  news: {
-    id: 'news',
-    label: 'Новости',
-    color: 'green',
-  },
-  stories: {
-    id: 'stories',
-    label: 'Истории',
-    color: 'purple',
-  },
-  advice: {
-    id: 'advice',
-    label: 'Советы',
-    color: 'yellow',
-  },
-  help: {
-    id: 'help',
-    label: 'Помощь',
-    color: 'pink',
-  },
-  events: {
-    id: 'events',
-    label: 'События',
-    color: 'indigo',
-  },
-}
 
 const formatedDate = computed(() => {
   const { publishedDate } = props.article
@@ -72,8 +26,8 @@ const formatedDate = computed(() => {
     <div class="articles-card__header">
       <div class="articles-card__img-wrapper">
         <img
-          :src="article.coverImage.url"
-          :alt="article.coverImage.alternativeText || article.title"
+          :src="article.coverImage?.url"
+          :alt="article.coverImage?.alternativeText || article.title"
           class="articles-card__img"
         >
       </div>
@@ -87,22 +41,25 @@ const formatedDate = computed(() => {
       </div>
       <ul class="articles-card__tags">
         <li class="articles-card__tag">
-          {{ formatedDate }}
+          <span class="articles-card__tag-text">
+            {{ formatedDate }}
+          </span>
         </li>
         <li
           v-if="article.readingTime"
           class="articles-card__tag"
         >
-          {{ article.readingTime }} мин
+          <span class="articles-card__tag-text">
+            {{ article.readingTime }} мин
+          </span>
         </li>
         <li
           v-if="article.tag"
-          class="articles-card__tag"
-          :class="[
-            'articles-card__tag--' + TAGS_CONFIG[article.tag].color
-          ]"
+          class="articles-card__tag articles-card__tag--hash"
         >
-          #{{ TAGS_CONFIG[article.tag].label }}
+          <span class="articles-card__tag-text">
+            #{{ article.tag.name }}
+          </span>
         </li>
       </ul>
     </div>
@@ -120,6 +77,7 @@ const formatedDate = computed(() => {
 
   display: flex;
   flex-direction: column;
+  position: relative;
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
@@ -228,85 +186,21 @@ const formatedDate = computed(() => {
     padding: 2px 6px;
     overflow: hidden;
 
-    &::before {
-      content: '';
-      display: flex;
-      position: absolute;
-      inset: 0;
-      opacity: 0.2;
-    }
-
-    &--orange {
-      color: var(--color-orange-dark);
-      border: 1px solid var(--color-orange);
+    &--hash {
+      color: rgba(0,0,0,0.7);
 
       &::before {
-        background-color: var(--color-orange);
+        content: '';
+        display: flex;
+        position: absolute;
+        inset: 0;
+        background-color: v-bind('article.tag?.color');
       }
     }
+  }
 
-    &--blue {
-      color: var(--color-blue-dark);
-      border: 1px solid var(--color-blue);
-
-      &::before {
-        background-color: var(--color-blue);
-      }
-    }
-
-    &--green {
-      color: var(--color-green-dark);
-      border: 1px solid var(--color-green);
-
-      &::before {
-        background-color: var(--color-green);
-      }
-    }
-
-    &--purple {
-      color: var(--color-purple-dark);
-      border: 1px solid var(--color-purple);
-
-      &::before {
-        background-color: var(--color-purple);
-      }
-    }
-
-    &--yellow {
-      color: var(--color-yellow-dark);
-      border: 1px solid var(--color-yellow);
-
-      &::before {
-        background-color: var(--color-yellow);
-      }
-    }
-
-    &--pink {
-      color: var(--color-pink-dark);
-      border: 1px solid var(--color-pink);
-
-      &::before {
-        background-color: var(--color-pink);
-      }
-    }
-
-    &--indigo {
-      color: var(--color-indigo-dark);
-      border: 1px solid var(--color-indigo);
-
-      &::before {
-        background-color: var(--color-indigo);
-      }
-    }
-
-    &--cyan {
-      color: var(--color-cyan-dark);
-      border: 1px solid var(--color-cyan);
-
-      &::before {
-        background-color: var(--color-cyan);
-      }
-    }
+  &__tag-text {
+    position: relative;
   }
 
   &__link {

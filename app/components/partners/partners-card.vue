@@ -1,10 +1,10 @@
 <script setup lang="ts">
 
-import type { Partner } from '~/api/partners/types';
+import type { PartnerData } from '~/api/partners/types';
 
 defineProps({
   partner: {
-    type: Object as PropType<Partner>,
+    type: Object as PropType<PartnerData>,
     required: true,
   },
 })

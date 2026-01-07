@@ -3,7 +3,7 @@ import type { CheckboxOption, RadioOption } from '~/types/formElements';
 import PawIcon from '~/assets/svg/paw-icon.svg';
 import { type AnimalsFilters, makeAnimalsFilters } from '~/helpers/filters/animals';
 
-import type { Animal } from '~/api/animals/types'
+import type { AnimalData } from '~/api/animals/types'
 
 const props = defineProps({
   filters: {
@@ -55,7 +55,7 @@ function handleResetBtn() {
   emit('reset', localFilters)
 }
 
-function getAgeOptions(species: Animal['species'] | null): RadioOption[] {
+function getAgeOptions(species: AnimalData['species'] | null): RadioOption[] {
   if (species === 'dog') {
     return [
       { label: 'Все', value: null, key: '0' },

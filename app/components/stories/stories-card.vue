@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type { Review } from '~/api/reviews/types';
+import type { ReviewData } from '~/api/reviews/types';
 import HeartIcon from '~/assets/svg/heart-icon.svg'
 
 const props = defineProps({
   story: {
-    type: Object as PropType<Review>,
+    type: Object as PropType<ReviewData>,
     required: true,
   },
 })
 
-export type ReviewTag = NonNullable<Review['tag']>
+export type ReviewTag = NonNullable<ReviewData['tag']>
 
 export interface TagConfig {
   id: ReviewTag

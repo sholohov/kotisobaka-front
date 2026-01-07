@@ -3,7 +3,7 @@ const props = defineProps<{
   items: TItem[]
   interspersed?: TInterspersed[]
   interspersedPosition?: number
-  interspersedColors?: readonly string[]
+  interspersedStart?: number
   twoColumn?: boolean
 }>()
 
@@ -14,14 +14,14 @@ interface GridItem {
 
 interface GridInterspersed {
   type: 'interspersed'
-  data: TInterspersed & { color: string }
+  data: TInterspersed
 }
 
 type Cell = GridItem | GridInterspersed
 
 defineSlots<{
-  default(props: { item: TItem }): unknown
-  interspersed?(props: { item: TInterspersed & { color: string } }): unknown
+  default(props: { item: TItem, index: number }): unknown
+  interspersed?(props: { item: TInterspersed, index: number }): unknown
 }>()
 
 const getItemId = (item: unknown): string => {
@@ -40,39 +40,39 @@ const getItemId = (item: unknown): string => {
 
 const cells = computed<Cell[]>(() => {
   const result: Cell[] = []
-  let colorIndex = 0
   let interspersedIndex = 0
   const interspersed = props.interspersed ?? []
   const interspersedPosition = props.interspersedPosition ?? 3
-  const interspersedColors = props.interspersedColors ?? ['green', 'purple', 'yellow', 'blue'] as const
+  const interspersedStart = props.interspersedStart ?? interspersedPosition
 
   if (interspersed.length > 0) {
     props.items.forEach((item, index) => {
       result.push({ type: 'item', data: item })
 
-      if ((index + 1) % interspersedPosition === 0) {
+      const shouldInsert =
+        (index === interspersedStart - 1) ||
+        (index > interspersedStart - 1 && (index - (interspersedStart - 1)) % interspersedPosition === 0)
+
+      if (shouldInsert) {
         const interspersedItem = interspersed[interspersedIndex % interspersed.length]
-        const color = interspersedColors[colorIndex % interspersedColors.length] ?? 'green'
 
         if (interspersedItem) {
           result.push({
             type: 'interspersed',
-            data: { ...interspersedItem, color },
+            data: { ...interspersedItem },
           })
-          colorIndex = (colorIndex + 1) % Math.max(interspersedColors.length, 1)
           interspersedIndex = (interspersedIndex + 1) % interspersed.length
         }
       }
     })
 
-    if (props.items.length < interspersedPosition && interspersed.length > 0) {
+    if (props.items.length > 0 && props.items.length < interspersedStart && interspersed.length > 0) {
       const interspersedItem = interspersed[interspersedIndex % interspersed.length]
-      const color = interspersedColors[colorIndex % interspersedColors.length] ?? 'green'
 
       if (interspersedItem) {
         result.push({
           type: 'interspersed',
-          data: { ...interspersedItem, color },
+          data: { ...interspersedItem },
         })
       }
     }
@@ -88,7 +88,7 @@ const cells = computed<Cell[]>(() => {
   <div class="common-grid">
     <div class="common-grid__inner">
       <div
-        v-for="cell in cells"
+        v-for="(cell, index) in cells"
         :key="cell.type === 'item' ? getItemId(cell.data) : `interspersed-${getItemId(cell.data)}`"
         class="common-grid__col"
         :class="{ 'common-grid__col--two-column': twoColumn }"
@@ -97,11 +97,13 @@ const cells = computed<Cell[]>(() => {
           v-if="cell.type === 'item'"
           name="default"
           :item="cell.data"
+          :index="index"
         />
         <slot
           v-else-if="cell.type === 'interspersed' && $slots.interspersed"
           name="interspersed"
           :item="cell.data"
+          :index="index"
         />
       </div>
     </div>

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { Article } from '~/api/articles/types';
+import type { ArticleData } from '~/api/articles/types';
 import BlogIcon from '~/assets/svg/blog-icon.svg'
 
 defineProps({
   articles: {
-    type: Array as PropType<Article[]>,
+    type: Array as PropType<ArticleData[]>,
     required: true,
   },
 })

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { Partner } from '~/api/partners/types';
+import type { PartnerData } from '~/api/partners/types';
 import PawIcon from '~/assets/svg/paw-icon.svg';
 
 defineProps({
   partners: {
-    type: Array as PropType<Partner[]>,
+    type: Array as PropType<PartnerData[]>,
     required: true,
   },
 })

@@ -4,23 +4,25 @@ import type {
   Strapi5ResponseMany,
 } from '@nuxtjs/strapi'
 
-import type { MemberData } from '../members/types'
+import type { Member } from '../members/types'
 import type { SingleMedia, MultipleMedia } from '../types'
+import type { ArticleTag } from '~/api/articleTags/types';
 
 /** Поля статьи */
-export interface ArticleData {
+export interface Article {
   title: string
   slug: string
   excerpt: string
-  readingTime?: number
-  coverImage: SingleMedia
-  gallery: MultipleMedia
-  tag?: 'cat' | 'dog' | 'news' | 'stories' | 'advice' | 'help' | 'events'
+  readingTime: number
+  coverImage?: SingleMedia | null
+  gallery?: MultipleMedia | null
+  type: 'news' | 'blog'
+  tag?: Strapi5ResponseData<ArticleTag> | null
   content: string
-  author?: Strapi5ResponseData<MemberData> | null
-  publishedDate?: string
+  author?: Strapi5ResponseData<Member> | null
+  publishedDate: string
 }
 
-export type Article = Strapi5ResponseData<ArticleData>
-export type ArticleResponse = Strapi5ResponseSingle<ArticleData>
-export type ArticlesResponse = Strapi5ResponseMany<ArticleData>
+export type ArticleData = Strapi5ResponseData<Article>
+export type ArticleResponse = Strapi5ResponseSingle<Article>
+export type ArticlesResponse = Strapi5ResponseMany<Article>

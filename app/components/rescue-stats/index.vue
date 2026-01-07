@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import type { Statistic, StatisticData } from '~/api/statistic/types';
+import type { StatisticData, Statistic } from '~/api/statistic/types';
 
 const props = defineProps({
   stats: {
-    type: Object as PropType<Statistic>,
+    type: Object as PropType<StatisticData>,
     required: true,
   },
 })
 
-const items = computed((): { key: keyof StatisticData, value: number }[] => {
+const items = computed((): { key: keyof Statistic, value: number }[] => {
   return [{
     key: 'adoptedPets',
     value: props.stats.adoptedPets,

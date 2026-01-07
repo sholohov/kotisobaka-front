@@ -29,29 +29,45 @@ const rendered = computed(() => md.render(props.content || ''))
   h1 {
     font-size: 2rem;
     font-weight: 800;
-    margin: 0 0 0.5em;
+    margin: 1em 0 0.5em;
     color: var(--color-pink-dark);
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   h2 {
     font-size: 1.6rem;
     font-weight: 700;
-    margin: 0 0 0.5em;
+    margin: 1em 0 0.5em;
     color: var(--color-pink-dark);
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   h3 {
     font-size: 1.3rem;
     font-weight: 600;
-    margin: 0 0 0.4em;
+    margin: 0.8em 0 0.4em;
     color: var(--color-pink-dark);
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   h4 {
     font-size: 1.1rem;
     font-weight: 600;
-    margin: 0 0 0.3em;
+    margin: 0.6em 0 0.3em;
     color: var(--color-pink-dark);
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   strong, b {
@@ -73,7 +89,7 @@ const rendered = computed(() => md.render(props.content || ''))
 
   ul, ol {
     margin: 0 0 1em 1.5em;
-    padding: 0;
+    padding: 0 0 0 1em;
 
     & li::marker {
       color: var(--color-pink-dark);
@@ -94,15 +110,19 @@ const rendered = computed(() => md.render(props.content || ''))
   }
 
   blockquote {
+    display: block;
     position: relative;
-    color: var(--color-pink-dark);
+    color: var(--color-text-chocolate);
+    line-height: 1.2;
     font-weight: 700;
-    margin: 1em 0;
+    margin: 3em 0;
     font-size: 20px;
     text-transform: uppercase;
     font-style: normal;
-    border-left: 2px solid var(--color-pink-light);
-    padding: 0.5em 0 0.5em 1.5em;
+    background-color: var(--color-purple-light);
+    padding: 1.5em 2em;
+    border-radius: 24px;
+    text-indent: 2em
   }
 
   a {
@@ -140,7 +160,7 @@ const rendered = computed(() => md.render(props.content || ''))
   img {
     max-width: 100%;
     border-radius: 24px;
-    margin: 1em 0;
+    margin: 3em 0;
     display: block;
   }
 

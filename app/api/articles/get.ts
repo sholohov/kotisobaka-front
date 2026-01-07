@@ -1,11 +1,11 @@
 import type { Strapi5RequestParams } from '@nuxtjs/strapi'
 
-import type { ArticlesResponse, ArticleData } from './types'
+import type { ArticlesResponse, Article } from './types'
 import { strapi } from '../client'
 
 /** Получить список статей */
 export const get = async (
-  params?: Strapi5RequestParams<ArticleData>,
+  params?: Strapi5RequestParams<Article>,
 ): Promise<ArticlesResponse> => {
-  return strapi.find<ArticleData>('articles', params)
+  return strapi.find<Article>('articles', params)
 }

@@ -6,14 +6,14 @@ import type {
 
 import type { LinkComponent, SingleMedia } from '../types'
 
-export interface PartnerData {
+export interface Partner {
   name: string
-  logo: SingleMedia
-  link: LinkComponent
+  logo?: SingleMedia | null
+  link?: LinkComponent | null
   priority: number
   isActive: boolean
 }
 
-export type Partner = Strapi5ResponseData<PartnerData>
-export type PartnerResponse = Strapi5ResponseSingle<PartnerData>
-export type PartnersResponse = Strapi5ResponseMany<PartnerData>
+export type PartnerData = Strapi5ResponseData<Partner>
+export type PartnerResponse = Strapi5ResponseSingle<Partner>
+export type PartnersResponse = Strapi5ResponseMany<Partner>

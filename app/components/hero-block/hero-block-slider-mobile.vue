@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Animal } from '~/api/animals/types';
+import type { AnimalData } from '~/api/animals/types';
 
 defineProps({
   cards: {
-    type: Array as PropType<Animal[]>,
+    type: Array as PropType<AnimalData[]>,
     required: true,
   },
 })

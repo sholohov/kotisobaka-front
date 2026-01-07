@@ -1,5 +1,5 @@
 import { api } from '~/api'
-import type { SettingsData } from '~/api/settings/types'
+import type { Settings } from '~/api/settings/types'
 
 export const TECH_WORKS_COOKIE = 'tech_works_disabled'
 export const TECH_WORKS_QUERY_PARAM = 'tech_works_disabled'
@@ -12,7 +12,7 @@ export function useTechnicalWorks() {
   })
 
   const route = useRoute()
-  const settings = ref<SettingsData | null>()
+  const settings = ref<Settings | null>()
 
   const checkQueryParam = () => {
     const paramValue = route.query[TECH_WORKS_QUERY_PARAM]

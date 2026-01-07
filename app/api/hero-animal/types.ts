@@ -2,12 +2,11 @@ import type {
   Strapi5ResponseData,
   Strapi5ResponseSingle,
 } from '@nuxtjs/strapi'
+import type { Animal } from '~/api/animals/types';
 
-import type { AnimalData } from '../animals/types'
-
-export interface HeroAnimalData {
-  animals: Strapi5ResponseData<AnimalData>[]
+export interface HeroAnimal {
+  animals?: Strapi5ResponseData<Animal>[] | null
 }
 
-export type HeroAnimal = Strapi5ResponseData<HeroAnimalData>
-export type HeroAnimalResponse = Strapi5ResponseSingle<HeroAnimalData>
+export type HeroAnimalData = Strapi5ResponseData<HeroAnimal>
+export type HeroAnimalResponse = Strapi5ResponseSingle<HeroAnimal>

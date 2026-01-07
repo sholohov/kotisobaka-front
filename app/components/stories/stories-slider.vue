@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import PawIcon from '~/assets/svg/paw-icon.svg';
-import type { Review } from '~/api/reviews/types';
+import type { ReviewData } from '~/api/reviews/types';
 
 defineProps({
   stories: {
-    type: Array as PropType<Review[]>,
+    type: Array as PropType<ReviewData[]>,
     required: true,
   },
 })

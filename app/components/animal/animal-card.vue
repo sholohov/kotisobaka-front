@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { Animal } from '~/api/animals/types';
+import type { AnimalData } from '~/api/animals/types';
 import { BREAKPOINT_CONFIG } from '~/constants/breakpoints';
 
 defineProps({
   animal: {
-    type: Object as PropType<Animal>,
+    type: Object as PropType<AnimalData>,
     required: true,
   },
 })

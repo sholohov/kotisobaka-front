@@ -10,6 +10,10 @@ const icons: Record<string, { color: string, component: Component }> = {
     color: 'var(--color-pink)',
     component: defineAsyncComponent(() => import('~/assets/svg/page-title/dog-and-man.svg')),
   },
+  articles: {
+    color: 'var(--color-green)',
+    component: defineAsyncComponent(() => import('~/assets/svg/page-title/hungry-cat.svg')),
+  },
 }
 
 const title = computed(() => route.meta.pageTitle ?? '')
@@ -118,10 +122,11 @@ const icon = computed(() => icons[route.meta.pageTitleIcon ?? ''])
     text-align: center;
     font-size: 45px;
     font-weight: 900;
-    color: var(--color-pink-dark);
     text-transform: uppercase;
     line-height: 1;
     max-width: 320px;
+    color: v-bind('icon?.color');
+    filter: brightness(0.75) saturate(150%);
 
     @media (min-width: $mq-sm) {
       text-align: left;

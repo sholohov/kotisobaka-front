@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Animal } from '~/api/animals/types';
+import type { AnimalData } from '~/api/animals/types';
 
 interface AnimalInfo {
   key: string,
@@ -10,7 +10,7 @@ interface AnimalInfo {
 
 const props = defineProps({
   animal: {
-    type: Object as PropType<Animal>,
+    type: Object as PropType<AnimalData>,
     required: true,
   },
   full: {

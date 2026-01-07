@@ -4,11 +4,11 @@ import type {
   Strapi5ResponseMany,
 } from '@nuxtjs/strapi'
 
-import type { MemberData } from '../members/types'
 import type { MultipleMedia, SingleMedia } from '../types'
+import type { Member } from '~/api/members/types';
 
 /** Поля животного */
-export interface AnimalData {
+export interface Animal {
   name: string
   slug: string
   internalId?: string
@@ -28,8 +28,8 @@ export interface AnimalData {
   specialNeeds?: boolean
   sterilized: boolean
   vaccinated: boolean
-  photo: SingleMedia
-  gallery: MultipleMedia
+  photo?: SingleMedia | null
+  gallery?: MultipleMedia | null
   description: string
   featuresNotes?: string
   healthNotes?: string
@@ -42,9 +42,9 @@ export interface AnimalData {
   fundsReason?: string
   metaTitle?: string
   metaDescription?: string
-  curator: Strapi5ResponseData<MemberData>
+  curator?: Strapi5ResponseData<Member> | null
 }
 
-export type Animal = Strapi5ResponseData<AnimalData>
-export type AnimalResponse = Strapi5ResponseSingle<AnimalData>
-export type AnimalsResponse = Strapi5ResponseMany<AnimalData>
+export type AnimalData = Strapi5ResponseData<Animal>
+export type AnimalResponse = Strapi5ResponseSingle<Animal>
+export type AnimalsResponse = Strapi5ResponseMany<Animal>

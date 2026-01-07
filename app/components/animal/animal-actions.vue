@@ -4,11 +4,11 @@ import HeartRoundIcon from '~/assets/svg/heart-round-icon.svg'
 import HomeIcon from '~/assets/svg/home-icon.svg'
 import HealthIcon from '~/assets/svg/health-icon.svg'
 
-import type { Animal } from '~/api/animals/types'
+import type { AnimalData } from '~/api/animals/types'
 
 const props = defineProps({
   animal: {
-    type: Object as PropType<Animal>,
+    type: Object as PropType<AnimalData>,
     required: true,
   },
 })

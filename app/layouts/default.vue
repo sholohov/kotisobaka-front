@@ -81,6 +81,23 @@ function handleClickOverlay() {
     </header>
 
     <main class="layout-default__main">
+      <svg style="position:absolute; width:0; height:0;">
+        <filter
+          id="noise"
+        >
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.8"
+            numOctaves="2"
+          />
+          <feDisplacementMap
+            in="SourceGraphic"
+            scale="10"
+            in2=""
+          />
+        </filter>
+      </svg>
+
       <page-title />
       <nuxt-page />
     </main>

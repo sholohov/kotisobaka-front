@@ -127,15 +127,12 @@ function truncate(text: string, maxLength = 100) {
   &__name {
     font-size: 22px;
     font-weight: 800;
-    margin: 0 0 2px;
 
     @media (min-width: $mq-lg) {
-      margin: 0 0 4px;
       font-size: 22px;
     }
 
     @media (min-width: $mq-xl) {
-      margin: 0 0 6px;
       font-size: 24px;
     }
   }

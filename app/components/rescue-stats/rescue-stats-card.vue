@@ -79,6 +79,10 @@ defineProps({
     text-transform: uppercase;
     color: var(--color-text-beige);
     margin: 0 0 10px;
+
+    @media (min-width: $mq-lg) {
+      font-size: 70px;
+    }
   }
 
   &__icon {
@@ -90,12 +94,16 @@ defineProps({
 
   &__text {
     color: var(--color-text-brown);
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 700;
     line-height: 1.2;
     text-align: center;
     text-transform: uppercase;
     max-width: 220px;
+
+    @media (min-width: $mq-lg) {
+      font-size: 24px;
+    }
   }
 }
 </style>

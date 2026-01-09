@@ -78,7 +78,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     v-if="pageData"
     class="home-page"
   >
-    <page-section>
+    <page-section v-if="pageData.heroAnimals.animals">
       <hero-block :items="pageData.heroAnimals.animals" />
     </page-section>
 
@@ -89,6 +89,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     <page-section
       anchor="available_animals"
       title="Наши хвостики"
+      right-padding
     >
       <animal-list-slider
         :animals="pageData.availableAnimals"
@@ -106,6 +107,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     <page-section
       anchor="need_help"
       title="Срочно нужна помощь!"
+      right-padding
     >
       <animal-list-slider
         is-need-help
@@ -124,6 +126,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     <page-section
       anchor="articles"
       title="Блог и новости"
+      right-padding
     >
       <articles-slider
         :articles="pageData.articles"
@@ -134,12 +137,14 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     <page-section
       anchor="partners"
       title="Наши партнёры"
+      right-padding
     >
       <partners-slider :partners="pageData.partners" />
     </page-section>
     <page-section
       anchor="stories"
       title="Счастливые истории"
+      right-padding
     >
       <stories-slider :stories="pageData.reviews" />
     </page-section>

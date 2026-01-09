@@ -54,7 +54,7 @@ defineProps({
 
   @media (min-width: $mq-xxl) {
     width: 350px;
-    height: 450px;
+    height: 445px;
     padding: 20px;
   }
 

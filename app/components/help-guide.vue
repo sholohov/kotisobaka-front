@@ -16,11 +16,8 @@ const items: ItemProps[] = [
     color: 'green',
     title: 'Взять питомца',
     description: [
-      `Вы не просто выбираете питомца — вы спасаете жизнь.
-      За каждым из этих глаз стоит история, часто — с горьким прошлым.
+      `Вы не просто выбираете питомца — вы спасаете жизнь. За каждым из этих глаз стоит история, часто — с горьким прошлым.
       Но именно вы можете стать для него супергероем, который подарит новую, счастливую главу.`,
-      `Вы дадите ему не только крышу над головой, но и главное — любовь, преданность и друга на всю жизнь.
-      Ваш дом наполнится радостью, мурлыканьем и вилянием хвоста. Подарите себе и ему это счастье.`,
     ],
     motivation: 'Станьте героем для того, кто в вас нуждается',
     link: '/animals',
@@ -30,10 +27,9 @@ const items: ItemProps[] = [
     color: 'pink',
     title: 'Стать волонтёром',
     description: [
-      `Наша работа держится на любви, а её так много в ваших сердцах.
-      Ваше время — это бесценный ресурс, который может подарить животному надежду.`,
-      `Вы можете выгулять собаку, подарив ей несколько часов радости, приласкать кошку, чтобы она снова научилась доверять,
-      или помочь на мероприятиях, находя им новых хозяев.`,
+      'Ваше время — это бесценный ресурс, который может подарить животному надежду.',
+      `Вы можете выгулять собаку, подарив ей несколько часов радости,
+      приласкать кошку, чтобы она снова научилась доверять.`,
     ],
     motivation: 'Подарите своё время и заботу',
     link: '/help/volunteer/become',
@@ -44,9 +40,7 @@ const items: ItemProps[] = [
     title: 'Финансовая помощь',
     description: [
       `Мы не государственная организация и существуем только благодаря вашей поддержке.
-      Каждый рубль — это реальная помощь: это миска корма для ослабленного щенка, жизненно важная прививка или тёплая подстилка.`,
-      `Вы можете стать ангелом-хранителем для одного подопечного или поддержать работу всего приюта.
-      Неважно, большая это сумма или нет — она станет кирпичиком в фундаменте новой жизни для наших хвостов.`,
+      Каждый рубль — это реальная помощь: это миска корма для ослабленного щенка, жизненно важная прививка или теплая подстилка. `,
     ],
     motivation: 'Любая сумма спасёт чью-то жизнь',
     link: '/help/donate/finance',
@@ -56,9 +50,8 @@ const items: ItemProps[] = [
     color: 'purple',
     title: 'Временный дом',
     description: [
-      'Вы не готовы взять питомца навсегда, но хотите помочь? Станьте самым важным промежуточным звеном!',
-      `Передержка — это временный дом для животного, где оно может оправиться от стресса, вырасти щенком или котёнком в уюте,
-      или просто научиться доверять людям в спокойной домашней атмосфере.`,
+      `Передержка — это временный дом для животного, где оно может оправиться от болезни,
+      вырастить щенков или котят в тепле и уюте или просто научиться доверять людям в спокойной домашней атмосфере.`,
     ],
     motivation: 'Тёплый приют — шаг к постоянному счастью',
     link: '/help/volunteer/foster',
@@ -70,14 +63,14 @@ const items: ItemProps[] = [
     description: [
       `Вы можете помочь, даже если у вас нет ни времени, ни денег.
       Ваша лента в соцсетях — это мощный инструмент спасения.`,
-      `Рассказывая о нашем приюте, делясь постами о животных, которые ищут дом, вы увеличиваете шансы в тысячи раз.
-      Ваш репост может случайно увидеть их будущий хозяин. Помогите нам быть услышанными.`,
+      'Ваш репост может случайно увидеть их будущий хозяин. Помогите нам быть услышанными.',
     ],
     motivation: 'Поделитесь историей — подарите шанс',
     link: '/help/other/info',
   },
 ]
 
+const { isDesktop } = useBreakpoint()
 </script>
 
 <template>
@@ -99,7 +92,10 @@ const items: ItemProps[] = [
               {{ item.title }}
             </h3>
           </div>
-          <div class="help-guide__description">
+          <div
+            v-if="isDesktop"
+            class="help-guide__description"
+          >
             <p
               v-for="(paragraph, index) in item.description"
               :key="index"
@@ -150,6 +146,15 @@ const items: ItemProps[] = [
     padding: 16px;
     border-radius: 24px;
 
+    @media (min-width: $mq-sm) {
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    @media (min-width: $mq-lg) {
+      padding: 30px;
+    }
+
     &--green {
       color: var(--color-green-dark);
       background-color: var(--color-green-light);
@@ -174,15 +179,6 @@ const items: ItemProps[] = [
       color: var(--color-blue-dark);
       background-color: var(--color-blue-light);
     }
-
-    @media (min-width: $mq-sm) {
-      flex-direction: row;
-      align-items: stretch;
-    }
-
-    @media (min-width: $mq-lg) {
-      padding: 30px;
-    }
   }
 
   &__header {
@@ -192,7 +188,6 @@ const items: ItemProps[] = [
     padding: 0 0 16px;
     margin: 0 0 16px;
     align-items: center;
-    flex: 1;
 
     &::after {
       content: '';
@@ -206,6 +201,7 @@ const items: ItemProps[] = [
 
     @media (min-width: $mq-sm) {
       flex-direction: row;
+      flex: 0 0 50%;
       margin: 0 16px 0 0;
       padding: 0 16px 0 0;
 
@@ -220,6 +216,10 @@ const items: ItemProps[] = [
       margin: 0 30px 0 0;
       padding: 0 30px 0 0;
     }
+
+    @media (min-width: $mq-xl) {
+      flex: 0 0 450px;
+    }
   }
 
   &__icon {
@@ -227,7 +227,7 @@ const items: ItemProps[] = [
     flex: none;
     height: 60px;
     width: 60px;
-    margin: 0 10px 0 0 ;
+    margin: 0 10px 0 0;
     align-items: center;
     justify-content: center;
     fill: currentColor;
@@ -239,9 +239,14 @@ const items: ItemProps[] = [
     filter: brightness(60%);
 
     @media (min-width: $mq-lg) {
-      height: 120px;
-      width: 120px;
-      margin: 0 30px 0 0 ;
+      height: 80px;
+      width: 80px;
+    }
+
+    @media (min-width: $mq-xl) {
+      height: 100px;
+      width: 100px;
+      margin: 0 20px 0 0;
     }
   }
 
@@ -257,36 +262,31 @@ const items: ItemProps[] = [
     }
 
     @media (min-width: $mq-lg) {
-      font-size: 50px;
+      font-size: 36px;
       max-width: none;
     }
   }
 
   &__description {
-    display: none;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 400;
+    padding: 0 30px 0 0;
+    margin: 0 30px 0 0;
+    color: var(--color-text-brown);
+    opacity: 0.7;
 
-    @media (min-width: $mq-xxl) {
-      position: relative;
+    &::after {
+      content: '';
+      position: absolute;
       display: flex;
-      flex-direction: column;
-      flex: 1;
-      font-size: 16px;
-      line-height: 1.2;
-      font-weight: 400;
-      padding: 0 30px 0 0;
-      margin: 0 30px 0 0;
-      color: var(--color-text-brown);
-      opacity: 0.7;
-
-      &::after {
-        content: '';
-        position: absolute;
-        display: flex;
-        width: 2px;
-        inset: 0 0 0 auto;
-        background-color: currentColor;
-        opacity: 0.3;
-      }
+      width: 2px;
+      inset: 0 0 0 auto;
+      background-color: currentColor;
+      opacity: 0.3;
     }
   }
 
@@ -297,12 +297,13 @@ const items: ItemProps[] = [
   &__footer {
     display: flex;
     gap: 20px;
-    align-items: flex-start;
+    align-items: center;
     justify-content: space-between;
     flex: 1;
 
-    @media (min-width: $mq-sm) {
-      align-items: center;
+    @media (min-width: $mq-xl) {
+      align-items: flex-start;
+      flex: 0 0 420px;
     }
   }
 
@@ -313,14 +314,19 @@ const items: ItemProps[] = [
     text-transform: uppercase;
 
     @media (min-width: $mq-lg) {
-      font-size: 30px;
+      font-size: 24px;
     }
   }
 
   &__link {
     color: currentColor;
     display: flex;
-    align-self: flex-start;
+    align-items: center;
+
+    @media (min-width: $mq-xl) {
+
+      align-self: flex-start;
+    }
   }
 }
 </style>

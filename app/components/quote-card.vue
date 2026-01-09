@@ -105,7 +105,7 @@ defineProps({
     font-size: 20px;
     text-transform: uppercase;
     font-weight: 700;
-    padding: 10px 0;
+    line-height: 1.2;
   }
 
   &__btn {

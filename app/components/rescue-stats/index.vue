@@ -41,7 +41,10 @@ const { isMobile, isTabletSmall } = useBreakpoint()
           :key="item.key"
           class="rescue-stats__slide"
         >
-          <rescue-stats-card :card="item" />
+          <rescue-stats-card
+            style="height: 100%"
+            :card="item"
+          />
         </swiper-slide>
       </swiper-container>
 
@@ -49,13 +52,12 @@ const { isMobile, isTabletSmall } = useBreakpoint()
         v-else
         class="rescue-stats__list"
       >
-        <div
+        <rescue-stats-card
           v-for="item in items"
           :key="item.key"
+          :card="item"
           class="rescue-stats__item"
-        >
-          <rescue-stats-card :card="item" />
-        </div>
+        />
       </div>
 
       <div class="rescue-stats__text">
@@ -74,6 +76,7 @@ const { isMobile, isTabletSmall } = useBreakpoint()
   }
 
   &__slide {
+    height: 295px;
     width: 270px;
   }
 
@@ -109,7 +112,7 @@ const { isMobile, isTabletSmall } = useBreakpoint()
     max-width: 728px;
 
     @media (min-width: $mq-lg) {
-      font-size: 50px;
+      font-size: 36px;
       margin: 50px auto 0;
       max-width: 1022px;
     }

@@ -206,21 +206,17 @@ const slides = computed<Slide[]>(() => {
     display: flex;
     height: auto;
 
-    @media (min-width: $mq-lg) {
-      width: 374px;
+    @media (min-width: $mq-sm) {
+      width: 320px;
     }
 
-    @media (min-width: $mq-xl) {
-      width: 440px;
+    @media (min-width: $mq-lg) {
+      width: calc($container-max-width / 4 - 15px);
     }
 
     &--two-column {
       @media (min-width: $mq-lg) {
-        width: calc(374px * 2);
-      }
-
-      @media (min-width: $mq-xl) {
-        width: calc(440px * 2);
+        width: calc($container-max-width / 2 - 10px);
       }
     }
   }

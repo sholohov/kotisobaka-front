@@ -81,7 +81,7 @@ function handleCloseBtn() {
   }
 
   &__dialog {
-    padding: 10px;
+    padding: 10px 10px 40px;
     border-radius: 16px 16px 0 0;
     width: 100%;
     max-height: 100%;

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ArticleData } from '~/api/articles/types';
+import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
 
 const props = defineProps({
   article: {
@@ -62,6 +63,15 @@ const formatedDate = computed(() => {
           </span>
         </li>
       </ul>
+
+      <div class="articles-card__more">
+        подробнее
+      </div>
+
+      <arrow-right-icon
+        class="articles-card__more-icon"
+        width="24px"
+      />
     </div>
     <nuxt-link
       :to="`/articles/${article.slug}`"
@@ -74,6 +84,27 @@ const formatedDate = computed(() => {
 <style lang="scss">
 .articles-card {
   $this: '.articles-card';
+
+  @keyframes arrow-right-move {
+    0% {
+      transform: translateX(0);
+    }
+    10% {
+      transform: translateX(4px);
+    }
+    20% {
+      transform: translateX(-2px);
+    }
+    30% {
+      transform: translateX(4px);
+    }
+    40% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
 
   display: flex;
   flex-direction: column;
@@ -89,6 +120,14 @@ const formatedDate = computed(() => {
 
       #{$this}__img {
         transform: scale(1.1);
+      }
+
+      #{$this}__more {
+        opacity: 1;
+      }
+
+      #{$this}__more-icon {
+        animation: arrow-right-move 4s ease-in-out infinite;
       }
     }
   }
@@ -124,20 +163,15 @@ const formatedDate = computed(() => {
     height: 72px;
     overflow: hidden;
 
-    @media (min-width: $mq-lg) {
-      padding: 20px;
-      height: 92px;
-      font-size: 22px;
-    }
-
     @media (min-width: $mq-xl) {
       padding: 20px;
       height: 92px;
-      font-size: 24px;
+      font-size: 20px;
     }
   }
 
   &__body {
+    position: relative;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -172,7 +206,7 @@ const formatedDate = computed(() => {
     gap: 8px;
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 0 24px 0 0;
   }
 
   &__tag {
@@ -187,7 +221,7 @@ const formatedDate = computed(() => {
     overflow: hidden;
 
     &--hash {
-      color: rgba(0,0,0,0.7);
+      color: rgba(0, 0, 0, 0.7);
 
       &::before {
         content: '';
@@ -201,6 +235,44 @@ const formatedDate = computed(() => {
 
   &__tag-text {
     position: relative;
+  }
+
+  &__more {
+    font-weight: 700;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    padding: 14px;
+    right: 40px;
+    background-color: var(--color-white);
+    transition: opacity 0.5s;
+    opacity: 0;
+
+    @media (min-width: $mq-lg) {
+      padding: 20px;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0 auto 0 -24px;
+      width: 24px;
+      display: flex;
+      background: linear-gradient(to right, rgba(0, 0, 0, 0), var(--color-white));
+    }
+  }
+
+  &__more-icon {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    display: flex;
+    color: var(--color-blue);
+
+    @media (min-width: $mq-lg) {
+      bottom: 20px;
+      right: 20px;
+    }
   }
 
   &__link {

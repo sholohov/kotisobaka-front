@@ -1,11 +1,17 @@
 <script setup lang="ts">
+definePageMeta({
+  pageTitle: 'Документы отчётность',
+  pageTitleIcon: 'about-docs',
+})
 
 </script>
 
 <template>
-  <h1>Документы и отчётность</h1>
+  <content-box>
+    .
+  </content-box>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
 
 </style>

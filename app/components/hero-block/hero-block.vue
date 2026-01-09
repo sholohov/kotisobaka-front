@@ -73,26 +73,16 @@ const { isMobileView } = useBreakpoint()
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 620px;
-
-    @media (min-width: $mq-xs) {
-      height: 580px;
-    }
-
-    @media (min-width: $mq-sm) {
-      height: 580px;
-    }
+    min-height: 586px;
+    height: 100vh;
+    max-height: 620px;
 
     @media (min-width: $mq-lg) {
-      height: 100vh;
-      max-height: 730px;
-      min-height: auto;
+      max-height: 700px;
     }
 
     @media (min-width: $mq-xl) {
-      height: 100vh;
-      max-height: 940px;
-      min-height: auto;
+      max-height: 880px;
     }
   }
 
@@ -104,7 +94,15 @@ const { isMobileView } = useBreakpoint()
       inset: 80px 0 auto;
     }
 
+    @media (min-width: $mq-md) {
+      inset: 114px 0 auto;
+    }
+
     @media (min-width: $mq-lg) {
+      inset: 130px 0 auto;
+    }
+
+    @media (min-width: $mq-xl) {
       inset: 20% 0 auto 0;
     }
   }
@@ -138,7 +136,7 @@ const { isMobileView } = useBreakpoint()
 
     @media (min-width: $mq-lg) {
       inset: auto 0 20px 0;
-      margin: 0 0 8vw;
+      margin: 0 0 8.5%;
     }
   }
 
@@ -157,7 +155,7 @@ const { isMobileView } = useBreakpoint()
     }
 
     @media (min-width: $mq-xl) {
-      font-size: 100px;
+      font-size: 70px;
     }
   }
 
@@ -184,7 +182,7 @@ const { isMobileView } = useBreakpoint()
 
     @media (min-width: $mq-lg) {
       inset: auto 0 0 0;
-      margin: 0 0 8vw;
+      margin: 0 0 8.5%;
     }
   }
 }

@@ -173,14 +173,9 @@ const secondaryInfo = computed(() => {
   &__value {
     color: var(--color-text-brown);
     font-weight: 700;
-    font-size: 24px;
+    font-size: 20px;
     line-height: 1.2;
     z-index: 1;
-
-    &--secondary {
-      font-size: 20px;
-      font-weight: 600;
-    }
   }
 
   &__label {
@@ -188,21 +183,11 @@ const secondaryInfo = computed(() => {
     font-weight: 600;
     line-height: 1.2;
     color: var(--color-text-chocolate);
-
-    &--secondary {
-      font-size: 13px;
-      font-weight: 500;
-    }
   }
 
-  // Стили для расширенного режима
   &--full {
     .animal-info__row {
       padding: 12px 0;
-
-      &--secondary {
-        padding-top: 16px;
-      }
     }
   }
 }

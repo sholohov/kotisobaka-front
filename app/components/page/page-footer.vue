@@ -153,7 +153,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
     color: var(--color-white);
     flex-wrap: wrap;
 
-    @media (min-width: $mq-sm) {
+    @media (min-width: $mq-lg) {
       gap: 20px;
     }
   }
@@ -168,7 +168,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
     border-radius: 24px;
     flex: 1;
     overflow: hidden;
-    padding: 86px 0;
+    padding: 50px 0;
   }
 
   &__nav {
@@ -233,7 +233,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
 
   &__pic {
     position: relative;
-    height: 410px;
+    height: 340px;
     flex: 1 1 100%;
     order: +1;
     width: 100%;

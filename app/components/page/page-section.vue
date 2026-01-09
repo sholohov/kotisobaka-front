@@ -10,7 +10,12 @@
     />
 
     <content-box v-if="title || $slots['header-end']">
-      <div class="page-section__header">
+      <div
+        class="page-section__header"
+        :class="[
+          {'page-section__header--right-padding': rightPadding}
+        ]"
+      >
         <h2 class="page-section__title">
           {{ title }}
         </h2>
@@ -36,6 +41,10 @@ defineProps({
     type: String as PropType<string>,
     default: 'auto',
   },
+  rightPadding: {
+    type: Boolean,
+    default: false,
+  },
 })
 </script>
 
@@ -59,18 +68,18 @@ defineProps({
     font-size: 26px;
     line-height: 0.85;
     height: 44px;
-    width: calc(100vw - 130px);
     display: flex;
     align-items: flex-end;
 
     @media (min-width: $mq-lg) {
-      font-size: 50px;
+      font-size: 36px;
     }
   }
 
   &__header {
     display: flex;
     align-items: flex-start;
+    justify-content: space-between;
     flex-direction: column;
     margin: 0 0 20px;
     gap: 10px;
@@ -83,6 +92,10 @@ defineProps({
     @media (min-width: $mq-lg) {
       margin: 0 0 30px;
       gap: 30px;
+    }
+
+    &--right-padding {
+      padding-right: 100px;
     }
   }
 }

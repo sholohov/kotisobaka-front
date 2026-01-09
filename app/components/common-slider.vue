@@ -1,59 +1,36 @@
-<script setup lang="ts">
+<script setup lang="ts" generic="TItem, TInterspersed = TItem">
 import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg'
-import type { QuoteData } from '~/api/quotes/types'
 
-interface HasDocumentId {
-  documentId: string
-}
-
-interface HasId {
-  id: string | number
-}
-
-const props = defineProps({
-  items: {
-    type: Array as PropType<Array<HasDocumentId | HasId | unknown>>,
-    required: true,
-  },
-  quotes: {
-    type: Array as PropType<QuoteData[]>,
-    default: () => [],
-  },
-  quoteSlidePosition: {
-    type: Number,
-    default: 3,
-  },
-  quoteColors: {
-    type: Array as PropType<readonly string[]>,
-    default: () => ['green', 'purple', 'yellow', 'blue'] as const,
-  },
-  twoColumn: {
-    type: Boolean,
-    default: false,
-  },
-})
+const props = defineProps<{
+  items: TItem[]
+  interspersed?: TInterspersed[]
+  interspersedPosition?: number
+  interspersedStart?: number
+  interspersedColors?: readonly string[]
+  twoColumn?: boolean
+}>()
 
 interface SlideItem {
   type: 'item'
-  data: HasDocumentId | HasId | unknown
+  data: TItem
 }
 
-interface SlideQuote {
-  type: 'quote'
-  data: QuoteData & { color: string }
+interface SlideInterspersed {
+  type: 'interspersed'
+  data: TInterspersed & { color?: string }
 }
 
-type Slide = SlideItem | SlideQuote
+type Slide = SlideItem | SlideInterspersed
 
 defineSlots<{
-  default(props: { slide: HasDocumentId | HasId | unknown }): unknown
-  quote?(props: { slide: QuoteData & { color: string } }): unknown
+  default(props: { slide: TItem, index: number }): unknown
+  interspersed?(props: { slide: TInterspersed & { color?: string }, index: number }): unknown
 }>()
 
 const sliderRef = ref(null)
 const slider = useSwiper(sliderRef)
 
-const getSlideId = (slide: HasDocumentId | HasId | unknown): string => {
+const getSlideId = (slide: unknown): string => {
   if (slide && typeof slide === 'object') {
     if ('documentId' in slide && typeof slide.documentId === 'string') {
       return `doc-${slide.documentId}`
@@ -70,52 +47,58 @@ const getSlideId = (slide: HasDocumentId | HasId | unknown): string => {
 const slides = computed<Slide[]>(() => {
   const result: Slide[] = []
   let colorIndex = 0
-  let quoteIndex = 0
+  let interspersedIndex = 0
+  const interspersed = props.interspersed ?? []
+  const interspersedPosition = props.interspersedPosition ?? 3
+  const interspersedStart = props.interspersedStart ?? interspersedPosition
+  const interspersedColors = props.interspersedColors ?? ['green', 'purple', 'yellow', 'blue'] as const
 
-  if (props.quotes && props.quotes.length > 0) {
+  if (interspersed.length > 0) {
     props.items.forEach((item, index) => {
-      result.push({
-        type: 'item',
-        data: item,
-      })
+      result.push({ type: 'item', data: item })
 
-      if ((index + 1) % props.quoteSlidePosition === 0) {
-        const quote = props.quotes[quoteIndex % props.quotes.length]
-        const color = props.quoteColors[colorIndex % props.quoteColors.length]
+      const shouldInsert =
+        (index === interspersedStart - 1) ||
+        (index > interspersedStart - 1 && (index - (interspersedStart - 1)) % interspersedPosition === 0)
 
-        if (quote && color) {
+      if (shouldInsert) {
+        const interspersedItem = interspersed[interspersedIndex % interspersed.length]
+        const color = interspersedColors[colorIndex % interspersedColors.length]
+
+        if (interspersedItem) {
           result.push({
-            type: 'quote',
+            type: 'interspersed',
             data: {
-              ...quote,
-              color,
+              ...interspersedItem,
+              color: interspersedItem && typeof interspersedItem === 'object' && 'color' in interspersedItem
+                ? undefined
+                : color,
             },
           })
-          colorIndex = (colorIndex + 1) % props.quoteColors.length
-          quoteIndex = (quoteIndex + 1) % props.quotes.length
+          colorIndex = (colorIndex + 1) % interspersedColors.length
+          interspersedIndex = (interspersedIndex + 1) % interspersed.length
         }
       }
     })
 
-    if (props.items.length < props.quoteSlidePosition && props.quotes.length > 0) {
-      const quote = props.quotes[quoteIndex % props.quotes.length]
-      const color = props.quoteColors[colorIndex % props.quoteColors.length]
+    if (props.items.length > 0 && props.items.length < interspersedStart && interspersed.length > 0) {
+      const interspersedItem = interspersed[interspersedIndex % interspersed.length]
+      const color = interspersedColors[colorIndex % interspersedColors.length]
 
-      if (quote && color) {
+      if (interspersedItem) {
         result.push({
-          type: 'quote',
+          type: 'interspersed',
           data: {
-            ...quote,
-            color,
+            ...interspersedItem,
+            color: interspersedItem && typeof interspersedItem === 'object' && 'color' in interspersedItem
+              ? undefined
+              : color,
           },
         })
       }
     }
   } else {
-    return props.items.map(item => ({
-      type: 'item' as const,
-      data: item,
-    }))
+    return props.items.map(item => ({ type: 'item' as const, data: item }))
   }
 
   return result
@@ -137,8 +120,8 @@ const slides = computed<Slide[]>(() => {
         class="common-slider__slider"
       >
         <swiper-slide
-          v-for="slide in slides"
-          :key="slide.type === 'item' ? getSlideId(slide.data) : `quote-${getSlideId(slide.data)}`"
+          v-for="(slide, index) in slides"
+          :key="slide.type === 'item' ? getSlideId(slide.data) : `interspersed-${getSlideId(slide.data)}`"
           class="common-slider__slide"
           :class="{ 'common-slider__slide--two-column': twoColumn }"
         >
@@ -146,11 +129,13 @@ const slides = computed<Slide[]>(() => {
             v-if="slide.type === 'item'"
             name="default"
             :slide="slide.data"
+            :index="index"
           />
           <slot
-            v-else-if="slide.type === 'quote' && $slots.quote"
-            name="quote"
+            v-else-if="slide.type === 'interspersed' && $slots.interspersed"
+            name="interspersed"
             :slide="slide.data"
+            :index="index"
           />
         </swiper-slide>
       </swiper-container>

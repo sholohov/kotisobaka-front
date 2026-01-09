@@ -8,6 +8,7 @@ import { settings } from './settings'
 import { statistic } from './statistic'
 import { quotes } from './quotes'
 import { articleTags } from './articleTags';
+import { documents } from './documents';
 
 export const api = {
   settings,
@@ -20,4 +21,5 @@ export const api = {
   statistic,
   quotes,
   articleTags,
+  documents,
 }

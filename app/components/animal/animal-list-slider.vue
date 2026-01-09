@@ -35,9 +35,9 @@ const quoteSlidePosition = computed(() => {
     <content-box>
       <common-slider
         :items="animals"
-        :quotes="quotes"
-        :quote-slide-position="quoteSlidePosition"
-        :quote-colors="colors"
+        :interspersed="quotes"
+        :interspersed-position="quoteSlidePosition"
+        :interspersed-colors="colors"
       >
         <template #default="{ slide: animal }">
           <animal-card
@@ -46,10 +46,10 @@ const quoteSlidePosition = computed(() => {
           />
         </template>
 
-        <template #quote="{ slide: quote }">
+        <template #interspersed="{ slide: interspersed }">
           <quote-card
-            :color="quote.color"
-            :quote="quote"
+            :color="interspersed.color"
+            :quote="interspersed"
             :is-health="isNeedHelp"
             class="animal-list-slider__card"
           />

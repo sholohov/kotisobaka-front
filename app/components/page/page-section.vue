@@ -3,9 +3,9 @@
     class="page-section"
     :style="{ minHeight: minHeight }"
   >
-    <a
+    <div
       v-if="anchor"
-      :href="`#${anchor}`"
+      :id="anchor"
       class="page-section__anchor"
     />
 

@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import type { ReviewData } from '~/api/reviews/types';
 import HeartIcon from '~/assets/svg/heart-icon.svg'
+import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
 
 const props = defineProps({
   story: {
     type: Object as PropType<ReviewData>,
     required: true,
+  },
+  short: {
+    type: Boolean,
+    default: false,
   },
 })
 
@@ -44,12 +49,23 @@ const formatedDate = computed(() => {
 </script>
 
 <template>
-  <div class="stories-card">
+  <div
+
+    class="stories-card"
+    :class="[
+      { 'stories-card--short': short }
+    ]"
+  >
+    <div
+      :id="story.documentId"
+      class="stories-card__anchor"
+    />
+
     <div class="stories-card__header">
       <div class="stories-card__img-wrapper">
         <img
-          :src="story.photo.url"
-          :alt="story.photo.alternativeText || story.name"
+          :src="story.photo?.url"
+          :alt="story.photo?.alternativeText || story.name"
           class="stories-card__img"
         >
       </div>
@@ -76,15 +92,30 @@ const formatedDate = computed(() => {
             #{{ TAGS_CONFIG[story.tag].label }}
           </li>
         </ul>
+
         <btn-default
+          :to="short ? '/reviews' : undefined"
           circle
           class="stories-card__icon"
           style="color: var(--color-orange)"
         >
-          <heart-icon width="24" />
+          <arrow-right-icon
+            v-if="short"
+            width="24"
+          />
+          <heart-icon
+            v-else
+            width="24"
+          />
         </btn-default>
       </div>
     </div>
+
+    <nuxt-link
+      v-if="short"
+      class="stories-card__link"
+      :to="`/about/stories#${story.documentId}`"
+    />
   </div>
 </template>
 
@@ -95,10 +126,36 @@ const formatedDate = computed(() => {
   display: flex;
   flex-direction: column;
   flex: 1;
+  position: relative;
 
   @media (min-width: $mq-lg) {
     flex-direction: row-reverse;
     gap: 6px;
+  }
+
+  &__anchor {
+    position: relative;
+    top: -80px;
+  }
+
+  &--short {
+    &:hover {
+      #{$this}__body {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.07),
+        0 4px 8px rgba(0, 0, 0, 0.035);
+      }
+
+      #{$this}__header {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.07),
+        0 4px 8px rgba(0, 0, 0, 0.035);
+      }
+
+      #{$this}__img {
+        transform: scale(1.1);
+      }
+    }
   }
 
   &__header {
@@ -106,6 +163,7 @@ const formatedDate = computed(() => {
     border-radius: 24px;
     background-color: var(--color-white);
     margin: 0 0 6px;
+    transition: transform 0.3s, box-shadow 0.3s;
 
     @media (min-width: $mq-lg) {
       margin: 0;
@@ -121,6 +179,10 @@ const formatedDate = computed(() => {
     @media (min-width: $mq-lg) {
       padding: 0;
       height: 545px;
+
+      #{$this}--short & {
+        height: 300px;
+      }
     }
   }
 
@@ -155,6 +217,7 @@ const formatedDate = computed(() => {
     padding: 14px;
     border-radius: 24px;
     background-color: var(--color-white);
+    transition: transform 0.3s, box-shadow 0.3s;
 
     @media (min-width: $mq-lg) {
       padding: 20px;
@@ -169,6 +232,17 @@ const formatedDate = computed(() => {
     overflow: hidden;
     margin: 0 0 14px;
     flex: 1;
+
+    #{$this}--short & {
+      max-height: 38px;
+
+      &::after {
+        content: '...';
+        display: inline-flex;
+        position: absolute;
+        inset: auto 0 0 auto;
+      }
+    }
   }
 
   &__footer {
@@ -225,6 +299,15 @@ const formatedDate = computed(() => {
 
   &__icon {
     pointer-events: none;
+
+    #{$this}--short & {
+      pointer-events: auto;
+    }
+  }
+
+  &__link {
+    position: absolute;
+    inset: 0;
   }
 }
 </style>

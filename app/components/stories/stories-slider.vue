@@ -20,7 +20,10 @@ defineProps({
         class="stories-slider__slider"
       >
         <template #default="{ slide }">
-          <stories-card :story="slide" />
+          <stories-card
+            :story="slide"
+            short
+          />
         </template>
       </common-slider>
 

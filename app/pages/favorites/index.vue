@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { api } from '~/api';
+import type { AnimalsResponse } from '~/api/animals/types';
 
 definePageMeta({
   pageTitle: 'Ваши питомцы',
@@ -8,9 +9,9 @@ definePageMeta({
 
 const favoritesStore = useFavoritesStore()
 
-const { data: animalsResponse } = await useAsyncData(() => {
+const { data: animalsResponse } = await useAsyncData<AnimalsResponse>('favorites-animals', () => {
   if (!favoritesStore.count) {
-    return Promise.resolve({ data: [] })
+    return Promise.resolve({ data: [] } as unknown as AnimalsResponse)
   }
 
   return api.animals.get({
@@ -19,7 +20,9 @@ const { data: animalsResponse } = await useAsyncData(() => {
       documentId: {
         $in: favoritesStore.list,
       },
-      animalStatus: ['available', 'under_treatment', 'trial_period'],
+      animalStatus: {
+        $in: ['available', 'under_treatment', 'trial_period'],
+      },
     },
   })
 })

@@ -4,6 +4,7 @@ import PiggyBankIcon from '~/assets/svg/piggy-bank-icon.svg';
 import PhoneIcon from '~/assets/svg/phone-icon.svg';
 import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
 import type { MediaFile } from '~/api/types';
+import type { Swiper }  from  'swiper'
 
 interface TabProps {
   label: string
@@ -15,8 +16,9 @@ const route = useRoute()
 const sliderRef = ref(null)
 const slider = useSwiper(sliderRef)
 const modalStore = useModalStore()
-const { breakpoint, isMobileView } = useBreakpoint()
+const { breakpoint, isMobileView, isMobile, isTabletSmall } = useBreakpoint()
 const slug = computed(() => route.params.slug)
+const previewSwiperRef = ref<HTMLElement & { swiper: Swiper }>()
 
 const { data: animalResponse } = await useAsyncData('animal-' + slug.value, () => {
   if (!slug.value) {
@@ -114,33 +116,13 @@ function handleDonateBtn() {
     <page-section>
       <div class="animal-page__card">
         <section class="animal-page__gallery">
-          <swiper-container
-            :slides-per-view="3"
-            :space-between="20"
-            :direction="'vertical'"
-            class="animal-page__gallery-preview"
-          >
-            <swiper-slide
-              v-for="file in gallery"
-              :key="file.documentId"
-              class="animal-page__gallery-preview-slide"
-            >
-              <img
-                :src="file.formats.small?.url || file.url"
-                :alt="file.alternativeText || file.name"
-                class="animal-page__gallery-preview-image"
-                loading="lazy"
-              >
-            </swiper-slide>
-          </swiper-container>
-
           <div class="animal-page__gallery-view">
             <swiper-container
               ref="sliderRef"
               space-between="10"
-              :pagination="{ clickable: true }"
+              :pagination="isMobileView ? { clickable: true } : false "
               :thumbs="{
-                swiper: '.animal-page__gallery-preview'
+                swiper: previewSwiperRef?.swiper
               }"
               class="animal-page__gallery-view-slider"
             >
@@ -150,7 +132,7 @@ function handleDonateBtn() {
                 class="animal-page__gallery-view-slide"
               >
                 <img
-                  :src="file.formats.large.url"
+                  :src="file.formats.large?.url"
                   :alt="file.alternativeText || file.name"
                   class="animal-page__gallery-view-image"
                   loading="lazy"
@@ -188,6 +170,28 @@ function handleDonateBtn() {
               <animal-actions :animal="animal" />
             </div>
           </div>
+
+          <swiper-container
+            v-if="!isMobile && !isTabletSmall"
+            ref="previewSwiperRef"
+            :slides-per-view="3"
+            :space-between="20"
+            :direction="'vertical'"
+            class="animal-page__gallery-preview"
+          >
+            <swiper-slide
+              v-for="file in gallery"
+              :key="file.documentId"
+              class="animal-page__gallery-preview-slide"
+            >
+              <img
+                :src="file.formats.small?.url || file.url"
+                :alt="file.alternativeText || file.name"
+                class="animal-page__gallery-preview-image"
+                loading="lazy"
+              >
+            </swiper-slide>
+          </swiper-container>
         </section>
 
         <section class="animal-page__details">
@@ -368,14 +372,19 @@ function handleDonateBtn() {
     flex: 1;
     align-items: flex-start;
     justify-content: space-between;
+    flex-direction: row-reverse;
   }
 
   &__gallery-view {
     display: flex;
     position: relative;
     margin: 0 0 24px;
-    width: calc(100% - 220px);
-    height: 600px;
+    width: 100%;
+    height: 60vw;
+
+    ::part(container) {
+      overflow: visible;
+    }
 
     ::part(pagination) {
       height: 44px;
@@ -403,8 +412,18 @@ function handleDonateBtn() {
       background-color: var(--color-blue);
     }
 
-    @media (min-width: $mq-md) {
+    @media (min-width: $mq-sm) {
+      width: calc(100% - 200px);
+      height: 500px;
 
+      ::part(container) {
+        overflow: hidden;
+      }
+    }
+
+    @media (min-width: $mq-lg) {
+      width: calc(100% - 220px);
+      height: 600px;
     }
   }
 
@@ -454,9 +473,14 @@ function handleDonateBtn() {
   }
 
   &__gallery-preview {
-    width: 200px;
-    height: 600px;
+    width: 180px;
+    height: 500px;
     margin: 0;
+
+    @media (min-width: $mq-lg) {
+      width: 200px;
+      height: 600px;
+    }
   }
 
   &__gallery-preview-slide {
@@ -479,6 +503,11 @@ function handleDonateBtn() {
     flex-direction: column;
 
     @media (min-width: $mq-md) {
+      flex: none;
+      width: 360px;
+    }
+
+    @media (min-width: $mq-xl) {
       flex: none;
       width: 460px;
     }

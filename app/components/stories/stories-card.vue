@@ -77,6 +77,7 @@ const formatedDate = computed(() => {
       <div class="stories-card__text">
         «{{ story.text }}»
       </div>
+
       <div class="stories-card__footer">
         <ul class="stories-card__tags">
           <li class="stories-card__tag">
@@ -128,14 +129,14 @@ const formatedDate = computed(() => {
   flex: 1;
   position: relative;
 
-  @media (min-width: $mq-lg) {
+  @media (min-width: $mq-md) {
     flex-direction: row-reverse;
     gap: 6px;
   }
 
   &__anchor {
-    position: relative;
-    top: -80px;
+    position: absolute;
+    inset: -80px 0 auto 0;
   }
 
   &--short {
@@ -164,8 +165,9 @@ const formatedDate = computed(() => {
     background-color: var(--color-white);
     margin: 0 0 6px;
     transition: transform 0.3s, box-shadow 0.3s;
+    min-height: 240px;
 
-    @media (min-width: $mq-lg) {
+    @media (min-width: $mq-md) {
       margin: 0;
       flex: 1;
     }
@@ -173,16 +175,12 @@ const formatedDate = computed(() => {
 
   &__img-wrapper {
     position: relative;
-    padding: calc(100% * 0.7) 0 0;
+    height: 100%;
     overflow: hidden;
+    flex: 1;
 
-    @media (min-width: $mq-lg) {
-      padding: 0;
-      height: 545px;
-
-      #{$this}--short & {
-        height: 300px;
-      }
+    #{$this}--short & {
+      padding: calc(100% * 0.7) 0 0;
     }
   }
 
@@ -201,7 +199,7 @@ const formatedDate = computed(() => {
     line-height: 1;
     margin: 0 0 14px;
 
-    @media (min-width: $mq-lg) {
+    @media (min-width: $mq-md) {
       font-size: 22px;
     }
 
@@ -211,7 +209,9 @@ const formatedDate = computed(() => {
   }
 
   &__body {
+    min-height: 200px;
     display: flex;
+    flex: 1;
     flex-direction: column;
     overflow: hidden;
     padding: 14px;
@@ -219,9 +219,8 @@ const formatedDate = computed(() => {
     background-color: var(--color-white);
     transition: transform 0.3s, box-shadow 0.3s;
 
-    @media (min-width: $mq-lg) {
+    @media (min-width: $mq-md) {
       padding: 20px;
-      flex: 1;
     }
   }
 
@@ -229,18 +228,20 @@ const formatedDate = computed(() => {
     position: relative;
     font-weight: 400;
     line-height: 1.2;
-    overflow: hidden;
     margin: 0 0 14px;
     flex: 1;
 
     #{$this}--short & {
-      max-height: 38px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-height: calc(1.2em * 4);
 
-      &::after {
-        content: '...';
-        display: inline-flex;
-        position: absolute;
-        inset: auto 0 0 auto;
+      @media (min-width: $mq-md) {
+        -webkit-line-clamp: 8;
+        max-height: calc(1.2em * 8);
       }
     }
   }
@@ -249,6 +250,7 @@ const formatedDate = computed(() => {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+    margin: auto 0 0;
   }
 
   &__tags {

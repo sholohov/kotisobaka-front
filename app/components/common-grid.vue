@@ -146,7 +146,11 @@ const cells = computed<Cell[]>(() => {
     &--two-column {
       flex: 0 0 100%;
 
-      @media (min-width: 990px) {
+      @media (min-width: 640px) {
+        flex: 0 0 calc((100% - 10px) / 2);
+      }
+
+      @media (min-width: $mq-md) {
         flex: 0 0 calc((100% - 10px) / 2);
       }
 

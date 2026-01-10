@@ -192,13 +192,11 @@ const formatedDate = computed(() => {
     height: 100px;
     overflow: hidden;
     margin: 0 0 14px;
-
-    &::after {
-      content: '...';
-      display: inline-flex;
-      position: absolute;
-      inset: auto 0 0.2em auto;
-    }
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    max-height: calc(1.2em * 2);
   }
 
   &__tags {

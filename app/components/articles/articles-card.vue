@@ -144,7 +144,7 @@ const formatedDate = computed(() => {
 
   &__img-wrapper {
     position: relative;
-    padding: calc(100% * 0.7) 0 0;
+    padding: calc(100% * 0.66) 0 0;
     overflow: hidden;
   }
 
@@ -196,9 +196,9 @@ const formatedDate = computed(() => {
     margin: 0 0 14px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 8;
+    -webkit-line-clamp: 4;
     text-overflow: ellipsis;
-    height: calc(1.2em * 8);
+    height: calc(1.2em * 4);
   }
 
   &__tags {

@@ -103,7 +103,7 @@ function truncate(text: string, maxLength = 100) {
     position: relative;
     overflow: hidden;
     width: 100%;
-    padding: calc(100% * 0.70) 0 0;
+    padding: calc(100% * 0.66) 0 0;
   }
 
   &__img {

@@ -142,15 +142,12 @@ function truncate(text: string, maxLength = 100) {
     font-weight: 400;
     line-height: 1.2;
     color: var(--color-text-chocolate);
-    height: 38px;
     overflow: hidden;
-
-    &::after {
-      content: '...';
-      display: inline-flex;
-      position: absolute;
-      inset: auto 0 0 auto;
-    }
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    height: calc(1.2em * 2);
   }
 
   &__info {

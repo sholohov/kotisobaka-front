@@ -33,7 +33,9 @@ const formatedDate = computed(() => {
         >
       </div>
       <div class="articles-card__title">
-        {{ article.title }}
+        <div class="articles-card__title-text">
+          {{ article.title }}
+        </div>
       </div>
     </div>
     <div class="articles-card__body">
@@ -160,14 +162,15 @@ const formatedDate = computed(() => {
     font-weight: 700;
     font-size: 18px;
     line-height: 1.2;
-    height: 72px;
-    overflow: hidden;
+  }
 
-    @media (min-width: $mq-xl) {
-      padding: 20px;
-      height: 92px;
-      font-size: 20px;
-    }
+  &__title-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    height: calc(1.2em * 2);
   }
 
   &__body {
@@ -189,14 +192,13 @@ const formatedDate = computed(() => {
     position: relative;
     font-weight: 400;
     line-height: 1.2;
-    height: 100px;
     overflow: hidden;
     margin: 0 0 14px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 8;
     text-overflow: ellipsis;
-    max-height: calc(1.2em * 2);
+    height: calc(1.2em * 8);
   }
 
   &__tags {
@@ -247,7 +249,8 @@ const formatedDate = computed(() => {
     opacity: 0;
 
     @media (min-width: $mq-lg) {
-      padding: 20px;
+      bottom: 10px;
+      padding: 10px;
     }
 
     &::before {

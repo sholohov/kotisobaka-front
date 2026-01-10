@@ -127,20 +127,20 @@ const cells = computed<Cell[]>(() => {
   &__col {
     display: flex;
 
-    @media (min-width: 660px) {
+    @media (min-width: 640px) {
       flex: 0 0 calc((100% - 10px) / 2);
     }
 
-    @media (min-width: 990px) {
-      flex: 0 0 calc((100% - 10px * 2) / 3);
+    @media (min-width: 960px) {
+      flex: 0 0 calc((100% - (10px * 2)) / 3);
     }
 
     @media (min-width: $mq-lg) {
-      flex: 0 0 calc((100% - 20px * 2) / 3);
+      flex: 0 0 calc((100% - (20px * 2)) / 3);
     }
 
-    @media (min-width: $mq-xxl) {
-      flex: 0 0 calc((100% - 3 * 20px) / 4);
+    @media (min-width: $mq-xl) {
+      flex: 0 0 calc((100% - (20px * 3)) / 4);
     }
 
     &--two-column {

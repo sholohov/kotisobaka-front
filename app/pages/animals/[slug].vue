@@ -488,6 +488,12 @@ function handleDonateBtn() {
     padding: 75% 0 0;
     border-radius: 24px;
     overflow: hidden;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+
+    &.swiper-slide-thumb-active {
+      opacity: 1;
+    }
   }
 
   &__gallery-preview-image {

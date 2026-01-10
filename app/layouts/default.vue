@@ -51,8 +51,6 @@ watch(showOverlay, () => {
 })
 
 onMounted(() => {
-  favoritesStore.initialize()
-
   if (device.isMobileOrTablet) {
     useSwipe(document.body, {
       onSwipe: dir => {
@@ -62,10 +60,6 @@ onMounted(() => {
       },
     })
   }
-})
-
-onBeforeUnmount(() => {
-  favoritesStore.cleanup()
 })
 
 function handleClickOverlay() {

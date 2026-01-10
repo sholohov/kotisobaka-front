@@ -36,8 +36,8 @@ function truncate(text: string, maxLength = 100) {
   <div class="animal-card">
     <div class="animal-card__img-wrapper">
       <img
-        :src="animal.photo.url"
-        :alt="animal.photo.alternativeText || animal.name"
+        :src="animal.photo?.url"
+        :alt="animal.photo?.alternativeText || animal.name"
         class="animal-card__img"
       >
     </div>

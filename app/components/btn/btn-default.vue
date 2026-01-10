@@ -87,7 +87,7 @@ const formattedBadge = computed(() => {
   justify-content: center;
   gap: 10px;
   height: v-bind(sizePx);
-  padding: 0 14px;
+  padding: 0 20px;
   line-height: 1;
   font-size: 20px;
   font-weight: 700;

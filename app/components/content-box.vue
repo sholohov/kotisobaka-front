@@ -5,7 +5,12 @@
       'content-box--no-padding': props.noPadding
     }"
   >
-    <div class="content-box__inner">
+    <div
+      class="content-box__inner"
+      :class="[
+        innerClass
+      ]"
+    >
       <slot />
     </div>
   </div>
@@ -18,6 +23,10 @@ const props = defineProps({
   noPadding: {
     type: Boolean as PropType<boolean>,
     default: false,
+  },
+  innerClass: {
+    type: String,
+    default: '',
   },
 })
 </script>

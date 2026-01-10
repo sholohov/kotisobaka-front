@@ -18,6 +18,10 @@ const icons: Record<string, { color: string, component: Component }> = {
     color: 'var(--color-green)',
     component: defineAsyncComponent(() => import('~/assets/svg/page-title/reading-cat.svg')),
   },
+  favorites: {
+    color: 'var(--color-pink)',
+    component: defineAsyncComponent(() => import('~/assets/svg/page-title/dog-in-hearts.svg')),
+  },
 }
 
 const title = computed(() => route.meta.pageTitle ?? '')

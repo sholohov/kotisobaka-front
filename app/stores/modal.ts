@@ -8,6 +8,7 @@ export type ModalPropsMap = {
     reset(): void
     apply(filters: AnimalsFilters): void
   }
+  'modal-favorite-info': null
 }
 
 interface State {

@@ -10,6 +10,7 @@ const emit = defineEmits(['click'])
     <btn-default
       circle
       color="yellow"
+      class="btn-donate__btn"
       @click="emit('click')"
     >
       <coin-icon
@@ -37,6 +38,10 @@ const emit = defineEmits(['click'])
         transform: translateY(0);
       }
     }
+  }
+
+  &__btn {
+    border-color: var(--color-text-brown);
   }
 
   &__coin {

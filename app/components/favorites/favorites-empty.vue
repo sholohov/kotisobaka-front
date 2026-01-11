@@ -59,7 +59,7 @@ import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
     display: flex;
     color: var(--color-pink-dark);
     margin: 0 auto 30px;
-    @extend %imageGradient;
+    @include imageGradient;
   }
 
   &__description {

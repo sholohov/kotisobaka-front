@@ -158,7 +158,7 @@ const filtersOptions: RadioOption[] = [{
     height: 60%;
     margin: auto;
     color: inherit;
-    @extend %imageGradient;
+    @include imageGradient;
   }
 }
 </style>

@@ -88,7 +88,7 @@ const { data: storiesResponse } = await useAsyncData('stories-page', () => {
     height: 80%;
     margin: auto;
     color: inherit;
-    @extend %imageGradient;
+    @include imageGradient;
   }
 }
 </style>

@@ -188,8 +188,8 @@ const formattedBadge = computed(() => {
 
   &--yellow {
     background-color: var(--color-yellow);
-    border-color: var(--color-brown-darken);
-    color: var(--color-brown-darkest);
+    border-color: var(--color-white);
+    color: var(--color-white);
 
     &#{$this}--no-border {
       border-color: var(--color-yellow);

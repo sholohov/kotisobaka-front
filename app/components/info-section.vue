@@ -158,7 +158,7 @@ defineProps({
       width: 165px;
       max-height: 165px;
       margin: auto 0 0;
-      @extend %imageGradient;
+      @include imageGradient;
     }
   }
 

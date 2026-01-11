@@ -1,11 +1,3 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-  <h1>Целевые сборы</h1>
+  <content-page-view />
 </template>
-
-<style lang="scss">
-
-</style>

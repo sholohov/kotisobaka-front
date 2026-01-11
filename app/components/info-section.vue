@@ -106,6 +106,10 @@ defineProps({
     color: var(--color-orange-dark);
   }
 
+  &--blue {
+    color: var(--color-blue-dark);
+  }
+
   &__inner {
     display: flex;
     flex-direction: column;
@@ -237,6 +241,14 @@ defineProps({
           -120deg,
           var(--color-orange-light) 45%,
           var(--color-orange) 45%
+      );
+    }
+
+    #{$this}--blue & {
+      background: linear-gradient(
+          -120deg,
+          var(--color-blue-light) 45%,
+          var(--color-blue) 45%
       );
     }
   }

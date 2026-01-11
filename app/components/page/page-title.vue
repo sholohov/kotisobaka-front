@@ -99,7 +99,7 @@ const icon = computed(() => icons[route.meta.pageTitleIcon ?? ''])
       position: absolute;
       inset: 0;
       background-color: v-bind('icon?.color');
-      opacity: 0.6;
+      opacity: 0.3;
     }
 
     @media (min-width: $mq-md) {

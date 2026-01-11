@@ -145,6 +145,7 @@ const items = computed(() => [{
       color: var(--color-green-dark);
       margin: 0 0 0 60px;
       position: relative;
+      @include imageGradient
     }
 
     &__title {

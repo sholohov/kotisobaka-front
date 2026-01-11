@@ -70,6 +70,11 @@ const rendered = computed(() => md.render(props.content || ''))
     }
   }
 
+  p {
+    line-height: 1.2;
+    margin: 0 0 0.5em;
+  }
+
   strong, b {
     font-weight: 700;
   }

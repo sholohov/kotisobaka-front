@@ -129,7 +129,7 @@ const sections: InfoSectionItem[] = [
 .help-page {
   $this: '.help-page';
 
-  padding: 100px 0 0;
+  padding: 80px 0 0;
 
   @media (min-width: $mq-sm) {
     padding: 100px 0 0;

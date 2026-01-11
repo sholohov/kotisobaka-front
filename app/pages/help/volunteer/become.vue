@@ -1,11 +1,3 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-  <h1>Стать волонтёром</h1>
+  <content-page-view />
 </template>
-
-<style lang="scss">
-
-</style>

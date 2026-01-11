@@ -1,11 +1,3 @@
-<script setup lang="ts">
-
-</script>
-
 <template>
-  <h1>Другая помощь</h1>
+  <content-page-view />
 </template>
-
-<style scoped lang="scss">
-
-</style>

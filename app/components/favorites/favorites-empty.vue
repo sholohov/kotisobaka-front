@@ -59,11 +59,7 @@ import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
     display: flex;
     color: var(--color-pink-dark);
     margin: 0 auto 30px;
-    filter: brightness(0.6) saturate(150%);
-    mask-image: linear-gradient(
-        145deg,
-        rgba(0, 0, 0, 0.5) 15%,
-        rgba(0, 0, 0, 1) 75%);
+    @extend %imageGradient;
   }
 
   &__description {

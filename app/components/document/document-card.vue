@@ -114,7 +114,7 @@ const ext = computed(() => {
   &__description {
     font-weight: 700;
     font-size: 20px;
-    line-height: 120%;
+
     color: var(--color-text-brown);
   }
 

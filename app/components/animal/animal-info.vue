@@ -174,14 +174,14 @@ const secondaryInfo = computed(() => {
     color: var(--color-text-brown);
     font-weight: 700;
     font-size: 20px;
-    line-height: 1.2;
+
     z-index: 1;
   }
 
   &__label {
     font-size: 14px;
     font-weight: 600;
-    line-height: 1.2;
+
     color: var(--color-text-chocolate);
   }
 

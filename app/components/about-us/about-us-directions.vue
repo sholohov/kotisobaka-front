@@ -161,7 +161,7 @@ const items = computed(() => [{
       background-color: var(--color-white);
       color: var(--color-text-chocolate);
       font-weight: 400;
-      line-height: 1.2;
+
     }
 
     &__list-item {

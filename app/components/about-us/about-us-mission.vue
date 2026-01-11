@@ -27,7 +27,7 @@
   &__intro {
     font-weight: 800;
     font-size: 26px;
-    line-height: 1.2;
+
     text-transform: uppercase;
     color: var(--color-green-dark);
     margin: 0 0 20px;
@@ -46,7 +46,6 @@
   }
 
   &__description {
-    line-height: 1.2;
 
     @media (min-width: $mq-sm) {
       width: 50%;

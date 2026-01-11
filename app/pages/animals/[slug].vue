@@ -541,7 +541,7 @@ function handleDonateBtn() {
 
   &__desc {
     font-weight: 400;
-    line-height: 1.2;
+
     margin: 0 0 30px;
   }
 
@@ -557,7 +557,7 @@ function handleDonateBtn() {
 
   &__fundraising-title {
     font-size: 20px;
-    line-height: 1.2;
+
     font-weight: 700;
     margin: 0 0 10px;
     color: var(--color-orange-dark);
@@ -565,7 +565,7 @@ function handleDonateBtn() {
 
   &__fundraising-reason {
     font-weight: 400;
-    line-height: 1.2;
+
     margin: 0 0 14px;
   }
 
@@ -601,7 +601,7 @@ function handleDonateBtn() {
   &__contact-title {
     font-size: 16px;
     font-weight: 700;
-    line-height: 1.2;
+
     color: var(--color-blue);
     margin: 0 0 10px;
     padding: 0 0 10px;
@@ -615,7 +615,7 @@ function handleDonateBtn() {
     color: var(--color-blue);
     font-size: 20px;
     font-weight: 700;
-    line-height: 1.2;
+
     font-style: inherit;
   }
 

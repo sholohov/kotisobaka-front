@@ -194,7 +194,7 @@ function getAgeOptions(species: AnimalData['species'] | null): RadioOption[] {
     align-items: center;
     height: 40px;
     font-size: 24px;
-    line-height: 1.2;
+
     font-weight: 700;
     width: 250px;
   }

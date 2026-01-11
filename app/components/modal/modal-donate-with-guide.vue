@@ -109,7 +109,7 @@ import HeartIcon from '~/assets/svg/heart-icon.svg';
     color: var(--color-pink-dark);
     font-weight: 700;
     font-size: 16px;
-    line-height: 1.2;
+
     max-width: 216px;
     text-align: center;
   }

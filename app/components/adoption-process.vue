@@ -353,7 +353,7 @@ const getColorVar = (color: Color): string => {
   &__step-title {
     font-weight: 700;
     font-size: 20px;
-    line-height: 1.2;
+
     color: var(--color-text-brown);
     margin: 0 0 4px;
 
@@ -365,7 +365,7 @@ const getColorVar = (color: Color): string => {
   &__step-desc {
     font-weight: 400;
     font-size: 14px;
-    line-height: 1.2;
+
     color: var(--color-text-brown);
   }
 
@@ -396,7 +396,7 @@ const getColorVar = (color: Color): string => {
   &__description {
     display: flex;
     font-weight: 400;
-    line-height: 1.2;
+
     margin: 0 auto 20px;
     max-width: 460px;
 

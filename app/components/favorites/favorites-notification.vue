@@ -89,7 +89,7 @@ function closeNotification() {
     margin: 0;
     font-weight: 700;
     font-size: 18px;
-    line-height: 120%;
+
   }
 
   &__header {

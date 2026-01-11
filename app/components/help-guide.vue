@@ -254,7 +254,7 @@ const { isDesktop } = useBreakpoint()
     display: flex;
     font-size: 30px;
     font-weight: 800;
-    line-height: 1.2;
+
     text-transform: uppercase;
 
     @media (min-width: $mq-sm) {
@@ -272,7 +272,7 @@ const { isDesktop } = useBreakpoint()
     display: flex;
     flex-direction: column;
     font-size: 16px;
-    line-height: 1.2;
+
     font-weight: 400;
     padding: 0 30px 0 0;
     margin: 0 30px 0 0;
@@ -310,7 +310,7 @@ const { isDesktop } = useBreakpoint()
   &__motivation {
     font-size: 20px;
     font-weight: 700;
-    line-height: 1.2;
+
     text-transform: uppercase;
 
     @media (min-width: $mq-lg) {

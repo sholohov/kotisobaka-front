@@ -161,7 +161,7 @@ const formatedDate = computed(() => {
     padding: 14px;
     font-weight: 700;
     font-size: 18px;
-    line-height: 1.2;
+
   }
 
   &__title-text {
@@ -191,7 +191,7 @@ const formatedDate = computed(() => {
   &__excerpt {
     position: relative;
     font-weight: 400;
-    line-height: 1.2;
+
     overflow: hidden;
     margin: 0 0 14px;
     display: -webkit-box;
@@ -216,7 +216,7 @@ const formatedDate = computed(() => {
     border-radius: 10px;
     font-size: 14px;
     font-weight: 600;
-    line-height: 1.2;
+
     padding: 2px 6px;
     overflow: hidden;
 

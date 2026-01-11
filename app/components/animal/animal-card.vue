@@ -140,7 +140,7 @@ function truncate(text: string, maxLength = 100) {
   &__description {
     position: relative;
     font-weight: 400;
-    line-height: 1.2;
+
     color: var(--color-text-chocolate);
     overflow: hidden;
     display: -webkit-box;
@@ -172,14 +172,14 @@ function truncate(text: string, maxLength = 100) {
     color: var(--color-text-brown);
     font-weight: 700;
     font-size: 24px;
-    line-height: 1.2;
+
     z-index: 1;
   }
 
   &__info-label {
     font-size: 14px;
     font-weight: 600;
-    line-height: 1.2;
+
     color: var(--color-text-chocolate);
   }
 

@@ -154,7 +154,7 @@ const statItems = computed(() => [{
 
   &__description {
     font-weight: 700;
-    line-height: 120%;
+
     text-align: center;
     max-width: 500px;
   }

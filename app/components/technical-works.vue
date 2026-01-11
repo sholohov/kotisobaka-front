@@ -264,7 +264,7 @@ onUnmounted(() => {
     color: white;
     font-weight: 700;
     margin: 0;
-    line-height: 1.2;
+
     letter-spacing: 0.5px;
     font-family: 'Nunito', sans-serif;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);

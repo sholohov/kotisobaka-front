@@ -125,7 +125,7 @@ const items = computed(() => [{
   &__description {
     color: var(--color-text-brown);
     font-weight: 400;
-    line-height: 120%;
+
     margin: 0 0 30px;
   }
 

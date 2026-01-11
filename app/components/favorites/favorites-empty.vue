@@ -68,7 +68,7 @@ import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
 
   &__description {
     font-weight: 700;
-    line-height: 120%;
+
     margin: 0 0 30px;
     text-align: center;
     color: var(--color-pink-dark);

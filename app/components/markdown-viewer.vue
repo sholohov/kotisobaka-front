@@ -22,7 +22,7 @@ const rendered = computed(() => md.render(props.content || ''))
 
 <style lang="scss">
 .markdown-viewer {
-  line-height: 1.2;
+
   font-weight: 400;
   color: var(--color-text-brown);
 
@@ -113,7 +113,7 @@ const rendered = computed(() => md.render(props.content || ''))
     display: block;
     position: relative;
     color: var(--color-text-chocolate);
-    line-height: 1.2;
+
     font-weight: 700;
     margin: 3em 0;
     font-size: 20px;

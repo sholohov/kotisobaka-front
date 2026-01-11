@@ -18,7 +18,7 @@ const actions = [{
   link: '/help/other/info',
 }, {
   title: 'Предложить партнерство (если вы представитель бизнеса или СМИ)',
-  link: '/help/volunteer/partner',
+  link: '/help/other/corporate',
 }]
 </script>
 
@@ -58,7 +58,7 @@ const actions = [{
   &__quote {
     font-weight: 800;
     font-size: 26px;
-    line-height: 1.2;
+
     text-transform: uppercase;
     color: var(--color-green-dark);
     margin: 0 0 20px;
@@ -77,7 +77,7 @@ const actions = [{
   }
 
   &__actions {
-    line-height: 1.2;
+
     list-style: none;
     display: flex;
     margin: 0;
@@ -109,7 +109,7 @@ const actions = [{
   &__action-title {
     font-weight: 700;
     font-size: 18px;
-    line-height: 120%;
+
   }
 }
 </style>

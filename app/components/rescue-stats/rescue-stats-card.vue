@@ -96,7 +96,7 @@ defineProps({
     color: var(--color-text-brown);
     font-size: 20px;
     font-weight: 700;
-    line-height: 1.2;
+
     text-align: center;
     text-transform: uppercase;
     max-width: 220px;

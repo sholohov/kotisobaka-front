@@ -43,9 +43,9 @@ export const navigation = [{
       to: '/help/volunteer/foster',
       key: 'help-volunteer-foster',
     }, {
-      label: 'Стать партнёром',
-      to: '/help/volunteer/partner',
-      key: 'help-volunteer-partner',
+      label: 'Стать куратором',
+      to: '/help/volunteer/curator',
+      key: 'help-volunteer-curator',
     }],
   }, {
     label: 'Другая помощь',

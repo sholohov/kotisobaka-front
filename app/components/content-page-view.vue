@@ -5,7 +5,7 @@ const route = useRoute()
 
 const { data: infoPageResponse } = await useAsyncData('content-page-view--' + route.path, () => {
   return api.contentPages.get({
-    filter: {
+    filters: {
       slug: { $eq: route.path },
     },
   })

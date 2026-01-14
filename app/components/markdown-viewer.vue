@@ -176,5 +176,55 @@ const rendered = computed(() => md.render(props.content || ''))
     background-color: var(--color-beige-light);
     opacity: 0.5;
   }
+
+  /* Таблицы */
+  table {
+    width: 100%;
+    max-width: 100%;
+    margin: 2em 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    overflow-x: auto;
+    display: block;
+  }
+
+  tr {
+    border-bottom: 1px solid var(--color-beige-light);
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  th {
+    padding: 1em 1.2em;
+    text-align: left;
+    font-weight: 700;
+    color: var(--color-pink-dark);
+    background-color: rgba(255, 255, 255, 0.05);
+    border-bottom: 2px solid var(--color-beige-light);
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+
+  td {
+    padding: 1em 1.2em;
+    vertical-align: top;
+    line-height: 1.5;
+
+    &:first-child {
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+    }
+  }
 }
 </style>

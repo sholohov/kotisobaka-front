@@ -72,7 +72,7 @@ defineProps({
     align-items: flex-end;
 
     @media (min-width: $mq-lg) {
-      font-size: 36px;
+      font-size: 30px;
     }
   }
 

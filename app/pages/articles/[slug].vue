@@ -26,6 +26,7 @@ const { data: similarNewsData } = await useAsyncData('article-similar-' + articl
     populate: ['coverImage', 'tag'],
     filters: {
       tag: article?.tag?.slug ? { slug: { $eq: article.tag.slug } } : undefined,
+      documentId: article ? { $not: article?.documentId } : undefined,
     },
   })
 })
@@ -102,6 +103,7 @@ const formatedDate = computed(() => {
     <page-section
       v-if="similarNewsData?.data.length"
       title="Вам может быть интересно"
+      right-padding
     >
       <articles-slider :articles="similarNewsData.data" />
     </page-section>

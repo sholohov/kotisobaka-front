@@ -58,6 +58,7 @@ const { data: articlesResponse } = await useAsyncData('articles-page', () => {
       tag: tag ? { name: { $eq: tag } } : undefined,
       type: type ? { $eq: type } : undefined,
     },
+    sort: ['publishedDate:desc'],
   })
 }, {
   watch: [pagination, filters],

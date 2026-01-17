@@ -44,6 +44,10 @@ function select(option: RadioOption) {
   flex-wrap: wrap;
   gap: 8px;
 
+  @media (min-width: $mq-md) {
+    gap: 10px;
+  }
+
   &__item {
     display: flex;
     align-items: center;

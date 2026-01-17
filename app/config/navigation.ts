@@ -19,20 +19,20 @@ export const navigation = [{
   key: 'help',
   items: [{
     label: 'Материальная помощь',
-    to: '/help/donate',
+    to: '',
     key: 'help-donate',
     items: [{
       label: 'Финансовая',
       to: '/help/donate/finance',
       key: 'help-donate-finance',
     }, {
-      label: 'Корзина желаний (график приёма)',
+      label: 'Корзина желаний',
       to: '/help/donate/wishlist',
       key: 'help-donate-wishlist',
     }],
   }, {
     label: 'Волонтёрство',
-    to: '/help/volunteer',
+    to: '',
     key: 'help-volunteer',
     items: [{
       label: 'Стать волонтёром',
@@ -49,7 +49,7 @@ export const navigation = [{
     }],
   }, {
     label: 'Другая помощь',
-    to: '/help/other',
+    to: '',
     key: 'help-other',
     items: [{
       label: 'Информационная помощь',
@@ -78,13 +78,9 @@ export const navigation = [{
     to: '/info/adopt',
     key: 'info-adopt',
   }, {
-    label: 'Процесс усыновления',
-    to: '/info/process',
-    key: 'info-process',
-  }, {
-    label: 'Помощь своими руками',
-    to: '/info/diy',
-    key: 'info-diy',
+    label: 'Помощь на улице',
+    to: '/info/help',
+    key: 'info-care',
   }, {
     label: 'Часто задаваемые вопросы',
     to: '/info/faq',

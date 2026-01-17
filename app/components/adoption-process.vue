@@ -380,7 +380,7 @@ const getColorVar = (color: Color): string => {
         rgba(0, 0, 0, 1) 20%,
         rgba(0, 0, 0, 0.5) 100%);
 
-    filter: brightness(70%);
+    filter: brightness(70%) url(#noise);
 
     @media (min-width: $mq-sm) {
       width: 256px;

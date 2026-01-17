@@ -2,7 +2,7 @@
 
 const items = computed(() => [{
   position: 1,
-  title: 'Поддержка, опека и безопасность',
+  title: 'Поддержка, опека и безопасность животных',
   icon: defineAsyncComponent(() => import('~/assets/svg/about-us-directions/man-with-dog.svg')),
   list: [
     'Спасение и лечение бездомных и пострадавших животных.',
@@ -94,79 +94,91 @@ const items = computed(() => [{
 </template>
 
 <style lang="scss">
-  .about-us-directions {
-    $this: '.about-us-directions';
+.about-us-directions {
+  $this: '.about-us-directions';
 
-    &__slider {
+  &__slider {
 
-    }
+  }
 
-    &__slide {
-      width: 320px;
-    }
+  &__slide {
+    width: 320px;
+  }
 
-    &__card {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 
-    &__header {
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-      border-radius: 24px;
-      background-color: var(--color-white);
-    }
+  &__header {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 24px;
+    background-color: var(--color-white);
+  }
 
-    &__picture {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      margin: 0 0 20px;
-    }
+  &__picture {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0 0 20px;
+  }
 
-    &__position {
-      color: var(--color-blue-light);
-      font-weight: 900;
-      font-size: 140px;
-      position: absolute;
-      inset: 10px 60px 0 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-      filter:url(#noise)
-    }
+  &__position {
+    color: var(--color-blue-light);
+    font-weight: 900;
+    font-size: 140px;
+    position: absolute;
+    inset: 0 60px -18px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    filter: url(#noise);
 
-    &__icon {
-      height: 100px;
-      color: var(--color-green-dark);
-      margin: 0 0 0 60px;
-      position: relative;
-      @include imageGradient
-    }
-
-    &__title {
-      font-weight: 800;
-      font-size: 22px;
-      line-height: 100%;
-      color: var(--color-green-dark);
-    }
-
-    &__list {
-      padding: 20px;
-      margin: 0;
-      border-radius: 24px;
-      background-color: var(--color-white);
-      color: var(--color-text-chocolate);
-      font-weight: 400;
-
-    }
-
-    &__list-item {
-      margin: 4px 0 4px 20px;
+    @media (min-width: $mq-md) {
+      inset: 0 50% -60px 0;
+      font-size: 250px;
     }
   }
+
+  &__icon {
+    flex: none;
+    height: 120px;
+    width: 120px;
+    color: var(--color-green-dark);
+    margin: 0 0 0 60px;
+    position: relative;
+    @include imageGradient;
+
+    @media (min-width: $mq-md) {
+      height: 250px;
+      width: 250px;
+    }
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 100%;
+    color: var(--color-green-dark);
+  }
+
+  &__list {
+    padding: 20px;
+    margin: 0;
+    border-radius: 24px;
+    background-color: var(--color-white);
+    color: var(--color-text-chocolate);
+    font-weight: 400;
+
+  }
+
+  &__list-item {
+    margin: 4px 0 4px 20px;
+  }
+}
 </style>

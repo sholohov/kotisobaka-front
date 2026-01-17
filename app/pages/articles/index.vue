@@ -41,9 +41,15 @@ const filters = reactive({
   type: null as ArticleData['type'] | null,
 })
 
-// const { data: articleTagsResponse } = await useAsyncData('articles-tags', () => {
-//   return api.articleTags.get()
-// })
+const { data: articleTagsResponse } = await useAsyncData('articles-tags', () => {
+  return api.articleTags.get({
+    populate: {
+      articles: {
+        fields: ['id'],
+      },
+    },
+  })
+})
 
 const { data: articlesResponse } = await useAsyncData('articles-page', () => {
   const { tag, type } = filters
@@ -55,7 +61,7 @@ const { data: articlesResponse } = await useAsyncData('articles-page', () => {
       pageSize: 15,
     },
     filters: {
-      tag: tag ? { name: { $eq: tag } } : undefined,
+      tag: tag && tag !== 'все' ? { name: { $eq: tag } } : undefined,
       type: type ? { $eq: type } : undefined,
     },
     sort: ['publishedDate:desc'],
@@ -78,6 +84,17 @@ const filtersOptions: RadioOption[] = [{
   key: '2',
   value: 'blog',
 }]
+
+const articlesTags = computed((): ArticleTag[] => {
+  return [
+    { name: 'все', color: 'white', slug: 'all-tags' },
+    ...(articleTagsResponse.value?.data ?? []).filter(i => i.articles?.length),
+  ]
+})
+
+function handleTagBtn(tag: ArticleTag) {
+  filters.tag = tag.name
+}
 </script>
 
 <template>
@@ -90,6 +107,24 @@ const filtersOptions: RadioOption[] = [{
             :options="filtersOptions"
           />
         </div>
+        <ul
+          v-if="articlesTags.length"
+          class="articles-page__tags"
+        >
+          <li
+            v-for="tag in articlesTags"
+            :key="tag.slug"
+            class="articles-page__tags-item"
+            :style="{ backgroundColor: tag.color }"
+          >
+            <button
+              class="articles-page__tags-link"
+              @click="handleTagBtn(tag)"
+            >
+              #{{ tag.name }}
+            </button>
+          </li>
+        </ul>
         <common-grid
           v-if="articlesResponse"
           :items="articlesResponse?.data"
@@ -125,6 +160,44 @@ const filtersOptions: RadioOption[] = [{
     display: flex;
     justify-content: center;
     margin: 0 0 42px;
+  }
+
+  &__tags {
+    list-style: none;
+    display: flex;
+    overflow-x: auto;
+    margin: 0 0 20px;
+    padding: 0;
+    gap: 10px;
+
+    @media (min-width: $mq-md) {
+      margin: 0 0 30px;
+    }
+  }
+
+  &__tags-item {
+    display: flex;
+    flex: none;
+    border: 1px solid var(--color-text-chocolate);
+    border-radius: 18px;
+    overflow: hidden;
+    background-color: var(--color-white);
+  }
+
+  &__tags-link {
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 16px;
+    color: var(--color-text-chocolate);
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background-color: rgba(225,255,255,0.5);
+      }
+    }
   }
 
   &__interspersed {

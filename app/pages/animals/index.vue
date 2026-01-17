@@ -89,11 +89,15 @@ function handleOpenFiltersModalBtn() {
 </script>
 
 <template>
-  <div class="animals-page">
+  <div
+    v-if="pageData"
+    class="animals-page"
+  >
     <page-section
-      v-if="pageData"
+      v-if="pageData.fundsIsNeededAnimals.data?.length"
       anchor="need_help"
       title="Нуждаются в помощи"
+      right-padding
     >
       <animal-list-slider
         is-need-help

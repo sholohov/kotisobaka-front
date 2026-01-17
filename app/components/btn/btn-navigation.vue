@@ -3,6 +3,7 @@ import ArrowDownIcon from '~/assets/svg/arrow-down-icon.svg';
 import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
 import type { ButtonNavigationProps } from '~/types/buttonNavigation';
 import { useRoute } from '#imports';
+import { NuxtLink } from '#components';
 
 const props = defineProps({
   to: {
@@ -71,7 +72,8 @@ function isActive(path: string): boolean {
           :key="item.key"
           class="btn-navigation__item"
         >
-          <nuxt-link
+          <component
+            :is="to ? NuxtLink : 'span'"
             class="btn-navigation__item-link"
             :to="item.to"
           >
@@ -84,7 +86,7 @@ function isActive(path: string): boolean {
               width="24"
               class="btn-navigation__item-icon"
             />
-          </nuxt-link>
+          </component>
 
           <ul
             v-if="item.items?.length"
@@ -116,6 +118,7 @@ function isActive(path: string): boolean {
   $size: 36px;
 
   position: relative;
+  user-select: none;
 
   @keyframes arrow-right-move {
     0% { transform: translateX(0); }
@@ -232,15 +235,23 @@ function isActive(path: string): boolean {
     padding: 0 14px;
     color: var(--color-text-brown);
     background-color: var(--color-text-beige);
-    cursor: pointer;
-    transition: background-color 0.3s;
+    border-radius: 6px;
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {
-        background-color: var(--color-background-pink);
-
         #{$this}__item-icon {
           animation: arrow-right-move 4s ease-in-out infinite;
+        }
+      }
+    }
+
+    &[href] {
+      cursor: pointer;
+      transition: background-color 0.3s;
+
+      @media (hover: hover) and (pointer: fine) {
+        &:hover {
+          background-color: var(--color-background-pink);
         }
       }
     }
@@ -302,6 +313,7 @@ function isActive(path: string): boolean {
     line-height: $size;
     color: var(--color-text-brown);
     transition: background-color 0.3s;
+    border-radius: 6px;
 
     @media (hover: hover) and (pointer: fine) {
       &:hover {

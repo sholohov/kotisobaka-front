@@ -161,7 +161,10 @@ onUnmounted(() => {
           class="menu-mobile-nav-item__sublist"
           :class="{ 'menu-mobile-nav-item__sublist--active': activeSubKey === item.key }"
         >
-          <li class="menu-mobile-nav-item__subitem">
+          <li
+            v-if="item.to"
+            class="menu-mobile-nav-item__subitem"
+          >
             <nuxt-link
               class="menu-mobile-nav-item__subitem-link"
               :to="item.to"

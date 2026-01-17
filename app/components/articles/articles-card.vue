@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { ArticleData } from '~/api/articles/types';
 import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
+import NewsIcon from '~/assets/svg/news-icon.svg'
+import BlogIcon from '~/assets/svg/blog-icon.svg'
 
 const props = defineProps({
   article: {
@@ -37,6 +39,15 @@ const formatedDate = computed(() => {
           {{ article.title }}
         </div>
       </div>
+      <span
+        class="articles-card__type"
+        :class="['articles-card__type--' + article.type]"
+      >
+        <component
+          :is="article.type === 'news' ? NewsIcon : BlogIcon"
+          width="24"
+        />
+      </span>
     </div>
     <div class="articles-card__body">
       <div class="articles-card__excerpt">
@@ -161,7 +172,6 @@ const formatedDate = computed(() => {
     padding: 14px;
     font-weight: 700;
     font-size: 18px;
-
   }
 
   &__title-text {
@@ -171,6 +181,32 @@ const formatedDate = computed(() => {
     -webkit-line-clamp: 2;
     text-overflow: ellipsis;
     height: calc(1.2em * 2);
+  }
+
+  &__type {
+    display: flex;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid currentColor;
+    color: var(--color-text-chocolate);
+    border-radius: 50%;
+    position: absolute;
+    inset: 14px auto auto 14px;
+    background-color: var(--color-white);
+
+    @media (min-width: $mq-md) {
+      inset: 20px auto auto 20px;
+    }
+
+    &--blog {
+      color: var(--color-green);
+    }
+
+    &--news {
+      color: var(--color-orange);
+    }
   }
 
   &__body {

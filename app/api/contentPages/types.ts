@@ -5,7 +5,7 @@ import type {
 } from '@nuxtjs/strapi'
 
 export interface ContentPage {
-  slug: string;
+  path: string;
   title: string;
   category: 'info' | 'help'
   summary: string

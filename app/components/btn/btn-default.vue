@@ -35,7 +35,7 @@ const props = defineProps({
 })
 
 const sizePx = computed(() => props.size + 'px')
-const emit = defineEmits(['click'])
+const emit = defineEmits(['click', 'camelCase'])
 
 const formattedBadge = computed(() => {
   if (props.badge === null || props.badge === undefined) return null;

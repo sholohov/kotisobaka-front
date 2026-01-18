@@ -4,7 +4,7 @@ import PiggyBankIcon from '~/assets/svg/piggy-bank-icon.svg';
 import PhoneIcon from '~/assets/svg/phone-icon.svg';
 import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
 import type { MediaFile } from '~/api/types';
-import type { Swiper }  from  'swiper'
+import type { Swiper } from 'swiper'
 
 interface TabProps {
   label: string
@@ -690,10 +690,8 @@ function handleDonateBtn() {
       }
     }
 
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        color: var(--color-orange);
-      }
+    @include hover {
+      color: var(--color-orange);
     }
 
     @media (min-width: $mq-md) {

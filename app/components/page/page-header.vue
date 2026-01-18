@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import LogoSvg from '~/assets/svg/logo.svg'
 import HeartIcon from '~/assets/svg/heart-icon.svg'
-import SearchIcon from '~/assets/svg/search-icon.svg'
 import BtnDonate from '~/components/btn/btn-donate.vue';
 
 const { navigation } = useAppConfig()
@@ -49,17 +48,9 @@ function handleDonateBtn() {
         </nav>
 
         <div class="page-header__right">
-          <tooltip-box
-            text="Поиск"
-            position="bottom"
-          >
-            <btn-default circle>
-              <search-icon
-                width="24"
-                style="color: var(--color-green-dark)"
-              />
-            </btn-default>
-          </tooltip-box>
+          <div class="page-header__search">
+            <search-panel />
+          </div>
 
           <tooltip-box
             v-if="!isMobileView"
@@ -70,6 +61,7 @@ function handleDonateBtn() {
               circle
               to="/favorites"
               :badge="favoritesStore.count"
+              style="color: var(--color-beige-light)"
             >
               <heart-icon
                 width="24"
@@ -120,10 +112,8 @@ function handleDonateBtn() {
     justify-content: center;
     transition: background-color 0.3s;
 
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        background-color: var(--color-background-pink);
-      }
+    @include hover {
+      background-color: var(--color-background-pink);
     }
 
     &:not([href]) {
@@ -154,6 +144,11 @@ function handleDonateBtn() {
     display: flex;
     align-items: center;
     gap: 10px;
+  }
+
+  &__search {
+    flex: none;
+    position: relative;
   }
 
   &__donate {

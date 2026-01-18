@@ -18,28 +18,6 @@ const props = defineProps({
 
 const route = useRoute();
 
-const isCurrentSectionActive = computed(() => {
-  if (isActive(props.to)) {
-    return true;
-  }
-
-  for (const item of props.items) {
-    if (isActive(item.to)) {
-      return true;
-    }
-
-    if (item.items) {
-      for (const subItem of item.items) {
-        if (isActive(subItem.to)) {
-          return true;
-        }
-      }
-    }
-  }
-
-  return false;
-});
-
 function isActive(path: string): boolean {
   return route.path === path || route.path.startsWith(path + '/');
 }
@@ -49,7 +27,7 @@ function isActive(path: string): boolean {
   <div class="btn-navigation">
     <div
       class="btn-navigation__btn"
-      :class="{ 'btn-navigation__btn--active': isCurrentSectionActive }"
+      :class="{ 'btn-navigation__btn--active': isActive(props.to) }"
     >
       <nuxt-link :to="to">
         <slot />
@@ -121,33 +99,43 @@ function isActive(path: string): boolean {
   user-select: none;
 
   @keyframes arrow-right-move {
-    0% { transform: translateX(0); }
-    10% { transform: translateX(4px); }
-    20% { transform: translateX(-2px); }
-    30% { transform: translateX(4px); }
-    40% { transform: translateX(0); }
-    100% { transform: translateX(0); }
+    0% {
+      transform: translateX(0);
+    }
+    10% {
+      transform: translateX(4px);
+    }
+    20% {
+      transform: translateX(-2px);
+    }
+    30% {
+      transform: translateX(4px);
+    }
+    40% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(0);
+    }
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      #{$this}__btn {
-        background-color: var(--color-background-pink);
+  @include hover {
+    #{$this}__btn {
+      background-color: var(--color-background-pink);
 
-        &--active {
-          background-color: var(--color-pink);
-        }
+      &--active {
+        background-color: var(--color-pink);
       }
+    }
 
-      #{$this}__btn-arrow {
-        transform: scale(1, -1);
-      }
+    #{$this}__btn-arrow {
+      transform: scale(1, -1);
+    }
 
-      #{$this}__dropdown {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-        pointer-events: auto;
-      }
+    #{$this}__dropdown {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
     }
   }
 
@@ -215,13 +203,11 @@ function isActive(path: string): boolean {
   &__item {
     position: relative;
 
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        #{$this}__sublist {
-          opacity: 1;
-          transform: translateX(0);
-          pointer-events: auto;
-        }
+    @include hover {
+      #{$this}__sublist {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
       }
     }
   }
@@ -237,11 +223,9 @@ function isActive(path: string): boolean {
     background-color: var(--color-text-beige);
     border-radius: 6px;
 
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        #{$this}__item-icon {
-          animation: arrow-right-move 4s ease-in-out infinite;
-        }
+    @include hover {
+      #{$this}__item-icon {
+        animation: arrow-right-move 4s ease-in-out infinite;
       }
     }
 
@@ -249,10 +233,8 @@ function isActive(path: string): boolean {
       cursor: pointer;
       transition: background-color 0.3s;
 
-      @media (hover: hover) and (pointer: fine) {
-        &:hover {
-          background-color: var(--color-background-pink);
-        }
+      @include hover {
+        background-color: var(--color-background-pink);
       }
     }
   }
@@ -315,10 +297,8 @@ function isActive(path: string): boolean {
     transition: background-color 0.3s;
     border-radius: 6px;
 
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        background-color: var(--color-background-pink);
-      }
+    @include hover {
+      background-color: var(--color-background-pink);
     }
   }
 }

@@ -123,25 +123,23 @@ const formatedDate = computed(() => {
   flex-direction: column;
   position: relative;
 
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      #{$this}__header, #{$this}__body {
-        transform: translateY(-4px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.07),
-        0 4px 8px rgba(0, 0, 0, 0.035);
-      }
+  @include hover {
+    #{$this}__header, #{$this}__body {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.07),
+      0 4px 8px rgba(0, 0, 0, 0.035);
+    }
 
-      #{$this}__img {
-        transform: scale(1.1);
-      }
+    #{$this}__img {
+      transform: scale(1.1);
+    }
 
-      #{$this}__more {
-        opacity: 1;
-      }
+    #{$this}__more {
+      opacity: 1;
+    }
 
-      #{$this}__more-icon {
-        animation: arrow-right-move 4s ease-in-out infinite;
-      }
+    #{$this}__more-icon {
+      animation: arrow-right-move 4s ease-in-out infinite;
     }
   }
 

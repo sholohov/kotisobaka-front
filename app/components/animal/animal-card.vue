@@ -87,15 +87,13 @@ function truncate(text: string, maxLength = 100) {
   position: relative;
   transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
 
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.07),
-      0 4px 8px rgba(0, 0, 0, 0.035);
+  @include hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.07),
+    0 4px 8px rgba(0, 0, 0, 0.035);
 
-      #{$this}__img {
-        transform: scale(1.1);
-      }
+    #{$this}__img {
+      transform: scale(1.1);
     }
   }
 

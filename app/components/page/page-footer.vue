@@ -216,13 +216,11 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
       transition: transform 0.3s;
     }
 
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        color: var(--color-background-beige);
+    @include hover {
+      color: var(--color-background-beige);
 
-        &:before {
-          transform: scale(1, 1);
-        }
+      &:before {
+        transform: scale(1, 1);
       }
     }
 
@@ -238,15 +236,13 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
     order: +1;
     width: 100%;
 
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        #{$this}__pic-left {
-          transform: translateX(20%);
-        }
+    @include hover {
+      #{$this}__pic-left {
+        transform: translateX(20%);
+      }
 
-        #{$this}__pic-right {
-          transform: scale(-1, 1) translateX(20%);
-        }
+      #{$this}__pic-right {
+        transform: scale(-1, 1) translateX(20%);
       }
     }
 
@@ -325,10 +321,8 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
     background-color: currentColor;
     transition: opacity 0.3s;
 
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        opacity: 0.7;
-      }
+    @include hover {
+      opacity: 0.7;
     }
   }
 
@@ -363,13 +357,11 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
       transition: transform 0.3s;
     }
 
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        color: var(--color-background-beige);
+    @include hover {
+      color: var(--color-background-beige);
 
-        &:before {
-          transform: scale(1, 1);
-        }
+      &:before {
+        transform: scale(1, 1);
       }
     }
   }

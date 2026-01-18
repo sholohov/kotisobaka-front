@@ -342,11 +342,9 @@ onUnmounted(() => {
       backdrop-filter: blur(10px);
       font-family: 'Nunito', sans-serif;
 
-      @media (hover: hover) and (pointer: fine) {
-        &:hover {
-          background: rgba(255, 255, 255, 0.3);
-          transform: translateY(-2px);
-        }
+      @include hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
       }
     }
   }
@@ -354,13 +352,21 @@ onUnmounted(() => {
 
 // Анимации
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 0.7; }
-  50% { opacity: 1; }
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 // Адаптивность

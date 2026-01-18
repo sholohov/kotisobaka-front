@@ -68,10 +68,8 @@ function toggle(option: CheckboxOption) {
     background-color: var(--color-white);
     transition: background-color 0.3s ease;
 
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        background-color: var(--color-background-beige);
-      }
+    @include hover {
+      background-color: var(--color-background-beige);
     }
   }
 

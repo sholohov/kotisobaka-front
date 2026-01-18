@@ -78,9 +78,9 @@ export const navigation = [{
     to: '/info/adopt',
     key: 'info-adopt',
   }, {
-    label: 'Помощь на улице',
-    to: '/info/help',
-    key: 'info-care',
+    label: 'Помощь своими руками',
+    to: '/info/diy',
+    key: 'info-diy',
   }, {
     label: 'Часто задаваемые вопросы',
     to: '/info/faq',

@@ -32,11 +32,9 @@ const emit = defineEmits(['click'])
 
   overflow: hidden;
 
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      #{$this}__coin {
-        transform: translateY(0);
-      }
+  @include hover {
+    #{$this}__coin {
+      transform: translateY(0);
     }
   }
 

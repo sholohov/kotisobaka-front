@@ -193,10 +193,8 @@ function handleTagBtn(tag: ArticleTag) {
     cursor: pointer;
     transition: background-color 0.3s;
 
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        background-color: rgba(225,255,255,0.5);
-      }
+    @include hover {
+      background-color: rgba(225, 255, 255, 0.5);
     }
   }
 

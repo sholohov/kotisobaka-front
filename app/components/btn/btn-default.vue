@@ -98,6 +98,10 @@ const formattedBadge = computed(() => {
   background-color: var(--color-text-beige);
   color: var(--color-text-brown);
 
+  &--no-border {
+    border: var(--color-text-beige);
+  }
+
   &__text {
     position: relative;
     z-index: 1;
@@ -105,10 +109,8 @@ const formattedBadge = computed(() => {
     white-space: nowrap;
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.1);
-    }
+  @include hover {
+    box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.1);
   }
 
   &:active {
@@ -163,10 +165,8 @@ const formattedBadge = computed(() => {
       border-color: var(--color-blue);
     }
 
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.2);
-      }
+    @include hover {
+      box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.2);
     }
   }
 
@@ -179,10 +179,8 @@ const formattedBadge = computed(() => {
       border-color: var(--color-green);
     }
 
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.2);
-      }
+    @include hover {
+      box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.2);
     }
   }
 

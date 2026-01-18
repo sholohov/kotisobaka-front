@@ -46,12 +46,10 @@ defineProps({
     opacity: 0;
   }
 
-  @media (hover: hover) and (pointer: fine) {
-    &:hover {
-      &::before {
-        opacity: 0.3;
-        background-color: var(--color-green-light);
-      }
+  @include hover {
+    &::before {
+      opacity: 0.3;
+      background-color: var(--color-green-light);
     }
   }
 

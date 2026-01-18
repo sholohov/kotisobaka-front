@@ -81,16 +81,14 @@ const visiblePages = computed(() => {
     padding: 10px;
     border-radius: 6px;
     line-height: 1;
-    border: 1px solid rgb(0,0,0,0);
+    border: 1px solid rgb(0, 0, 0, 0);
     color: var(--color-pink-dark);
     font-size: 20px;
     font-weight: 700;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 
-    @media (hover: hover) and (pointer: fine) {
-      &:hover {
-        color: var(--color-text-chocolate);
-      }
+    @include hover {
+      color: var(--color-text-chocolate);
     }
   }
 

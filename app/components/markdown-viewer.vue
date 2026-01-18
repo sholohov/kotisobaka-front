@@ -131,12 +131,20 @@ const rendered = computed(() => md.render(props.content || ''))
   }
 
   a {
-    color: var(--color-orange);
-    text-decoration: none;
+    color: var(--color-orange-dark);
+    text-decoration: underline;
+    text-decoration-color: var(--color-orange-light);
+    text-underline-offset: 3px;
+    transition: color 0.2s, text-decoration-color 0.2s;
 
     &:hover {
       color: var(--color-orange-dark);
-      text-decoration: underline;
+      text-decoration-color: var(--color-orange);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-orange);
+      outline-offset: 2px;
     }
   }
 

@@ -74,7 +74,6 @@ function isActive(path: string): boolean {
               v-for="subItem in item.items"
               :key="subItem.key"
               class="btn-navigation__subitem"
-              :class="{ 'btn-navigation__subitem--active': isActive(subItem.to) }"
             >
               <nuxt-link
                 class="btn-navigation__subitem-link"
@@ -194,7 +193,7 @@ function isActive(path: string): boolean {
   &__list {
     list-style: none;
     margin: 0;
-    padding: 10px 0;
+    padding: 10px;
     background-color: var(--color-text-beige);
     border-radius: calc(36px / 2);
     border: 1px solid var(--color-beige-light);
@@ -218,7 +217,7 @@ function isActive(path: string): boolean {
     justify-content: space-between;
     gap: 24px;
     height: $size;
-    padding: 0 14px;
+    padding: 0 10px;
     color: var(--color-text-brown);
     background-color: var(--color-text-beige);
     border-radius: 6px;
@@ -255,7 +254,8 @@ function isActive(path: string): boolean {
 
   &__sublist {
     list-style: none;
-    margin: 0 0 0 10px;
+    margin: 0 0 0 20px;
+    padding: 10px;
     position: absolute;
     top: -10px;
     left: 100%;
@@ -265,7 +265,6 @@ function isActive(path: string): boolean {
     background-color: var(--color-text-beige);
     border: 1px solid var(--color-beige-light);
     border-radius: calc($size / 2);
-    padding: 10px 0;
     pointer-events: none;
     white-space: nowrap;
 
@@ -274,8 +273,8 @@ function isActive(path: string): boolean {
       position: absolute;
       display: flex;
       inset: 0 100% 0 0;
-      width: 10px;
-      margin: 0 0 0 -10px;
+      width: 30px;
+      margin: 0 0 0 -20px;
     }
   }
 
@@ -290,7 +289,7 @@ function isActive(path: string): boolean {
 
   &__subitem-link {
     display: block;
-    padding: 0 14px;
+    padding: 0 10px;
     height: $size;
     line-height: $size;
     color: var(--color-text-brown);

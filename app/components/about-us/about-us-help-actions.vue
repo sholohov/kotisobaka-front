@@ -6,7 +6,7 @@ const actions = [{
   link: '/animals',
 }, {
   title: 'Стать волонтером: уход, выгул, профессиональная помощь',
-  link: '/help/volunteer',
+  link: '/help/volunteer/become',
 }, {
   title: 'Взять питомца на передержку где оно может оправиться в тепле и уюте',
   link: '/help/volunteer/foster',

@@ -99,9 +99,6 @@ function closeNotification() {
 
   &__close {
     margin: -10px -10px 0 0;
-  }
-
-  &__close-icon {
     color: var(--color-orange);
   }
 }

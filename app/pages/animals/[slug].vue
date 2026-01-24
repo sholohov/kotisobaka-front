@@ -132,7 +132,7 @@ function handleDonateBtn() {
                 class="animal-page__gallery-view-slide"
               >
                 <img
-                  :src="file.formats.large?.url"
+                  :src="file.formats.large?.url || file.url"
                   :alt="file.alternativeText || file.name"
                   class="animal-page__gallery-view-image"
                   loading="lazy"

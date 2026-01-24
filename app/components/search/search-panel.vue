@@ -3,7 +3,7 @@ import CloseIcon from '~/assets/svg/close-icon.svg'
 import SearchIcon from '~/assets/svg/search-icon.svg';
 
 const route = useRoute()
-const { searchHistory, results, hasResults, loading, query } = useSearch()
+const { history, results, hasResults, loading, query } = useSearch()
 const rootRef = useTemplateRef('root')
 const inputRef = useTemplateRef('input')
 const isOpen = ref(false)
@@ -70,7 +70,7 @@ onUnmounted(() => {
           >
         </div>
         <div
-          v-if="query.length || searchHistory.length"
+          v-if="query.length || history.length"
           class="search-panel__dropdown"
         >
           <search-panel-results
@@ -84,7 +84,7 @@ onUnmounted(() => {
           <search-panel-history
             v-else
             class="search-panel__history"
-            :history="searchHistory"
+            :history="history"
             @select="handleSelectHistory"
           />
         </div>
@@ -121,10 +121,10 @@ onUnmounted(() => {
     display: flex;
     flex-direction: column;
     width: 1000vh;
-    max-width: calc(100vw - 31px);
+    max-width: calc(100vw - 20px);
 
     @media (min-width: $mq-sm) {
-      max-width: calc(100vw - 50px);
+      max-width: calc(100vw - 40px);
     }
 
     @media (min-width: $mq-md) {

@@ -5,7 +5,7 @@ import type { ArticleData } from '~/api/articles/types';
 import type { ContentPageData } from '~/api/contentPages/types';
 
 export function useSearch() {
-  const searchHistory = useLocalStorage<string[]>('search-history', {
+  const history = useLocalStorage<string[]>('search-history', {
     default: () => [],
   })
 
@@ -27,8 +27,14 @@ export function useSearch() {
     )
   })
 
+  const filteredHistory = computed(() => {
+    return history.value.filter((item, index) => {
+      return history.value.indexOf(item) === index
+    })
+  })
+
   function updateHistory(query: string) {
-    searchHistory.value = [query, ...searchHistory.value].slice(0, 6)
+    history.value = [query, ...history.value].slice(0, 6)
   }
 
   async function fetchData(query: string, short: boolean) {
@@ -109,7 +115,7 @@ export function useSearch() {
   }, 1000)
 
   return {
-    searchHistory,
+    history: filteredHistory,
     results,
     hasResults,
     loading,

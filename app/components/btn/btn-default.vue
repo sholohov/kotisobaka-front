@@ -194,6 +194,16 @@ const formattedBadge = computed(() => {
     }
   }
 
+  &--yellow-light {
+    background-color: var(--color-yellow-light);
+    border-color: var(--color-white);
+    color: var(--color-white);
+
+    &#{$this}--no-border {
+      border-color: var(--color-yellow);
+    }
+  }
+
   &--orange {
     background-color: var(--color-orange);
     border-color: var(--color-white);

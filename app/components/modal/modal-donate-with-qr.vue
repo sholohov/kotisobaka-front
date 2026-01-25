@@ -14,7 +14,7 @@ import HeartIcon from '~/assets/svg/heart-icon.svg'
     </div>
 
     <img
-      src="/img/qr-code.png"
+      src="/img/qr-code.jpg"
       alt="qr-code"
       class="modal-with-qr__img"
     >
@@ -68,6 +68,8 @@ import HeartIcon from '~/assets/svg/heart-icon.svg'
   }
 
   &__img {
+    border-radius: 24px;
+    width: 230px;
     display: flex;
     margin: 30px auto;
   }

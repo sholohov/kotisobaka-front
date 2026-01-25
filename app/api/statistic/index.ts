@@ -1,5 +1,5 @@
 import { get } from './get'
 
-export const statistic = {
+export const apiStatistic = {
   get,
 }

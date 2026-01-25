@@ -95,7 +95,6 @@ const formatedDate = computed(() => {
         </ul>
 
         <btn-default
-          :to="short ? '/reviews' : undefined"
           circle
           class="stories-card__icon"
           style="color: var(--color-orange)"
@@ -129,7 +128,7 @@ const formatedDate = computed(() => {
   flex: 1;
   position: relative;
 
-  @media (min-width: $mq-md) {
+  @media (min-width: $mq-lg) {
     flex-direction: row-reverse;
     gap: 6px;
   }
@@ -167,7 +166,7 @@ const formatedDate = computed(() => {
     transition: transform 0.3s, box-shadow 0.3s;
     min-height: 240px;
 
-    @media (min-width: $mq-md) {
+    @media (min-width: $mq-lg) {
       margin: 0;
       flex: 1;
     }
@@ -178,6 +177,12 @@ const formatedDate = computed(() => {
     height: 100%;
     overflow: hidden;
     flex: 1;
+
+    @media (min-width: $mq-lg) {
+      &:not(#{$this}--short &) {
+        padding: calc(100% * 1.3) 0 0;
+      }
+    }
 
     #{$this}--short & {
       padding: calc(100% * 0.7) 0 0;
@@ -199,7 +204,7 @@ const formatedDate = computed(() => {
     line-height: 1;
     margin: 0 0 14px;
 
-    @media (min-width: $mq-md) {
+    @media (min-width: $mq-lg) {
       font-size: 22px;
     }
 
@@ -219,7 +224,7 @@ const formatedDate = computed(() => {
     background-color: var(--color-white);
     transition: transform 0.3s, box-shadow 0.3s;
 
-    @media (min-width: $mq-md) {
+    @media (min-width: $mq-lg) {
       padding: 20px;
     }
   }
@@ -239,7 +244,7 @@ const formatedDate = computed(() => {
       text-overflow: ellipsis;
       max-height: calc(1.2em * 4);
 
-      @media (min-width: $mq-md) {
+      @media (min-width: $mq-lg) {
         -webkit-line-clamp: 8;
         max-height: calc(1.2em * 8);
       }

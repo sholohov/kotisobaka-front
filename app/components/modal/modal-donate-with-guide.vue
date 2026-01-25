@@ -1,6 +1,11 @@
 <script setup lang="ts">
-
 import HeartIcon from '~/assets/svg/heart-icon.svg';
+
+const ERIP_CODE = '4661641'
+
+function handleCopyCodeBtn() {
+  copyToClipboard(ERIP_CODE)
+}
 </script>
 
 <template>
@@ -46,6 +51,23 @@ import HeartIcon from '~/assets/svg/heart-icon.svg';
           Подтвердите платёж
         </li>
       </ul>
+
+      <div class="modal-donate-with-guide__copy-code">
+        <btn-default
+          class="modal-donate-with-guide__copy-code-btn"
+          style="flex: 1"
+          @click="handleCopyCodeBtn"
+        >
+          Код услуги {{ ERIP_CODE }}
+        </btn-default>
+        <btn-default
+          circle
+          class="modal-donate-with-guide__copy-code-btn"
+          @click="handleCopyCodeBtn"
+        >
+          <heart-icon width="24" />
+        </btn-default>
+      </div>
 
       <div class="modal-donate-with-guide__thanks">
         <heart-icon
@@ -96,22 +118,29 @@ import HeartIcon from '~/assets/svg/heart-icon.svg';
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    gap: 10px;
   }
 
   &__thanks-icon {
     display: inline-flex;
     color: var(--color-orange);
-    margin: 0 0 10px;
   }
 
   &__thanks-text {
     color: var(--color-pink-dark);
     font-weight: 700;
     font-size: 16px;
-
-    max-width: 216px;
     text-align: center;
+  }
+
+  &__copy-code {
+    display: flex;
+    align-items: center;
+    margin: 0 0 10px;
+  }
+
+  &__copy-code-btn {
+    color: var(--color-blue);
   }
 }
 </style>

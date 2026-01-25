@@ -131,6 +131,7 @@ function handleOpenFiltersModalBtn() {
         <common-grid
           :items="availableAnimals.data"
           :interspersed="pageData.quotes.data"
+          :interspersed-indexes="[3,5,10,15,20,25,30]"
         >
           <template #default="{ item: animal }">
             <animal-card

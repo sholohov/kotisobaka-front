@@ -1,6 +1,6 @@
 import type { ButtonNavigationProps } from '~/types/buttonNavigation';
 
-export const navigation = [{
+export const navigationConfig = [{
   label: 'О нас',
   to: '/about',
   key: 'about',
@@ -46,6 +46,10 @@ export const navigation = [{
       label: 'Стать куратором',
       to: '/help/volunteer/curator',
       key: 'help-volunteer-curator',
+    }, {
+      label: 'Корпоративное волонтёрство',
+      to: '/help/volunteer/corporate',
+      key: 'help-volunteer-corporate',
     }],
   }, {
     label: 'Другая помощь',
@@ -60,9 +64,9 @@ export const navigation = [{
       to: '/help/other/targeted',
       key: 'help-other-targeted',
     }, {
-      label: 'Корпоративное волонтёрство',
-      to: '/help/other/corporate',
-      key: 'help-other-corporate',
+      label: 'Стать партнёром',
+      to: '/help/other/partner',
+      key: 'help-other-partner',
     }],
   }],
 }, {

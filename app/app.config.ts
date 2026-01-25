@@ -1,5 +1,7 @@
-import { navigation } from '~/config/navigation';
+import { navigationConfig } from '~/config/navigation';
+import { seoConfig } from '~/config/seo';
 
 export default defineAppConfig({
-  navigation,
+  navigation: navigationConfig,
+  seo: seoConfig,
 })

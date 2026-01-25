@@ -5,12 +5,17 @@ import PhoneIcon from '~/assets/svg/phone-icon.svg';
 import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
 import type { MediaFile } from '~/api/types';
 import type { Swiper } from 'swiper'
+import type { Animal } from '~/api/animals/types'
 
 interface TabProps {
   label: string
   name: string
   content: string
 }
+
+definePageMeta({
+  seoPageOverride: true,
+})
 
 const route = useRoute()
 const sliderRef = ref(null)
@@ -20,6 +25,7 @@ const { breakpoint, isMobileView, isMobile, isTabletSmall } = useBreakpoint()
 const slug = computed(() => route.params.slug)
 const previewSwiperRef = ref<HTMLElement & { swiper: Swiper }>()
 
+// Получаем данные животного
 const { data: animalResponse } = await useAsyncData('animal-' + slug.value, () => {
   if (!slug.value) {
     throw new Error('Не передан "slug"')
@@ -36,6 +42,79 @@ const { data: animalResponse } = await useAsyncData('animal-' + slug.value, () =
 })
 
 const animal = animalResponse.value?.data[0] ?? null
+
+if (!animal) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Питомец не найден',
+  })
+}
+
+usePageSeo({
+  title: `${animal.name} ищет дом`,
+  description: formatAnimalDescription(animal),
+  ogImage: animal.photo?.url,
+  ogType: 'profile',
+  ogTitle: `${animal.name} ищет дом`,
+  ogDescription: `Помогите найти дом для ${animal.name} в Минске. ${formatShortAnimalInfo(animal)}`,
+  profileFirstName: animal.name,
+  profileGender: animal.gender === 'male' ? 'male' : 'female',
+  articleSection: 'Животные ищут дом',
+  articleTag: getAnimalTags(animal),
+})
+
+function formatAnimalDescription(animal: Animal): string {
+  const species = animal.species === 'cat' ? 'кошка' : 'собака'
+  const gender = animal.gender === 'male' ? 'мальчик' : 'девочка'
+  const age = getAge(animal.birthDate)
+  const sterilized = animal.sterilized ? 'стерилизован' : 'не стерилизован'
+  const vaccinated = animal.vaccinated ? 'вакцинирован' : 'не вакцинирован'
+  const color = animal.color ? `Окрас: ${animal.color}.` : ''
+  let description = `${species} ${animal.name}, ${gender}, ${age}. Порода: ${animal.breed}. `
+  const sterilizedGender = sterilized + (animal.gender === 'female' ? 'a' : '')
+  const vaccinatedGender = vaccinated + (animal.gender === 'female' ? 'a' : '')
+
+  description += `${color} ${sterilizedGender}, ${vaccinatedGender}. `
+  description += animal.description.substring(0, 180)
+
+  if (animal.description.length > 180) {
+    description += '...'
+  }
+
+  return description
+}
+
+function formatShortAnimalInfo(animal: Animal): string {
+  const species = animal.species === 'cat' ? 'кошка' : 'собака'
+  const age = getAge(animal.birthDate)
+
+  return `${species}, порода: ${animal.breed}, ${age}.`
+}
+
+function getAnimalTags(animal: Animal): string[] {
+  const tags = [
+    animal.species === 'cat' ? 'кошка' : 'собака',
+    animal.breed,
+    animal.color,
+    animal.gender === 'male' ? 'мальчик' : 'девочка',
+    'ищет дом',
+    'Минск',
+    'ООЗЖ Кот и Собака',
+    'животные из приюта',
+  ]
+
+  if (animal.sterilized) tags.push('стерилизован')
+  if (animal.vaccinated) tags.push('вакцинирован')
+  if (animal.fundsIsNeeded) tags.push('нужна помощь')
+  if (animal.goodWithChildren) tags.push('ладит с детьми')
+  if (animal.goodWithCats) tags.push('ладит с кошками')
+  if (animal.goodWithDogs) tags.push('ладит с собаками')
+  if (animal.forBeginners) tags.push('для начинающих')
+  if (animal.specialNeeds) tags.push('особые потребности')
+  if (animal.animalStatus === 'available') tags.push('ищет хозяина')
+
+  return tags.filter(Boolean)
+}
 
 const gallery = computed(() => {
   const items: MediaFile[] = []

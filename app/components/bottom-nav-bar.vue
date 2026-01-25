@@ -139,6 +139,7 @@ function handleTabClick(item: ItemProps) {
       height: 54px;
       width: 54px;
       background-color: var(--color-yellow);
+      filter: brightness(110%);
     }
 
     &--menu {

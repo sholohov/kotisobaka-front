@@ -37,6 +37,7 @@ const { data: storiesResponse } = await useAsyncData('stories-page', () => {
         <common-grid
           two-column
           :interspersed="iconCards"
+          :interspersed-indexes="[2,5,8,11,14,17,20]"
           :items="storiesResponse.data"
         >
           <template #default="{ item }">

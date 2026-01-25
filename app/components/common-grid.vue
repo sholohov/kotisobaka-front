@@ -2,8 +2,7 @@
 const props = defineProps<{
   items: TItem[]
   interspersed?: TInterspersed[]
-  interspersedPosition?: number
-  interspersedStart?: number
+  interspersedIndexes?: number[],
   twoColumn?: boolean
 }>()
 
@@ -40,45 +39,24 @@ const getItemId = (item: unknown): string => {
 
 const cells = computed<Cell[]>(() => {
   const result: Cell[] = []
-  let interspersedIndex = 0
+  const items = props.items ?? []
   const interspersed = props.interspersed ?? []
-  const interspersedPosition = props.interspersedPosition ?? 3
-  const interspersedStart = props.interspersedStart ?? interspersedPosition
+  let interspersedItemIndex = 0
+  let itemIndex = 0
 
-  if (interspersed.length > 0) {
-    props.items.forEach((item, index) => {
+  Array(Math.max(items.length + interspersed.length, 0)).fill(0).forEach((_, index) => {
+    const shouldInsert = props.interspersedIndexes?.[interspersedItemIndex] === index + 1
+    const interspersedItem = props.interspersed?.[interspersedItemIndex]
+    const item = props.items?.[itemIndex]
+
+    if (shouldInsert && interspersedItem) {
+      result.push({ type: 'interspersed', data: interspersedItem })
+      interspersedItemIndex++
+    } else if (item) {
       result.push({ type: 'item', data: item })
-
-      const shouldInsert =
-        (index === interspersedStart - 1) ||
-        (index > interspersedStart - 1 && (index - (interspersedStart - 1)) % interspersedPosition === 0)
-
-      if (shouldInsert) {
-        const interspersedItem = interspersed[interspersedIndex % interspersed.length]
-
-        if (interspersedItem) {
-          result.push({
-            type: 'interspersed',
-            data: { ...interspersedItem },
-          })
-          interspersedIndex = (interspersedIndex + 1) % interspersed.length
-        }
-      }
-    })
-
-    if (props.items.length > 0 && props.items.length < interspersedStart && interspersed.length > 0) {
-      const interspersedItem = interspersed[interspersedIndex % interspersed.length]
-
-      if (interspersedItem) {
-        result.push({
-          type: 'interspersed',
-          data: { ...interspersedItem },
-        })
-      }
+      itemIndex++
     }
-  } else {
-    return props.items.map(item => ({ type: 'item' as const, data: item }))
-  }
+  })
 
   return result
 })

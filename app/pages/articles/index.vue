@@ -129,8 +129,7 @@ function handleTagBtn(tag: ArticleTag) {
           v-if="articlesResponse"
           :items="articlesResponse?.data"
           :interspersed="interspersed"
-          :interspersed-position="2"
-          :interspersed-start="1"
+          :interspersed-indexes="[3,5,10,15]"
         >
           <template #default="{ item }">
             <articles-card :article="item" />

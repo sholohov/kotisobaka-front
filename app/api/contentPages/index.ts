@@ -1,7 +1,7 @@
 import { get } from './get'
 import { getOne } from './getOne'
 
-export const contentPages = {
+export const apiContentPages = {
   get,
   getOne,
 }

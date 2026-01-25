@@ -31,12 +31,10 @@ const infoPage = infoPageResponse.value?.data[0]
         class="content-page-view__content"
       />
     </div>
-    <div
+    <page-maintenance
       v-else
       class="content-page-view__empty"
-    >
-      Данные для "{{ route.path }}" отсутствуют
-    </div>
+    />
   </content-box>
 </template>
 

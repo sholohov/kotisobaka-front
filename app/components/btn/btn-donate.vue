@@ -18,10 +18,7 @@ const emit = defineEmits(['click'])
         class="btn-donate__coin"
       />
 
-      <piggy-bank-icon
-        width="24"
-        style="color: var(--color-text-brown)"
-      />
+      <piggy-bank-icon width="24" />
     </btn-default>
   </div>
 </template>
@@ -40,6 +37,8 @@ const emit = defineEmits(['click'])
 
   &__btn {
     border-color: var(--color-text-brown);
+    color: var(--color-text-brown);
+    filter: brightness(110%);
   }
 
   &__coin {

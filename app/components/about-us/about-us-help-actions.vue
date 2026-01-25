@@ -12,13 +12,13 @@ const actions = [{
   link: '/help/volunteer/foster',
 }, {
   title: 'Сделать пожертвование (на лечение, корм, стерилизацию и другое)',
-  link: '/help/donate',
+  link: '/help/donate/finance',
 }, {
   title: 'Стать информационным волонтером - делать репосты, рассказывать о нас',
   link: '/help/other/info',
 }, {
   title: 'Предложить партнерство (если вы представитель бизнеса или СМИ)',
-  link: '/help/other/corporate',
+  link: '/help/volunteer/corporate',
 }]
 </script>
 

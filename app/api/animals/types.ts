@@ -40,8 +40,6 @@ export interface Animal {
   fundsAmountCollected?: number
   fundsOpenedAt?: string
   fundsReason?: string
-  metaTitle?: string
-  metaDescription?: string
   curator?: Strapi5ResponseData<Member> | null
 }
 

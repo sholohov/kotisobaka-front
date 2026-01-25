@@ -4,10 +4,58 @@
 </template>
 
 <script setup lang="ts">
+import { api } from '~/api';
+
 const {
   showTechnicalWorks,
   checkTechnicalWorksStatus,
 } = useTechnicalWorks()
+
+const route = useRoute()
+const seoPagesStore = useSeoPagesStore()
+
+const { data: seoPages } = await useAsyncData('api/seo-page/' + route.path, () => {
+  return api.seoPages.get({
+    populate:'*',
+    filters: {
+      slug: { $eq: route.path },
+    },
+  })
+}, {
+  server: true,
+})
+
+const seoPage = seoPages.value?.data[0]
+
+usePageSeo({
+  title: seoPage?.title,
+  description: seoPage?.description,
+  ogImage: seoPage?.image?.url,
+  robots: seoPage?.robots,
+})
+
+onMounted(() => {
+  seoPagesStore.fetch()
+})
+
+watch(() => [
+  route.path,
+  route.meta.seoPageOverride,
+  seoPagesStore.map,
+], () => {
+  if (route.meta.seoPageOverride) {
+    return
+  }
+
+  const found = seoPagesStore.map[route.path]
+
+  usePageSeo({
+    title: found?.title,
+    description: found?.description,
+    ogImage: found?.image?.url,
+    robots: found?.robots,
+  })
+})
 
 useHead({
   link: [
@@ -40,6 +88,10 @@ useHead({
     {
       name: 'apple-mobile-web-app-title',
       content: 'KotiSobaka',
+    },
+    {
+      name: 'theme-color',
+      content: '#ffffff',
     },
   ],
 })

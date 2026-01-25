@@ -106,7 +106,7 @@ const sections: InfoSectionItem[] = [
         description:
           'Мы всегда рады компаниям, которые ищут идеи для социального проекта. Готовы обсудить возможности — от организации сбора корма до волонтёрских выездов.',
         buttonText: 'Подробнее',
-        buttonLink: '/help/other/corporate',
+        buttonLink: '/help/volunteer/corporate',
       },
     ],
   },

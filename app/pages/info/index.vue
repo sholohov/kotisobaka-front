@@ -24,15 +24,6 @@ const sections: InfoSectionItem[] = [
         buttonLink: '/info/adopt',
       },
       {
-        key: 'adoption-process',
-        position: 2,
-        title: 'Процесс усыновления',
-        description:
-          'Это возможность купить для подопечных именно то, что им нужно в данный момент. Вы можете выбрать конкретный товар из нашего списка, и он будет доставлен прямо к нам.',
-        buttonText: 'Подробнее',
-        buttonLink: '/info/process',
-      },
-      {
         key: 'hands-on-help',
         position: 3,
         title: 'Помощь своими руками',

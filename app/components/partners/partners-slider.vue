@@ -24,14 +24,14 @@ defineProps({
 
       <div class="partners-slider__link">
         <btn-default
-          to="/help/volunteer/partner"
+          to="/help/other/partner"
           color="green"
           style="width: 240px"
         >
           Стать партнёром
         </btn-default>
         <btn-default
-          to="/help/volunteer/partner"
+          to="/help/other/partner"
           color="green"
           circle
         >

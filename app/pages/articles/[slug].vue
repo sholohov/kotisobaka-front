@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { api } from '~/api';
 
+definePageMeta({
+  seoPageOverride: true,
+})
+
 const route = useRoute()
 const slug = computed(() => route.params.slug)
 
@@ -20,6 +24,19 @@ const { data: articleResponse } = await useAsyncData('article-' + slug.value, ()
 })
 
 const article = articleResponse.value?.data[0] ?? null
+
+if (!article) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Статья не найдена',
+  })
+}
+
+usePageSeo({
+  title: article.title,
+  description: article.excerpt,
+  ogImage: article.coverImage?.url,
+})
 
 const { data: similarNewsData } = await useAsyncData('article-similar-' + article?.tag?.slug || 'default', () => {
   return api.articles.get({
@@ -45,10 +62,7 @@ const formatedDate = computed(() => {
 </script>
 
 <template>
-  <div
-    v-if="article"
-    class="article-page"
-  >
+  <div class="article-page">
     <page-section>
       <content-box>
         <div class="article-page__header">

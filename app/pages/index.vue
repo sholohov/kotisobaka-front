@@ -49,7 +49,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
       },
     }),
     api.articles.get({
-      sort: ['publishedDate:asc'],
+      sort: ['publishedDate:desc'],
       populate: ['coverImage', 'tag'],
     }),
     api.partners.get({

@@ -11,6 +11,7 @@ import { apiArticleTags } from './articleTags';
 import { apiDocuments } from './documents';
 import { apiContentPages } from './contentPages';
 import { apiSeoPages } from './seoPages';
+import { apiQuestions } from './questions';
 
 export const api = {
   settings: apiSettings,
@@ -26,4 +27,5 @@ export const api = {
   documents: apiDocuments,
   contentPages: apiContentPages,
   seoPages: apiSeoPages,
+  questions: apiQuestions,
 }

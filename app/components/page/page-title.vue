@@ -10,6 +10,14 @@ const icons: Record<string, { color: string, component: Component }> = {
     color: 'var(--color-pink)',
     component: defineAsyncComponent(() => import('~/assets/svg/page-title/dog-and-man.svg')),
   },
+  favorites: {
+    color: 'var(--color-pink)',
+    component: defineAsyncComponent(() => import('~/assets/svg/page-title/dog-in-hearts.svg')),
+  },
+  faq: {
+    color: 'var(--color-pink)',
+    component: defineAsyncComponent(() => import('~/assets/svg/page-title/white-black-cat.svg')),
+  },
   articles: {
     color: 'var(--color-green)',
     component: defineAsyncComponent(() => import('~/assets/svg/page-title/hungry-cat.svg')),
@@ -17,10 +25,6 @@ const icons: Record<string, { color: string, component: Component }> = {
   'about-docs': {
     color: 'var(--color-green)',
     component: defineAsyncComponent(() => import('~/assets/svg/page-title/reading-cat.svg')),
-  },
-  favorites: {
-    color: 'var(--color-pink)',
-    component: defineAsyncComponent(() => import('~/assets/svg/page-title/dog-in-hearts.svg')),
   },
 }
 

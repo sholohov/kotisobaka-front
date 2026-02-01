@@ -34,7 +34,7 @@ export function useSearch() {
   })
 
   function updateHistory(query: string) {
-    history.value = [query, ...history.value].slice(0, 6)
+    history.value = [query, ...filteredHistory.value].slice(0, 6)
   }
 
   async function fetchData(query: string, short: boolean) {

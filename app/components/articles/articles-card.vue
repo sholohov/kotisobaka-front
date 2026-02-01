@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import type { ArticleData } from '~/api/articles/types';
-import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
-import NewsIcon from '~/assets/svg/news-icon.svg'
-import BlogIcon from '~/assets/svg/blog-icon.svg'
 
 const props = defineProps({
   article: {
@@ -43,10 +40,7 @@ const formatedDate = computed(() => {
         class="articles-card__type"
         :class="['articles-card__type--' + article.type]"
       >
-        <component
-          :is="article.type === 'news' ? NewsIcon : BlogIcon"
-          width="24"
-        />
+        <svg-icon :name="article.type === 'news' ? 'news-icon' : 'blog-icon'" />
       </span>
     </div>
     <div class="articles-card__body">
@@ -81,9 +75,9 @@ const formatedDate = computed(() => {
         подробнее
       </div>
 
-      <arrow-right-icon
+      <svg-icon
+        name="arrow-right-icon"
         class="articles-card__more-icon"
-        width="24px"
       />
     </div>
     <nuxt-link

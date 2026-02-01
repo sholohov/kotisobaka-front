@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
 
 const actions = [{
   title: 'Забрать питомца домой. Подарить дом одному или нескольким хвостикам.',
@@ -44,7 +43,7 @@ const actions = [{
           color="blue"
           class="about-us-help-actions__action-btn"
         >
-          <arrow-right-icon width="24" />
+          <svg-icon name="arrow-right-icon" />
         </btn-default>
       </li>
     </ul>

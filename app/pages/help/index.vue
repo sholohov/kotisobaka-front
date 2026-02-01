@@ -9,7 +9,7 @@ const sections: InfoSectionItem[] = [
     description:
       'Финансовая поддержка и адресные пожертвования позволяют нам планировать работу и обеспечивать каждому подопечному качественный уход, питание и необходимое лечение. Вы можете выбрать наиболее удобный для себя формат.',
     sectionIcon: defineAsyncComponent(() => import('~/assets/svg/help/cat-an-pig.svg')),
-    cardIcon: defineAsyncComponent(() => import('~/assets/svg/piggy-bank-icon.svg')),
+    cardIcon: defineAsyncComponent(() => import('~/assets/icons/piggy-bank-icon.svg')),
     color: 'green',
     cards: [
       {
@@ -39,7 +39,7 @@ const sections: InfoSectionItem[] = [
     description:
       'Помощь животным — это забота не меньше, чем о человеке. Общение, социализация и внимание помогают им быстрее адаптироваться к новым условиям и устроиться в семью. Вы можете выбрать то, как хотите помочь.',
     sectionIcon: defineAsyncComponent(() => import('~/assets/svg/help/dog.svg')),
-    cardIcon: defineAsyncComponent(() => import('~/assets/svg/hand-icon.svg')),
+    cardIcon: defineAsyncComponent(() => import('~/assets/icons/hand-icon.svg')),
     color: 'pink',
     cards: [
       {
@@ -78,7 +78,7 @@ const sections: InfoSectionItem[] = [
     description:
       'Вы можете помогать не только руками. Мы всегда нуждаемся в информационной поддержке, целевых сборах и корпоративных волонтёрах, которые помогают нашим животным.',
     sectionIcon: defineAsyncComponent(() => import('~/assets/svg/help/fit-cat.svg')),
-    cardIcon: defineAsyncComponent(() => import('~/assets/svg/handshake-icon.svg')),
+    cardIcon: defineAsyncComponent(() => import('~/assets/icons/handshake-icon.svg')),
     color: 'orange',
     cards: [
       {

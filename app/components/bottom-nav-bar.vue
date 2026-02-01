@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import BurgerIcon from '~/assets/svg/burger-icon.svg'
-import PawIcon from '~/assets/svg/paw-icon.svg'
-import BlogIcon from '~/assets/svg/blog-icon.svg'
-import PiggyBankIcon from '~/assets/svg/piggy-bank-icon.svg'
-import HeartIcon from '~/assets/svg/heart-icon.svg'
+import BurgerIcon from '~/assets/icons/burger-icon.svg'
+import PawIcon from '~/assets/icons/paw-icon.svg'
+import BlogIcon from '~/assets/icons/blog-icon.svg'
+import PiggyBankIcon from '~/assets/icons/piggy-bank-icon.svg'
+import HeartIcon from '~/assets/icons/heart-icon.svg'
 import { NuxtLink } from '#components';
 import { useMenuMobileStore } from '~/stores/menuMobile';
 

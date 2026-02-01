@@ -2,8 +2,8 @@
 import type { QuoteData } from '~/api/quotes/types';
 
 const icons = {
-  paw: defineAsyncComponent(() => import('~/assets/svg/paw-icon.svg')),
-  health: defineAsyncComponent(() => import('~/assets/svg/health-icon.svg')),
+  paw: defineAsyncComponent(() => import('~/assets/icons/paw-icon.svg')),
+  health: defineAsyncComponent(() => import('~/assets/icons/health-icon.svg')),
 }
 
 defineProps({

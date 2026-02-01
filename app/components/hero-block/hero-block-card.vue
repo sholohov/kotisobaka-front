@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import StarIcon from '~/assets/svg/star-icon.svg';
 import type { AnimalData } from '~/api/animals/types';
 
 defineProps({
@@ -13,8 +12,8 @@ defineProps({
 <template>
   <div class="hero-block-card">
     <img
-      :src="card.photo.url"
-      :alt="card.photo.alternativeText || card.name"
+      :src="card.photo?.url"
+      :alt="card.photo?.alternativeText || card.name"
       class="hero-block-card__img"
     >
     <div class="hero-block-card__description">
@@ -28,8 +27,8 @@ defineProps({
         circle
         class="hero-block-card__btn"
       >
-        <star-icon
-          width="24"
+        <svg-icon
+          name="star-icon"
           class="hero-block-card__icon"
         />
       </btn-default>

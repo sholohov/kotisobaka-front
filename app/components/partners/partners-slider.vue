@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { PartnerData } from '~/api/partners/types';
-import PawIcon from '~/assets/svg/paw-icon.svg';
 
 defineProps({
   partners: {
@@ -35,7 +34,7 @@ defineProps({
           color="green"
           circle
         >
-          <paw-icon width="24" />
+          <svg-icon name="paw-icon" />
         </btn-default>
       </div>
     </content-box>

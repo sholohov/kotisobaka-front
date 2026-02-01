@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { AnimalData } from '~/api/animals/types'
 import type { QuoteData } from '~/api/quotes/types'
-import PawIcon from '~/assets/svg/paw-icon.svg'
 
 const props = defineProps({
   animals: {
@@ -72,7 +71,7 @@ const quoteSlidePosition = computed(() => {
           color="blue"
           circle
         >
-          <paw-icon width="24" />
+          <svg-icon name="paw-icon" />
         </btn-default>
       </div>
     </content-box>

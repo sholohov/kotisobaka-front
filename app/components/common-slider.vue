@@ -1,6 +1,4 @@
 <script setup lang="ts" generic="TItem, TInterspersed = TItem">
-import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg'
-
 const props = defineProps<{
   items: TItem[]
   interspersed?: TInterspersed[]
@@ -147,8 +145,8 @@ const slides = computed<Slide[]>(() => {
           color="blue"
           @click="slider.prev()"
         >
-          <arrow-right-icon
-            width="24"
+          <svg-icon
+            name="arrow-right-icon"
             style="transform: rotate(180deg)"
           />
         </btn-default>
@@ -159,7 +157,7 @@ const slides = computed<Slide[]>(() => {
           color="blue"
           @click="slider.next()"
         >
-          <arrow-right-icon width="24" />
+          <svg-icon name="arrow-right-icon" />
         </btn-default>
       </div>
     </div>

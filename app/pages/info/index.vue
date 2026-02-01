@@ -11,7 +11,7 @@ const sections: InfoSectionItem[] = [
     description:
       'Раздел «Информация» расскажет, как забрать питомца и пройти процесс усыновления, как поддержать приют своими руками и где найти ответы на самые популярные вопросы. Всё, чтобы сделать первый шаг навстречу новым друзьям.',
     sectionIcon: defineAsyncComponent(() => import('~/assets/svg/info/cat-read-book.svg')),
-    cardIcon: defineAsyncComponent(() => import('~/assets/svg/info-icon.svg')),
+    cardIcon: defineAsyncComponent(() => import('~/assets/icons/info-icon.svg')),
     color: 'blue',
     cards: [
       {

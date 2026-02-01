@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import PawIcon from '~/assets/svg/paw-icon.svg'
 import type { AnimalData } from '~/api/animals/types';
 
 defineProps({
@@ -54,7 +53,7 @@ const { isMobileView } = useBreakpoint()
             circle
             to="/animals"
           >
-            <paw-icon width="24" />
+            <svg-icon name="paw-icon" />
           </btn-default>
         </div>
       </div>

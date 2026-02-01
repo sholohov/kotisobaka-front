@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
-
 type ItemProps = {
   icon: Component
   color: string
@@ -113,7 +111,7 @@ const { isDesktop } = useBreakpoint()
               circle
               class="help-guide__link"
             >
-              <arrow-right-icon width="24" />
+              <svg-icon name="arrow-right-icon" />
             </btn-default>
           </div>
         </li>

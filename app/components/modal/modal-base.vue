@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import CloseIcon from '~/assets/svg/close-icon.svg'
 
 defineProps({
   title: {
@@ -44,9 +43,9 @@ function handleCloseBtn() {
           class="modal-base__close"
           @click="handleCloseBtn"
         >
-          <close-icon
+          <svg-icon
             v-if="!isMobileView"
-            width="24"
+            name="close-icon"
           />
         </button>
       </header>
@@ -142,10 +141,16 @@ function handleCloseBtn() {
     display: flex;
     order: -1;
     justify-content: center;
+    align-items: center;
     cursor: pointer;
     height: 44px;
     border-radius: 4px;
     margin: -2px 0 0;
+    transition: background-color 0.3s;
+
+    @include hover {
+      background-color: rgba(0,0,0,0.07);
+    }
 
     &:before {
       content: '';

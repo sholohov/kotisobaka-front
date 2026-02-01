@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { CheckboxOption } from '~/types/formElements'
-import CheckboxIcon from '~/assets/svg/checkbox-icon.svg'
 
 const props = defineProps<{
   options: CheckboxOption[]
@@ -36,9 +35,9 @@ function toggle(option: CheckboxOption) {
           { 'checkbox-group__marker--checked': props.modelValue.includes(option.value) }
         ]"
       >
-        <CheckboxIcon
+        <svg-icon
           v-if="props.modelValue.includes(option.value)"
-          width="24"
+          name="checkbox-icon"
         />
       </div>
       <span class="checkbox-group__label">{{ option.label }}</span>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { api } from '~/api';
 import type { OrgDocument, OrgDocumentSection } from '~/api/documents/types';
-import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
 
 definePageMeta({
   pageTitle: 'Документы отчётность',
@@ -122,7 +121,7 @@ function getTitle(section: OrgDocumentSection): string {
             circle
             color="blue"
           >
-            <arrow-right-icon width="24" />
+            <svg-icon name="arrow-right-icon" />
           </btn-default>
         </div>
       </content-box>

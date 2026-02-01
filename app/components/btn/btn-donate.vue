@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import PiggyBankIcon from '~/assets/svg/piggy-bank-icon.svg';
-import CoinIcon from '~/assets/svg/coin-icon.svg';
-
 const emit = defineEmits(['click'])
 </script>
 
@@ -13,12 +10,13 @@ const emit = defineEmits(['click'])
       class="btn-donate__btn"
       @click="emit('click')"
     >
-      <coin-icon
-        width="9"
+      <svg-icon
+        name="coin-icon"
+        size="9"
         class="btn-donate__coin"
       />
 
-      <piggy-bank-icon width="24" />
+      <svg-icon name="piggy-bank-icon" />
     </btn-default>
   </div>
 </template>

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { ArticleData } from '~/api/articles/types';
-import BlogIcon from '~/assets/svg/blog-icon.svg'
 
 defineProps({
   articles: {
@@ -35,7 +34,7 @@ defineProps({
           color="green"
           circle
         >
-          <blog-icon width="24" />
+          <svg-icon name="blog-icon" />
         </btn-default>
       </div>
     </content-box>

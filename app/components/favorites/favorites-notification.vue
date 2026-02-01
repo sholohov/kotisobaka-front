@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import CloseIcon from '~/assets/svg/close-icon.svg'
-
 const isConfirmed = useCookie<boolean>('favorites_notice_confirmed', {
   default: () => false,
   maxAge: 30 * 24 * 60 * 60, // 30 дней
@@ -28,8 +26,8 @@ function closeNotification() {
             circle
             @click="closeNotification"
           >
-            <close-icon
-              width="24"
+            <svg-icon
+              name="close-icon"
               class="favorites-notice__close-icon"
             />
           </btn-default>

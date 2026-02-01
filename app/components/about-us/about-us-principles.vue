@@ -3,25 +3,25 @@ const items = computed(() => [{
   key: 'professionalism',
   title: 'Профессионализм',
   description: 'Мы сотрудничаем с ветеринарами, кинологами, юристами.',
-  icon: defineAsyncComponent(() => import('~/assets/svg/star-icon.svg')),
+  icon: defineAsyncComponent(() => import('~/assets/icons/star-icon.svg')),
   color: 'yellow',
 }, {
   key: 'daylight',
   title: 'Открытость',
   description: 'Мы публично отчитываемся о каждой полученной копейке и каждом спасенном животном',
-  icon: defineAsyncComponent(() => import('~/assets/svg/report-icon.svg')),
+  icon: defineAsyncComponent(() => import('~/assets/icons/report-icon.svg')),
   color: 'purple',
 }, {
   key: 'systematicity',
   title: 'Системность',
   description: 'Мы решаем проблемы на всех уровнях: от помощи одной собаке до изменения законов',
-  icon: defineAsyncComponent(() => import('~/assets/svg/rule-icon.svg')),
+  icon: defineAsyncComponent(() => import('~/assets/icons/rule-icon.svg')),
   color: 'blue',
 }, {
   key: 'solidarity',
   title: 'Солидарность',
   description: 'Мы сотрудничаем с другими зоозащитными организациями',
-  icon: defineAsyncComponent(() => import('~/assets/svg/handshake-icon.svg')),
+  icon: defineAsyncComponent(() => import('~/assets/icons/handshake-icon.svg')),
   color: 'pink',
 }])
 </script>

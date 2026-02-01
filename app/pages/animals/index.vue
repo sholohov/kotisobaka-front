@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { api } from '~/api';
 import type { RadioOption } from '~/types/formElements';
-import FilterIcon from '~/assets/svg/filter-icon.svg'
 import { makeAnimalsFilters } from '~/helpers/filters/animals';
 
 definePageMeta({
@@ -122,7 +121,7 @@ function handleOpenFiltersModalBtn() {
             circle
             @click="handleOpenFiltersModalBtn"
           >
-            <filter-icon width="24" />
+            <svg-icon name="filter-icon" />
           </btn-default>
         </div>
       </template>

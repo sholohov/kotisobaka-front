@@ -1,9 +1,4 @@
 <script setup lang="ts">
-import HeartIcon from '~/assets/svg/heart-icon.svg'
-import HeartRoundIcon from '~/assets/svg/heart-round-icon.svg'
-import HomeIcon from '~/assets/svg/home-icon.svg'
-import HealthIcon from '~/assets/svg/health-icon.svg'
-
 import type { AnimalData } from '~/api/animals/types'
 
 const props = defineProps({
@@ -38,13 +33,11 @@ function handleToggleFavoriteBtn() {
         circle
         @click="handleToggleFavoriteBtn"
       >
-        <heart-icon
-          v-if="favoritesStore.has(animal.documentId)"
-          width="24"
-        />
-        <heart-round-icon
-          v-else
-          width="24"
+        <svg-icon
+          :name="
+            favoritesStore.has(animal.documentId)
+              ? 'heart-icon'
+              : 'heart-round-icon'"
         />
       </btn-default>
     </tooltip-box>
@@ -59,7 +52,7 @@ function handleToggleFavoriteBtn() {
         style="color: var(--color-green-dark)"
         circle
       >
-        <home-icon width="24" />
+        <svg-icon name="home-icon" />
       </btn-default>
     </tooltip-box>
 
@@ -73,7 +66,7 @@ function handleToggleFavoriteBtn() {
         class="animal-actions__btn animal-actions__btn--no-click"
         circle
       >
-        <health-icon width="24" />
+        <svg-icon name="health-icon" />
       </btn-default>
     </tooltip-box>
   </div>

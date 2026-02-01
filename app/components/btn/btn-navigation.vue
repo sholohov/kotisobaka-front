@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import ArrowDownIcon from '~/assets/svg/arrow-down-icon.svg';
-import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
 import type { ButtonNavigationProps } from '~/types/buttonNavigation';
 import { useRoute } from '#imports';
 import { NuxtLink } from '#components';
@@ -33,9 +31,9 @@ function isActive(path: string): boolean {
         <slot />
       </nuxt-link>
 
-      <arrow-down-icon
+      <svg-icon
         v-if="items.length"
-        width="24"
+        name="arrow-down-icon"
         class="btn-navigation__btn-arrow"
       />
     </div>
@@ -59,9 +57,9 @@ function isActive(path: string): boolean {
               {{ item.label }}
             </span>
 
-            <arrow-right-icon
+            <svg-icon
               v-if="item.items?.length"
-              width="24"
+              name="arrow-right-icon"
               class="btn-navigation__item-icon"
             />
           </component>

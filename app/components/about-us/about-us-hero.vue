@@ -13,22 +13,22 @@ const props = defineProps({
 })
 
 const statItems = computed(() => [{
-  icon: defineAsyncComponent(() => import('~/assets/svg/calendar-icon.svg')),
+  icon: defineAsyncComponent(() => import('~/assets/icons/calendar-icon.svg')),
   key: 'yearsOfCare',
   color: 'var(--color-purple)',
   value: props.statistic.yearsOfCare,
 }, {
-  icon: defineAsyncComponent(() => import('~/assets/svg/paw-icon.svg')),
+  icon: defineAsyncComponent(() => import('~/assets/icons/paw-icon.svg')),
   key: 'savedLives',
   color: 'var(--color-blue)',
   value: props.statistic.savedLives,
 }, {
-  icon: defineAsyncComponent(() => import('~/assets/svg/home-icon.svg')),
+  icon: defineAsyncComponent(() => import('~/assets/icons/home-icon.svg')),
   key: 'adoptedPets',
   color: 'var(--color-pink)',
   value: props.statistic.adoptedPets,
 }, {
-  icon: defineAsyncComponent(() => import('~/assets/svg/heart-icon.svg')),
+  icon: defineAsyncComponent(() => import('~/assets/icons/heart-icon.svg')),
   key: 'membersCount',
   color: 'var(--color-orange)',
   value: props.membersCount,

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { NuxtLink } from '#components'
-import ArrowDownIcon from '~/assets/svg/arrow-down-icon.svg';
 import type { ButtonNavigationProps } from '~/types/buttonNavigation';
 
 const props = defineProps({
@@ -98,9 +97,9 @@ onUnmounted(() => {
         {{ label }}
       </span>
 
-      <arrow-down-icon
+      <svg-icon
         v-if="items.length"
-        width="24"
+        name="arrow-down-icon"
         class="menu-mobile-nav-item__btn-arrow"
         :class="{
           'menu-mobile-nav-item__btn-arrow--active': isOpen
@@ -138,8 +137,8 @@ onUnmounted(() => {
           @click="toggleSub(item.key)"
         >
           <span class="menu-mobile-nav-item__item-btn-text">{{ item.label }}</span>
-          <arrow-down-icon
-            width="24"
+          <svg-icon
+            name="arrow-down-icon"
             class="menu-mobile-nav-item__item-btn-icon"
             :class="[
               { 'menu-mobile-nav-item__item-btn-icon--active': activeSubKey === item.key }

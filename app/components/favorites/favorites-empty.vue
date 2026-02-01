@@ -1,20 +1,19 @@
 <script setup lang="ts">
-import CatInBoxIcon from '~/assets/svg/favorites/cat-in-box.svg'
-import HeartRoundIcon from '~/assets/svg/heart-round-icon.svg'
-import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
 </script>
 
 <template>
   <div class="favorites-empty">
     <div class="favorites-empty__inner">
-      <cat-in-box-icon
+      <svg-icon
+        name="cat-in-box-icon"
         class="favorites-empty__icon"
-        width="320"
+        size="320"
       />
 
       <div class="favorites-empty__description">
-        Нажимайте на сердечко <heart-round-icon
-          width="16"
+        Нажимайте на сердечко <svg-icon
+          name="heart-round-icon"
+          size="16"
           style="display: inline-flex"
         /> в карточке понравившегося питомца, чтобы добавить его сюда.
         Так вы сможете  легко вернуться к анкетам.
@@ -32,7 +31,7 @@ import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
           circle
           color="blue"
         >
-          <arrow-right-icon width="24" />
+          <svg-icon name="arrow-right-icon" />
         </btn-default>
       </div>
     </div>

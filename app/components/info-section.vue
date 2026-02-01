@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { InfoSectionItem } from '~/types/infoSection';
-import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
 
 defineProps({
   section: {
@@ -79,7 +78,7 @@ defineProps({
                   }"
                   circle
                 >
-                  <arrow-right-icon width="24" />
+                  <svg-icon name="arrow-right-icon" />
                 </btn-default>
               </div>
             </div>

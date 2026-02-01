@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import type { ReviewData } from '~/api/reviews/types';
-import HeartIcon from '~/assets/svg/heart-icon.svg'
-import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
 
 const props = defineProps({
   story: {
@@ -99,13 +97,13 @@ const formatedDate = computed(() => {
           class="stories-card__icon"
           style="color: var(--color-orange)"
         >
-          <arrow-right-icon
+          <svg-icon
             v-if="short"
-            width="24"
+            name="arrow-right-icon"
           />
-          <heart-icon
+          <svg-icon
             v-else
-            width="24"
+            name="heart-icon"
           />
         </btn-default>
       </div>

@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import LogoSvg from '~/assets/svg/logo.svg'
-import HeartIcon from '~/assets/svg/heart-icon.svg'
-import BtnDonate from '~/components/btn/btn-donate.vue';
 
 const { navigation } = useAppConfig()
 const modalStore = useModalStore()
@@ -63,8 +61,8 @@ function handleDonateBtn() {
               :badge="favoritesStore.count"
               style="color: var(--color-beige-light)"
             >
-              <heart-icon
-                width="24"
+              <svg-icon
+                name="heart-icon"
                 style="color: var(--color-orange)"
               />
             </btn-default>

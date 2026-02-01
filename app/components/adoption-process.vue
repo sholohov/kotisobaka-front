@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import PawIcon from '~/assets/svg/paw-icon.svg';
-
-// Асинхронные SVG-компоненты
 const images = {
   step1: defineAsyncComponent(() => import('~/assets/svg/adoption-process/step-1.svg')),
   step2: defineAsyncComponent(() => import('~/assets/svg/adoption-process/step-2.svg')),
@@ -228,7 +225,7 @@ const getColorVar = (color: Color): string => {
           circle
           to="/animals"
         >
-          <paw-icon width="24" />
+          <svg-icon name="paw-icon" />
         </btn-default>
       </div>
     </div>

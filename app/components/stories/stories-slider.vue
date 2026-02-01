@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import PawIcon from '~/assets/svg/paw-icon.svg';
 import type { ReviewData } from '~/api/reviews/types';
 
 defineProps({
@@ -40,7 +39,7 @@ defineProps({
           color="green"
           circle
         >
-          <paw-icon width="24" />
+          <svg-icon name="paw-icon" />
         </btn-default>
       </div>
     </content-box>

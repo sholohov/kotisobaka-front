@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
 import DogAndCatDevelopers from '~/assets/svg/dog-and-cat-developers.svg';
 
 </script>
@@ -30,7 +29,7 @@ import DogAndCatDevelopers from '~/assets/svg/dog-and-cat-developers.svg';
           color="blue"
           to="/animals"
         >
-          <arrow-right-icon width="24" />
+          <svg-icon name="arrow-right-icon" />
         </btn-default>
       </div>
     </div>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import HeartIcon from '~/assets/svg/heart-icon.svg';
-
 const ERIP_CODE = '4661641'
 
 function handleCopyCodeBtn() {
@@ -65,13 +63,13 @@ function handleCopyCodeBtn() {
           class="modal-donate-with-guide__copy-code-btn"
           @click="handleCopyCodeBtn"
         >
-          <heart-icon width="24" />
+          <svg-icon name="copy-icon" />
         </btn-default>
       </div>
 
       <div class="modal-donate-with-guide__thanks">
-        <heart-icon
-          width="24"
+        <svg-icon
+          name="heart-icon"
           class="modal-donate-with-guide__thanks-icon"
         />
         <div class="modal-donate-with-guide__thanks-text">

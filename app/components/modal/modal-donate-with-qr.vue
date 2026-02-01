@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import HeartIcon from '~/assets/svg/heart-icon.svg'
 </script>
 
 <template>
@@ -42,8 +41,8 @@ import HeartIcon from '~/assets/svg/heart-icon.svg'
       </div>
 
       <div class="modal-with-qr__thanks">
-        <heart-icon
-          width="24"
+        <svg-icon
+          name="heart-icon"
           class="modal-with-qr__thanks-icon"
         />
         <div class="modal-with-qr__thanks-text">

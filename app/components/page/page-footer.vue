@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import LogoBigIcon from '~/assets/svg/logo-big.svg'
-import FacebookIcon from '~/assets/svg/facebook-icon.svg'
-import InstagramIcon from '~/assets/svg/instagram-icon.svg'
 
 interface NavItem {
   label: string
@@ -12,7 +10,7 @@ interface NavItem {
 interface SocItem {
   to: string
   key: string
-  icon: unknown
+  icon: string
 }
 
 const navigation: NavItem[] = [{
@@ -40,11 +38,11 @@ const navigation: NavItem[] = [{
 const socials: SocItem[] = [{
   to: 'https://www.facebook.com/groups/348219105203299',
   key: 'facebook',
-  icon: FacebookIcon,
+  icon: 'facebook-icon',
 }, {
   to: 'https://www.instagram.com/kisorgcom',
   key: 'instagram',
-  icon: InstagramIcon,
+  icon: 'instagram-icon',
 }]
 
 const { isMobile, isTabletSmall, isTablet } = useBreakpoint()
@@ -116,9 +114,8 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
                 :to="item.to"
                 class="page-footer__social-link"
               >
-                <component
-                  :is="item.icon"
-                  width="24"
+                <svg-icon
+                  :name="item.icon"
                   class="page-footer__social-icon"
                 />
               </nuxt-link>

@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { api } from '~/api';
-import PiggyBankIcon from '~/assets/svg/piggy-bank-icon.svg';
-import PhoneIcon from '~/assets/svg/phone-icon.svg';
-import ArrowRightIcon from '~/assets/svg/arrow-right-icon.svg';
 import type { MediaFile } from '~/api/types';
 import type { Swiper } from 'swiper'
 import type { Animal } from '~/api/animals/types'
@@ -229,8 +226,8 @@ function handleDonateBtn() {
                 color="blue"
                 @click="slider.prev()"
               >
-                <arrow-right-icon
-                  width="24"
+                <svg-icon
+                  name="arrow-right-icon"
                   style="transform: rotate(180deg)"
                 />
               </btn-default>
@@ -241,7 +238,7 @@ function handleDonateBtn() {
                 color="blue"
                 @click="slider.next()"
               >
-                <arrow-right-icon width="24" />
+                <svg-icon name="arrow-right-icon" />
               </btn-default>
             </div>
 
@@ -323,7 +320,7 @@ function handleDonateBtn() {
                 circle
                 @click="handleDonateBtn"
               >
-                <piggy-bank-icon width="24" />
+                <svg-icon name="piggy-bank-icon" />
               </btn-default>
             </div>
           </section>
@@ -344,7 +341,7 @@ function handleDonateBtn() {
               circle
               @click="handleDonateBtn"
             >
-              <piggy-bank-icon width="24" />
+              <svg-icon name="piggy-bank-icon" />
             </btn-default>
           </section>
 
@@ -363,7 +360,7 @@ function handleDonateBtn() {
                   no-border
                   :to="`tel:${animal.curator.phone}`"
                 >
-                  <phone-icon width="24" />
+                  <svg-icon name="phone-icon" />
                 </btn-default>
               </div>
               <nuxt-link
@@ -389,9 +386,9 @@ function handleDonateBtn() {
               :class="{ 'animal-page__tabs-button--active': tab.name === activeTab }"
               @click="activeTab = tab.name"
             >
-              <arrow-right-icon
+              <svg-icon
+                name="arrow-right-icon"
                 class="animal-page__tabs-button-icon"
-                width="24"
               />
 
               <span class="animal-page__tabs-button-label">

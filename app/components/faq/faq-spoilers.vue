@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { QuestionData } from '~/api/questions/types';
-import ArrowDownIcon from '~/assets/svg/arrow-down-icon.svg';
 
 const props = defineProps({
   items: {
@@ -60,7 +59,7 @@ function handleToggleBtn(id: string) {
             class="faq-spoiler__btn"
             @click="handleToggleBtn(item.documentId)"
           >
-            <arrow-down-icon width="24" />
+            <svg-icon name="arrow-down-icon" />
           </btn-default>
         </div>
         <div class="faq-spoiler__body">

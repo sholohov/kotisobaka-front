@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { CheckboxOption, RadioOption } from '~/types/formElements';
-import PawIcon from '~/assets/svg/paw-icon.svg';
 import { type AnimalsFilters, makeAnimalsFilters } from '~/helpers/filters/animals';
 
 import type { AnimalData } from '~/api/animals/types'
@@ -160,7 +159,7 @@ function getAgeOptions(species: AnimalData['species'] | null): RadioOption[] {
           color="blue"
           @click="handleApplyBtn"
         >
-          <paw-icon width="24" />
+          <svg-icon name="paw-icon" />
         </btn-default>
       </div>
     </div>

@@ -1,7 +1,4 @@
 <script setup lang="ts">
-import CloseIcon from '~/assets/svg/close-icon.svg'
-import SearchIcon from '~/assets/svg/search-icon.svg';
-
 const route = useRoute()
 const { history, results, hasResults, loading, query } = useSearch()
 const rootRef = useTemplateRef('root')
@@ -103,10 +100,7 @@ onUnmounted(() => {
         circle
         @click="handleToggleBtn"
       >
-        <component
-          :is="isOpen ? CloseIcon : SearchIcon"
-          width="24"
-        />
+        <svg-icon :name="isOpen ? 'close-icon' : 'search-icon'" />
       </btn-default>
     </tooltip-box>
   </div>

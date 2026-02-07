@@ -12,6 +12,7 @@ const { isTabletSmall, isMobile } = useBreakpoint()
 const { data: documentsResponse } = await useAsyncData(() => {
   return api.documents.get({
     populate: ['file'],
+    sort: 'date:desc',
   })
 })
 

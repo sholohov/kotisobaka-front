@@ -44,6 +44,10 @@ const formatedDate = computed(() => {
     dateStyle: 'short',
   }).format(Date.parse(date))
 })
+
+const textLines = computed(() => {
+  return props.story.text.split('\n').filter(line => line)
+})
 </script>
 
 <template>
@@ -73,7 +77,13 @@ const formatedDate = computed(() => {
         {{ story.name }}
       </div>
       <div class="stories-card__text">
-        «{{ story.text }}»
+        <p
+          v-for="(textLine, index) in textLines"
+          :key="index"
+          class="stories-card__text-line"
+        >
+          {{ textLine }}
+        </p>
       </div>
 
       <div class="stories-card__footer">
@@ -230,7 +240,7 @@ const formatedDate = computed(() => {
   &__text {
     position: relative;
     font-weight: 400;
-
+    white-space: pre-line;
     margin: 0 0 14px;
     flex: 1;
 
@@ -245,6 +255,26 @@ const formatedDate = computed(() => {
       @media (min-width: $mq-lg) {
         -webkit-line-clamp: 8;
         max-height: calc(1.2em * 8);
+      }
+    }
+  }
+
+  &__text-line {
+    &:not(:only-child) {
+      margin: 0 0 8px;
+    }
+
+    &:first-child {
+      &:before {
+        content: "«";
+      }
+    }
+
+    &:last-child {
+      margin: 0;
+
+      &:after {
+        content: "»";
       }
     }
   }

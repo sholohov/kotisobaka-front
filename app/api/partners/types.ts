@@ -11,7 +11,6 @@ export interface Partner {
   logo?: SingleMedia | null
   link?: LinkComponent | null
   priority: number
-  isActive: boolean
 }
 
 export type PartnerData = Strapi5ResponseData<Partner>

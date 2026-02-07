@@ -12,13 +12,10 @@ export type OrgDocumentSection =
 
 export interface OrgDocument {
   id: number;
-  title: string;
+  date: string;
   description: string;
   section: OrgDocumentSection;
   file?: MediaFile | null;
-  publishedAt?: string;
-  createdAt?: string;
-  updatedAt?: string;
 }
 
 export type OrgDocumentData = Strapi5ResponseData<OrgDocument>

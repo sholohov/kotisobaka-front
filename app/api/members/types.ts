@@ -13,7 +13,6 @@ export interface Member {
   firstName: string
   lastName?: string
   phone: string
-  bio?: string
   animals?: Strapi5ResponseData<Animal>[] | null
   articles?: Strapi5ResponseData<Article>[] | null
 }

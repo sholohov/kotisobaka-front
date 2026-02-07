@@ -15,6 +15,10 @@ const props = defineProps({
 const ext = computed(() => {
   return (props.orgDocument.file?.ext || '').replace('.', '')
 })
+
+const date = computed(() => {
+  return new Date(props.orgDocument.date).toLocaleDateString()
+})
 </script>
 
 <template>
@@ -27,8 +31,8 @@ const ext = computed(() => {
     target="_blank"
   >
     <div class="document-card__header">
-      <div class="document-card__title">
-        {{ orgDocument.title }}
+      <div class="document-card__date">
+        {{ date }}
       </div>
       <div class="document-card__ext">
         <span class="document-card__ext-text">
@@ -83,7 +87,7 @@ const ext = computed(() => {
     background-color: var(--color-purple-light);
   }
 
-  &__title {
+  &__date {
     font-weight: 800;
     font-size: 24px;
     line-height: 1;
@@ -92,6 +96,7 @@ const ext = computed(() => {
   &__ext {
     flex: none;
     display: flex;
+    flex: none;
     align-items: center;
     justify-content: center;
     width: 40px;

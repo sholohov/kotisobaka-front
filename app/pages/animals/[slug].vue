@@ -47,6 +47,12 @@ if (!animal) {
   })
 }
 
+const fundraisingTitle = computed(() => {
+  return animal.animalStatus === 'under_treatment'
+    ? 'Требуется срочно лечение!'
+    : 'Сбор средств'
+})
+
 usePageSeo({
   title: `${animal.name} ищет дом`,
   description: formatAnimalDescription(animal),
@@ -292,7 +298,7 @@ function handleDonateBtn() {
             class="animal-page__fundraising"
           >
             <h2 class="animal-page__fundraising-title">
-              Требуется срочное лечение!
+              {{ fundraisingTitle }}
             </h2>
             <p class="animal-page__fundraising-reason">
               {{ animal.fundsReason }}

@@ -7,6 +7,10 @@ defineProps({
     type: Object as PropType<AnimalData>,
     required: true,
   },
+  hideFundraising: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const { screenWidth } = useBreakpoint()
@@ -58,7 +62,7 @@ function truncate(text: string, maxLength = 100) {
     />
 
     <fundraising-bar
-      v-if="animal.fundsIsNeeded"
+      v-if="animal.fundsIsNeeded & !hideFundraising"
       :segments="fundsSegments"
       :goal="animal.fundsAmountTarget!"
       :raised="animal.fundsAmountCollected!"
@@ -81,6 +85,8 @@ function truncate(text: string, maxLength = 100) {
 .animal-card {
   $this: ".animal-card";
 
+  display: flex;
+  flex-direction: column;
   background-color: var(--color-white);
   border-radius: 24px;
   overflow: hidden;
@@ -149,6 +155,7 @@ function truncate(text: string, maxLength = 100) {
   }
 
   &__info {
+    margin: auto 0 0;
     padding: 10px;
     border-top: 1px solid var(--color-background-pink);
   }

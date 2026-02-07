@@ -135,6 +135,7 @@ function handleOpenFiltersModalBtn() {
           <template #default="{ item: animal }">
             <animal-card
               :animal="animal"
+              hide-fundraising
               class="animal-slider__card"
             />
           </template>

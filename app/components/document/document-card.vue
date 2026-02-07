@@ -18,11 +18,13 @@ const ext = computed(() => {
 </script>
 
 <template>
-  <div
+  <nuxt-link
     class="document-card"
     :class="[
       'document-card--' + color
     ]"
+    :to="orgDocument.file?.url"
+    target="_blank"
   >
     <div class="document-card__header">
       <div class="document-card__title">
@@ -37,12 +39,7 @@ const ext = computed(() => {
     <div class="document-card__description">
       {{ orgDocument.description }}
     </div>
-    <nuxt-link
-      :to="orgDocument.file?.url"
-      target="_blank"
-      class="document-card__link"
-    />
-  </div>
+  </nuxt-link>
 </template>
 
 <style lang="scss">
@@ -93,6 +90,7 @@ const ext = computed(() => {
   }
 
   &__ext {
+    flex: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -114,11 +112,6 @@ const ext = computed(() => {
     font-size: 20px;
 
     color: var(--color-text-brown);
-  }
-
-  &__link {
-    position: absolute;
-    inset: 0;
   }
 }
 </style>

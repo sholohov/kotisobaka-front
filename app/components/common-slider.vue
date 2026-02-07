@@ -185,7 +185,7 @@ const slides = computed<Slide[]>(() => {
   }
 
   &__slide {
-    width: 310px;
+    width: 300px;
     display: flex;
     height: auto;
 

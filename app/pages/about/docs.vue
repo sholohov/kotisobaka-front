@@ -7,7 +7,7 @@ definePageMeta({
   pageTitleIcon: 'about-docs',
 })
 
-const { isTabletSmall } = useBreakpoint()
+const { isTabletSmall, isMobile } = useBreakpoint()
 
 const { data: documentsResponse } = await useAsyncData(() => {
   return api.documents.get({
@@ -70,11 +70,11 @@ function getTitle(section: OrgDocumentSection): string {
       :key="sectionKey"
       :anchor="sectionKey"
       :title="getTitle(sectionKey)"
-      :right-padding="isTabletSmall"
+      :right-padding="isMobile || isTabletSmall"
     >
       <content-box>
         <common-slider
-          v-if="isTabletSmall"
+          v-if="isMobile || isTabletSmall"
           :items="section"
         >
           <template #default="{ slide }">

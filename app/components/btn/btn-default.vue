@@ -18,6 +18,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
   to: {
     type: String,
     default: '',
@@ -60,6 +64,7 @@ const formattedBadge = computed(() => {
       { 'btn-default--no-border': noBorder },
       { 'btn-default--has-badge': formattedBadge }
     ]"
+    :disabled="disabled"
     :type="to ? undefined : 'button'"
     @click="emit('click')"
   >
@@ -97,6 +102,13 @@ const formattedBadge = computed(() => {
   transition: all 0.3s ease;
   background-color: var(--color-text-beige);
   color: var(--color-text-brown);
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+    pointer-events: none;
+    user-select: none;
+  }
 
   &--no-border {
     border: var(--color-text-beige);

@@ -1,8 +1,18 @@
 <script setup lang="ts">
 const ERIP_CODE = '4661641'
+const isCopySucces = ref(false)
 
 function handleCopyCodeBtn() {
+  if (isCopySucces.value) {
+    return
+  }
+
   copyToClipboard(ERIP_CODE)
+  isCopySucces.value = true
+
+  setTimeout(() => {
+    isCopySucces.value = false
+  }, 2000)
 }
 </script>
 
@@ -56,14 +66,26 @@ function handleCopyCodeBtn() {
           style="flex: 1"
           @click="handleCopyCodeBtn"
         >
-          Код услуги {{ ERIP_CODE }}
+          <template v-if="isCopySucces">
+            Код скопирован
+          </template>
+          <template v-else>
+            Код услуги {{ ERIP_CODE }}
+          </template>
         </btn-default>
         <btn-default
           circle
           class="modal-donate-with-guide__copy-code-btn"
           @click="handleCopyCodeBtn"
         >
-          <svg-icon name="copy-icon" />
+          <svg-icon
+            v-if="isCopySucces"
+            name="checkbox-icon"
+          />
+          <svg-icon
+            v-else
+            name="copy-icon"
+          />
         </btn-default>
       </div>
 

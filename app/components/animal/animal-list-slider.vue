@@ -15,6 +15,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  hideFundraising: {
+    type: Boolean,
+    default: false,
+  },
 })
 
 const colors = ['green', 'purple', 'yellow', 'blue'] as const
@@ -40,6 +44,7 @@ const quoteSlidePosition = computed(() => {
       >
         <template #default="{ slide: animal }">
           <animal-card
+            :hide-fundraising="hideFundraising"
             :animal="animal"
             class="animal-list-slider__card"
           />

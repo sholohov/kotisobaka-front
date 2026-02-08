@@ -93,13 +93,14 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
       right-padding
     >
       <animal-list-slider
+        hide-fundraising
         :animals="pageData.availableAnimals"
         :quotes="pageData.quotes"
       />
     </page-section>
 
     <page-section
-      anchor="available_animals"
+      anchor="how_you_can_help"
       title="Как можно помочь?"
     >
       <help-guide />

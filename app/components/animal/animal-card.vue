@@ -62,7 +62,7 @@ function truncate(text: string, maxLength = 100) {
     />
 
     <fundraising-bar
-      v-if="animal.fundsIsNeeded & !hideFundraising"
+      v-if="animal.fundsIsNeeded && !hideFundraising"
       :segments="fundsSegments"
       :goal="animal.fundsAmountTarget!"
       :raised="animal.fundsAmountCollected!"

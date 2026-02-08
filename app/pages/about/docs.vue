@@ -78,10 +78,10 @@ function getTitle(section: OrgDocumentSection): string {
           v-if="isMobile || isTabletSmall"
           :items="section"
         >
-          <template #default="{ slide }">
+          <template #default="{ data }">
             <document-card
               :color="colors[sectionIndex]"
-              :org-document="slide"
+              :org-document="data"
             />
           </template>
         </common-slider>

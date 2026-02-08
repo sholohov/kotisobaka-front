@@ -18,9 +18,9 @@ defineProps({
         two-column
         class="stories-slider__slider"
       >
-        <template #default="{ slide }">
+        <template #default="{ data }">
           <stories-card
-            :story="slide"
+            :story="data"
             short
           />
         </template>

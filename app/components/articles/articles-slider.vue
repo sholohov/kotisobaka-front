@@ -16,8 +16,8 @@ defineProps({
         :items="articles"
         class="articles-slider__slider"
       >
-        <template #default="{ slide }">
-          <articles-card :article="slide" />
+        <template #default="{ data }">
+          <articles-card :article="data" />
         </template>
       </common-slider>
 

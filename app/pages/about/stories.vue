@@ -40,17 +40,17 @@ const { data: storiesResponse } = await useAsyncData('stories-page', () => {
           :interspersed-indexes="[2,5,8,11,14,17,20]"
           :items="storiesResponse.data"
         >
-          <template #default="{ item }">
-            <stories-card :story="item" />
+          <template #default="{ data }">
+            <stories-card :story="data" />
           </template>
 
-          <template #interspersed="{ item }">
+          <template #interspersed="{ data }">
             <div
               class="stories-page__interspersed"
-              :class="['stories-page__interspersed--' + item.color]"
+              :class="['stories-page__interspersed--' + data.color]"
             >
               <component
-                :is="item.icon"
+                :is="data.icon"
                 class="stories-page__interspersed-icon"
               />
             </div>

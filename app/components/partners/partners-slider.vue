@@ -16,8 +16,8 @@ defineProps({
         class="partners-slider__slider"
         :items="partners"
       >
-        <template #default="{ slide }">
-          <partners-card :partner="slide" />
+        <template #default="{ data }">
+          <partners-card :partner="data" />
         </template>
       </common-slider>
 

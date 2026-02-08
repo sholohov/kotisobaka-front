@@ -35,9 +35,9 @@ const { data: animalsResponse } = await useAsyncData<AnimalsResponse>('favorites
         v-if="animalsResponse?.data.length"
         :items="animalsResponse.data"
       >
-        <template #default="{ item }">
+        <template #default="{ data }">
           <animal-card
-            :animal="item"
+            :animal="data"
             style="align-self: flex-start"
           />
         </template>

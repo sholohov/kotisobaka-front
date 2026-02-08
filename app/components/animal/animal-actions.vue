@@ -16,6 +16,12 @@ const tooltipText = computed(() =>
     : 'Добавить в избранное',
 )
 
+const favoriteIconName = computed(() => {
+  return favoritesStore.has(props.animal.documentId)
+    ? 'heart-icon'
+    : 'heart-round-icon'
+})
+
 function handleToggleFavoriteBtn() {
   favoritesStore.toggle(props.animal.documentId)
 }
@@ -33,12 +39,7 @@ function handleToggleFavoriteBtn() {
         circle
         @click="handleToggleFavoriteBtn"
       >
-        <svg-icon
-          :name="
-            favoritesStore.has(animal.documentId)
-              ? 'heart-icon'
-              : 'heart-round-icon'"
-        />
+        <svg-icon :name="favoriteIconName" />
       </btn-default>
     </tooltip-box>
 

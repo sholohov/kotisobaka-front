@@ -1,16 +1,3 @@
-<template>
-  <component
-    :is="iconComponent"
-    v-if="iconComponent"
-    class="svg-icon"
-    aria-hidden="true"
-    :style="size ? {
-      width: size + 'px',
-      height: size + 'px',
-    } : {}"
-  />
-</template>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 
@@ -33,15 +20,36 @@ const props = defineProps({
 })
 
 const iconComponent = computed(() => {
-  const path = `/assets/icons/${props.name}.svg`
+  const path = Object.keys(icons).find(key => key.endsWith(`${props.name}.svg`))
 
-  return icons[path] || icons[`@/assets/icons/${props.name}.svg`]
+  if (!path) {
+    console.warn(`Icon "${props.name}" not found in assets/icons`)
+
+    return 'span'
+  }
+
+  return icons[path]
 })
 </script>
 
+<template>
+  <component
+    :is="iconComponent"
+    :key="name"
+    class="svg-icon"
+    :class="[
+      { 'svg-icon--not-found': !iconComponent }
+    ]"
+    aria-hidden="true"
+    :style="size ? {
+      width: size + 'px',
+      height: size + 'px',
+    } : {}"
+  />
+</template>
+
 <style lang="scss">
 .svg-icon {
-  fill: currentColor;
   width: 24px;
   height: 24px;
 }

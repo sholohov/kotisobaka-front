@@ -49,8 +49,6 @@ const { data: availableAnimals } = await useAsyncData('available-animals', async
   deep: true,
 })
 
-const colors = ['green', 'purple', 'yellow', 'blue']
-
 const { data: pageData } = await useAsyncData('animals-page', async () => {
   const [quotes, fundsIsNeededAnimals] = await Promise.all([
     api.quotes.get(),
@@ -65,11 +63,16 @@ const { data: pageData } = await useAsyncData('animals-page', async () => {
   return { quotes, fundsIsNeededAnimals }
 })
 
-pagination.page = availableAnimals.value?.meta.pagination.page ?? 1
-pagination.pageCount = availableAnimals.value?.meta.pagination.pageCount ?? 0
+watch(() => availableAnimals.value?.meta.pagination, (metaPagination) => {
+  if (metaPagination && 'page' in metaPagination) {
+    pagination.page = metaPagination.page ?? 1
+    pagination.pageCount = metaPagination.pageCount ?? 0
+  }
+}, { immediate: true })
 
 function handlePageChange(page: number) {
   pagination.page = page
+  document.querySelector('#looking_for_family')?.scrollIntoView()
 }
 
 function handleOpenFiltersModalBtn() {
@@ -130,20 +133,20 @@ function handleOpenFiltersModalBtn() {
         <common-grid
           :items="availableAnimals.data"
           :interspersed="pageData.quotes.data"
-          :interspersed-indexes="[3,5,10,15,20,25,30]"
+          :interspersed-indexes="[3,5,10,15,17,22,27]"
         >
-          <template #default="{ item: animal }">
+          <template #default="{ data }">
             <animal-card
-              :animal="animal"
+              :animal="data"
               hide-fundraising
               class="animal-slider__card"
             />
           </template>
 
-          <template #interspersed="{ item: quote, index }">
+          <template #interspersed="{ data }">
             <quote-card
-              :color="colors[index] || 'green'"
-              :quote="quote"
+              :color="data.color || 'green'"
+              :quote="data"
               class="animal-slider__card"
             />
           </template>

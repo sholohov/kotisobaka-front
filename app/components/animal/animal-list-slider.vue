@@ -21,8 +21,6 @@ const props = defineProps({
   },
 })
 
-const colors = ['green', 'purple', 'yellow', 'blue'] as const
-
 const isNeedHelp = computed(() => props.animals.some(animal => {
   return animal.fundsIsNeeded
 }))
@@ -40,9 +38,8 @@ const quoteSlidePosition = computed(() => {
         :items="animals"
         :interspersed="quotes"
         :interspersed-position="quoteSlidePosition"
-        :interspersed-colors="colors"
       >
-        <template #default="{ slide: animal }">
+        <template #default="{ data: animal }">
           <animal-card
             :hide-fundraising="hideFundraising"
             :animal="animal"
@@ -50,9 +47,9 @@ const quoteSlidePosition = computed(() => {
           />
         </template>
 
-        <template #interspersed="{ slide: interspersed }">
+        <template #interspersed="{ data: interspersed }">
           <quote-card
-            :color="interspersed.color"
+            :color="interspersed.color ?? 'green'"
             :quote="interspersed"
             :is-health="isNeedHelp"
             class="animal-list-slider__card"

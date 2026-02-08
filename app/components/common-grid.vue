@@ -1,59 +1,74 @@
-<script setup lang="ts" generic="TItem, TInterspersed = TItem">
+<script setup lang="ts" generic="TItem, TInterspersed = unknown">
 const props = defineProps<{
   items: TItem[]
   interspersed?: TInterspersed[]
-  interspersedIndexes?: number[],
+  interspersedIndexes?: number[]
   twoColumn?: boolean
 }>()
 
-interface GridItem {
+interface TypedItem {
   type: 'item'
   data: TItem
 }
 
-interface GridInterspersed {
+interface TypedInterspersed {
   type: 'interspersed'
-  data: TInterspersed
+  data: TInterspersed & { color?: string }
 }
 
-type Cell = GridItem | GridInterspersed
+type Item = TypedItem | TypedInterspersed
 
 defineSlots<{
-  default(props: { item: TItem, index: number }): unknown
-  interspersed?(props: { item: TInterspersed, index: number }): unknown
+  default(props: { data: TItem, index: number }): unknown
+  interspersed?(props: { data: TInterspersed & { color?: string }, index: number }): unknown
 }>()
 
 const getItemId = (item: unknown): string => {
-  if (item && typeof item === 'object') {
-    if ('documentId' in item && typeof item.documentId === 'string') {
-      return `doc-${item.documentId}`
-    }
+  const randomId = `unknown-${Math.random().toString(36).substr(2, 9)}`
 
-    if ('id' in item && (typeof item.id === 'string' || typeof item.id === 'number')) {
-      return `id-${item.id}`
-    }
+  if (!item || typeof item !== 'object') {
+    return randomId
   }
 
-  return `unknown-${Math.random().toString(36).substr(2, 9)}`
+  const id = 'id' in item ? String(item.id || '') : ''
+  const documentId = 'documentId' in item ? String(item.documentId || '') : ''
+
+  return id || documentId || randomId
 }
 
-const cells = computed<Cell[]>(() => {
-  const result: Cell[] = []
-  const items = props.items ?? []
-  const interspersed = props.interspersed ?? []
-  let interspersedItemIndex = 0
+const colors = [
+  'purple', 'yellow', 'blue', 'green', 'pink', 'indigo',
+  'purple', 'yellow', 'blue', 'green', 'pink', 'indigo',
+] as const
+
+const allItems = computed<Item[]>(() => {
+  const { items, interspersed, interspersedIndexes } = props
+  const result: Item[] = []
+  const itemsLength = items.length
+  const interspersedLength = interspersedIndexes?.length || 0
+  let interspersedIndex = 0
   let itemIndex = 0
 
-  Array(Math.max(items.length + interspersed.length, 0)).fill(0).forEach((_, index) => {
-    const shouldInsert = props.interspersedIndexes?.[interspersedItemIndex] === index + 1
-    const interspersedItem = props.interspersed?.[interspersedItemIndex]
-    const item = props.items?.[itemIndex]
+  Array(itemsLength + interspersedLength).fill(null).forEach((_, index) => {
+    const item = items[itemIndex]
+    const interspersedItem = interspersed?.[interspersedIndex]
 
-    if (shouldInsert && interspersedItem) {
-      result.push({ type: 'interspersed', data: interspersedItem })
-      interspersedItemIndex++
+    if (interspersedIndexes?.includes(index) && interspersedItem) {
+      result.push({
+        type: 'interspersed',
+        data: {
+          color: colors[interspersedIndex],
+          ...interspersedItem,
+        },
+      })
+
+      interspersedIndex++
     } else if (item) {
-      result.push({ type: 'item', data: item })
+      result.push({
+        type: 'item',
+        data: item,
+      })
+
       itemIndex++
     }
   })
@@ -66,21 +81,21 @@ const cells = computed<Cell[]>(() => {
   <div class="common-grid">
     <div class="common-grid__inner">
       <div
-        v-for="(cell, index) in cells"
-        :key="cell.type === 'item' ? getItemId(cell.data) : `interspersed-${getItemId(cell.data)}`"
+        v-for="(item, index) in allItems"
+        :key="item.type === 'item' ? getItemId(item.data) : `interspersed-${getItemId(item.data)}`"
         class="common-grid__col"
         :class="{ 'common-grid__col--two-column': twoColumn }"
       >
         <slot
-          v-if="cell.type === 'item'"
+          v-if="item.type === 'item'"
           name="default"
-          :item="cell.data"
+          :data="item.data"
           :index="index"
         />
         <slot
-          v-else-if="cell.type === 'interspersed' && $slots.interspersed"
+          v-else-if="item.type === 'interspersed'"
           name="interspersed"
-          :item="cell.data"
+          :data="item.data"
           :index="index"
         />
       </div>

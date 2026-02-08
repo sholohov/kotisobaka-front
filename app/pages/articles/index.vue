@@ -95,11 +95,26 @@ const articlesTags = computed((): ArticleTag[] => {
 function handleTagBtn(tag: ArticleTag) {
   filters.tag = tag.name
 }
+
+watch(() => articlesResponse.value?.meta.pagination, (metaPagination) => {
+  if (metaPagination && 'page' in metaPagination) {
+    pagination.page = metaPagination.page ?? 1
+    pagination.pageCount = metaPagination.pageCount ?? 0
+  }
+}, { immediate: true })
+
+function handlePageChange(page: number) {
+  pagination.page = page
+  document.querySelector('#articles_list')?.scrollIntoView()
+}
 </script>
 
 <template>
   <div class="articles-page">
-    <page-section>
+    <page-section
+      v-if="articlesResponse?.data.length"
+      anchor="articles_list"
+    >
       <content-box>
         <div class="articles-page__filters">
           <radio-group
@@ -131,21 +146,32 @@ function handleTagBtn(tag: ArticleTag) {
           :interspersed="interspersed"
           :interspersed-indexes="[3,5,10,15]"
         >
-          <template #default="{ item }">
-            <articles-card :article="item" />
+          <template #default="{ data }">
+            <articles-card :article="data" />
           </template>
-          <template #interspersed="{ item }">
+          <template #interspersed="{ data }">
             <div
               class="articles-page__interspersed"
-              :class="['articles-page__interspersed--' + item.color]"
+              :style="{ color: `var(--color-${data.color})`}"
             >
               <component
-                :is="item.icon"
+                :is="data.icon"
                 class="articles-page__interspersed-icon"
               />
             </div>
           </template>
         </common-grid>
+
+        <div
+          v-if="pagination.pageCount - 1"
+          class="articles-page__pagination"
+        >
+          <page-pagination
+            :total-pages="pagination.pageCount"
+            :current-page="pagination.page"
+            :on-change="handlePageChange"
+          />
+        </div>
       </content-box>
     </page-section>
   </div>
@@ -204,22 +230,6 @@ function handleTagBtn(tag: ArticleTag) {
     justify-content: center;
     flex: 1;
     padding: 60% 0 0;
-
-    &--orange {
-      color: var(--color-orange-dark);
-    }
-
-    &--pink {
-      color: var(--color-pink-dark);
-    }
-
-    &--green {
-      color: var(--color-green-dark);
-    }
-
-    &--blue {
-      color: var(--color-blue-dark);
-    }
   }
 
   &__interspersed-icon {
@@ -228,8 +238,14 @@ function handleTagBtn(tag: ArticleTag) {
     width: auto;
     height: 60%;
     margin: auto;
-    color: inherit;
     @include imageGradient;
+  }
+
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0 0;
   }
 }
 </style>

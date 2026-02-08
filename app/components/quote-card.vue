@@ -6,9 +6,9 @@ const icons = {
   health: defineAsyncComponent(() => import('~/assets/icons/health-icon.svg')),
 }
 
-defineProps({
+const props = defineProps({
   color: {
-    type: String as PropType<'purple' | 'yellow' | 'green' | 'blue' | 'orange' | string>,
+    type: String as PropType<string>,
     required: true,
   },
   quote: {
@@ -20,6 +20,8 @@ defineProps({
     default: false,
   },
 })
+
+const bgColor = computed(() => `var(--color-${props.color})`)
 </script>
 
 <template>
@@ -65,25 +67,10 @@ defineProps({
   color: var(--color-white);
   padding: 10px;
   min-height: 380px;
+  background-color: v-bind(bgColor);
 
   @media (min-width: $mq-lg) {
     padding: 20px;
-  }
-
-  &--purple {
-    background-color: var(--color-purple);
-  }
-
-  &--yellow {
-    background-color: var(--color-yellow);
-  }
-
-  &--green {
-    background-color: var(--color-green);
-  }
-
-  &--blue {
-    background-color: var(--color-blue);
   }
 
   &--is-health {

@@ -30,18 +30,20 @@ const date = computed(() => {
     :to="orgDocument.file?.url"
     target="_blank"
   >
-    <div class="document-card__header">
-      <div class="document-card__date">
-        {{ date }}
+    <div class="document-card__inner">
+      <div class="document-card__header">
+        <div class="document-card__date">
+          {{ date }}
+        </div>
+        <div class="document-card__ext">
+          <span class="document-card__ext-text">
+            {{ ext }}
+          </span>
+        </div>
       </div>
-      <div class="document-card__ext">
-        <span class="document-card__ext-text">
-          {{ ext }}
-        </span>
+      <div class="document-card__description">
+        {{ orgDocument.description }}
       </div>
-    </div>
-    <div class="document-card__description">
-      {{ orgDocument.description }}
     </div>
   </nuxt-link>
 </template>
@@ -50,11 +52,9 @@ const date = computed(() => {
 .document-card {
   $this: '.document-card';
 
-  height: 290px;
   border-radius: 24px;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  flex: 1;
   padding: 20px;
   position: relative;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -65,7 +65,17 @@ const date = computed(() => {
     0 4px 8px rgba(0, 0, 0, 0.035);
   }
 
+  &__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 70%;
+    flex: 1;
+  }
+
   &__header {
+    position: absolute;
+    inset: 0 0 auto 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -113,6 +123,8 @@ const date = computed(() => {
   }
 
   &__description {
+    position: absolute;
+    inset: auto 0 0 0;
     font-weight: 700;
     font-size: 20px;
 

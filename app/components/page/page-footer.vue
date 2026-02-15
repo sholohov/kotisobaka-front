@@ -132,8 +132,27 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
             >
               info@kotisobaka.by
             </nuxt-link>
+            <div class="page-footer__email-subtitle">
+              только для юридической корреспонденции
+            </div>
+          </div>
+
+          <div class="page-footer__links">
+            <nuxt-link class="page-footer__links-item">
+              Реквизиты
+            </nuxt-link>
+            <nuxt-link class="page-footer__links-item">
+              Пользовательское соглашение
+            </nuxt-link>
           </div>
         </div>
+      </div>
+
+      <div class="page-footer__requisite">
+        Общественное объединение защиты животных «КиС» зарегистрировано
+        решением Главного управлением юстиции Мингорисполкома от 20.12.2011 года
+        № 41в ЕГР юр. лиц и индивидуальных предпринимателей за № 194902685.
+        Адрес для почтовых отправлений: г. Минск, ул. Мележа, д.5, корп.1, оф.408
       </div>
     </content-box>
   </div>
@@ -142,6 +161,8 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
 <style lang="scss">
 .page-footer {
   $this: ".page-footer";
+  display: flex;
+  flex-direction: column;
 
   &__inner {
     display: flex;
@@ -152,6 +173,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
 
     @media (min-width: $mq-lg) {
       gap: 20px;
+      flex-wrap: nowrap;
     }
   }
 
@@ -180,7 +202,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
   &__nav-title {
     font-size: 24px;
     font-weight: 700;
-    margin: 0 0 10px;
+    margin: 0 0 16px;
   }
 
   &__nav-list {
@@ -194,7 +216,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
   &__nav-link {
     position: relative;
     display: inline-flex;
-    padding: 6px 0;
+    height: 30px;
     font-weight: 400;
     transition: color 0.3s;
 
@@ -204,7 +226,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
       position: absolute;
       left: 0;
       right: 0;
-      bottom: 3px;
+      bottom: 8px;
       height: 1px;
       transform-origin: left;
       background-color: var(--color-white);
@@ -245,6 +267,7 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
 
     @media (min-width: $mq-sm) {
       flex: 1;
+      height: auto;
     }
 
     @media (min-width: $mq-md) {
@@ -294,13 +317,13 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
   }
 
   &__logo {
-    margin: 0 0 50px;
+    margin: 0 0 20px;
   }
 
   &__social {
     list-style: none;
     padding: 0;
-    margin: 0 0 50px;
+    margin: 0 0 20px;
     display: flex;
     gap: 10px;
   }
@@ -328,11 +351,24 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
   }
 
   &__email {
+    text-align: center;
+    margin: 0 0 20px;
+  }
+
+  &__email-title,
+  &__email-link {
     font-size: 20px;
     font-weight: 700;
+
   }
 
   &__email-title {
+    margin: 0 0 10px;
+  }
+
+  &__email-subtitle {
+    margin: 10px 0 0;
+    font-size: 13px;
   }
 
   &__email-link {
@@ -361,6 +397,22 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
         transform: scale(1, 1);
       }
     }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  &__links-item {
+
+  }
+
+  &__requisite {
+    color: var(--color-pink-dark);
+    text-align: center;
   }
 }
 </style>

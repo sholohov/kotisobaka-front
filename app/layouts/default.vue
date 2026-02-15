@@ -143,14 +143,10 @@ function handleClickOverlay() {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  padding: 0 0 calc(30px + $container-padding-xs);
+  padding: 0 0 90px;
 
-  @media (min-width: $mq-sm) {
-    padding: 0 0 calc(30px + $container-padding-sm);
-  }
-
-  @media (min-width: $mq-lg) {
-    padding: 0;
+  @media (min-width: $mq-md) {
+    padding: 0 0 20px;
   }
 
   &__header {
@@ -212,7 +208,7 @@ function handleClickOverlay() {
       transform: translateY(0);
     }
 
-    @media (min-width: $mq-lg) {
+    @media (min-width: $mq-md) {
       transition: opacity 0.3s, transform 0.3s;
       bottom: 0;
       opacity: 0;

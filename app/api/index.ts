@@ -12,6 +12,7 @@ import { apiDocuments } from './documents';
 import { apiContentPages } from './contentPages';
 import { apiSeoPages } from './seoPages';
 import { apiQuestions } from './questions';
+import { apiFundraising } from './fundraising';
 
 export const api = {
   settings: apiSettings,
@@ -28,4 +29,5 @@ export const api = {
   contentPages: apiContentPages,
   seoPages: apiSeoPages,
   questions: apiQuestions,
+  fundraising: apiFundraising,
 }

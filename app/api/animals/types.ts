@@ -6,6 +6,7 @@ import type {
 
 import type { MultipleMedia, SingleMedia } from '../types'
 import type { Member } from '~/api/members/types';
+import type { Fundraising } from '~/api/fundraising/types';
 
 /** Поля животного */
 export interface Animal {
@@ -41,6 +42,7 @@ export interface Animal {
   fundsOpenedAt?: string
   fundsReason?: string
   curator?: Strapi5ResponseData<Member> | null
+  fundraising?: Strapi5ResponseData<Fundraising> | null
 }
 
 export type AnimalData = Strapi5ResponseData<Animal>

@@ -1,10 +1,22 @@
 <script setup lang="ts" generic="TItem, TInterspersed = unknown">
-const props = defineProps<{
-  items: TItem[]
-  interspersed?: TInterspersed[]
-  interspersedIndexes?: number[]
-  twoColumn?: boolean
-}>()
+const props = defineProps({
+  items: {
+    type: Array as PropType<TItem[]>,
+    required: true,
+  },
+  interspersed: {
+    type: Array as PropType<TInterspersed[]>,
+    default: () => [],
+  },
+  interspersedIndexes: {
+    type: Array as PropType<number[]>,
+    default: () => [],
+  },
+  twoColumn: {
+    type: Boolean,
+    default: false,
+  },
+})
 
 interface TypedItem {
   type: 'item'
@@ -119,36 +131,38 @@ const allItems = computed<Item[]>(() => {
 
   &__col {
     display: flex;
+    width: 100%;
+    min-height: 0;
 
     @media (min-width: 640px) {
-      flex: 0 0 calc((100% - 10px) / 2);
+      width: calc((100% - 10px) / 2);
     }
 
     @media (min-width: 960px) {
-      flex: 0 0 calc((100% - (10px * 2)) / 3);
+      width: calc((100% - (10px * 2)) / 3);
     }
 
     @media (min-width: $mq-lg) {
-      flex: 0 0 calc((100% - (20px * 2)) / 3);
+      width: calc((100% - (20px * 2)) / 3);
     }
 
     @media (min-width: $mq-xl) {
-      flex: 0 0 calc((100% - (20px * 3)) / 4);
+      width: calc((100% - (20px * 3)) / 4);
     }
 
     &--two-column {
-      flex: 0 0 100%;
+      width: 100%;
 
       @media (min-width: 640px) {
-        flex: 0 0 calc((100% - 10px) / 2);
+        width: calc((100% - 10px) / 2);
       }
 
       @media (min-width: $mq-md) {
-        flex: 0 0 calc((100% - 10px) / 2);
+        width: calc((100% - 10px) / 2);
       }
 
       @media (min-width: $mq-lg) {
-        flex: 0 0 calc((100% - 20px) / 2);
+        width: calc((100% - 20px) / 2);
       }
     }
   }

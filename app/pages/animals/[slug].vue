@@ -293,43 +293,15 @@ function handleDonateBtn() {
             {{ animal.description }}
           </p>
 
-          <section
+          <foudrasing-card
             v-if="animal.fundsIsNeeded"
+            :title="fundraisingTitle"
+            :description="animal.fundsReason"
+            :amount-target="animal.fundsAmountTarget"
+            :amount-collected="animal.fundsAmountCollected"
+            :segments="fundsSegments"
             class="animal-page__fundraising"
-          >
-            <h2 class="animal-page__fundraising-title">
-              {{ fundraisingTitle }}
-            </h2>
-            <p class="animal-page__fundraising-reason">
-              {{ animal.fundsReason }}
-            </p>
-            <fundraising-bar
-              class="animal-page__fundraising-bar"
-              :segments="fundsSegments"
-              :goal="animal.fundsAmountTarget"
-              :raised="animal.fundsAmountCollected"
-            />
-            <div class="animal-page__fundraising-actions">
-              <btn-default
-                class="animal-page__fundraising-btn"
-                style="flex: 1"
-                color="orange"
-                no-border
-                @click="handleDonateBtn"
-              >
-                Хочу помочь
-              </btn-default>
-              <btn-default
-                class="animal-page__fundraising-btn"
-                color="orange"
-                no-border
-                circle
-                @click="handleDonateBtn"
-              >
-                <svg-icon name="piggy-bank-icon" />
-              </btn-default>
-            </div>
-          </section>
+          />
 
           <section
             v-else
@@ -623,44 +595,7 @@ function handleDonateBtn() {
 
   &__desc {
     font-weight: 400;
-
     margin: 0 0 30px;
-  }
-
-  &__fundraising {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--color-orange);
-    padding: 20px;
-    margin: 0 0 30px;
-    border-radius: 24px;
-    background-color: var(--color-white);
-  }
-
-  &__fundraising-title {
-    font-size: 20px;
-
-    font-weight: 700;
-    margin: 0 0 10px;
-    color: var(--color-orange-dark);
-  }
-
-  &__fundraising-reason {
-    font-weight: 400;
-
-    margin: 0 0 14px;
-  }
-
-  &__fundraising-bar {
-    padding: 14px 0;
-    margin: 0 0 14px;
-    border-top: 1px solid var(--color-orange-light);
-    border-bottom: 1px solid var(--color-orange-light);
-  }
-
-  &__fundraising-actions {
-    display: flex;
-    align-items: center;
   }
 
   &__donation {

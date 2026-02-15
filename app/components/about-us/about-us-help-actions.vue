@@ -23,10 +23,10 @@ const actions = [{
 
 <template>
   <content-box class="about-us-help-actions">
-    <blockquote class="about-us-help-actions__quote">
+    <about-us-quote class="about-us-help-actions__quote">
       Наша команда выросла из нескольких человек в сообщество, где ценен каждый вклад.
       Ваши умения, опыт или поддержка могут помочь спасти больше жизней
-    </blockquote>
+    </about-us-quote>
 
     <ul class="about-us-help-actions__actions">
       <li
@@ -53,27 +53,6 @@ const actions = [{
 <style lang="scss">
 .about-us-help-actions {
   $this: '.about-us-help-actions';
-
-  &__quote {
-    font-weight: 800;
-    font-size: 26px;
-
-    text-transform: uppercase;
-    color: var(--color-green-dark);
-    margin: 0 0 20px;
-
-    @media (min-width: $mq-sm) {
-      font-size: 30px;
-      margin: 0 0 30px auto;
-      max-width: 1024px;
-      text-indent: 2em;
-    }
-
-    @media (min-width: $mq-md) {
-      text-indent: 4em;
-      max-width: 1200px;
-    }
-  }
 
   &__actions {
 

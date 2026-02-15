@@ -11,7 +11,7 @@ import DogAndCatDevelopers from '~/assets/svg/dog-and-cat-developers.svg';
         class="page-maintenance__img"
       />
       <h2 class="page-maintenance__title">
-        У нас лапки, но мы стараемся
+        Раздел на передержке у разработчиков
       </h2>
       <div class="page-maintenance__description">
         Пока команда IT-волонтёров трудится над этой страницей, вы можете погулять по сайту.

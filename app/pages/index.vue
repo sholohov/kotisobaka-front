@@ -57,6 +57,7 @@ const { data: pageData } = await useAsyncData('home-page', async () => {
     }),
     api.reviews.get({
       populate: ['photo'],
+      sort: ['date:desc'],
     }),
   ]);
 

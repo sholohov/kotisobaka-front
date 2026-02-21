@@ -89,11 +89,16 @@ const filtersOptions: RadioOption[] = [{
   value: 'blog',
 }]
 
-const articlesTags = computed((): ArticleTag[] => {
+const articlesTags = computed((): (ArticleTag & { isActive: boolean })[] => {
   return [
     { name: 'все', color: 'white', slug: 'all-tags' },
     ...(articleTagsResponse.value?.data ?? []).filter(i => i.articles?.length),
-  ]
+  ].map(tag => {
+    const isActive = Boolean(filters.tag?.includes(tag.name))
+      || (tag.slug === 'all-tags' && !filters.tag?.length)
+
+    return { ...tag, isActive }
+  })
 })
 
 function handleTagBtn(tag: ArticleTag) {
@@ -140,10 +145,20 @@ function handlePageChange(page: number) {
               class="articles-page__tags-link"
               @click="handleTagBtn(tag)"
             >
-              #{{ tag.name }}
+              <span
+                v-if="tag.isActive"
+                class="articles-page__tags-icon"
+              >
+                <svg-icon name="checkbox-icon" />
+              </span>
+
+              <span class="articles-page__tags-name">
+                #{{ tag.name }}
+              </span>
             </button>
           </li>
         </ul>
+
         <common-grid
           v-if="articlesResponse"
           :items="articlesResponse?.data"
@@ -213,11 +228,22 @@ function handlePageChange(page: number) {
     background-color: var(--color-white);
   }
 
+  &__tags-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-green);
+    color: var(--color-white);
+    height: 24px;
+    width: 24px;
+    border-radius: 50%;
+  }
+
   &__tags-link {
     height: 36px;
     display: inline-flex;
     align-items: center;
-    padding: 0 16px;
+    padding: 0 8px;
     color: var(--color-text-chocolate);
     cursor: pointer;
     transition: background-color 0.3s;
@@ -225,6 +251,10 @@ function handlePageChange(page: number) {
     @include hover {
       background-color: rgba(225, 255, 255, 0.5);
     }
+  }
+
+  &__tags-name {
+    padding: 0 8px;
   }
 
   &__interspersed {

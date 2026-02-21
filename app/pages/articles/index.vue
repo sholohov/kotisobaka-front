@@ -53,6 +53,7 @@ const { data: articleTagsResponse } = await useAsyncData('articles-tags', () => 
 
 const { data: articlesResponse } = await useAsyncData('articles-page', () => {
   const { tag, type } = filters
+  const now = new Date().toISOString()
 
   return api.articles.get({
     populate: ['coverImage', 'tag'],
@@ -63,6 +64,9 @@ const { data: articlesResponse } = await useAsyncData('articles-page', () => {
     filters: {
       tag: tag && tag !== 'все' ? { name: { $eq: tag } } : undefined,
       type: type ? { $eq: type } : undefined,
+      publishedDate: {
+        $lte: now,
+      },
     },
     sort: ['publishedDate:desc'],
   })

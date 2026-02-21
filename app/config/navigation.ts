@@ -61,8 +61,8 @@ export const navigationConfig = [{
       key: 'help-other-info',
     }, {
       label: 'Целевые сборы',
-      to: '/help/other/targeted',
-      key: 'help-other-targeted',
+      to: '/help/other/fundraising',
+      key: 'help-other-fundraising',
     }, {
       label: 'Стать партнёром',
       to: '/help/other/partner',

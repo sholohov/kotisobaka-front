@@ -97,7 +97,7 @@ const sections: InfoSectionItem[] = [
         description:
           'Иногда животному требуется дорогостоящее лечение или особая помощь. На таких страницах мы размещаем данные питомцев, которые нуждаются в срочной помощи.',
         buttonText: 'Посмотреть',
-        buttonLink: '/help/other/targeted',
+        buttonLink: '/help/other/fundraising',
       },
       {
         key: 'corporate',

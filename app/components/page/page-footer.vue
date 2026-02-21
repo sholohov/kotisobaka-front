@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import LogoBigIcon from '~/assets/svg/logo-big.svg'
+import { apiDocuments } from '~/api/documents';
 
 interface NavItem {
   label: string
@@ -47,6 +48,23 @@ const socials: SocItem[] = [{
 
 const { isMobile, isTabletSmall, isTablet } = useBreakpoint()
 const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || isTablet.value))
+
+const { data: userAgreementResponse } = await useAsyncData('user-agreement', () => {
+  return apiDocuments.get({
+    populate: ['file'],
+    filters: {
+      description: {
+        $startsWith: 'Пользовательское соглашение',
+      },
+    },
+  })
+})
+
+const userAgreementFile = computed(() => {
+  const file = userAgreementResponse.value?.data[0]
+
+  return file?.file ? `/cms${file.file.url}` : ''
+})
 </script>
 
 <template>
@@ -137,13 +155,20 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
             </div>
           </div>
 
-          <div class="page-footer__links">
-            <nuxt-link class="page-footer__links-item">
+          <div class="page-footer__legal">
+            <nuxt-link
+              to="/about#requisite"
+              class="page-footer__legal-link"
+            >
               Реквизиты
             </nuxt-link>
-            <nuxt-link class="page-footer__links-item">
+            <a
+              target="_blank"
+              :href="userAgreementFile"
+              class="page-footer__legal-link"
+            >
               Пользовательское соглашение
-            </nuxt-link>
+            </a>
           </div>
         </div>
       </div>
@@ -399,15 +424,41 @@ const isMobileView = computed(() => (isMobile.value || isTabletSmall.value || is
     }
   }
 
-  &__links {
+  &__legal {
     display: flex;
     flex-direction: column;
     text-align: center;
-    gap: 20px;
+    align-items: center;
+    transition: color 0.3s;
   }
 
-  &__links-item {
+  &__legal-link {
+    display: inline-flex;
+    position: relative;
+    height: 30px;
 
+    &:before {
+      content: '';
+      display: flex;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 8px;
+      height: 1px;
+      transform-origin: left;
+      background-color: var(--color-white);
+      opacity: 0.5;
+      transform: scale(0, 1);
+      transition: transform 0.3s;
+    }
+
+    @include hover {
+      color: var(--color-background-beige);
+
+      &:before {
+        transform: scale(1, 1);
+      }
+    }
   }
 
   &__requisite {

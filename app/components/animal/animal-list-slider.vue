@@ -15,20 +15,31 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  isNeedHelp: {
+    type: Boolean,
+    default: false,
+  },
   hideFundraising: {
     type: Boolean,
     default: false,
   },
 })
 
-const isNeedHelp = computed(() => props.animals.some(animal => {
-  return animal.fundsIsNeeded
-}))
+const quoteSlidePosition = useState('quote-positions', () => {
+  const positions: number[] = []
+  let currentPos = props.isNeedHelp ? 1 : 2
 
-const quoteSlidePosition = computed(() => {
-  return isNeedHelp.value ? 3 : 2
+  positions.push(currentPos)
+
+  for (let i = 0; i < 30; i++) {
+    const gap = Math.floor(Math.random() * (6 - 3 + 1)) + 3
+
+    currentPos += gap
+    positions.push(currentPos)
+  }
+
+  return positions
 })
-
 </script>
 
 <template>
@@ -37,7 +48,7 @@ const quoteSlidePosition = computed(() => {
       <common-slider
         :items="animals"
         :interspersed="quotes"
-        :interspersed-position="quoteSlidePosition"
+        :interspersed-indexes="quoteSlidePosition"
       >
         <template #default="{ data: animal }">
           <animal-card

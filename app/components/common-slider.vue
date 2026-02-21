@@ -47,34 +47,30 @@ const colors = [
 const allItems = computed<Item[]>(() => {
   const { items, interspersed, interspersedIndexes } = props
   const result: Item[] = []
-  const itemsLength = items.length
-  const interspersedLength = interspersedIndexes?.length || 0
-  let interspersedIndex = 0
+  let interspersedCount = 0
   let itemIndex = 0
 
-  Array(itemsLength + interspersedLength).fill(null).forEach((_, index) => {
-    const item = items[itemIndex]
-    const interspersedItem = interspersed?.[interspersedIndex]
+  for (let index = 0; itemIndex < items.length; index++) {
+    const isPlaceForInterspersed = interspersedIndexes?.includes(index)
+    const currentInterspersed = interspersed?.[interspersedCount]
 
-    if (interspersedIndexes?.includes(index) && interspersedItem) {
+    if (isPlaceForInterspersed && currentInterspersed) {
       result.push({
         type: 'interspersed',
         data: {
-          color: colors[interspersedIndex],
-          ...interspersedItem,
-        },
+          ...currentInterspersed,
+          color: colors[interspersedCount % colors.length],
+        } as TInterspersed & { color?: string }, // Приведение к типу для корректного мерджа
       })
-
-      interspersedIndex++
-    } else if (item) {
+      interspersedCount++
+    } else {
       result.push({
         type: 'item',
-        data: item,
+        data: items[itemIndex]!,
       })
-
       itemIndex++
     }
-  })
+  }
 
   return result
 })

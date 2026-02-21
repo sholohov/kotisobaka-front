@@ -598,6 +598,10 @@ function handleDonateBtn() {
     margin: 0 0 30px;
   }
 
+  &__fundraising {
+    margin: 0 0 30px;
+  }
+
   &__donation {
     display: flex;
     align-items: center;

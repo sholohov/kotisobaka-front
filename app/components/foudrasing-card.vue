@@ -79,7 +79,6 @@ function handleDonateBtn() {
   flex-direction: column;
   border: 1px solid var(--color-orange);
   padding: 20px;
-  margin: 0 0 30px;
   border-radius: 24px;
   background-color: var(--color-white);
 

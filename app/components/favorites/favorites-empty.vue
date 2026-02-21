@@ -60,8 +60,7 @@ import CatInBoxIcon from '@/assets/svg/favorites/cat-in-box.svg'
   }
 
   &__description {
-    font-weight: 700;
-
+    font-weight: 400;
     margin: 0 0 30px;
     text-align: center;
     color: var(--color-pink-dark);

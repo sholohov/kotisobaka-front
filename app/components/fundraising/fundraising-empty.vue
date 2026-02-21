@@ -25,8 +25,22 @@ function handleDonateBtn() {
       </h2>
 
       <div class="fundraising-empty__description">
-        Нажимайте на сердечко в карточке понравившегося питомца, чтобы добавить его сюда.
-        Так вы сможете  легко вернуться к анкетам.
+        <p class="fundraising-empty__description-item fundraising-empty__description-item--center">
+          Наш отдел по учёту вкусняшек (в составе трех котов и двух собак) временно ушел в отпуск.
+          Прямо сейчас мы ничего не собираем, потому что:
+        </p>
+
+        <p class="fundraising-empty__description-item">
+          1. У всех миски полные корма (пока!).<br>
+          2. Лапы устали печатать по клавиатуре.<br>
+          3. Главный бухгалтер, пес Барбос, уснул за отчётом.
+        </p>
+
+        <p class="fundraising-empty__description-item fundraising-empty__description-item--center">
+          Но если вы настроены решительно и безвозмездно (то есть даром),
+          то вы всегда можете задонатить на постоянные расходы: аренду, корм, лекарства.
+          А как только усатые экономисты вернуться из отпуска и истребят все запасы — мы сразу дадим знать!
+        </p>
       </div>
 
       <div class="fundraising-empty__link">
@@ -59,8 +73,16 @@ function handleDonateBtn() {
   &__inner {
     display: flex;
     flex-direction: column;
-    text-align: center;
     max-width: 610px;
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 120%;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0 0 10px;
   }
 
   &__icon {
@@ -68,16 +90,23 @@ function handleDonateBtn() {
     display: flex;
     color: var(--color-pink-dark);
     margin: 0 auto 30px;
-    height: 320px;
     @include imageGradient;
   }
 
   &__description {
-    font-weight: 700;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-weight: 400;
     margin: 0 0 30px;
-    text-align: center;
     color: var(--color-pink-dark);
+  }
+
+  &__description-item {
+    &--center {
+      text-align: center;
+    }
   }
 
   &__link {

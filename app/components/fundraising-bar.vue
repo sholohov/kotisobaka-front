@@ -20,15 +20,6 @@ const filledSegments = computed(() => {
   return Math.min(props.segments, Math.round(ratio * props.segments))
 })
 
-const { isMobileView } = useBreakpoint()
-
-const goalTitle = computed(() => {
-  return isMobileView.value ? 'треб.' : 'требуется'
-})
-
-const raisedTitle = computed(() => {
-  return isMobileView.value ? 'собр.' : 'собрано'
-})
 </script>
 
 <template>
@@ -44,10 +35,10 @@ const raisedTitle = computed(() => {
 
     <div class="fundraising-bar__info">
       <span class="fundraising-bar__info-item">
-        {{ goalTitle }} {{ props.goal }} BY
+        {{ props.raised }} BY
       </span>
       <span class="fundraising-bar__info-item">
-        {{ raisedTitle }} {{ props.raised }} BY
+        {{ props.goal }} BY
       </span>
     </div>
   </div>

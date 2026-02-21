@@ -81,39 +81,43 @@ const { isDesktop } = useBreakpoint()
           class="help-guide__item"
           :class="`help-guide__item--${item.color}`"
         >
-          <div class="help-guide__header">
-            <component
-              :is="item.icon"
-              class="help-guide__icon"
-            />
-            <h3 class="help-guide__title">
-              {{ item.title }}
-            </h3>
-          </div>
-          <div
-            v-if="isDesktop"
-            class="help-guide__description"
+          <nuxt-link
+            :to="item.link"
+            class="help-guide__link"
           >
-            <p
-              v-for="(paragraph, index) in item.description"
-              :key="index"
-              class="help-guide__paragraph"
+            <div class="help-guide__header">
+              <component
+                :is="item.icon"
+                class="help-guide__icon"
+              />
+              <h3 class="help-guide__title">
+                {{ item.title }}
+              </h3>
+            </div>
+            <div
+              v-if="isDesktop"
+              class="help-guide__description"
             >
-              {{ paragraph }}
-            </p>
-          </div>
-          <div class="help-guide__footer">
-            <p class="help-guide__motivation">
-              {{ item.motivation }}
-            </p>
-            <btn-default
-              :to="item.link"
-              circle
-              class="help-guide__link"
-            >
-              <svg-icon name="arrow-right-icon" />
-            </btn-default>
-          </div>
+              <p
+                v-for="(paragraph, index) in item.description"
+                :key="index"
+                class="help-guide__paragraph"
+              >
+                {{ paragraph }}
+              </p>
+            </div>
+            <div class="help-guide__footer">
+              <p class="help-guide__motivation">
+                {{ item.motivation }}
+              </p>
+              <btn-default
+                circle
+                class="help-guide__btn"
+              >
+                <svg-icon name="arrow-right-icon" />
+              </btn-default>
+            </div>
+          </nuxt-link>
         </li>
       </ul>
     </content-box>
@@ -141,16 +145,13 @@ const { isDesktop } = useBreakpoint()
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    padding: 16px;
     border-radius: 24px;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
 
-    @media (min-width: $mq-sm) {
-      flex-direction: row;
-      align-items: stretch;
-    }
-
-    @media (min-width: $mq-lg) {
-      padding: 30px;
+    @include hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.07),
+      0 4px 8px rgba(0, 0, 0, 0.035);
     }
 
     &--green {
@@ -176,6 +177,21 @@ const { isDesktop } = useBreakpoint()
     &--blue {
       color: var(--color-blue-dark);
       background-color: var(--color-blue-light);
+    }
+  }
+
+  &__link {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+
+    @media (min-width: $mq-sm) {
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    @media (min-width: $mq-lg) {
+      padding: 30px;
     }
   }
 
@@ -316,7 +332,7 @@ const { isDesktop } = useBreakpoint()
     }
   }
 
-  &__link {
+  &__btn {
     color: currentColor;
     display: flex;
     align-items: center;

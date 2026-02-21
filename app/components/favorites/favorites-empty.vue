@@ -1,14 +1,11 @@
 <script setup lang="ts">
+import CatInBoxIcon from '@/assets/svg/favorites/cat-in-box.svg'
 </script>
 
 <template>
   <div class="favorites-empty">
     <div class="favorites-empty__inner">
-      <svg-icon
-        name="cat-in-box-icon"
-        class="favorites-empty__icon"
-        size="320"
-      />
+      <cat-in-box-icon class="favorites-empty__icon" />
 
       <div class="favorites-empty__description">
         Нажимайте на сердечко <svg-icon
@@ -58,6 +55,7 @@
     display: flex;
     color: var(--color-pink-dark);
     margin: 0 auto 30px;
+    height: 320px;
     @include imageGradient;
   }
 

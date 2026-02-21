@@ -1,10 +1,9 @@
 import type {
-  Strapi5RequestParams,
   Strapi5ResponseSingle,
   Strapi5ResponseMany,
 } from '@nuxtjs/strapi'
 
-export type { Strapi5RequestParams }
+import type { Strapi5RequestParams } from '@/api/types/params'
 
 export const strapi = {
   update: async <T>(
@@ -23,7 +22,7 @@ export const strapi = {
   ): Promise<Strapi5ResponseMany<T>> => {
     const { find } = useStrapi<T>()
 
-    return find(contentType, params)
+    return find(contentType, params as unknown as object)
   },
 
   findOne: async <T>(
@@ -33,7 +32,7 @@ export const strapi = {
   ): Promise<Strapi5ResponseSingle<T>> => {
     const { findOne } = useStrapi<T>()
 
-    return findOne(contentType, documentId, params)
+    return findOne(contentType, documentId, params as unknown as object)
   },
 
   create: async <T>(

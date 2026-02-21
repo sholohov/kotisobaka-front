@@ -1,4 +1,4 @@
-import type { Strapi5RequestParams } from '@nuxtjs/strapi'
+import type { Strapi5RequestParams } from '@/api/types/params'
 
 import type { QuotesResponse, Quote } from './types'
 import { strapi } from '../client'

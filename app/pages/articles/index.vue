@@ -45,7 +45,7 @@ const { data: articleTagsResponse } = await useAsyncData('articles-tags', () => 
   return api.articleTags.get({
     populate: {
       articles: {
-        fields: ['id'],
+        fields: ['id', 'publishedDate'],
       },
     },
   })
@@ -89,11 +89,22 @@ const filtersOptions: RadioOption[] = [{
   value: 'blog',
 }]
 
-const articlesTags = computed((): (ArticleTag & { isActive: boolean })[] => {
-  return [
-    { name: 'все', color: 'white', slug: 'all-tags' },
-    ...(articleTagsResponse.value?.data ?? []).filter(i => i.articles?.length),
-  ].map(tag => {
+const articlesTags = computed(()  => {
+  if (!articleTagsResponse.value) {
+    return []
+  }
+
+  const list: (ArticleTag & { isActive: boolean })[] = []
+  const now = Date.now()
+
+  list.push(
+    { name: 'все', color: 'white', slug: 'all-tags', isActive: true },
+    ...articleTagsResponse.value.data.map(i => ({ ...i, isActive: false })),
+  )
+
+  return list.filter(i => {
+    return i.articles?.length && i.articles.every(j => Date.parse(j.publishedDate) < now)
+  }).map(tag => {
     const isActive = Boolean(filters.tag?.includes(tag.name))
       || (tag.slug === 'all-tags' && !filters.tag?.length)
 

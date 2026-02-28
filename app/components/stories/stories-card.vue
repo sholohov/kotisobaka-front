@@ -76,7 +76,16 @@ const textLines = computed(() => {
       <div class="stories-card__title">
         {{ story.name }}
       </div>
-      <div class="stories-card__text">
+      <div
+        v-if="short"
+        class="stories-card__text"
+      >
+        «{{ story.text }}»
+      </div>
+      <div
+        v-else
+        class="stories-card__text"
+      >
         <p
           v-for="(textLine, index) in textLines"
           :key="index"
@@ -173,10 +182,11 @@ const textLines = computed(() => {
     margin: 0 0 6px;
     transition: transform 0.3s, box-shadow 0.3s;
     min-height: 240px;
+    width: auto;
 
     @media (min-width: $mq-lg) {
       margin: 0;
-      flex: 1;
+      width: 50%;
     }
   }
 
@@ -231,16 +241,17 @@ const textLines = computed(() => {
     border-radius: 24px;
     background-color: var(--color-white);
     transition: transform 0.3s, box-shadow 0.3s;
+    width: auto;
 
     @media (min-width: $mq-lg) {
       padding: 20px;
+      width: 50%;
     }
   }
 
   &__text {
     position: relative;
     font-weight: 400;
-    white-space: pre-line;
     margin: 0 0 14px;
     flex: 1;
 
@@ -250,7 +261,9 @@ const textLines = computed(() => {
       -webkit-line-clamp: 4;
       overflow: hidden;
       text-overflow: ellipsis;
+      line-height: 1.2;
       max-height: calc(1.2em * 4);
+      white-space: normal;
 
       @media (min-width: $mq-lg) {
         -webkit-line-clamp: 8;

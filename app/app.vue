@@ -70,6 +70,11 @@ watch(() => [
 
 useHead({
   script: [{
+    async: 'true',
+    src: 'https://www.googletagmanager.com/gtag/js?id=G-94W54111C8',
+  }, {
+    src: '/gtag.js',
+  }, {
     src: '/gtm.js',
   }],
   link: [

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineProps({
+const props = defineProps({
   title: {
     type: String,
     required: true,
@@ -24,6 +24,7 @@ defineProps({
 
 const modalStore = useModalStore()
 const { isMobileView } = useBreakpoint()
+const descriptionItems = computed(() => props.description?.split('\n') || [])
 
 function handleDonateBtn() {
   if (isMobileView.value) {
@@ -39,9 +40,15 @@ function handleDonateBtn() {
     <h2 class="fundraising-card__title">
       {{ title }}
     </h2>
-    <p class="fundraising-card__reason">
-      {{ description }}
-    </p>
+    <div class="fundraising-card__reason">
+      <p
+        v-for="(descriptionItem, index) in descriptionItems"
+        :key="index"
+        class="fundraising-card__reason-item"
+      >
+        {{ descriptionItem }}
+      </p>
+    </div>
     <fundraising-bar
       class="fundraising-card__bar"
       :segments="segments"
@@ -90,8 +97,14 @@ function handleDonateBtn() {
   }
 
   &__reason {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     font-weight: 400;
+    margin: 0 0 14px;
+  }
 
+  &__reason {
     margin: 0 0 14px;
   }
 

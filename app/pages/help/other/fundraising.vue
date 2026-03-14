@@ -72,7 +72,10 @@ const { data: fundraisingResponse } = await useAsyncData('fundraising-page', () 
             </swiper-slide>
           </swiper-container>
 
-          <div class="fundraising-page__animals-controls">
+          <div
+            v-if="(item.animals?.length ?? 0) > 1"
+            class="fundraising-page__animals-controls"
+          >
             <btn-default
               circle
               no-border

@@ -36,7 +36,7 @@ const emit = defineEmits(['click'])
   &__btn {
     border-color: var(--color-text-brown);
     color: var(--color-text-brown);
-    filter: brightness(110%);
+    filter: brightness(120%);
   }
 
   &__coin {

@@ -29,12 +29,10 @@
     @media (min-width: $mq-sm) {
       width: 50%;
       margin: 0 0 0 auto;
-      max-width: 670px;
     }
 
     @media (min-width: $mq-md) {
-      max-width: 800px;
-      padding: 0 200px 0 0;
+      padding: 0;
     }
   }
 }

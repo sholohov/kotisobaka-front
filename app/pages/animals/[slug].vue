@@ -296,9 +296,9 @@ function handleDonateBtn() {
           <foudrasing-card
             v-if="animal.fundsIsNeeded"
             :title="fundraisingTitle"
-            :description="animal.fundsReason"
-            :amount-target="animal.fundsAmountTarget"
-            :amount-collected="animal.fundsAmountCollected"
+            :description="animal.fundsReason ?? ''"
+            :amount-target="animal.fundsAmountTarget ?? 0"
+            :amount-collected="animal.fundsAmountCollected ?? 0"
             :segments="fundsSegments"
             class="animal-page__fundraising"
           />

@@ -17,6 +17,13 @@ export default defineNuxtConfig({
     asyncContext: true,
   },
 
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    },
+  ],
+
   css: [
     '~/assets/styles/tokens.scss',
     '~/assets/styles/fonts.scss',

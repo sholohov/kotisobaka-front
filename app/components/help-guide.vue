@@ -183,6 +183,7 @@ const { isDesktop } = useBreakpoint()
   &__link {
     display: flex;
     width: 100%;
+    padding: 16px;
     flex-direction: column;
 
     @media (min-width: $mq-sm) {

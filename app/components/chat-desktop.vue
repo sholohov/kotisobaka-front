@@ -9,7 +9,7 @@
         to="https://t.me/kot_i_sobaka_bot"
       >
         <svg-icon
-          size="40"
+          size="36"
           name="telegram-icon"
         />
       </nuxt-link>
@@ -31,13 +31,13 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
+    width: 54px;
+    height: 54px;
     color: var(--color-white);
     background-color: var(--color-purple);
     box-shadow:
-      0 2px 4px rgba(0, 0, 0, 0.15),
-      0 4px 8px rgba(0, 0, 0, 0.3);
+      0 2px 4px rgba(0, 0, 0, 0.1),
+      0 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 0.3s, transform 0.1s;
 
     @include hover {

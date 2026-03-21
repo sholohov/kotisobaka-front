@@ -7,7 +7,6 @@ const menuMobileStore = useMenuMobileStore()
 const modalStore = useModalStore()
 const route = useRoute()
 const device = useDevice()
-const favoritesStore = useFavoritesStore()
 
 watch(isMobileView, () => {
   if (!isMobileView.value) {
@@ -97,6 +96,11 @@ function handleClickOverlay() {
       <page-footer />
     </footer>
 
+    <lazy-chat-desktop
+      v-if="!isMobileView"
+      class="layout-default__chat"
+    />
+
     <client-only>
       <div
         class="layout-default__overlay"
@@ -174,6 +178,14 @@ function handleClickOverlay() {
 
   &__footer {
     flex: 0;
+    z-index: 1;
+  }
+
+  &__chat {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 26px;
     z-index: 1;
   }
 

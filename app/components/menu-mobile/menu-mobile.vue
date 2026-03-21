@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const menuMobileStore = useMenuMobileStore()
 const { navigation } = useAppConfig()
+
+console.log(navigation)
 </script>
 
 <template>

@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import BurgerIcon from '~/assets/icons/burger-icon.svg'
 import PawIcon from '~/assets/icons/paw-icon.svg'
-import BlogIcon from '~/assets/icons/blog-icon.svg'
 import PiggyBankIcon from '~/assets/icons/piggy-bank-icon.svg'
 import HeartIcon from '~/assets/icons/heart-icon.svg'
+import TelegramIcon from '~/assets/icons/telegram-icon.svg'
 import { NuxtLink } from '#components';
 import { useMenuMobileStore } from '~/stores/menuMobile';
 
@@ -12,6 +12,7 @@ interface ItemProps {
   key: string
   to: string
   icon: unknown
+  target?: '_blank'
 }
 
 const items: ItemProps[] = [{
@@ -30,15 +31,16 @@ const items: ItemProps[] = [{
   to: '',
   icon: PiggyBankIcon,
 }, {
-  label: 'Статьи',
-  key: 'articles',
-  to: '/articles',
-  icon: BlogIcon,
-}, {
   label: 'Избранное',
   key: 'favorites',
   to: '/favorites',
   icon: HeartIcon,
+}, {
+  label: 'Чат',
+  key: 'telegram-bot',
+  to: 'https://t.me/kot_i_sobaka_bot',
+  target: '_blank',
+  icon: TelegramIcon,
 }]
 
 const menuMobileStore = useMenuMobileStore()
@@ -70,6 +72,7 @@ function handleTabClick(item: ItemProps) {
         <component
           :is="item.to ? NuxtLink : 'span'"
           :to="item.to"
+          :target="item.target"
           class="bottom-nav-bar__item-link"
           :class="[
             'bottom-nav-bar__item-link--' + item.key,

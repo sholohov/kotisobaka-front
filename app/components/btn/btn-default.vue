@@ -126,8 +126,8 @@ const formattedBadge = computed(() => {
   }
 
   &:active {
-    transform: scale(0.98);
-    transition-duration: 0.1s;
+    transform: scale(0.95);
+    transition-duration: 0.05s;
   }
 
   &__badge {

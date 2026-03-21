@@ -79,6 +79,7 @@ onUnmounted(() => {
 
 <template>
   <div
+    v-if="items.length"
     ref="accordionRef"
     class="menu-mobile-nav-item"
     :class="{
@@ -86,7 +87,6 @@ onUnmounted(() => {
     }"
   >
     <button
-      v-if="props.items?.length"
       class="menu-mobile-nav-item__btn"
       :class="{
         'menu-mobile-nav-item__btn--active': isOpen
@@ -98,22 +98,12 @@ onUnmounted(() => {
       </span>
 
       <svg-icon
-        v-if="items.length"
         name="arrow-down-icon"
         class="menu-mobile-nav-item__btn-arrow"
         :class="{
           'menu-mobile-nav-item__btn-arrow--active': isOpen
         }"
       />
-
-      <nuxt-link
-        v-else
-        :to="to"
-      >
-        <span class="menu-mobile-nav-item__btn-text">
-          {{ label }}
-        </span>
-      </nuxt-link>
     </button>
 
     <ul
@@ -189,6 +179,17 @@ onUnmounted(() => {
         </ul>
       </li>
     </ul>
+  </div>
+  <div
+    v-else
+    class="menu-mobile-nav-item"
+  >
+    <nuxt-link
+      :to="to"
+      class="menu-mobile-nav-item__btn"
+    >
+      {{ label }}
+    </nuxt-link>
   </div>
 </template>
 

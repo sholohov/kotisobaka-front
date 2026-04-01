@@ -22,6 +22,6 @@ export const seoConfig = {
 
   social: {
     facebook: 'https://www.facebook.com/groups/348219105203299',
-    instagram: 'https://www.instagram.com/kisorgcom',
+    instagram: 'https://www.instagram.com/kotisobaka.by',
   },
 }

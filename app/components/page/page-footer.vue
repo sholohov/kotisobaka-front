@@ -41,7 +41,7 @@ const socials: SocItem[] = [{
   key: 'facebook',
   icon: 'facebook-icon',
 }, {
-  to: 'https://www.instagram.com/kisorgcom',
+  to: 'https://www.instagram.com/kotisobaka.by',
   key: 'instagram',
   icon: 'instagram-icon',
 }]
